@@ -2,8 +2,12 @@
 ###       PAX BY AIRPORT       ###
 ##################################
 
-#rm(list = ls()) #delete everything
+#rm(list = ls())
 library(dplyr)
+library(stringr)
+init = paste0(str_sub(getwd(), 1, str_locate(getwd(),"Documents")[2]),"/init.R")
+if (dir.exists(init)){source(init)}
+
 t0 = Sys.time()
 #create a dataframe with years and paths----
 paths = data.frame(2018:2022,
@@ -23,4 +27,4 @@ for (i in paths[[1]]){
   df = rbind(df,read.csv(x[[2]], sep = ";", dec = ",")) #add new dataframe to previous one
 }
 print(Sys.time()-t0) #measures runtime----
-rm(x,i,t0) #delete unnecessary objects
+rm(x,i,t0)
