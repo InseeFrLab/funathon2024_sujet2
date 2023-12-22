@@ -1,14 +1,12 @@
-##################################
-###       PAX BY AIRPORT       ###
-##################################
+# PAX BY AIRPORT----
 
 #rm(list = ls())
 library(dplyr)
 library(stringr)
 init = paste0(str_sub(getwd(), 1, str_locate(getwd(),"Documents")[2]),"/init.R")
-if (dir.exists(init)){source(init)}
-
+if (dir.exists(init)){source(init)} #runs init pg if available, doesn't otherwise
 t0 = Sys.time()
+
 #create a dataframe with years and paths----
 paths = data.frame(2018:2022,
                    c("https://www.data.gouv.fr/fr/datasets/r/3b7646ea-276c-4c9b-8151-1e96af2adbf9",
@@ -18,7 +16,8 @@ paths = data.frame(2018:2022,
                      "https://www.data.gouv.fr/fr/datasets/r/f1bd931e-c99e-41ce-865e-9e9785c903ec"
                    )
 )
-names(paths) = c("year","path")#rename variables
+names(paths) = c("year","path")
+
 #load data online----
 df = NULL
 for (i in paths[[1]]){
@@ -26,5 +25,5 @@ for (i in paths[[1]]){
   x = paths %>% filter(year == i) #filter on the year selected
   df = rbind(df,read.csv(x[[2]], sep = ";", dec = ",")) #add new dataframe to previous one
 }
-print(Sys.time()-t0) #measures runtime----
+print(Sys.time()-t0)
 rm(x,i,t0)
