@@ -2,29 +2,44 @@
 
 function(input, output) {
   output$texte <- renderText({
-    paste0("Pax in France - DGAC")
+    paste0("Pax in France - DGAC on data.gouv.fr")
   })
-  #create 2 reactive dataframes which will be called below----
+  #create reactive dataframes which will be called below----
   dfapt = reactive({
     return(pax_apt %>% filter((mois %in% input$mon)&(an == input$yea)))
   })
   dflsn = reactive({
     return(pax_lsn %>% filter((mois %in% input$mon)&(an == input$yea)))
   })
-  #Table1 pax by lsn link----
+  if (exists("source_to_compare")){#compare with other source with the same variable names if loaded with init.R
+    dfraw = reactive({
+      return(source_to_compare %>% filter((mois %in% input$mon)&(an == input$yea)))
+    })
+  }
+  
+  #Table1 pax by faisceau from lsn----
   output$table1 <- DT::renderDataTable(DT::datatable({
-    data <- bind_rows(
-      dflsn() %>%
-        summarise(paxloc = sum(lsnpaxloc, na.rm = T)),
-      dflsn() %>%
-        group_by(lsnfsc) %>%
-        summarise(paxloc = sum(lsnpaxloc, na.rm = T)) %>%
-        ungroup,
-      dflsn() %>%
-        group_by(lsn, lsndepnom, lsnarrnom, lsnfsc) %>%
-        summarise(paxloc = sum(lsnpaxloc, na.rm = T)) %>%
-        arrange(desc(paxloc)) %>%
-        ungroup
+    data = bind_cols(
+      bind_rows(
+        dflsn() %>% summarise(paxloc = round(sum(lsnpaxloc, na.rm = T)/1000000,3)),
+        dflsn() %>%
+          group_by(lsnfsc) %>%
+          summarise(paxloc = round(sum(lsnpaxloc, na.rm = T)/1000000,3)) %>%
+          ungroup
+      ),
+      #dflsn() %>%
+        #group_by(lsnfsc) %>%
+        #summarise(paxloc = round(sum(lsnpaxloc, na.rm = T)/1000000,3)) %>%
+        #ungroup,
+      if (exists("source_to_compare")){
+        bind_rows(
+          dfraw() %>% summarise(paxloc = round(sum(lsnpaxloc, na.rm = T)/1000000,3)),
+          dfraw() %>%
+            group_by(lsnfsc) %>%
+            summarise(paxloc = round(sum(lsnpaxloc, na.rm = T)/1000000,3)) %>%
+            ungroup
+          )
+      }
     )
   }, class = "cell-border compact hover stripe",
   options = list(
@@ -48,12 +63,14 @@ function(input, output) {
       'selectAll', 'selectNone', 'selectRows', 'selectColumns', 'selectCells'
     )
   )))
+  
+
   #Table2 pax by apt airport----
   output$table2 = DT::renderDataTable(DT::datatable({
     data = bind_rows(
       dfapt() %>%
         group_by(apt, aptnom) %>%
-        summarise(paxdep = sum(aptpaxdep, na.rm = T), paxarr = sum(aptpaxarr, na.rm = T), paxtra = sum(aptpaxtr, na.rm = T)) %>%
+        summarise(paxdep = round(sum(aptpaxdep, na.rm = T)/1000000,3), paxarr = round(sum(aptpaxarr, na.rm = T)/1000000,3), paxtra = round(sum(aptpaxtr, na.rm = T)/1000000,3)) %>%
         arrange(desc(paxdep)) %>%
         ungroup
     )

@@ -10,6 +10,4 @@ fluidPage(
                      inline = T),
   DT::dataTableOutput("table1"),
   DT::dataTableOutput("table2")
-  #DT::dataTableOutput("table3"),
-  #DT::dataTableOutput("table4")
 )

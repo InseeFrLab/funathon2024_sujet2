@@ -5,9 +5,15 @@ t0 = Sys.time()
 #check the data is already loaded----
 if (exists("data_already_loaded")){
   print("already loaded")} else {
+    n = stringr::str_locate(getwd(),"Documents")[2]
+    source(paste0(stringr::str_sub(getwd(),1,n),"/init.R")) #run a personnal and additionnal prog if you have one, for example if you have oa init.R prog on your HD
+    rm(n)
     #global parameters
-    year_num = 2018:2022
-    paths = data.frame(year_num,
+    year_num = 2018:2023 #annees d'observation par ex. c(2019,2022,2023) 
+    year_char = as.list(as.character(year_num))
+    month_char = c(paste0("0", 1:9),10:12)
+    year_open_data = 2018:2022
+    paths = data.frame(year_open_data,
                        c("https://www.data.gouv.fr/fr/datasets/r/3b7646ea-276c-4c9b-8151-1e96af2adbf9",
                          "https://www.data.gouv.fr/fr/datasets/r/e8efa154-045e-4f8f-a1d7-76a39fa03b7b",
                          "https://www.data.gouv.fr/fr/datasets/r/6717f107-be00-4b4b-9706-fa0e5190fb69",
@@ -34,8 +40,6 @@ if (exists("data_already_loaded")){
     library(dplyr)
     library(shiny)
     library(stringr)
-    year_char = as.list(as.character(year_num))
-    month_char = c(paste0("0", 1:9),10:12)
     
     simplify_text = function(texte){#replace upper case by lower case, delete punctuation and replace é by e, in variable names
       texte=tolower(texte)
@@ -71,7 +75,6 @@ if (exists("data_already_loaded")){
     pax_apt = load_data("apt")
     pax_cie = load_data("cie")
     pax_lsn = load_data("lsn")
-    
     data_already_loaded = TRUE
-    }      
+    }
 print(Sys.time()-t0) #measures runtime----
