@@ -7,11 +7,10 @@ t0 = Sys.time()
 if (exists("data_already_loaded")){#check the data is already loaded----
   print("already loaded")} else {
     #global parameters
-    year_num = 2018:2023 #annees d'observation par ex. c(2019,2022,2023) 
+    year_num = 2018:2022 #to be modified eg c(2019,2022,2023) 
     year_char = as.list(as.character(year_num))
     month_char = c(paste0("0", 1:9),10:12)
-    year_open_data = 2018:2022
-    paths = data.frame(year_open_data,
+    paths = data.frame(year_num,
                        c("https://www.data.gouv.fr/fr/datasets/r/3b7646ea-276c-4c9b-8151-1e96af2adbf9",
                          "https://www.data.gouv.fr/fr/datasets/r/e8efa154-045e-4f8f-a1d7-76a39fa03b7b",
                          "https://www.data.gouv.fr/fr/datasets/r/6717f107-be00-4b4b-9706-fa0e5190fb69",
