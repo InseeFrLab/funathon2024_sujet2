@@ -6,6 +6,12 @@
 t0 = Sys.time()
 if (exists("data_already_loaded")){#check the data is already loaded----
   print("already loaded")} else {
+    n = stringr::str_locate(getwd(),"Documents")[2]
+    pg_init = paste0(stringr::str_sub(getwd(),1,n),"/init.R")
+    if (file.exists(pg_init)){
+      source(pg_init) #run a personnal and additionnal prog if you have one, for example if you have oa init.R prog on your HD
+    }
+    rm(n)
     #global parameters
     year_num = 2018:2023 #annees d'observation par ex. c(2019,2022,2023) 
     year_char = as.list(as.character(year_num))
