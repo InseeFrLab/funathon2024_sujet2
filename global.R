@@ -1,7 +1,6 @@
 # RTraffic global
 
 #install.packages("DT")#if necessary install package
-x = 1
 #rm(list = ls())
 t0 = Sys.time()
 if (exists("data_already_loaded")){#check the data is already loaded----
