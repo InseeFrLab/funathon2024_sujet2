@@ -1,0 +1,178 @@
+---
+title: "RTraffic"
+format: html
+number-sections: true
+editor: visual
+---
+
+```{=html}
+<!-- 
+Créé un tableau de bord du trafic aérien en France à partir des données en libre accès sur data.gouv.fr
+ -->
+```
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE,
+                      warning = FALSE,
+                      message = FALSE,
+                      error = TRUE,
+                      fig.align = "center",
+                      out.width = "100%")
+
+library(dplyr)
+library(lubridate)
+library(shiny)
+library(stringr)
+
+if (!requireNamespace("DT")){install.packages("DT")} #installe  package "DT" si nécessaire
+t0 = Sys.time()
+
+```
+
+# Paramètres
+```{r parameters}
+if (!requireNamespace("DT")){install.packages("DT")} #install.packages("DT")#if necessary install package
+t0 = Sys.time()
+
+#stocke les chemins vers les données de trafic dans l'objet "paths"
+year_num = 2018:2022 #to be modified eg c(2019,2022,2023) 
+year_char = as.list(as.character(year_num))
+month_char = c(paste0("0", 1:9),10:12)
+paths = data.frame(year_num, c("https://www.data.gouv.fr/fr/datasets/r/3b7646ea-276c-4c9b-8151-1e96af2adbf9", "https://www.data.gouv.fr/fr/datasets/r/e8efa154-045e-4f8f-a1d7-76a39fa03b7b", "https://www.data.gouv.fr/fr/datasets/r/6717f107-be00-4b4b-9706-fa0e5190fb69", "https://www.data.gouv.fr/fr/datasets/r/2f9f6e54-e2d7-4e85-b811-2e5e68fa5bca", "https://www.data.gouv.fr/fr/datasets/r/f1bd931e-c99e-41ce-865e-9e9785c903ec"),#url données trafic apt-aéroports sur data.gouv.fr
+c("https://www.data.gouv.fr/fr/datasets/r/9c5354ad-31cb-4217-bc88-fb7c9be22655", "https://www.data.gouv.fr/fr/datasets/r/0c0a451e-983b-4f06-9627-b5ff1bccd2fc", "https://www.data.gouv.fr/fr/datasets/r/dad30bed-7276-4a67-a1ab-a856e6e01788", "https://www.data.gouv.fr/fr/datasets/r/bbf6492d-86ac-43a0-9260-7df2ffdb5a77", "https://www.data.gouv.fr/fr/datasets/r/af8950bc-e90a-4b7e-bb81-70c79d4c3846" ),#url données trafic lsn-liaisons sur data.gouv.fr
+c("https://www.data.gouv.fr/fr/datasets/r/ddfea6a0-df7e-4402-99fc-165f573f2e10", "https://www.data.gouv.fr/fr/datasets/r/8421e029-c8c7-410d-b38c-54455ac3265d", "https://www.data.gouv.fr/fr/datasets/r/818eec10-6122-4788-8233-482e779ab837", "https://www.data.gouv.fr/fr/datasets/r/0b954774-ccd1-43ec-9b5a-f958fba03e87", "https://www.data.gouv.fr/fr/datasets/r/bcec3e1e-940a-4772-bc28-0d7b2b53c718")#url données trafic cie-compagnies sur data.gouv.fr
+)
+names(paths) = c("year","apt","lsn","cie")
+
+#charge les fonctions utiles----
+simplify_text = function(texte){#fonction qui simplifie le texte en retirant la ponctuation et les accents
+  texte=tolower(texte)
+  texte=str_replace_all(texte,"[:punct:]","")
+  texte=str_replace_all(texte,"[:space:]","")
+  texte=str_replace_all(texte,"[àâä]","a")
+  texte=str_replace_all(texte,"[ç]","c")
+  texte=str_replace_all(texte,"[éèêë]","e")
+  texte=str_replace_all(texte,"[îï]","i")
+  texte=str_replace_all(texte,"[ôö]","o")
+  texte=str_replace_all(texte,"[ùûü]","u")
+  return(texte)}
+    
+load_data = function(data_typ){#fonction qui charge les données dans un dataframe
+  df = NULL
+  for (i in paths[[1]]){
+    print(paste0(data_typ," ",i))
+    x = paths %>%
+      select("year", all_of(data_typ)) %>% 
+      filter(year == i) #filtre sur l'année sélectionnée
+    df = rbind(df,read.csv(x[[2]], sep = ";", dec = ",")) #empile le dataframe sur le précédent
+    }
+  df = df %>% 
+    mutate(an = str_sub(ANMOIS,1,4)) %>%
+    mutate(mois = str_sub(ANMOIS,5,6))
+  names(df)=simplify_text(names(df))
+  rm(x,i)
+  return(df)
+  }
+
+#charge les données avec la fonction load_data----
+pax_apt = load_data("apt")
+pax_cie = load_data("cie")
+pax_lsn = load_data("lsn")
+data_already_loaded = TRUE
+print(Sys.time()-t0) #mesure le temps machine----
+
+```
+
+# ui
+```{r ui}
+ui <- function() {
+fluidPage(
+  verbatimTextOutput(outputId = "texte"),
+  checkboxGroupInput("mon", "Mois : ",
+                     month_char,
+                     inline = T),
+  radioButtons("yea", "Année : ",
+                     year_char,
+                     inline = T),
+  DT::dataTableOutput("table1"),
+  DT::dataTableOutput("table2")
+)
+}
+
+```
+
+# server
+```{r server}
+server <- function(input, output, session) {
+  output$texte <- renderText({
+    paste0("Pax in France - DGAC on data.gouv.fr")
+  })
+  #créé de la réactivité----
+  dfapt = reactive({
+    return(pax_apt %>% filter((mois %in% input$mon)&(an == input$yea)))
+  })
+  dflsn = reactive({
+    return(pax_lsn %>% filter((mois %in% input$mon)&(an == input$yea)))
+  })
+  
+  #créé une table1 de stat par faisceau à partir des données par lsn-liaisons----
+  output$table1 <- DT::renderDataTable(DT::datatable({
+    data = bind_cols(
+      bind_rows(
+        dflsn() %>% summarise(paxloc = round(sum(lsnpaxloc, na.rm = T)/1000000,3)),
+        dflsn() %>%
+          group_by(lsnfsc) %>%
+          summarise(paxloc = round(sum(lsnpaxloc, na.rm = T)/1000000,3)) %>%
+          ungroup
+      )
+    )
+  }, class = "cell-border compact hover stripe",
+  options = list(
+    autoWidth = T,
+    columnDefs = list(list(width = '20px', targets = c(0,1,2))),
+    dom = "Bfrtip", 
+    scrollY = 145, scrollX = 400, scroller = TRUE,
+    fixedColumns = list(leftColumns = 1),
+    select = list(style = 'os', items = 'row'),
+    buttons = c(
+      'copy', 'csv',
+      'colvis',
+      'selectAll', 'selectNone', 'selectRows', 'selectColumns', 'selectCells'
+    )
+  )))
+  
+  #créé une table2 de stat par aéroport à partir des données par apt-aéroports----
+  output$table2 = DT::renderDataTable(DT::datatable({
+    data = bind_rows(
+      dfapt() %>%
+        group_by(apt, aptnom) %>%
+        summarise(paxdep = round(sum(aptpaxdep, na.rm = T)/1000000,3), paxarr = round(sum(aptpaxarr, na.rm = T)/1000000,3), paxtra = round(sum(aptpaxtr, na.rm = T)/1000000,3)) %>%
+        arrange(desc(paxdep)) %>%
+        ungroup
+    )
+  }, class = "cell-border compact hover stripe",
+  extensions = c("Scroller", "FixedColumns", "Buttons", "Select"), 
+  selection = "none",
+  options = list(
+    autoWidth = T,
+    columnDefs = list(list(width = '20px', targets = c(0,1,2))),
+    dom = "Bfrtip", 
+    scrollY = 145, scrollX = 400, scroller = TRUE,
+    fixedColumns = list(leftColumns = 1),
+    select = list(style = 'os', items = 'row'),
+    buttons = c(
+      'copy', 'csv',
+      'colvis',
+      'selectAll', 'selectNone', 'selectRows', 'selectColumns', 'selectCells'
+    )
+  )))
+  }
+
+```
+
+# shiny
+
+```{r shiny}
+
+shinyApp(ui, server)#lance le tableau de bord en shiny
+
+```
