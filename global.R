@@ -1,6 +1,5 @@
 # RTraffic global
 
-if (!requireNamespace("DT")){install.packages("DT")} #install.packages("DT")#if necessary install package
 t0 = Sys.time()
 if (exists("data_already_loaded")){#check the data is already loaded----
   print("already loaded")} else {
