@@ -1,6 +1,7 @@
 # RTraffic global
 
-t0 = Sys.time()
+start_running_time = Sys.time()
+
 if (exists("data_already_loaded")){#check the data is already loaded----
   print("already loaded")} else {
     #global parameters
@@ -69,5 +70,6 @@ if (exists("data_already_loaded")){#check the data is already loaded----
     pax_cie = load_data("cie")
     pax_lsn = load_data("lsn")
     data_already_loaded = TRUE
-    }
-print(Sys.time()-t0) #measures runtime----
+  }
+
+print(Sys.time()-start_running_time) #measures runtime----
