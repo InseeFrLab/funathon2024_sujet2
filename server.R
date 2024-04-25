@@ -5,12 +5,12 @@ function(input, output) {
   #create reactive dataframes which will be called below----
   pax_apt = reactive({
     return(
-      create_data_from_input(pax_apt_all, input$year_list, input$month_list)
+      create_data_from_input(pax_apt_all, input$yea, input$mon)
     )
   })
   pax_lsn = reactive({
     return(
-      create_data_from_input(pax_lsn_all, input$year_list, input$month_list)
+      create_data_from_input(pax_lsn_all, input$yea, input$mon)
       )
   })
   
