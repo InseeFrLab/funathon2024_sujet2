@@ -29,6 +29,7 @@ t0 = Sys.time()
 ```
 
 # Paramètres
+
 ```{r parameters}
 if (!requireNamespace("DT")){install.packages("DT")} #install.packages("DT")#if necessary install package
 t0 = Sys.time()
@@ -83,6 +84,7 @@ print(Sys.time()-t0) #mesure le temps machine----
 ```
 
 # ui
+
 ```{r ui}
 ui <- function() {
 fluidPage(
@@ -101,6 +103,7 @@ fluidPage(
 ```
 
 # server
+
 ```{r server}
 server <- function(input, output, session) {
   output$texte <- renderText({
