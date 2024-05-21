@@ -1,6 +1,6 @@
 {
   "R": {
-    "Version": "4.3.2",
+    "Version": "4.3.3",
     "Repositories": [
       {
         "Name": "CRAN",
@@ -57,6 +57,30 @@
       ],
       "Hash": "543776ae6848fde2f48ff3816d0628bc"
     },
+    "bit": {
+      "Package": "bit",
+      "Version": "4.0.5",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R"
+      ],
+      "Hash": "d242abec29412ce988848d0294b208fd"
+    },
+    "bit64": {
+      "Package": "bit64",
+      "Version": "4.0.5",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "bit",
+        "methods",
+        "stats",
+        "utils"
+      ],
+      "Hash": "9fe98599ca456d6552421db0d6772d8f"
+    },
     "bslib": {
       "Package": "bslib",
       "Version": "0.7.0",
@@ -100,6 +124,16 @@
         "utils"
       ],
       "Hash": "1216ac65ac55ec0058a6f75d7ca0fd52"
+    },
+    "clipr": {
+      "Package": "clipr",
+      "Version": "0.8.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "utils"
+      ],
+      "Hash": "3f038e5ac7f41d4ac41ce658c85e3042"
     },
     "commonmark": {
       "Package": "commonmark",
@@ -263,6 +297,20 @@
       ],
       "Hash": "06230136b2d2b9ba5805e1963fa6e890"
     },
+    "hms": {
+      "Package": "hms",
+      "Version": "1.1.3",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "lifecycle",
+        "methods",
+        "pkgconfig",
+        "rlang",
+        "vctrs"
+      ],
+      "Hash": "b59377caa7ed00fa41808342002138f9"
+    },
     "htmltools": {
       "Package": "htmltools",
       "Version": "0.5.8.1",
@@ -308,6 +356,28 @@
         "utils"
       ],
       "Hash": "d55aa087c47a63ead0f6fc10f8fa1ee0"
+    },
+    "janitor": {
+      "Package": "janitor",
+      "Version": "2.2.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "dplyr",
+        "hms",
+        "lifecycle",
+        "lubridate",
+        "magrittr",
+        "purrr",
+        "rlang",
+        "snakecase",
+        "stringi",
+        "stringr",
+        "tidyr",
+        "tidyselect"
+      ],
+      "Hash": "5baae149f1082f466df9d1442ba7aa65"
     },
     "jquerylib": {
       "Package": "jquerylib",
@@ -450,6 +520,30 @@
       ],
       "Hash": "01f28d4278f15c76cddbea05899c5d6f"
     },
+    "prettyunits": {
+      "Package": "prettyunits",
+      "Version": "1.2.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R"
+      ],
+      "Hash": "6b01fc98b1e86c4f705ce9dcfd2f57c7"
+    },
+    "progress": {
+      "Package": "progress",
+      "Version": "1.2.3",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "R6",
+        "crayon",
+        "hms",
+        "prettyunits"
+      ],
+      "Hash": "f4625e061cb2865f111b47ff163a5ca6"
+    },
     "promises": {
       "Package": "promises",
       "Version": "1.3.0",
@@ -466,6 +560,21 @@
       ],
       "Hash": "434cd5388a3979e74be5c219bcd6e77d"
     },
+    "purrr": {
+      "Package": "purrr",
+      "Version": "1.0.2",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "cli",
+        "lifecycle",
+        "magrittr",
+        "rlang",
+        "vctrs"
+      ],
+      "Hash": "1cba04a4e9414bdefc9dcaa99649a8dc"
+    },
     "rappdirs": {
       "Package": "rappdirs",
       "Version": "0.3.3",
@@ -475,6 +584,29 @@
         "R"
       ],
       "Hash": "5e3c5dc0b071b21fa128676560dbe94d"
+    },
+    "readr": {
+      "Package": "readr",
+      "Version": "2.1.5",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "R6",
+        "cli",
+        "clipr",
+        "cpp11",
+        "crayon",
+        "hms",
+        "lifecycle",
+        "methods",
+        "rlang",
+        "tibble",
+        "tzdb",
+        "utils",
+        "vroom"
+      ],
+      "Hash": "9de96463d2117f6ac49980577939dfb3"
     },
     "renv": {
       "Package": "renv",
@@ -567,6 +699,18 @@
       ],
       "Hash": "54b26646816af9960a4c64d8ceec75d6"
     },
+    "snakecase": {
+      "Package": "snakecase",
+      "Version": "0.11.1",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "stringi",
+        "stringr"
+      ],
+      "Hash": "58767e44739b76965332e8a4fe3f91f1"
+    },
     "sourcetools": {
       "Package": "sourcetools",
       "Version": "0.1.7-1",
@@ -626,6 +770,29 @@
       ],
       "Hash": "a84e2cc86d07289b3b6f5069df7a004c"
     },
+    "tidyr": {
+      "Package": "tidyr",
+      "Version": "1.3.1",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "cli",
+        "cpp11",
+        "dplyr",
+        "glue",
+        "lifecycle",
+        "magrittr",
+        "purrr",
+        "rlang",
+        "stringr",
+        "tibble",
+        "tidyselect",
+        "utils",
+        "vctrs"
+      ],
+      "Hash": "915fb7ce036c22a6a33b5a8adb712eb1"
+    },
     "tidyselect": {
       "Package": "tidyselect",
       "Version": "1.2.1",
@@ -663,6 +830,17 @@
       ],
       "Hash": "be7a76845222ad20adb761f462eed3ea"
     },
+    "tzdb": {
+      "Package": "tzdb",
+      "Version": "0.4.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "cpp11"
+      ],
+      "Hash": "f561504ec2897f4d46f0c7657e488ae1"
+    },
     "utf8": {
       "Package": "utf8",
       "Version": "1.2.4",
@@ -686,6 +864,32 @@
         "rlang"
       ],
       "Hash": "c03fa420630029418f7e6da3667aac4a"
+    },
+    "vroom": {
+      "Package": "vroom",
+      "Version": "1.6.5",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "bit64",
+        "cli",
+        "cpp11",
+        "crayon",
+        "glue",
+        "hms",
+        "lifecycle",
+        "methods",
+        "progress",
+        "rlang",
+        "stats",
+        "tibble",
+        "tidyselect",
+        "tzdb",
+        "vctrs",
+        "withr"
+      ],
+      "Hash": "390f9315bc0025be03012054103d227c"
     },
     "withr": {
       "Package": "withr",
