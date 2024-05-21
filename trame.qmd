@@ -1,0 +1,76 @@
+
+Appli1:
+Importer les bases complètes
+faire une fonction
+
+Appli2:
+faire une figure du trafic par aéroport
+
+1. Choisir un aéroport et préparer les données
+
+```{r}
+liste_aeroports = unique(pax_apt$apt)
+default_airport <- liste_aeroports[1]
+```
+
+```{r}
+trafic_aeroports <- pax_apt_all %>%
+  mutate(trafic = apt_pax_dep + apt_pax_tr + apt_pax_arr) %>%
+  filter(apt %in% default_airport)
+```
+
+```{r}
+trafic_aeroports <- trafic_aeroports %>%
+  mutate(
+    date = as.Date(paste(an, mois, "01", sep="-"))
+  )
+```
+
+2. Faire un ggplot pour regarder à quoi ça ressemble
+
+```{r}
+ggplot(trafic_aeroports) + geom_line(aes(x = date, y = trafic))
+```
+
+3. Transformer en plotly
+
+```{r}
+trafic_aeroports %>%
+plot_ly(
+  x = ~date, y = ~trafic,
+  text = ~apt_nom,
+  hovertemplate = paste("<i>Aéroport:</i> %{text}<br>Trafic: %{y}") ,
+  type = 'scatter', mode = 'lines+markers')
+```
+
+4. Faire une fonction
+
+Faire un tableauDT
+
+Préparer le code pour DT
+
+Appli4
+
+Faire un leaflet
+
+```{r}
+# geojson_airports <- "https://data.opendatasoft.com/api/explore/v2.1/catalog/datasets/osm-world-airports@babel/exports/geojson?lang=fr&timezone=Europe%2FBerlin"
+```
+
+```{r}
+# airports_location <- sf::st_read(geojson_airports)
+```
+
+```{r}
+# airports_location %>% inner_join(pax_apt, by = c("icao" = "apt"))
+```
+
+
+Appli5
+Préparer un premier shiny sans plotly & leaflet
+
+Appli6
+Ajouter à l'UI le plotly & leaflet
+
+Appli7
+Contrôle de l'environnement avec renv
