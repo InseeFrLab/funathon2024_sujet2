@@ -54,6 +54,7 @@ Appli4
 Faire un leaflet
 
 ```{r}
+
 # geojson_airports <- "https://data.opendatasoft.com/api/explore/v2.1/catalog/datasets/osm-world-airports@babel/exports/geojson?lang=fr&timezone=Europe%2FBerlin"
 ```
 
@@ -62,7 +63,39 @@ Faire un leaflet
 ```
 
 ```{r}
-# airports_location %>% inner_join(pax_apt, by = c("icao" = "apt"))
+aeroports <- readr::read_csv2("apt_localisation.csv")
+
+library(sf)
+aeroports <- st_as_sf(aeroports, coords = c("Longitude", "Latitude"), crs = 4326)
+
+trafic_aeroports <- aeroports %>%
+  inner_join(pax_apt, by = c("Code OACI" = "apt")) %>%
+  mutate(trafic = apt_pax_dep + apt_pax_tr + apt_pax_arr)
+```
+
+```{r}
+palette <- c("darkred", "forestgreen", "dodgerblue", "gold")
+```
+
+```{r}
+trafic_aeroports <- trafic_aeroports %>%
+  mutate(
+    volume = ntile(trafic, 4)
+) %>%
+  mutate(
+    color = palette[volume]
+  )
+  
+icons <- awesomeIcons(
+  icon = 'ios-close',
+  iconColor = 'black',
+  library = 'ion',
+  markerColor = trafic_aeroports$color
+)
+
+leaflet(trafic_aeroports) %>% addTiles() %>%
+  addMarkers(popup = ~paste0(Nom, ": ", trafic))
+  #addAwesomeMarkers(icon=icons, label=~as.character(trafic))
 ```
 
 
