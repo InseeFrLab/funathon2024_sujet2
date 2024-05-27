@@ -1,7 +1,17 @@
 
-Appli1:
-Importer les bases complètes
-faire une fonction
+Appli1-a :
+Importer une des bases dont l'url est présent dans sources.yml
+- Importer une base airports
+- Importer une base liaisons
+- Importer une base compagnie
+Visuliser ces données sous RStudio.
+
+Appli1-b : 
+Importer ces trois bases en concaténant tous les millésimes.
+Suggestion : utiliser `readr`. Ce package permet d'importer plusieurs tables en une seule étape (il faut renseigner un vecteur d'urls dans le paramètre file).
+Suggestion : créer une colonne pour l'année (`an`) et une colonne pour le mois (`mois`).
+Passer tous les noms de colonnes en minuscule.
+
 
 Appli2:
 faire une figure du trafic par aéroport
