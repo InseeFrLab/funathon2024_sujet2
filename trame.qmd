@@ -31,24 +31,63 @@ ingrédients dans l'application que vous développez.
 
 # Exploration des données de trafic aérien
 
+
 ## Préliminaire: récupérer le projet squelette avec `Git` 
 
 Si vous avez utilisé le lien de lancement rapide mis à disposition
 sur la page [inseefrlab.github.io/funathon2024/](https://inseefrlab.github.io/funathon2024/),
 vous pouvez sauter cette étape de récupération du modèle de projet avec `Git`.
 
-::: {.panel-tabset}
+::: callout-note
+## Récupérer le projet
+
+:::: {.panel-tabset}
 ## Interface graphique
 
-TO DO 
+La fiche `utilitR` sur l'[utilisation de `Git`](https://book.utilitr.org/03_Fiches_thematiques/Fiche_git_utilisation.html#recuperer-url
+) explicite la démarche générale pour
+récupérer du code. 
+
+En premier lieu, créer un nouveau projet et sélectionner `Version Control`. 
+
+![](https://book.utilitr.org/pics_resized/git/create_project_1.png)
+
+Choisir `Git` et dans l'interface suivante:
+
+![](https://book.utilitr.org/pics_resized/git/create_project_2.png)
+
+Passer la valeur
+
+```r
+https://github.com/inseefrlab/funathon2024_sujet2.git
+```
+
+et créer le projet. 
+
 
 ## Depuis le terminal
 ```bash
 git clone https://github.com/inseefrlab/funathon2024_sujet2.git
 ```
+::::
+
 :::
 
-Le projet comporte de nombreux fichiers 
+Le projet comporte de nombreux fichiers. Nous allons 
+progressivement les découvrir dans ce tutoriel. A l'heure actuelle,
+on peut se concentrer sur les fichiers suivants
+
+```
+|- renv.lock
+|- server.R
+|- ui.R
+```
+
+Le premier fichier correspond à la liste des _packages_ nécessaires
+pour reproduire l'environnement. Il a été généré automatiquement grâce à 
+un écosystème `renv` particulièrement adapté pour assurer la reproductibilité
+de projets `R`. 
+
 
 ## Installer les _packages_ nécessaires pour ce tutoriel
 
@@ -56,10 +95,9 @@ Pour progresser dans ce tutoriel, un certain nombre de _packages_
 seront nécessaires à installer. La bonne pratique pour la gestion de 
 l'environnement est la suivante:
 
-- En `R`, utiliser `renv` qui se charge de reconstruire un environnement cohérent avec celui qui a été défini par ***
+- En `R`, utiliser `renv` qui se charge de reconstruire un environnement cohérent avec celui qui a été défini par un autre utilisateur grâce au fichier `renv.lock` (construit lui-même automatiquement grâce à `renv`). 
 - En `Python`, utiliser les environnements virtuels. Le plus simple est de lister
-les dépendances
-`requirements.txt` pour
+les dépendances `requirements.txt` pour
 
 ```r
 renv::restore()
@@ -70,6 +108,7 @@ renv::restore()
 ## Récupérer les données
 
 ## Appli1-a :
+
 
 
 Importer une des bases dont l'url est présent dans sources.yml
