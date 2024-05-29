@@ -38,8 +38,8 @@ Si vous avez utilisé le lien de lancement rapide mis à disposition
 sur la page [inseefrlab.github.io/funathon2024/](https://inseefrlab.github.io/funathon2024/),
 vous pouvez sauter cette étape de récupération du modèle de projet avec `Git`.
 
-::: callout-note
-## Récupérer le projet
+::: {.callout-note collapse="true"}
+## Récupérer le projet si vous n'avez pas utilisé le bouton proposé
 
 :::: {.panel-tabset}
 ## Interface graphique
@@ -106,6 +106,8 @@ renv::restore()
 
 
 ## Récupérer les données
+
+Les sources sont listées
 
 ## Appli1-a :
 
