@@ -1,3 +1,5 @@
+month_list = c(paste0("0", 1:9),10:12)
+year_list <- 2018:2022
 
 ui <- page_navbar(
   title = "Tableau de bord aéroports",

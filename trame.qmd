@@ -1,10 +1,82 @@
+---
+title: "Un tableau de bord du trafic aérien avec {{< fa brands r-project >}} ou {{< fa brands python >}}"
+eval: false
+---
+
+![](img/cockpit.png){width="30%" fig-align="center"}
+
+L'objectif de ce tutoriel est d'amener, pas à pas, à la conception
+voire à la mise à disposition d'un tableau de bord
+du trafic aérien avec {{< fa brands r-project >}}.
+Une démonstration de cette application est disponible à l'adresse <>
+
+L'application interactive proposée présentera un nombre de fonctionnalité
+limitées afin de se concentrer sur la démarche. L'objectif est de construire
+progressivement celle-ci en suivant les étapes logiques du déroulement d'un
+projet interactif: découverte et exploration des données, création de statistiques
+descriptives et de visualisations simples, création d'une application pour
+gagner en liberté. Ce tutoriel est également l'occasion de découvrir quelques
+bonnes pratiques de programmation avec `R` afin de rendre les projets plus
+fiables, évolutifs et lisibles. 
+
+::: callout-note
+Si vous désirez aller plus loin sur certaines dimensions de ce projet,
+vous pouvez tout à fait essayer de vous-mêmes d'introduire de nouveaux
+ingrédients dans l'application que vous développez.
+:::
+
+
+
+
+# Exploration des données de trafic aérien
+
+## Préliminaire: récupérer le projet squelette avec `Git` 
+
+Si vous avez utilisé le lien de lancement rapide mis à disposition
+sur la page [inseefrlab.github.io/funathon2024/](https://inseefrlab.github.io/funathon2024/),
+vous pouvez sauter cette étape de récupération du modèle de projet avec `Git`.
+
+::: {.panel-tabset}
+## Interface graphique
+
+TO DO 
+
+## Depuis le terminal
+```bash
+git clone https://github.com/inseefrlab/funathon2024_sujet2.git
+```
+:::
+
+Le projet comporte de nombreux fichiers 
+
+## Installer les _packages_ nécessaires pour ce tutoriel
+
+Pour progresser dans ce tutoriel, un certain nombre de _packages_
+seront nécessaires à installer. La bonne pratique pour la gestion de 
+l'environnement est la suivante:
+
+- En `R`, utiliser `renv` qui se charge de reconstruire un environnement cohérent avec celui qui a été défini par ***
+- En `Python`, utiliser les environnements virtuels. Le plus simple est de lister
+les dépendances
+`requirements.txt` pour
+
+```r
+renv::restore()
+```
+
+
+
+## Récupérer les données
 
 ## Appli1-a :
+
+
 Importer une des bases dont l'url est présent dans sources.yml
 - Importer une base airports
 - Importer une base liaisons
 - Importer une base compagnie
 Visuliser ces données sous RStudio.
+
 
 ## Appli1-b : 
 Importer ces trois bases en concaténant tous les millésimes.
