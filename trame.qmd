@@ -1,5 +1,6 @@
 ---
 title: "Un tableau de bord du trafic aérien avec {{< fa brands r-project >}} ou {{< fa brands python >}}"
+number-sections: true
 eval: false
 ---
 

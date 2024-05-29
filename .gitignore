@@ -1,11 +1,10 @@
-_site /
+_site/
 
 # History files
 .Rhistory
 .Rapp.history
 
 # Session Data files
-.RData
 .RDataTmp
 
 # User-specific files
