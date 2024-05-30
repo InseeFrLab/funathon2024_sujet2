@@ -4,23 +4,37 @@ number-sections: true
 eval: false
 ---
 
-![](img/cockpit.png){width="30%" fig-align="center"}
+```{=html}
+<a href="https://datalab.sspcloud.fr/launcher/ide/rstudio?version=1.15.25&autoLaunch=true&networking.user.enabled=true&git.repository=«https%3A%2F%2Fgithub.com%2FInseeFrLab%2Ffunathon2024_sujet2.git»&onyxia.friendlyName=«config-funathon2024»&kubernetes.role=«admin»" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/SSP%20Cloud-Ouvrir_dans_RStudio-blue?logo=rstudio&amp;logoColor=blue" alt="Onyxia"></a>
+```
+
+
+![](img/cockpit.png){width="25%" fig-align="center"}
+
+# Introduction {.unnumbered}
 
 L'objectif de ce tutoriel est d'amener, pas à pas, à la conception
 voire à la mise à disposition d'un tableau de bord
 du trafic aérien avec {{< fa brands r-project >}}.
-Une démonstration de cette application est disponible à l'adresse <>
+Une démonstration de cette application est disponible à l'adresse <>.
 
-L'application interactive proposée présentera un nombre de fonctionnalité
+
+L'application interactive proposée présentera un nombre de fonctionnalités
 limitées afin de se concentrer sur la démarche. L'objectif est de construire
 progressivement celle-ci en suivant les étapes logiques du déroulement d'un
-projet interactif: découverte et exploration des données, création de statistiques
-descriptives et de visualisations simples, création d'une application pour
-gagner en liberté. Ce tutoriel est également l'occasion de découvrir quelques
+projet de développement d'application interactive: découverte et exploration des données, création de statistiques
+descriptives et de visualisations simples sur un jeu de données, 
+extension du nombre de visualisations accessibles par la création d'une application. Ce tutoriel est également l'occasion de découvrir quelques
 bonnes pratiques de programmation avec `R` afin de rendre les projets plus
 fiables, évolutifs et lisibles. 
 
-::: callout-note
+Les exercices de conception pas à pas de l'application s'adressent aussi bien à des
+débutants qu'à des utilisateurs plus experts. La mise à disposition, c'est-à-dire
+la mise en production de cette application, fait appel à des concepts
+et outils plus
+avancés et est donc moins accessible à des débutants.
+
+::: callout-tip
 Si vous désirez aller plus loin sur certaines dimensions de ce projet,
 vous pouvez tout à fait essayer de vous-mêmes d'introduire de nouveaux
 ingrédients dans l'application que vous développez.
@@ -32,11 +46,26 @@ ingrédients dans l'application que vous développez.
 # Exploration des données de trafic aérien
 
 
-## Préliminaire: récupérer le projet squelette avec `Git` 
+## Préliminaire: récupérer le projet squelette avec `Git` {{< fa brands git-alt >}}
+
+Si vous disposez d'un compte sur le [sspcloud](https://www.sspcloud.fr/),
+la méthode recommandée pour se lancer dans ce tutoriel est de cliquer
+sur le bouton suivant
+
+```{=html}
+<center>
+<a href="https://datalab.sspcloud.fr/launcher/ide/rstudio?version=1.15.25&autoLaunch=true&networking.user.enabled=true&git.repository=«https%3A%2F%2Fgithub.com%2FInseeFrLab%2Ffunathon2024_sujet2.git»&onyxia.friendlyName=«config-funathon2024»&kubernetes.role=«admin»" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/SSP%20Cloud-Ouvrir_dans_RStudio-blue?logo=rstudio&amp;logoColor=blue" alt="Onyxia"></a>
+</center>
+<br>
+```
+
+
 
 Si vous avez utilisé le lien de lancement rapide mis à disposition
-sur la page [inseefrlab.github.io/funathon2024/](https://inseefrlab.github.io/funathon2024/),
-vous pouvez sauter cette étape de récupération du modèle de projet avec `Git`.
+sur la page [inseefrlab.github.io/funathon2024/](https://inseefrlab.github.io/funathon2024/)
+ou ci-dessus, 
+vous pouvez sauter l'étape de récupération du modèle de projet avec `Git`, cela
+a été fait automatiquement lors de la création de votre environnement `RStudio`. 
 
 ::: {.callout-note collapse="true"}
 ## Récupérer le projet si vous n'avez pas utilisé le bouton proposé
@@ -46,39 +75,49 @@ vous pouvez sauter cette étape de récupération du modèle de projet avec `Git
 
 La fiche `utilitR` sur l'[utilisation de `Git`](https://book.utilitr.org/03_Fiches_thematiques/Fiche_git_utilisation.html#recuperer-url
 ) explicite la démarche générale pour
-récupérer du code. 
+récupérer du code grâce à `Git`. Il est recommandé de lire celle-ci si vous
+n'êtes pas familier de `Git`. 
 
-En premier lieu, créer un nouveau projet et sélectionner `Version Control`. 
+Les étapes suivantes permettront de récupérer le projet:
+
+1️⃣ En premier lieu, dans `RStudio`, créer un nouveau projet et sélectionner `Version Control`. 
 
 ![](https://book.utilitr.org/pics_resized/git/create_project_1.png)
 
-Choisir `Git` et dans l'interface suivante:
+2️⃣ Choisir `Git`, ce qui devrait ouvrir une fenêtre similaire à celle ci-dessous:
 
 ![](https://book.utilitr.org/pics_resized/git/create_project_2.png)
 
-Passer la valeur
+3️⃣ Dans la fenêtre `Repository URL`, passer la valeur
 
 ```r
 https://github.com/inseefrlab/funathon2024_sujet2.git
 ```
 
-et créer le projet. 
+laisser les valeurs par défaut qui viennent ensuite et créer le projet. 
 
 
 ## Depuis le terminal
+
+Après avoir ouvert un terminal dans `RStudio`, faire 
+
 ```bash
 git clone https://github.com/inseefrlab/funathon2024_sujet2.git
 ```
+
+puis, dans l'explorateur de fichiers (fenêtre en bas à droite), cliquer
+sur le fichier `RTraffic.Rproj` pour ouvrir le projet. 
 ::::
 
 :::
 
-Le projet comporte de nombreux fichiers. Nous allons 
+Le projet récupéré comporte de nombreux fichiers. Nous allons 
 progressivement les découvrir dans ce tutoriel. A l'heure actuelle,
-on peut se concentrer sur les fichiers suivants
+on peut se concentrer sur les fichiers suivants:
 
 ```
 |- renv.lock
+|- global.R
 |- server.R
 |- ui.R
 ```
@@ -86,26 +125,68 @@ on peut se concentrer sur les fichiers suivants
 Le premier fichier correspond à la liste des _packages_ nécessaires
 pour reproduire l'environnement. Il a été généré automatiquement grâce à 
 un écosystème `renv` particulièrement adapté pour assurer la reproductibilité
-de projets `R`. 
+de projets `R` (voir la suite). 
+
+Les fichiers `server.R` et `ui.R` constituent le coeur de notre application 
+`Shiny`. Ils représentent, respectivement, le moteur de calcul (le serveur)
+et l'interface utilisateur de notre application. Le fichier `global.R` stocke
+un certain nombre d'objets utiles à l'application mais qui n'ont pas besoin
+d'être recalculé à chaque action sur l'interface graphique. 
 
 
 ## Installer les _packages_ nécessaires pour ce tutoriel
 
-Pour progresser dans ce tutoriel, un certain nombre de _packages_
-seront nécessaires à installer. La bonne pratique pour la gestion de 
-l'environnement est la suivante:
+### Principe
 
-- En `R`, utiliser `renv` qui se charge de reconstruire un environnement cohérent avec celui qui a été défini par un autre utilisateur grâce au fichier `renv.lock` (construit lui-même automatiquement grâce à `renv`). 
-- En `Python`, utiliser les environnements virtuels. Le plus simple est de lister
-les dépendances `requirements.txt` pour
+Pour progresser dans ce tutoriel, un certain nombre de _packages_
+doivent être installés. Sans eux, même avec le code de l'application, vous
+ne serez pas en mesure de reproduire celle-ci. 
+
+Les bonnes pratiques pour la gestion de 
+l'environnement sont assez proches en {{< fa brands r-project >}} et {{< fa brands python >}}.
+Le principal général est qu'il existe des outils qui permettent à un utilisateur de lister l'ensemble des packages dans son environnement avec leur version. Grâce à cette liste, d'autres personnes pourront reproduire l'application si elles disposent des mêmes _inputs_ (le code, les données...). 
+
+En effet, il est important de voir l'application comme le résultat de la combinaison de plusieurs ingrédients. Dans notre cas, nous en avons trois:
+
+* Du code `R` ou `Python` : celui-ci a été récupéré par le biais de `Git`
+* Des éléments de configuration:
+    + le fichier `renv.lock` (`R`) ou `requirements.txt` (`Python`) qui permettra de reconstruire notre environnement à l'identique grâce à des outils adaptés[^generation]
+    + le fichier `sources.yaml` qui liste l'emplacement des sources sur le site [data.gouv](https://www.data.gouv.fr/fr/)
+* Des données: nous évoquerons celles-ci lors de la prochaine partie
+
+__Figure drawio à venir__
+
+De manière générale, c'est une bonne pratique de structurer son projet comme une
+combinaison de ces facteurs. Cela vous amènera à faire des projets plus reproductible
+mais aussi à la structure plus lisible. 
+
+Pour les utilisateurs de `R`, la [formation de l'Insee aux bonnes pratiques](https://inseefrlab.github.io/formation-bonnes-pratiques-git-R/)
+consacre une partie aux environnements reproductibles avec `renv`. Pour les utilisateurs
+de `Python`, le [cours de mise en production de projets _data science_](https://ensae-reproductibilite.github.io/website/chapters/portability.html)
+consacre un chapitre au sujet. 
+
+[^generation]: Ces fichiers ne sont pas générés manuellement. Ce sont des outils adaptés (`renv` pour `R`, `pip` pour `Python`) qui font ce travail de versionnage de l'environnement. 
+
+### Créer l'environnement
+
+L'intérêt d'utiliser `renv` est que recréer l'environnement nécessaire
+au bon fonctionnement de l'application est très simple avec la commande:
 
 ```r
 renv::restore()
 ```
 
+Il est tout à fait possible, ensuite, d'installer des _packages_ supplémentaires
+par le biais de `install.packages`. L'environnement proposé par notre fichier
+`renv.lock` est le minimum
+requis pour reproduire l'application mais ce n'est pas un environnement figé.
+Si vous ajoutez des _packages_ utiles pour votre application, avant la phase de mise en production, n'oubliez pas
+de faire `renv::snapshot()` pour mettre à jour le fichier `renv.lock`. 
 
+Maintenant que nous disposons d'un environnement fonctionnel, 
+nous pouvons avancer sur la conception du projet.
 
-## Récupérer les données
+# Récupérer les données
 
 Les sources sont listées
 
