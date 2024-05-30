@@ -2,6 +2,8 @@
 title: "Un tableau de bord du trafic aérien avec {{< fa brands r-project >}} ou {{< fa brands python >}}"
 number-sections: true
 eval: false
+filters:
+   - include-code-files
 ---
 
 ```{=html}
@@ -152,9 +154,10 @@ En effet, il est important de voir l'application comme le résultat de la combin
 * Des éléments de configuration:
     + le fichier `renv.lock` (`R`) ou `requirements.txt` (`Python`) qui permettra de reconstruire notre environnement à l'identique grâce à des outils adaptés[^generation]
     + le fichier `sources.yaml` qui liste l'emplacement des sources sur le site [data.gouv](https://www.data.gouv.fr/fr/)
-* Des données: nous évoquerons celles-ci lors de la prochaine partie
+* Des données: nous évoquerons celles-ci lors de la prochaine partie.
 
-__Figure drawio à venir__
+
+![Illustration du principe de séparation du code, des données et de la configuration](./img/environment.png)
 
 De manière générale, c'est une bonne pratique de structurer son projet comme une
 combinaison de ces facteurs. Cela vous amènera à faire des projets plus reproductible
@@ -184,15 +187,210 @@ Si vous ajoutez des _packages_ utiles pour votre application, avant la phase de 
 de faire `renv::snapshot()` pour mettre à jour le fichier `renv.lock`. 
 
 Maintenant que nous disposons d'un environnement fonctionnel, 
-nous pouvons avancer sur la conception du projet.
+nous pouvons avancer sur la conception du projet. La première étape est d'explorer
+les jeux de données que nous utiliserons dans l'application
 
 # Récupérer les données
 
-Les sources sont listées
+Les sources sont listées dans le fichier `sources.yaml`. 
+Notre application utilisera quatres sources différentes:
 
-## Appli1-a :
+- Le trafic au niveau de chaque aéroport (format CSV)
+- Le nombre de passagers pour différentes liaisons (format CSV)
+- Le trafic pour différentes compagnies (format CSV)
+- Les localisations des aéroports (format geojson)
+
+## Importer la liste des sources disponibles
+
+::: {.callout-note}
+## Exercice 1: lire les sources dans {{< fa brands r-project >}}
+
+1. Le package `yaml` comporte une fonction `read_yaml` pour transformer
+un fichier `YAML` en liste imbriquée. Tester cette fonction sur le fichier `sources.yml`. 
+
+2. Transformer ce bout de code en une fonction `create_data_list`
+prenant un argument `source_file` et renvoyant cette liste.
+
+:::
+
+<details>
+<summary>
+Voir la solution
+</summary>
+```{.r include="R/create_data_list.R"}
+```
 
 
+</details>
+
+La solution est dans le fichier `R/create_data_list.R`. Elle peut être importée
+dans l'environnement global grâce à la commande:
+
+```{r}
+#| eval: true
+source("R/create_data_list.R")
+```
+
+## Importer les premières bases 
+
+```{r}
+#| eval: true
+urls <- create_data_list("sources.yml")
+```
+
+
+::: {.callout-note}
+## Exercice 2: découvrir les différentes sources
+
+#### Données aéroports {.unnumbered}
+
+* Comme les données sont des CSV européens (séparateur `;`),
+utiliser `read_csv2` du package `readr` pour lire les données à partir 
+de la liste de fichiers `unlist(urls$airports)`[^utilitr-csv].
+* Il est recommandé de ne pas laisser les types par défaut des colonnes mais de figer ceux-ci avec l'argument suivant:
+
+```{.r}
+col_types = cols(
+  ANMOIS = col_character(),
+  APT = col_character(),
+  APT_NOM = col_character(),
+  APT_ZON = col_character(),
+  .default = col_double()
+)
+```
+
+* A partir de la variable `ANMOIS`, créer les variables `an` et `mois`.
+
+<details>
+<summary>
+Aide si vous êtes bloqué sur cette question
+</summary>
+
+Pour extraire des éléments d'une chaine de caractère à partir de la position, il est recommandé d'utiliser la fonction `str_sub` du package `stringr`. Pour créer de nouvelles colonnes, il est recommandé d'utiliser la fonction `mutate` du package dplyr. 
+
+Si vous êtes toujours bloqué, la solution est donnée plus bas 👇
+
+</details>
+
+* Créer une fonction `clean_dataframe` qui reprend le code de création des variables `an` et `mois`, ajoute une étape de passage des noms de colonne en minuscule et renvoie le dataframe en sortie
+
+<details>
+<summary>
+Solution
+</summary>
+
+```{.r include="R/clean_dataframe.R"}
+```
+</details>
+
+* Créer une fonction `import_airport_data` qui prend en _input_ `list_files`
+et intègre les deux étapes précédentes: la lecture des données, le nettoyage
+avec `clean_dataframe`.
+
+<details>
+<summary>
+Solution
+</summary>
+
+```{.r include="R/import_functions.R" start-line=1 end-line=17}
+```
+
+</details>
+
+#### Données compagnies {.unnumbered}
+
+Sur le même principe, créer une fonction `import_compagnies_data` qui effectue
+la même suite d'opérations. Faire néanmoins attention aux types des colonnes. 
+
+```{r}
+#| eval: false
+#| code-fold: true
+#| code-summary: "Recommandation de paramètre pour read_csv pour l'import de ces fichiers"
+col_types = cols(
+  ANMOIS = col_character(),
+  CIE = col_character(),
+  CIE_NOM = col_character(),
+  CIE_NAT = col_character(),
+  CIE_PAYS = col_character(),
+  .default = col_double()
+)
+```
+
+
+<details>
+<summary>
+Solution
+</summary>
+
+```{.r include="R/import_functions.R" start-line=20 end-line=38}
+```
+
+</details>
+
+#### Données liaisons  {.unnumbered}
+
+Sur le même principe, créer une fonction `import_liaisons_data` qui effectue
+la même suite d'opérations. Faire néanmoins attention aux types des colonnes. 
+
+```{r}
+#| eval: false
+#| code-fold: true
+#| code-summary: "Recommandation de paramètre pour read_csv pour l'import de ces fichiers"
+col_types = cols(
+  ANMOIS = col_character(),
+  LSN = col_character(),
+  LSN_DEP_NOM = col_character(),
+  LSN_ARR_NOM = col_character(),
+  LSN_SCT = col_character(),
+  LSN_FSC = col_character(),
+  .default = col_double()
+)
+```
+
+<details>
+<summary>
+Solution
+</summary>
+
+```{.r include="R/import_functions.R" start-line=41 end-line=60}
+```
+
+</details>
+
+#### Localisations des aéroports {.unnumbered}
+
+Il s'agit d'un jeu de données spatial. Pour en savoir plus sur ce type de données,
+il est recommandé de consulter la [fiche  `utilitR`](https://book.utilitr.org/03_Fiches_thematiques/Fiche_donnees_spatiales.html) sur
+le sujet ou [ce cours introductif](https://rgeo.linogaliana.fr/exercises/geospatial-wrangling.html) 
+
+1. Utiliser la fonction `st_read` du package `sf` pour lire ces données (dont la localisation est stockée dans la variable `urls$geojson$aiport`). Stocker l'objet obtenu sous le nom `airports_location`
+2. Vérifier que les données sont bien dans le système de représentation `WGS 84`
+
+<details>
+<summary>
+Aide
+</summary>
+La fonction à utiliser est `sf_crs`
+</details>
+
+3. Il est toujours utile de vérifier que nos données sont bien localisées où on les attend. Pour cela, il est pertinent de faire une carte avec un fond de carte contextuel, même si celle-ci n'est pas très soignée. Pour faire ceci, le plus simple est d'utiliser la [fonction `addMarkers`](https://rstudio.github.io/leaflet/articles/markers.html) du package `leaflet`.
+Essayez de faire cette carte vous-mêmes ou consultez l'aide ci-dessous
+
+<details>
+<summary>
+Faire la carte leaflet
+</summary>
+```{.r}
+leaflet(airports_location) %>%
+  addTiles() %>%
+  addMarkers(popup = ~Nom)
+```
+</details>
+
+
+:::
+
+[^utilitr-csv]: Si vous êtes peu familier avec ce type de fichiers, vous pouvez consulter la [fiche `utilitR`](https://book.utilitr.org/03_Fiches_thematiques/Fiche_import_fichiers_plats.html) sur le sujet
 
 Importer une des bases dont l'url est présent dans sources.yml
 - Importer une base airports

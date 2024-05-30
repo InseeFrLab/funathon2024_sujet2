@@ -6,8 +6,10 @@ library(readr)
 library(janitor)
 library(dplyr)
 library(stringr)
+library(sf)
 library(bslib)
 
+source("R/import_data.R")
 source("R/create_data_list.R")
 source("R/clean_dataframe.R")
 source("R/divers_functions.R")
@@ -21,41 +23,12 @@ MONTHS_LIST = c(paste0("0", 1:9), 10:12)
 # Load data ----------------------------------
 urls <- create_data_list("./sources.yml")
 
-pax_apt_all <- readr::read_csv2(
-  unlist(urls$airports), 
-  col_types = cols(
-    ANMOIS = col_character(),
-    APT = col_character(),
-    APT_NOM = col_character(),
-    APT_ZON = col_character(),
-    .default = col_double()
-  )
-) %>% 
-  clean_dataframe()
 
-pax_cie_all <- readr::read_csv2(
-  file = unlist(urls$compagnies),
-  col_types = cols(
-    ANMOIS = col_character(),
-    CIE = col_character(),
-    CIE_NOM = col_character(),
-    CIE_NAT = col_character(),
-    CIE_PAYS = col_character(),
-    .default = col_double()
-  )
-) %>% 
-  clean_dataframe()
-                       
-pax_lsn_all <- readr::read_csv2(
-  file = unlist(urls$liaisons),
-  col_types = cols(
-    ANMOIS = col_character(),
-    LSN = col_character(),
-    LSN_DEP_NOM = col_character(),
-    LSN_ARR_NOM = col_character(),
-    LSN_SCT = col_character(),
-    LSN_FSC = col_character(),
-    .default = col_double()
-  ) 
-) %>% 
-  clean_dataframe()
+pax_apt_all <- import_airport_data(unlist(urls$compagnies))
+pax_cie_all <- import_compagnies_data(unlist(urls$compagnies))
+pax_lsn_all <- import_liaisons_data(unlist(urls$liaisons))
+
+
+airports_location <- st_read(urls$geojson$airport) %>% sf::st_drop_geometry()
+airports_location <- st_as_sf(airports_location, coords = c("Longitude", "Latitude"), crs = 4326)
+

@@ -19,4 +19,6 @@ compagnies:
   2020: "https://www.data.gouv.fr/fr/datasets/r/818eec10-6122-4788-8233-482e779ab837"
   2021: "https://www.data.gouv.fr/fr/datasets/r/0b954774-ccd1-43ec-9b5a-f958fba03e87"
   2022: "https://www.data.gouv.fr/fr/datasets/r/bcec3e1e-940a-4772-bc28-0d7b2b53c718"
+geojson:
+  airport: "https://minio.lab.sspcloud.fr/projet-funathon/2024/sujet2/aeroports.geojson"
 

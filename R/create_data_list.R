@@ -1,4 +1,3 @@
-#' create_data_list
 #' Creates a 2-levels list of urls, pointing to open source data
 #' 
 #' @param source_file yaml file containing data urls 
