@@ -599,14 +599,21 @@ Code de l'exercice
 Par la suite, nous pouvons ajouter la ligne suivante à notre fichier `main.R`
 
 ```{r}
-#| echo: false
 #| output: false
 source("R/figures.R")
 ```
 
 ## Tableau HTML pour afficher des données
 
-4. Faire une fonction
+La première valorisation que nous intégrerons dans notre application est
+le modèle de figure ci-dessus. La deuxième sera un tableau
+permettant de visualiser certaines données directement dans le _dashboard_. 
+
+::: {.callout-note}
+## Exercice 4: un beau tableau pour nos données
+
+DT ou GT ?
+:::
 
 Faire un tableauDT
 
