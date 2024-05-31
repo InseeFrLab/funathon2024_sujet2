@@ -1,7 +1,6 @@
 ---
 title: "Un tableau de bord du trafic aérien avec {{< fa brands r-project >}} ou {{< fa brands python >}}"
 number-sections: true
-eval: false
 filters:
    - include-code-files
 ---
@@ -227,20 +226,23 @@ La solution est dans le fichier `R/create_data_list.R`. Elle peut être importé
 dans l'environnement global grâce à la commande:
 
 ```{r}
-#| eval: true
 source("R/create_data_list.R")
 ```
 
 ## Importer les premières bases 
 
 ```{r}
-#| eval: true
 urls <- create_data_list("sources.yml")
 ```
 
 
 ::: {.callout-note}
 ## Exercice 2: découvrir les différentes sources
+
+Cet exercice est, en apparence, un peu long. Néanmoins la première partie
+de celui-ci permet la construction d'une fonction générique d'import
+des données qui permet ensuite de gagner
+du temps et d'éviter la redondance de code. 
 
 #### Données aéroports {.unnumbered}
 
@@ -292,7 +294,13 @@ avec `clean_dataframe`.
 Solution
 </summary>
 
-```{.r include="R/import_functions.R" start-line=1 end-line=17}
+```{.r include="R/import_data.R" start-line=1 end-line=17}
+```
+
+* Reporter cette fonction dans un fichier `R/clean_dataframe.R` et faire
+
+```{.r}
+source("R/clean_dataframe.R")
 ```
 
 </details>
@@ -322,7 +330,7 @@ col_types = cols(
 Solution
 </summary>
 
-```{.r include="R/import_functions.R" start-line=20 end-line=38}
+```{.r include="R/import_data.R" start-line=20 end-line=38}
 ```
 
 </details>
@@ -352,7 +360,7 @@ col_types = cols(
 Solution
 </summary>
 
-```{.r include="R/import_functions.R" start-line=41 end-line=60}
+```{.r include="R/import_data.R" start-line=41 end-line=60}
 ```
 
 </details>
@@ -364,7 +372,7 @@ il est recommandé de consulter la [fiche  `utilitR`](https://book.utilitr.org/0
 le sujet ou [ce cours introductif](https://rgeo.linogaliana.fr/exercises/geospatial-wrangling.html) 
 
 1. Utiliser la fonction `st_read` du package `sf` pour lire ces données (dont la localisation est stockée dans la variable `urls$geojson$aiport`). Stocker l'objet obtenu sous le nom `airports_location`
-2. Vérifier que les données sont bien dans le système de représentation `WGS 84`
+2. Vérifier que les données sont bien dans le système de représentation `WGS 84`[^crs]
 
 <details>
 <summary>
@@ -378,7 +386,7 @@ Essayez de faire cette carte vous-mêmes ou consultez l'aide ci-dessous
 
 <details>
 <summary>
-Faire la carte leaflet
+Code pour faire une carte `leaflet` minimale
 </summary>
 ```{.r}
 leaflet(airports_location) %>%
@@ -387,67 +395,199 @@ leaflet(airports_location) %>%
 ```
 </details>
 
-
+Reporter toutes ces fonctions dans un fichier `R/import_data.R`. 
 :::
 
 [^utilitr-csv]: Si vous êtes peu familier avec ce type de fichiers, vous pouvez consulter la [fiche `utilitR`](https://book.utilitr.org/03_Fiches_thematiques/Fiche_import_fichiers_plats.html) sur le sujet
-
-Importer une des bases dont l'url est présent dans sources.yml
-- Importer une base airports
-- Importer une base liaisons
-- Importer une base compagnie
-Visuliser ces données sous RStudio.
+[^crs]: Si vous êtes peu familier avec les données géographiques, vous pouvez retenir l'idée qu'il s'agit de données traditionnelles auxquelles s'ajoute une dimension spatiale. Cette dernière vise à localiser les données sur la terre. La localisation se fait dans un espace à deux dimensions (espace cartésien) alors que notre planète est une sphère en trois dimensions. Le principe d'un système de projection est de faire ce passage en deux dimensions des positions. Le plus connu est le système GPS, qui est un héritier lointain de la représentation du monde par [Mercator](https://fr.wikipedia.org/wiki/G%C3%A9rard_Mercator). Ce système est connu sous le nom de WGS 84 et porte le code EPSG 4326. L'autre système à retenir est le Lambert 93 (code EPSG 2154) qui est la projection légale en France (celle-ci, _a contrario_ du Mercator, ne déforme pas la France sur une carte). Pour en savoir plus sur les systèmes de représentation, les avantages et inconvénients de chacun, il existe de nombreuses ressources en ligne. Des éléments introductifs, et des démonstrations interactives, en lien avec la librairie `Geopandas` de `Python` sont disponibles [ici](https://pythonds.linogaliana.fr/content/manipulation/03_geopandas_intro.html#principe). 
 
 
-## Appli1-b : 
-Importer ces trois bases en concaténant tous les millésimes.
-Suggestion : utiliser `readr`. Ce package permet d'importer plusieurs tables en une seule étape (il faut renseigner un vecteur d'urls dans le paramètre file).
-Suggestion : créer une colonne pour l'année (`an`) et une colonne pour le mois (`mois`).
-Passer tous les noms de colonnes en minuscule.
+A l'issue de cet exercice, vous devriez avoir le fichier `R/import_data.R` suivant
 
-## Découvrir la base des aéroports
-- Structure de la table
-- Unité statistique
-- Relation entre les colonnes
+<details>
+<summary>
+Le fichier `R/import_data.R` attendu
+</summary>
 
-## Appli2:
-faire une figure du trafic par aéroport
+```{.r include="R/import_data.R"}
+```
 
-1. Choisir un aéroport et préparer les données
+</details>
+
+La carte `leaflet` que vous devriez avoir obtenue à la fin de l'exercice
+est la suivante:
 
 ```{r}
-liste_aeroports = unique(pax_apt$apt)
+#| echo: false
+#| output: false
+library(sf)
+library(leaflet)
+airports_location <- st_read(urls$geojson$airport)
+```
+
+```{r}
+leaflet(airports_location) %>%
+  addTiles() %>%
+  addMarkers(popup = ~Nom)
+```
+
+A l'issue de l'exercice, 
+le code centralisé dans le script `R/import_data.R`
+peut être importé via le code suivant
+
+```{r}
+source("R/import_data.R")  
+```
+
+Vous pouvez initier un script nommé `main.R` avec les lignes suivante:
+
+```{.r include="global.R" start-line=23 end-line=33}
+```
+
+en les faisant précéder de l'import des
+scripts que nous avons déjà créé dans le dossier `R`:
+
+```r
+source("R/create_data_list.R")
+source("R/import_data.R")  
+source("R/clean_dataframe.R")
+```
+
+Une bonne pratique est de tester son script dans une session vierge. Cela amène
+à construire pas à pas une chaine plus reproductible. Pour cela, 
+
+- Aller dans les options de `R` via `Tools > Global Options` et décocher la case `Restore .RData into workspace at setup`
+- Redémarrer votre
+session `R` via le menu `Session > Restart R` ou le
+raccourci <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>F10</kbd>
+
+Et exécuter votre fichier `main.R`. Vous devriez rencontrer des erreurs car nous n'avons pas géré les import de librairies dans ce script puisque notre session actuelle ne bénéficie plus des import antérieurs.
+
+Une bonne pratique pour comprendre cette exigence de reproductibilité
+est d'itérativement ajouter les librairies utiles à mesure qu'on rencontre des erreurs (notre code étant très rapide à tourner, cette logique d'essai-erreur n'est pas très coûteuse). 
+Si vous ne désirez pas faire ceci (dommage, c'est un bon exercice), vous
+pouvez trouver les imports de packages à faire pour que notre script soit
+reproductible. 
+
+<details>
+<summary>
+L'environnement minimal de reproductibilité pour que le script `main.R` fonctionne
+</summary>
+
+```{.r}
+library(readr)
+library(dplyr)
+library(stringr)
+library(sf)
+``` 
+
+</details>
+
+Ces librairies sont à écrire au début de `main.R`. 
+
+
+# Exploration des données
+
+```{r}
+#| label: intermediates-exo2
+#| echo: false
+#| output: false
+source("intermediates/exo2.R")
+```
+
+
+## Le trafic par aéroport
+
+Pour commencer, nous allons prototyper la production d'une figure
+sur le trafic aérien au niveau d'un aéroport. Cela nous facilitera ensuite
+l'intégration dans une application interactive. 
+
+Pour cela, nous allons créer les deux objets temporaires suivants
+
+```{r}
+liste_aeroports <- unique(pax_apt_all$apt)
 default_airport <- liste_aeroports[1]
+default_airport
 ```
 
 ```{r}
-trafic_aeroports <- pax_apt_all %>%
-  mutate(trafic = apt_pax_dep + apt_pax_tr + apt_pax_arr) %>%
-  filter(apt %in% default_airport)
+#| output: false
+source("intermediates/exo3.R")
 ```
 
+::: {.callout-note}
+## Exercice 3: graphiques de fréquentation des aéroports
+
+1. Créer une variable `trafic` égale `apt_pax_dep + apt_pax_tr + apt_pax_arr`
+2. Ne conserver que les données relatives à l'aéroport `default_airport`
+3. Créer une variable `date` qui utilise les colonnes `an` et `mois`. Cette variable de date doit être au format `date`, pas au format `chr`
+<details>
+<summary>
+Enchaînement des opérations attendues à cette étape
+</summary>
+
+```{.r include="intermediates/exo3.R" end-line=10}
+```
+</details>
+
+4. Faire une figure `ggplot` toute simple pour voir la dynamique des données
+afin d'obtenir une figure similaire à celle-ci
+
 ```{r}
-trafic_aeroports <- trafic_aeroports %>%
-  mutate(
-    date = as.Date(paste(an, mois, "01", sep="-"))
-  )
+figure_ggplot
 ```
 
-2. Faire un ggplot pour regarder à quoi ça ressemble
+Nous allons faire une application interactive par la suite. Il est donc
+plus intéressant d'avoir une figure un minimum réactive pour impliquer
+l'utilisateur de l'application.
+
+5. Il est donc plus pertinent de faire une figure avec la librairie
+`plotly`. Pour cela, vous pouvez vous inspirer de [cette page](https://plotly.com/r/line-charts/)
 
 ```{r}
-ggplot(trafic_aeroports) + geom_line(aes(x = date, y = trafic))
+#| echo: false
+figure_plotly
 ```
 
-3. Transformer en plotly
+<details>
+
+<summary>
+Le code pour générer la figure
+</summary>
+
+```{.r include="intermediates/exo3.R" start-line=15}
+```
+
+</details>
+
+:::
+
+Le code complet pour répliquer cet exercice est donné ci-dessous. 
+
+<details>
+<summary>
+Code de l'exercice
+</summary>
+```{r}
+```
+</details>
+
+Nous proposons de le transformer en fonction, ce sera plus simple à intégrer
+ultérieurement dans notre application
+
+::: {.callout-note}
+## Exercice 3b: une fonction de production graphique
+
+Transformer le code ci-dessus en une fonction afin que
+
+* les _inputs_ soient les suivants: un _dataframe_, un aéroport à sélectionner
+* la sortie soit notre figure `plotly`
+
+Tester sur d'autres aéroports de la liste
+:::
 
 ```{r}
-trafic_aeroports %>%
-plot_ly(
-  x = ~date, y = ~trafic,
-  text = ~apt_nom,
-  hovertemplate = paste("<i>Aéroport:</i> %{text}<br>Trafic: %{y}") ,
-  type = 'scatter', mode = 'lines+markers')
+
 ```
 
 4. Faire une fonction
@@ -460,16 +600,7 @@ Appli4
 
 Faire un leaflet
 
-```{r}
-
-# geojson_airports <- "https://data.opendatasoft.com/api/explore/v2.1/catalog/datasets/osm-world-airports@babel/exports/geojson?lang=fr&timezone=Europe%2FBerlin"
-```
-
-```{r}
-# airports_location <- sf::st_read(geojson_airports)
-```
-
-```{r}
+```r
 aeroports <- readr::read_csv2("apt_localisation.csv")
 
 library(sf)
@@ -480,11 +611,11 @@ trafic_aeroports <- aeroports %>%
   mutate(trafic = apt_pax_dep + apt_pax_tr + apt_pax_arr)
 ```
 
-```{r}
+```r
 palette <- c("darkred", "forestgreen", "dodgerblue", "gold")
 ```
 
-```{r}
+```r
 trafic_aeroports <- trafic_aeroports %>%
   mutate(
     volume = ntile(trafic, 4)
