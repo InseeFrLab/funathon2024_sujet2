@@ -1,9 +1,10 @@
+_site/
+
 # History files
 .Rhistory
 .Rapp.history
 
 # Session Data files
-.RData
 .RDataTmp
 
 # User-specific files
@@ -50,3 +51,4 @@ rsconnect/
 
 *.html
 *_files/
+/.quarto/
