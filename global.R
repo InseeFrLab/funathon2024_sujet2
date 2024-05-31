@@ -12,6 +12,7 @@ library(bslib)
 source("R/import_data.R")
 source("R/create_data_list.R")
 source("R/clean_dataframe.R")
+source("R/figures.R")
 source("R/divers_functions.R")
 source("R/simplify_text.R")
 

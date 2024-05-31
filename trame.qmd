@@ -441,7 +441,7 @@ source("R/import_data.R")
 
 Vous pouvez initier un script nommé `main.R` avec les lignes suivante:
 
-```{.r include="global.R" start-line=23 end-line=33}
+```{.r include="global.R" start-line=24 end-line=34}
 ```
 
 en les faisant précéder de l'import des
@@ -512,6 +512,7 @@ default_airport
 
 ```{r}
 #| output: false
+#| echo: false
 source("intermediates/exo3.R")
 ```
 
@@ -583,20 +584,27 @@ Transformer le code ci-dessus en une fonction afin que
 * les _inputs_ soient les suivants: un _dataframe_, un aéroport à sélectionner
 * la sortie soit notre figure `plotly`
 
-Tester sur d'autres aéroports de la liste
+Tester la fonction sur d'autres aéroports de la liste. Quand vous êtes satisfaits de celle-ci, 
+déplacer la définition de cette fonction dans `R/figures.R`
 :::
-
-```{r}
-source("intermediates/exo3b.R")
-```
 
 <details>
 <summary>
 Code de l'exercice
 </summary>
-```{.r include="intermediates/exo3b.R"}
+```{.r include="R/figures.R"}
 ```
 </details>
+
+Par la suite, nous pouvons ajouter la ligne suivante à notre fichier `main.R`
+
+```{r}
+#| echo: false
+#| output: false
+source("R/figures.R")
+```
+
+## Tableau HTML pour afficher des données
 
 4. Faire une fonction
 
