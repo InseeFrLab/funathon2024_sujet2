@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Site - Un tableau de bord du trafic aérien avec  ou </title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<link href="site_libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
+<script src="site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<link href="site_libs/leaflet-1.3.1/leaflet.css" rel="stylesheet">
+<script src="site_libs/leaflet-1.3.1/leaflet.js"></script>
+<link href="site_libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet">
+<script src="site_libs/proj4-2.6.2/proj4.min.js"></script>
+<script src="site_libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
+<link href="site_libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet">
+<script src="site_libs/leaflet-binding-2.2.2/leaflet.js"></script>
+<script src="site_libs/plotly-binding-4.10.4/plotly.js"></script>
+<script src="site_libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="site_libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet">
+<script src="site_libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
+<link href="site_libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet">
+<script src="site_libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
+
+
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Site</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./trame.qmd" rel="" target="">
+ <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="dropdown-header">
+ <span class="menu-text">about.qmd</span></li>
+</ul>
+            <div class="quarto-navbar-tools ms-auto">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#exploration-des-données-de-trafic-aérien" id="toc-exploration-des-données-de-trafic-aérien" class="nav-link" data-scroll-target="#exploration-des-données-de-trafic-aérien"><span class="header-section-number">1</span> Exploration des données de trafic aérien</a>
+  <ul class="collapse">
+  <li><a href="#préliminaire-récupérer-le-projet-squelette-avec-git-fa-brands-git-alt" id="toc-préliminaire-récupérer-le-projet-squelette-avec-git-fa-brands-git-alt" class="nav-link" data-scroll-target="#préliminaire-récupérer-le-projet-squelette-avec-git-fa-brands-git-alt"><span class="header-section-number">1.1</span> Préliminaire: récupérer le projet squelette avec <code>Git</code> <i class="fa-brands fa-git-alt" aria-label="git-alt"></i></a></li>
+  <li><a href="#installer-les-packages-nécessaires-pour-ce-tutoriel" id="toc-installer-les-packages-nécessaires-pour-ce-tutoriel" class="nav-link" data-scroll-target="#installer-les-packages-nécessaires-pour-ce-tutoriel"><span class="header-section-number">1.2</span> Installer les <em>packages</em> nécessaires pour ce tutoriel</a>
+  <ul class="collapse">
+  <li><a href="#principe" id="toc-principe" class="nav-link" data-scroll-target="#principe"><span class="header-section-number">1.2.1</span> Principe</a></li>
+  <li><a href="#créer-lenvironnement" id="toc-créer-lenvironnement" class="nav-link" data-scroll-target="#créer-lenvironnement"><span class="header-section-number">1.2.2</span> Créer l’environnement</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#récupérer-les-données" id="toc-récupérer-les-données" class="nav-link" data-scroll-target="#récupérer-les-données"><span class="header-section-number">2</span> Récupérer les données</a>
+  <ul class="collapse">
+  <li><a href="#importer-la-liste-des-sources-disponibles" id="toc-importer-la-liste-des-sources-disponibles" class="nav-link" data-scroll-target="#importer-la-liste-des-sources-disponibles"><span class="header-section-number">2.1</span> Importer la liste des sources disponibles</a></li>
+  <li><a href="#importer-les-premières-bases" id="toc-importer-les-premières-bases" class="nav-link" data-scroll-target="#importer-les-premières-bases"><span class="header-section-number">2.2</span> Importer les premières bases</a></li>
+  </ul></li>
+  <li><a href="#exploration-des-données" id="toc-exploration-des-données" class="nav-link" data-scroll-target="#exploration-des-données"><span class="header-section-number">3</span> Exploration des données</a>
+  <ul class="collapse">
+  <li><a href="#le-trafic-par-aéroport" id="toc-le-trafic-par-aéroport" class="nav-link" data-scroll-target="#le-trafic-par-aéroport"><span class="header-section-number">3.1</span> Le trafic par aéroport</a></li>
+  <li><a href="#tableau-html-pour-afficher-des-données" id="toc-tableau-html-pour-afficher-des-données" class="nav-link" data-scroll-target="#tableau-html-pour-afficher-des-données"><span class="header-section-number">3.2</span> Tableau HTML pour afficher des données</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Un tableau de bord du trafic aérien avec <i class="fa-brands fa-r-project" aria-label="r-project"></i> ou <i class="fa-brands fa-python" aria-label="python"></i></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<a href="https://datalab.sspcloud.fr/launcher/ide/rstudio?version=1.15.25&amp;autoLaunch=true&amp;networking.user.enabled=true&amp;git.repository=«https%3A%2F%2Fgithub.com%2FInseeFrLab%2Ffunathon2024_sujet2.git»&amp;onyxia.friendlyName=«config-funathon2024»&amp;kubernetes.role=«admin»" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/SSP%20Cloud-Ouvrir_dans_RStudio-blue?logo=rstudio&amp;logoColor=blue" alt="Onyxia"></a>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/cockpit.png" class="img-fluid figure-img" style="width:25.0%"></p>
+</figure>
+</div>
+<section id="introduction" class="level1 unnumbered">
+<h1 class="unnumbered">Introduction</h1>
+<p>L’objectif de ce tutoriel est d’amener, pas à pas, à la conception voire à la mise à disposition d’un tableau de bord du trafic aérien avec <i class="fa-brands fa-r-project" aria-label="r-project"></i>. Une démonstration de cette application est disponible à l’adresse &lt;&gt;.</p>
+<p>L’application interactive proposée présentera un nombre de fonctionnalités limitées afin de se concentrer sur la démarche. L’objectif est de construire progressivement celle-ci en suivant les étapes logiques du déroulement d’un projet de développement d’application interactive: découverte et exploration des données, création de statistiques descriptives et de visualisations simples sur un jeu de données, extension du nombre de visualisations accessibles par la création d’une application. Ce tutoriel est également l’occasion de découvrir quelques bonnes pratiques de programmation avec <code>R</code> afin de rendre les projets plus fiables, évolutifs et lisibles.</p>
+<p>Les exercices de conception pas à pas de l’application s’adressent aussi bien à des débutants qu’à des utilisateurs plus experts. La mise à disposition, c’est-à-dire la mise en production de cette application, fait appel à des concepts et outils plus avancés et est donc moins accessible à des débutants.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Si vous désirez aller plus loin sur certaines dimensions de ce projet, vous pouvez tout à fait essayer de vous-mêmes d’introduire de nouveaux ingrédients dans l’application que vous développez.</p>
+</div>
+</div>
+</section>
+<section id="exploration-des-données-de-trafic-aérien" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Exploration des données de trafic aérien</h1>
+<section id="préliminaire-récupérer-le-projet-squelette-avec-git-fa-brands-git-alt" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="préliminaire-récupérer-le-projet-squelette-avec-git-fa-brands-git-alt"><span class="header-section-number">1.1</span> Préliminaire: récupérer le projet squelette avec <code>Git</code> <i class="fa-brands fa-git-alt" aria-label="git-alt"></i></h2>
+<p>Si vous disposez d’un compte sur le <a href="https://www.sspcloud.fr/">sspcloud</a>, la méthode recommandée pour se lancer dans ce tutoriel est de cliquer sur le bouton suivant</p>
+<center>
+<a href="https://datalab.sspcloud.fr/launcher/ide/rstudio?version=1.15.25&amp;autoLaunch=true&amp;networking.user.enabled=true&amp;git.repository=«https%3A%2F%2Fgithub.com%2FInseeFrLab%2Ffunathon2024_sujet2.git»&amp;onyxia.friendlyName=«config-funathon2024»&amp;kubernetes.role=«admin»" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/SSP%20Cloud-Ouvrir_dans_RStudio-blue?logo=rstudio&amp;logoColor=blue" alt="Onyxia"></a>
+</center>
+<br>
+<p>Si vous avez utilisé le lien de lancement rapide mis à disposition sur la page <a href="https://inseefrlab.github.io/funathon2024/">inseefrlab.github.io/funathon2024/</a> ou ci-dessus, vous pouvez sauter l’étape de récupération du modèle de projet avec <code>Git</code>, cela a été fait automatiquement lors de la création de votre environnement <code>RStudio</code>.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Récupérer le projet si vous n’avez pas utilisé le bouton proposé
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">Interface graphique</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Depuis le terminal</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<p>La fiche <code>utilitR</code> sur l’<a href="https://book.utilitr.org/03_Fiches_thematiques/Fiche_git_utilisation.html#recuperer-url">utilisation de <code>Git</code></a> explicite la démarche générale pour récupérer du code grâce à <code>Git</code>. Il est recommandé de lire celle-ci si vous n’êtes pas familier de <code>Git</code>.</p>
+<p>Les étapes suivantes permettront de récupérer le projet:</p>
+<p>1️⃣ En premier lieu, dans <code>RStudio</code>, créer un nouveau projet et sélectionner <code>Version Control</code>.</p>
+<p><img src="https://book.utilitr.org/pics_resized/git/create_project_1.png" class="img-fluid"></p>
+<p>2️⃣ Choisir <code>Git</code>, ce qui devrait ouvrir une fenêtre similaire à celle ci-dessous:</p>
+<p><img src="https://book.utilitr.org/pics_resized/git/create_project_2.png" class="img-fluid"></p>
+<p>3️⃣ Dans la fenêtre <code>Repository URL</code>, passer la valeur</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>https<span class="sc">:</span><span class="er">//</span>github.com<span class="sc">/</span>inseefrlab<span class="sc">/</span>funathon2024_sujet2.git</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>laisser les valeurs par défaut qui viennent ensuite et créer le projet.</p>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<p>Après avoir ouvert un terminal dans <code>RStudio</code>, faire</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/inseefrlab/funathon2024_sujet2.git</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>puis, dans l’explorateur de fichiers (fenêtre en bas à droite), cliquer sur le fichier <code>RTraffic.Rproj</code> pour ouvrir le projet.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>Le projet récupéré comporte de nombreux fichiers. Nous allons progressivement les découvrir dans ce tutoriel. A l’heure actuelle, on peut se concentrer sur les fichiers suivants:</p>
+<pre><code>|- renv.lock
+|- global.R
+|- server.R
+|- ui.R</code></pre>
+<p>Le premier fichier correspond à la liste des <em>packages</em> nécessaires pour reproduire l’environnement. Il a été généré automatiquement grâce à un écosystème <code>renv</code> particulièrement adapté pour assurer la reproductibilité de projets <code>R</code> (voir la suite).</p>
+<p>Les fichiers <code>server.R</code> et <code>ui.R</code> constituent le coeur de notre application <code>Shiny</code>. Ils représentent, respectivement, le moteur de calcul (le serveur) et l’interface utilisateur de notre application. Le fichier <code>global.R</code> stocke un certain nombre d’objets utiles à l’application mais qui n’ont pas besoin d’être recalculé à chaque action sur l’interface graphique.</p>
+</section>
+<section id="installer-les-packages-nécessaires-pour-ce-tutoriel" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="installer-les-packages-nécessaires-pour-ce-tutoriel"><span class="header-section-number">1.2</span> Installer les <em>packages</em> nécessaires pour ce tutoriel</h2>
+<section id="principe" class="level3" data-number="1.2.1">
+<h3 data-number="1.2.1" class="anchored" data-anchor-id="principe"><span class="header-section-number">1.2.1</span> Principe</h3>
+<p>Pour progresser dans ce tutoriel, un certain nombre de <em>packages</em> doivent être installés. Sans eux, même avec le code de l’application, vous ne serez pas en mesure de reproduire celle-ci.</p>
+<p>Les bonnes pratiques pour la gestion de l’environnement sont assez proches en <i class="fa-brands fa-r-project" aria-label="r-project"></i> et <i class="fa-brands fa-python" aria-label="python"></i>. Le principal général est qu’il existe des outils qui permettent à un utilisateur de lister l’ensemble des packages dans son environnement avec leur version. Grâce à cette liste, d’autres personnes pourront reproduire l’application si elles disposent des mêmes <em>inputs</em> (le code, les données…).</p>
+<p>En effet, il est important de voir l’application comme le résultat de la combinaison de plusieurs ingrédients. Dans notre cas, nous en avons trois:</p>
+<ul>
+<li>Du code <code>R</code> ou <code>Python</code> : celui-ci a été récupéré par le biais de <code>Git</code></li>
+<li>Des éléments de configuration:
+<ul>
+<li>le fichier <code>renv.lock</code> (<code>R</code>) ou <code>requirements.txt</code> (<code>Python</code>) qui permettra de reconstruire notre environnement à l’identique grâce à des outils adaptés<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></li>
+<li>le fichier <code>sources.yaml</code> qui liste l’emplacement des sources sur le site <a href="https://www.data.gouv.fr/fr/">data.gouv</a></li>
+</ul></li>
+<li>Des données: nous évoquerons celles-ci lors de la prochaine partie.</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./img/environment.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Illustration du principe de séparation du code, des données et de la configuration</figcaption>
+</figure>
+</div>
+<p>De manière générale, c’est une bonne pratique de structurer son projet comme une combinaison de ces facteurs. Cela vous amènera à faire des projets plus reproductible mais aussi à la structure plus lisible.</p>
+<p>Pour les utilisateurs de <code>R</code>, la <a href="https://inseefrlab.github.io/formation-bonnes-pratiques-git-R/">formation de l’Insee aux bonnes pratiques</a> consacre une partie aux environnements reproductibles avec <code>renv</code>. Pour les utilisateurs de <code>Python</code>, le <a href="https://ensae-reproductibilite.github.io/website/chapters/portability.html">cours de mise en production de projets <em>data science</em></a> consacre un chapitre au sujet.</p>
+</section>
+<section id="créer-lenvironnement" class="level3" data-number="1.2.2">
+<h3 data-number="1.2.2" class="anchored" data-anchor-id="créer-lenvironnement"><span class="header-section-number">1.2.2</span> Créer l’environnement</h3>
+<p>L’intérêt d’utiliser <code>renv</code> est que recréer l’environnement nécessaire au bon fonctionnement de l’application est très simple avec la commande:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>renv<span class="sc">::</span><span class="fu">restore</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Il est tout à fait possible, ensuite, d’installer des <em>packages</em> supplémentaires par le biais de <code>install.packages</code>. L’environnement proposé par notre fichier <code>renv.lock</code> est le minimum requis pour reproduire l’application mais ce n’est pas un environnement figé. Si vous ajoutez des <em>packages</em> utiles pour votre application, avant la phase de mise en production, n’oubliez pas de faire <code>renv::snapshot()</code> pour mettre à jour le fichier <code>renv.lock</code>.</p>
+<p>Maintenant que nous disposons d’un environnement fonctionnel, nous pouvons avancer sur la conception du projet. La première étape est d’explorer les jeux de données que nous utiliserons dans l’application</p>
+</section>
+</section>
+</section>
+<section id="récupérer-les-données" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Récupérer les données</h1>
+<p>Les sources sont listées dans le fichier <code>sources.yaml</code>. Notre application utilisera quatres sources différentes:</p>
+<ul>
+<li>Le trafic au niveau de chaque aéroport (format CSV)</li>
+<li>Le nombre de passagers pour différentes liaisons (format CSV)</li>
+<li>Le trafic pour différentes compagnies (format CSV)</li>
+<li>Les localisations des aéroports (format geojson)</li>
+</ul>
+<section id="importer-la-liste-des-sources-disponibles" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="importer-la-liste-des-sources-disponibles"><span class="header-section-number">2.1</span> Importer la liste des sources disponibles</h2>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercice 1: lire les sources dans <i class="fa-brands fa-r-project" aria-label="r-project"></i>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li><p>Le package <code>yaml</code> comporte une fonction <code>read_yaml</code> pour transformer un fichier <code>YAML</code> en liste imbriquée. Tester cette fonction sur le fichier <code>sources.yml</code>.</p></li>
+<li><p>Transformer ce bout de code en une fonction <code>create_data_list</code> prenant un argument <code>source_file</code> et renvoyant cette liste.</p></li>
+</ol>
+</div>
+</div>
+<details>
+<summary>
+Voir la solution
+</summary>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#' Creates a 2-levels list of urls, pointing to open source data</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co">#' </span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co">#' @param source_file yaml file containing data urls </span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co">#' @return list (level 1 = concepts, level 2 = year).</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co">#'</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co">#' @examples</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co">#'  create_data_list("sources.yml")</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co">#'  </span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>create_data_list <span class="ot">&lt;-</span> <span class="cf">function</span>(source_file){</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  catalogue <span class="ot">&lt;-</span> yaml<span class="sc">::</span><span class="fu">read_yaml</span>(source_file)</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(catalogue)</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<p>La solution est dans le fichier <code>R/create_data_list.R</code>. Elle peut être importée dans l’environnement global grâce à la commande:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"R/create_data_list.R"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="importer-les-premières-bases" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="importer-les-premières-bases"><span class="header-section-number">2.2</span> Importer les premières bases</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>urls <span class="ot">&lt;-</span> <span class="fu">create_data_list</span>(<span class="st">"sources.yml"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercice 2: découvrir les différentes sources
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Cet exercice est, en apparence, un peu long. Néanmoins la première partie de celui-ci permet la construction d’une fonction générique d’import des données qui permet ensuite de gagner du temps et d’éviter la redondance de code.</p>
+<section id="données-aéroports" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="données-aéroports">Données aéroports</h4>
+<ul>
+<li>Comme les données sont des CSV européens (séparateur <code>;</code>), utiliser <code>read_csv2</code> du package <code>readr</code> pour lire les données à partir de la liste de fichiers <code>unlist(urls$airports)</code><a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>.</li>
+<li>Il est recommandé de ne pas laisser les types par défaut des colonnes mais de figer ceux-ci avec l’argument suivant:</li>
+</ul>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>col_types <span class="ot">=</span> <span class="fu">cols</span>(</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">ANMOIS =</span> <span class="fu">col_character</span>(),</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">APT =</span> <span class="fu">col_character</span>(),</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">APT_NOM =</span> <span class="fu">col_character</span>(),</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">APT_ZON =</span> <span class="fu">col_character</span>(),</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">.default =</span> <span class="fu">col_double</span>()</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>A partir de la variable <code>ANMOIS</code>, créer les variables <code>an</code> et <code>mois</code>.</li>
+</ul>
+<details>
+<summary>
+Aide si vous êtes bloqué sur cette question
+</summary>
+<p>Pour extraire des éléments d’une chaine de caractère à partir de la position, il est recommandé d’utiliser la fonction <code>str_sub</code> du package <code>stringr</code>. Pour créer de nouvelles colonnes, il est recommandé d’utiliser la fonction <code>mutate</code> du package dplyr.</p>
+<p>Si vous êtes toujours bloqué, la solution est donnée plus bas 👇</p>
+</details>
+<ul>
+<li>Créer une fonction <code>clean_dataframe</code> qui reprend le code de création des variables <code>an</code> et <code>mois</code>, ajoute une étape de passage des noms de colonne en minuscule et renvoie le dataframe en sortie</li>
+</ul>
+<details>
+<summary>
+Solution
+</summary>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>clean_dataframe <span class="ot">&lt;-</span> <span class="cf">function</span>(df){</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Create an et mois columns</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> </span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">an =</span> <span class="fu">str_sub</span>(ANMOIS,<span class="dv">1</span>,<span class="dv">4</span>),</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">mois =</span> <span class="fu">str_sub</span>(ANMOIS,<span class="dv">5</span>,<span class="dv">6</span>)</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># lower case for variable names</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">colnames</span>(df) <span class="ot">&lt;-</span> <span class="fu">tolower</span>(<span class="fu">colnames</span>(df))</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(df)</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<ul>
+<li>Créer une fonction <code>import_airport_data</code> qui prend en <em>input</em> <code>list_files</code> et intègre les deux étapes précédentes: la lecture des données, le nettoyage avec <code>clean_dataframe</code>.</li>
+</ul>
+<details>
+<summary>
+Solution
+</summary>
+<div class="sourceCode" id="cb10" data-startfrom="1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>import_airport_data <span class="ot">&lt;-</span> <span class="cf">function</span>(list_files){</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  pax_apt_all <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv2</span>(</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    list_files, </span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">col_types =</span> <span class="fu">cols</span>(</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">ANMOIS =</span> <span class="fu">col_character</span>(),</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">APT =</span> <span class="fu">col_character</span>(),</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>      <span class="at">APT_NOM =</span> <span class="fu">col_character</span>(),</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>      <span class="at">APT_ZON =</span> <span class="fu">col_character</span>(),</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>      <span class="at">.default =</span> <span class="fu">col_double</span>()</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> </span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">clean_dataframe</span>()</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(pax_apt_all)</span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Reporter cette fonction dans un fichier <code>R/clean_dataframe.R</code> et faire</li>
+</ul>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"R/clean_dataframe.R"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</section>
+<section id="données-compagnies" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="données-compagnies">Données compagnies</h4>
+<p>Sur le même principe, créer une fonction <code>import_compagnies_data</code> qui effectue la même suite d’opérations. Faire néanmoins attention aux types des colonnes.</p>
+<div class="cell">
+<details>
+<summary>Recommandation de paramètre pour read_csv pour l’import de ces fichiers</summary>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>col_types <span class="ot">=</span> <span class="fu">cols</span>(</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">ANMOIS =</span> <span class="fu">col_character</span>(),</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">CIE =</span> <span class="fu">col_character</span>(),</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">CIE_NOM =</span> <span class="fu">col_character</span>(),</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">CIE_NAT =</span> <span class="fu">col_character</span>(),</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">CIE_PAYS =</span> <span class="fu">col_character</span>(),</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">.default =</span> <span class="fu">col_double</span>()</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<details>
+<summary>
+Solution
+</summary>
+<div class="sourceCode" id="cb13" data-startfrom="20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r" style="counter-reset: source-line 19;"><span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a>import_compagnies_data <span class="ot">&lt;-</span> <span class="cf">function</span>(list_files){</span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a>  pax_cie_all <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv2</span>(</span>
+<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">file =</span> list_files,</span>
+<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">col_types =</span> <span class="fu">cols</span>(</span>
+<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a>      <span class="at">ANMOIS =</span> <span class="fu">col_character</span>(),</span>
+<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a>      <span class="at">CIE =</span> <span class="fu">col_character</span>(),</span>
+<span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a>      <span class="at">CIE_NOM =</span> <span class="fu">col_character</span>(),</span>
+<span id="cb13-28"><a href="#cb13-28" aria-hidden="true" tabindex="-1"></a>      <span class="at">CIE_NAT =</span> <span class="fu">col_character</span>(),</span>
+<span id="cb13-29"><a href="#cb13-29" aria-hidden="true" tabindex="-1"></a>      <span class="at">CIE_PAYS =</span> <span class="fu">col_character</span>(),</span>
+<span id="cb13-30"><a href="#cb13-30" aria-hidden="true" tabindex="-1"></a>      <span class="at">.default =</span> <span class="fu">col_double</span>()</span>
+<span id="cb13-31"><a href="#cb13-31" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb13-32"><a href="#cb13-32" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> </span>
+<span id="cb13-33"><a href="#cb13-33" aria-hidden="true" tabindex="-1"></a>    <span class="fu">clean_dataframe</span>()</span>
+<span id="cb13-34"><a href="#cb13-34" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb13-35"><a href="#cb13-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(pax_cie_all)</span>
+<span id="cb13-36"><a href="#cb13-36" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb13-37"><a href="#cb13-37" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb13-38"><a href="#cb13-38" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</section>
+<section id="données-liaisons" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="données-liaisons">Données liaisons</h4>
+<p>Sur le même principe, créer une fonction <code>import_liaisons_data</code> qui effectue la même suite d’opérations. Faire néanmoins attention aux types des colonnes.</p>
+<div class="cell">
+<details>
+<summary>Recommandation de paramètre pour read_csv pour l’import de ces fichiers</summary>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>col_types <span class="ot">=</span> <span class="fu">cols</span>(</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">ANMOIS =</span> <span class="fu">col_character</span>(),</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">LSN =</span> <span class="fu">col_character</span>(),</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">LSN_DEP_NOM =</span> <span class="fu">col_character</span>(),</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">LSN_ARR_NOM =</span> <span class="fu">col_character</span>(),</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">LSN_SCT =</span> <span class="fu">col_character</span>(),</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">LSN_FSC =</span> <span class="fu">col_character</span>(),</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">.default =</span> <span class="fu">col_double</span>()</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<details>
+<summary>
+Solution
+</summary>
+<div class="sourceCode" id="cb15" data-startfrom="41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r" style="counter-reset: source-line 40;"><span id="cb15-41"><a href="#cb15-41" aria-hidden="true" tabindex="-1"></a>import_liaisons_data <span class="ot">&lt;-</span> <span class="cf">function</span>(list_files){</span>
+<span id="cb15-42"><a href="#cb15-42" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb15-43"><a href="#cb15-43" aria-hidden="true" tabindex="-1"></a>  pax_lsn_all <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv2</span>(</span>
+<span id="cb15-44"><a href="#cb15-44" aria-hidden="true" tabindex="-1"></a>    <span class="at">file =</span> list_files,</span>
+<span id="cb15-45"><a href="#cb15-45" aria-hidden="true" tabindex="-1"></a>    <span class="at">col_types =</span> <span class="fu">cols</span>(</span>
+<span id="cb15-46"><a href="#cb15-46" aria-hidden="true" tabindex="-1"></a>      <span class="at">ANMOIS =</span> <span class="fu">col_character</span>(),</span>
+<span id="cb15-47"><a href="#cb15-47" aria-hidden="true" tabindex="-1"></a>      <span class="at">LSN =</span> <span class="fu">col_character</span>(),</span>
+<span id="cb15-48"><a href="#cb15-48" aria-hidden="true" tabindex="-1"></a>      <span class="at">LSN_DEP_NOM =</span> <span class="fu">col_character</span>(),</span>
+<span id="cb15-49"><a href="#cb15-49" aria-hidden="true" tabindex="-1"></a>      <span class="at">LSN_ARR_NOM =</span> <span class="fu">col_character</span>(),</span>
+<span id="cb15-50"><a href="#cb15-50" aria-hidden="true" tabindex="-1"></a>      <span class="at">LSN_SCT =</span> <span class="fu">col_character</span>(),</span>
+<span id="cb15-51"><a href="#cb15-51" aria-hidden="true" tabindex="-1"></a>      <span class="at">LSN_FSC =</span> <span class="fu">col_character</span>(),</span>
+<span id="cb15-52"><a href="#cb15-52" aria-hidden="true" tabindex="-1"></a>      <span class="at">.default =</span> <span class="fu">col_double</span>()</span>
+<span id="cb15-53"><a href="#cb15-53" aria-hidden="true" tabindex="-1"></a>    ) </span>
+<span id="cb15-54"><a href="#cb15-54" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> </span>
+<span id="cb15-55"><a href="#cb15-55" aria-hidden="true" tabindex="-1"></a>    <span class="fu">clean_dataframe</span>()</span>
+<span id="cb15-56"><a href="#cb15-56" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb15-57"><a href="#cb15-57" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(pax_lsn_all)</span>
+<span id="cb15-58"><a href="#cb15-58" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb15-59"><a href="#cb15-59" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb15-60"><a href="#cb15-60" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</section>
+<section id="localisations-des-aéroports" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="localisations-des-aéroports">Localisations des aéroports</h4>
+<p>Il s’agit d’un jeu de données spatial. Pour en savoir plus sur ce type de données, il est recommandé de consulter la <a href="https://book.utilitr.org/03_Fiches_thematiques/Fiche_donnees_spatiales.html">fiche <code>utilitR</code></a> sur le sujet ou <a href="https://rgeo.linogaliana.fr/exercises/geospatial-wrangling.html">ce cours introductif</a></p>
+<ol type="1">
+<li>Utiliser la fonction <code>st_read</code> du package <code>sf</code> pour lire ces données (dont la localisation est stockée dans la variable <code>urls$geojson$aiport</code>). Stocker l’objet obtenu sous le nom <code>airports_location</code></li>
+<li>Vérifier que les données sont bien dans le système de représentation <code>WGS 84</code><a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></li>
+</ol>
+<details>
+<summary>
+Aide
+</summary>
+La fonction à utiliser est <code>sf_crs</code>
+</details>
+<ol start="3" type="1">
+<li>Il est toujours utile de vérifier que nos données sont bien localisées où on les attend. Pour cela, il est pertinent de faire une carte avec un fond de carte contextuel, même si celle-ci n’est pas très soignée. Pour faire ceci, le plus simple est d’utiliser la <a href="https://rstudio.github.io/leaflet/articles/markers.html">fonction <code>addMarkers</code></a> du package <code>leaflet</code>. Essayez de faire cette carte vous-mêmes ou consultez l’aide ci-dessous</li>
+</ol>
+<details>
+<summary>
+Code pour faire une carte <code>leaflet</code> minimale
+</summary>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">leaflet</span>(airports_location) <span class="sc">%&gt;%</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">addTiles</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">addMarkers</span>(<span class="at">popup =</span> <span class="sc">~</span>Nom)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<p>Reporter toutes ces fonctions dans un fichier <code>R/import_data.R</code>.</p>
+</section>
+</div>
+</div>
+<p>A l’issue de cet exercice, vous devriez avoir le fichier <code>R/import_data.R</code> suivant</p>
+<details>
+<summary>
+Le fichier <code>R/import_data.R</code> attendu
+</summary>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>import_airport_data <span class="ot">&lt;-</span> <span class="cf">function</span>(list_files){</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  pax_apt_all <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv2</span>(</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    list_files, </span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">col_types =</span> <span class="fu">cols</span>(</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">ANMOIS =</span> <span class="fu">col_character</span>(),</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">APT =</span> <span class="fu">col_character</span>(),</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>      <span class="at">APT_NOM =</span> <span class="fu">col_character</span>(),</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>      <span class="at">APT_ZON =</span> <span class="fu">col_character</span>(),</span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>      <span class="at">.default =</span> <span class="fu">col_double</span>()</span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> </span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">clean_dataframe</span>()</span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(pax_apt_all)</span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a>import_compagnies_data <span class="ot">&lt;-</span> <span class="cf">function</span>(list_files){</span>
+<span id="cb17-21"><a href="#cb17-21" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb17-22"><a href="#cb17-22" aria-hidden="true" tabindex="-1"></a>  pax_cie_all <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv2</span>(</span>
+<span id="cb17-23"><a href="#cb17-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">file =</span> list_files,</span>
+<span id="cb17-24"><a href="#cb17-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">col_types =</span> <span class="fu">cols</span>(</span>
+<span id="cb17-25"><a href="#cb17-25" aria-hidden="true" tabindex="-1"></a>      <span class="at">ANMOIS =</span> <span class="fu">col_character</span>(),</span>
+<span id="cb17-26"><a href="#cb17-26" aria-hidden="true" tabindex="-1"></a>      <span class="at">CIE =</span> <span class="fu">col_character</span>(),</span>
+<span id="cb17-27"><a href="#cb17-27" aria-hidden="true" tabindex="-1"></a>      <span class="at">CIE_NOM =</span> <span class="fu">col_character</span>(),</span>
+<span id="cb17-28"><a href="#cb17-28" aria-hidden="true" tabindex="-1"></a>      <span class="at">CIE_NAT =</span> <span class="fu">col_character</span>(),</span>
+<span id="cb17-29"><a href="#cb17-29" aria-hidden="true" tabindex="-1"></a>      <span class="at">CIE_PAYS =</span> <span class="fu">col_character</span>(),</span>
+<span id="cb17-30"><a href="#cb17-30" aria-hidden="true" tabindex="-1"></a>      <span class="at">.default =</span> <span class="fu">col_double</span>()</span>
+<span id="cb17-31"><a href="#cb17-31" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb17-32"><a href="#cb17-32" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> </span>
+<span id="cb17-33"><a href="#cb17-33" aria-hidden="true" tabindex="-1"></a>    <span class="fu">clean_dataframe</span>()</span>
+<span id="cb17-34"><a href="#cb17-34" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb17-35"><a href="#cb17-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(pax_cie_all)</span>
+<span id="cb17-36"><a href="#cb17-36" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb17-37"><a href="#cb17-37" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb17-38"><a href="#cb17-38" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb17-39"><a href="#cb17-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-40"><a href="#cb17-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-41"><a href="#cb17-41" aria-hidden="true" tabindex="-1"></a>import_liaisons_data <span class="ot">&lt;-</span> <span class="cf">function</span>(list_files){</span>
+<span id="cb17-42"><a href="#cb17-42" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb17-43"><a href="#cb17-43" aria-hidden="true" tabindex="-1"></a>  pax_lsn_all <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv2</span>(</span>
+<span id="cb17-44"><a href="#cb17-44" aria-hidden="true" tabindex="-1"></a>    <span class="at">file =</span> list_files,</span>
+<span id="cb17-45"><a href="#cb17-45" aria-hidden="true" tabindex="-1"></a>    <span class="at">col_types =</span> <span class="fu">cols</span>(</span>
+<span id="cb17-46"><a href="#cb17-46" aria-hidden="true" tabindex="-1"></a>      <span class="at">ANMOIS =</span> <span class="fu">col_character</span>(),</span>
+<span id="cb17-47"><a href="#cb17-47" aria-hidden="true" tabindex="-1"></a>      <span class="at">LSN =</span> <span class="fu">col_character</span>(),</span>
+<span id="cb17-48"><a href="#cb17-48" aria-hidden="true" tabindex="-1"></a>      <span class="at">LSN_DEP_NOM =</span> <span class="fu">col_character</span>(),</span>
+<span id="cb17-49"><a href="#cb17-49" aria-hidden="true" tabindex="-1"></a>      <span class="at">LSN_ARR_NOM =</span> <span class="fu">col_character</span>(),</span>
+<span id="cb17-50"><a href="#cb17-50" aria-hidden="true" tabindex="-1"></a>      <span class="at">LSN_SCT =</span> <span class="fu">col_character</span>(),</span>
+<span id="cb17-51"><a href="#cb17-51" aria-hidden="true" tabindex="-1"></a>      <span class="at">LSN_FSC =</span> <span class="fu">col_character</span>(),</span>
+<span id="cb17-52"><a href="#cb17-52" aria-hidden="true" tabindex="-1"></a>      <span class="at">.default =</span> <span class="fu">col_double</span>()</span>
+<span id="cb17-53"><a href="#cb17-53" aria-hidden="true" tabindex="-1"></a>    ) </span>
+<span id="cb17-54"><a href="#cb17-54" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> </span>
+<span id="cb17-55"><a href="#cb17-55" aria-hidden="true" tabindex="-1"></a>    <span class="fu">clean_dataframe</span>()</span>
+<span id="cb17-56"><a href="#cb17-56" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb17-57"><a href="#cb17-57" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(pax_lsn_all)</span>
+<span id="cb17-58"><a href="#cb17-58" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb17-59"><a href="#cb17-59" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb17-60"><a href="#cb17-60" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<p>La carte <code>leaflet</code> que vous devriez avoir obtenue à la fin de l’exercice est la suivante:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">leaflet</span>(airports_location) <span class="sc">%&gt;%</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">addTiles</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">addMarkers</span>(<span class="at">popup =</span> <span class="sc">~</span>Nom)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="leaflet html-widget html-fill-item" id="htmlwidget-67f6a3384bea8faebaec" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-67f6a3384bea8faebaec">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org/copyright/\">OpenStreetMap<\/a>,  <a href=\"https://opendatacommons.org/licenses/odbl/\">ODbL<\/a>"}]},{"method":"addMarkers","args":[[-23.37,-22.59,-22.43,-22.26,-22.01,-21.48,-20.89,-20.77,-20.64,-17.55,-17.49,-16.72,-16.69,-16.44,-16.43,-16.05,-15.12,-14.95,-12.81,-9.77,-8.800000000000001,3.66,4.82,14.59,16.27,17.9,18.1,41.5,41.92,42.52,42.55,42.74,43.1,43.19,43.32,43.38,43.44,43.47,43.55,43.56,43.58,43.64,43.67,44.83,44.9,45.04,45.73,45.79,46.76,47.04,47.16,47.31,47.43,47.59,48.07,48.45,48.54,48.72,48.77,48.97,49.01,49.17,49.45,50.56],[-149.52,167.46,-151.36,166.47,166.21,168.04,55.51,167.24,166.57,-149.61,-149.76,-151.47,-151.02,-151.75,-152.24,-145.66,-148.23,-147.66,45.28,-139.01,-140.23,-54.04,-52.36,-61,-61.53,-62.84,-63.05,9.1,8.800000000000001,8.789999999999999,9.48,2.87,6.15,0.01,3.35,-0.42,5.22,-1.53,6.95,2.29,3.96,1.37,7.22,-0.72,2.42,1.49,5.08,3.16,-56.17,5.44,-1.61,-2.16,0.72,7.53,-1.73,-4.42,7.63,2.38,4.21,2.44,2.55,-0.45,2.11,3.09],null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},["TUBUAI MATAURA","ILE DES PINS","RURUTU","NOUMEA MAGENTA","NOUMEA LA TONTOUTA","MARE","LA REUNION-ROLAND GARROS","LIFOU","OUVEA","TAHITI FAA'A","MOOREA","RAIATEA","HUAHINE","BORA BORA","MAUPITI","FAKARAVA","TIKEHAU","RANGIROA","MAYOTTE-DZAOUDZI-PAMANDZI","HIVA OA-ATUONA","NUKU HIVA","MARIPASOULA","CAYENNE-FELIX EBOUE","MARTINIQUE-AIME CESAIRE","POINTE-A-PITRE-LE RAIZET","ST-BARTHELEMY","ST-MARTIN-GRAND-CASE","FIGARI-SUD-CORSE","AJACCIO-NAPOLEON-BONAPARTE","CALVI-STE-CATHERINE","BASTIA-PORETTA","PERPIGNAN-RIVESALTES","TOULON-HYERES","TARBES-LOURDES-PYRENEES","BEZIERS-VIAS","PAU-PYRENEES","MARSEILLE-PROVENCE","BIARRITZ-PAYS-BASQUE","CANNES-MANDELIEU","CASTRES-MAZAMET","MONTPELLIER-MEDITERRANEE","TOULOUSE-BLAGNAC","NICE-COTE D'AZUR","BORDEAUX-MERIGNAC","AURILLAC","BRIVE-SOUILLAC","LYON-ST-EXUPERY","CLERMONT-FERRAND-AUVERGNE","ST-PIERRE-POINTE BLANCHE","DOLE-TAVAUX","NANTES-ATLANTIQUE","ST-NAZAIRE-MONTOIR","TOURS-VAL DE LOIRE","BALE-MULHOUSE","RENNES-ST-JACQUES","BREST-BRETAGNE","STRASBOURG-ENTZHEIM","PARIS-ORLY","CHALONS-VATRY","PARIS-LE BOURGET","PARIS-CHARLES DE GAULLE","CAEN-CARPIQUET","BEAUVAIS-TILLE","LILLE-LESQUIN"],null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[-23.37,50.56],"lng":[-152.24,168.04]}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<p>A l’issue de l’exercice, le code centralisé dans le script <code>R/import_data.R</code> peut être importé via le code suivant</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"R/import_data.R"</span>)  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Vous pouvez initier un script nommé <code>main.R</code> avec les lignes suivante:</p>
+<div class="sourceCode" id="cb20" data-startfrom="24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r" style="counter-reset: source-line 23;"><span id="cb20-24"><a href="#cb20-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Load data ----------------------------------</span></span>
+<span id="cb20-25"><a href="#cb20-25" aria-hidden="true" tabindex="-1"></a>urls <span class="ot">&lt;-</span> <span class="fu">create_data_list</span>(<span class="st">"./sources.yml"</span>)</span>
+<span id="cb20-26"><a href="#cb20-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-27"><a href="#cb20-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-28"><a href="#cb20-28" aria-hidden="true" tabindex="-1"></a>pax_apt_all <span class="ot">&lt;-</span> <span class="fu">import_airport_data</span>(<span class="fu">unlist</span>(urls<span class="sc">$</span>airports))</span>
+<span id="cb20-29"><a href="#cb20-29" aria-hidden="true" tabindex="-1"></a>pax_cie_all <span class="ot">&lt;-</span> <span class="fu">import_compagnies_data</span>(<span class="fu">unlist</span>(urls<span class="sc">$</span>compagnies))</span>
+<span id="cb20-30"><a href="#cb20-30" aria-hidden="true" tabindex="-1"></a>pax_lsn_all <span class="ot">&lt;-</span> <span class="fu">import_liaisons_data</span>(<span class="fu">unlist</span>(urls<span class="sc">$</span>liaisons))</span>
+<span id="cb20-31"><a href="#cb20-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-32"><a href="#cb20-32" aria-hidden="true" tabindex="-1"></a>airports_location <span class="ot">&lt;-</span> <span class="fu">st_read</span>(urls<span class="sc">$</span>geojson<span class="sc">$</span>airport)</span>
+<span id="cb20-33"><a href="#cb20-33" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>en les faisant précéder de l’import des scripts que nous avons déjà créé dans le dossier <code>R</code>:</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"R/create_data_list.R"</span>)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"R/import_data.R"</span>)  </span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"R/clean_dataframe.R"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Une bonne pratique est de tester son script dans une session vierge. Cela amène à construire pas à pas une chaine plus reproductible. Pour cela,</p>
+<ul>
+<li>Aller dans les options de <code>R</code> via <code>Tools &gt; Global Options</code> et décocher la case <code>Restore .RData into workspace at setup</code></li>
+<li>Redémarrer votre session <code>R</code> via le menu <code>Session &gt; Restart R</code> ou le raccourci <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>F10</kbd></li>
+</ul>
+<p>Et exécuter votre fichier <code>main.R</code>. Vous devriez rencontrer des erreurs car nous n’avons pas géré les import de librairies dans ce script puisque notre session actuelle ne bénéficie plus des import antérieurs.</p>
+<p>Une bonne pratique pour comprendre cette exigence de reproductibilité est d’itérativement ajouter les librairies utiles à mesure qu’on rencontre des erreurs (notre code étant très rapide à tourner, cette logique d’essai-erreur n’est pas très coûteuse). Si vous ne désirez pas faire ceci (dommage, c’est un bon exercice), vous pouvez trouver les imports de packages à faire pour que notre script soit reproductible.</p>
+<details>
+<summary>
+L’environnement minimal de reproductibilité pour que le script <code>main.R</code> fonctionne
+</summary>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<p>Ces librairies sont à écrire au début de <code>main.R</code>.</p>
+</section>
+</section>
+<section id="exploration-des-données" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Exploration des données</h1>
+<section id="le-trafic-par-aéroport" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="le-trafic-par-aéroport"><span class="header-section-number">3.1</span> Le trafic par aéroport</h2>
+<p>Pour commencer, nous allons prototyper la production d’une figure sur le trafic aérien au niveau d’un aéroport. Cela nous facilitera ensuite l’intégration dans une application interactive.</p>
+<p>Pour cela, nous allons créer les deux objets temporaires suivants</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>liste_aeroports <span class="ot">&lt;-</span> <span class="fu">unique</span>(pax_apt_all<span class="sc">$</span>apt)</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>default_airport <span class="ot">&lt;-</span> liste_aeroports[<span class="dv">1</span>]</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>default_airport</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "FMCZ"</code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercice 3: graphiques de fréquentation des aéroports
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>Créer une variable <code>trafic</code> égale <code>apt_pax_dep + apt_pax_tr + apt_pax_arr</code></li>
+<li>Ne conserver que les données relatives à l’aéroport <code>default_airport</code></li>
+<li>Créer une variable <code>date</code> qui utilise les colonnes <code>an</code> et <code>mois</code>. Cette variable de date doit être au format <code>date</code>, pas au format <code>chr</code>
+<details>
+<summary>
+Enchaînement des opérations attendues à cette étape
+</summary></details></li>
+</ol>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plotly)</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>trafic_aeroports <span class="ot">&lt;-</span> pax_apt_all <span class="sc">%&gt;%</span></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">trafic =</span> apt_pax_dep <span class="sc">+</span> apt_pax_tr <span class="sc">+</span> apt_pax_arr) <span class="sc">%&gt;%</span></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(apt <span class="sc">%in%</span> default_airport) <span class="sc">%&gt;%</span></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">date =</span> <span class="fu">as.Date</span>(<span class="fu">paste</span>(an, mois, <span class="st">"01"</span>, <span class="at">sep=</span><span class="st">"-"</span>))</span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+<ol start="4" type="1">
+<li>Faire une figure <code>ggplot</code> toute simple pour voir la dynamique des données afin d’obtenir une figure similaire à celle-ci</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>figure_ggplot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Nous allons faire une application interactive par la suite. Il est donc plus intéressant d’avoir une figure un minimum réactive pour impliquer l’utilisateur de l’application.</p>
+<ol start="5" type="1">
+<li>Il est donc plus pertinent de faire une figure avec la librairie <code>plotly</code>. Pour cela, vous pouvez vous inspirer de <a href="https://plotly.com/r/line-charts/">cette page</a></li>
+</ol>
+<div class="cell">
+<div class="cell-output-display">
+<div class="plotly html-widget html-fill-item" id="htmlwidget-7cc7210abbf9ac5729c5" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-7cc7210abbf9ac5729c5">{"x":{"visdat":{"20a54ddfb893":["function () ","plotlyVisDat"]},"cur_data":"20a54ddfb893","attrs":{"20a54ddfb893":{"x":{},"y":{},"text":{},"hovertemplate":"<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","mode":"lines+markers","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"xaxis":{"domain":[0,1],"automargin":true,"title":"date"},"yaxis":{"domain":[0,1],"automargin":true,"title":"trafic"},"hovermode":"closest","showlegend":false},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"x":["2018-01-01","2018-02-01","2018-03-01","2018-04-01","2018-05-01","2018-06-01","2018-07-01","2018-08-01","2018-09-01","2018-10-01","2018-11-01","2018-12-01","2019-01-01","2019-02-01","2019-03-01","2019-04-01","2019-05-01","2019-06-01","2019-07-01","2019-08-01","2019-09-01","2019-10-01","2019-11-01","2019-12-01","2020-01-01","2020-02-01","2020-03-01","2020-04-01","2020-05-01","2020-06-01","2020-07-01","2020-08-01","2020-09-01","2020-10-01","2020-11-01","2020-12-01","2021-01-01","2021-02-01","2021-03-01","2021-04-01","2021-05-01","2021-06-01","2021-07-01","2021-08-01","2021-09-01","2021-10-01","2021-11-01","2021-12-01","2022-01-01","2022-02-01","2022-03-01","2022-04-01","2022-05-01","2022-06-01","2022-07-01","2022-08-01","2022-09-01","2022-10-01","2022-11-01","2022-12-01"],"y":[33287,24714,26961,26224,30432,31595,49489,51680,29485,33197,22810,37085,31356,23307,29516,27718,24752,31779,45422,45361,29509,32017,24739,39382,34512,23982,21577,636,1396,4228,14969,17913,12227,15812,11596,28325,24765,7009,5029,5993,9618,16516,36841,38763,24106,25236,20873,34227,29441,19869,25972,19815,28922,31479,50968,50499,31330,34781,26573,43846],"text":["MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY"],"hovertemplate":["<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}"],"mode":"lines+markers","type":"scatter","marker":{"color":"rgba(31,119,180,1)","line":{"color":"rgba(31,119,180,1)"}},"error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"line":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<details>
+<summary>
+Le code pour générer la figure
+</summary>
+<div class="sourceCode" id="cb27" data-startfrom="15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r" style="counter-reset: source-line 14;"><span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a>figure_plotly <span class="ot">&lt;-</span> trafic_aeroports <span class="sc">%&gt;%</span></span>
+<span id="cb27-16"><a href="#cb27-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot_ly</span>(</span>
+<span id="cb27-17"><a href="#cb27-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="sc">~</span>date, <span class="at">y =</span> <span class="sc">~</span>trafic,</span>
+<span id="cb27-18"><a href="#cb27-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">text =</span> <span class="sc">~</span>apt_nom,</span>
+<span id="cb27-19"><a href="#cb27-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">hovertemplate =</span> <span class="fu">paste</span>(<span class="st">"&lt;i&gt;Aéroport:&lt;/i&gt; %{text}&lt;br&gt;Trafic: %{y}"</span>) ,</span>
+<span id="cb27-20"><a href="#cb27-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">type =</span> <span class="st">'scatter'</span>, <span class="at">mode =</span> <span class="st">'lines+markers'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</div>
+<p>Le code complet pour répliquer cet exercice est donné ci-dessous.</p>
+<details>
+<summary>
+Code de l’exercice
+</summary>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plotly)</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>trafic_aeroports <span class="ot">&lt;-</span> pax_apt_all <span class="sc">%&gt;%</span></span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">trafic =</span> apt_pax_dep <span class="sc">+</span> apt_pax_tr <span class="sc">+</span> apt_pax_arr) <span class="sc">%&gt;%</span></span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(apt <span class="sc">%in%</span> default_airport) <span class="sc">%&gt;%</span></span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">date =</span> <span class="fu">as.Date</span>(<span class="fu">paste</span>(an, mois, <span class="st">"01"</span>, <span class="at">sep=</span><span class="st">"-"</span>))</span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a>figure_ggplot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(trafic_aeroports) <span class="sc">+</span> <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> trafic))</span>
+<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-15"><a href="#cb28-15" aria-hidden="true" tabindex="-1"></a>figure_plotly <span class="ot">&lt;-</span> trafic_aeroports <span class="sc">%&gt;%</span></span>
+<span id="cb28-16"><a href="#cb28-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot_ly</span>(</span>
+<span id="cb28-17"><a href="#cb28-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="sc">~</span>date, <span class="at">y =</span> <span class="sc">~</span>trafic,</span>
+<span id="cb28-18"><a href="#cb28-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">text =</span> <span class="sc">~</span>apt_nom,</span>
+<span id="cb28-19"><a href="#cb28-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">hovertemplate =</span> <span class="fu">paste</span>(<span class="st">"&lt;i&gt;Aéroport:&lt;/i&gt; %{text}&lt;br&gt;Trafic: %{y}"</span>) ,</span>
+<span id="cb28-20"><a href="#cb28-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">type =</span> <span class="st">'scatter'</span>, <span class="at">mode =</span> <span class="st">'lines+markers'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<p>Nous proposons de le transformer en fonction, ce sera plus simple à intégrer ultérieurement dans notre application</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercice 3b: une fonction de production graphique
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Transformer le code ci-dessus en une fonction afin que</p>
+<ul>
+<li>les <em>inputs</em> soient les suivants: un <em>dataframe</em>, un aéroport à sélectionner</li>
+<li>la sortie soit notre figure <code>plotly</code></li>
+</ul>
+<p>Tester la fonction sur d’autres aéroports de la liste. Quand vous êtes satisfaits de celle-ci, déplacer la définition de cette fonction dans <code>R/figures.R</code></p>
+</div>
+</div>
+<details>
+<summary>
+Code de l’exercice
+</summary>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>plot_airport_line <span class="ot">&lt;-</span> <span class="cf">function</span>(df, selected_airport){</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  trafic_aeroports <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">trafic =</span> apt_pax_dep <span class="sc">+</span> apt_pax_tr <span class="sc">+</span> apt_pax_arr) <span class="sc">%&gt;%</span></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(apt <span class="sc">%in%</span> selected_airport) <span class="sc">%&gt;%</span></span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(</span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">date =</span> <span class="fu">as.Date</span>(<span class="fu">paste</span>(an, mois, <span class="st">"01"</span>, <span class="at">sep=</span><span class="st">"-"</span>))</span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a>  figure_plotly <span class="ot">&lt;-</span> trafic_aeroports <span class="sc">%&gt;%</span></span>
+<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">plot_ly</span>(</span>
+<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a>      <span class="at">x =</span> <span class="sc">~</span>date, <span class="at">y =</span> <span class="sc">~</span>trafic,</span>
+<span id="cb29-13"><a href="#cb29-13" aria-hidden="true" tabindex="-1"></a>      <span class="at">text =</span> <span class="sc">~</span>apt_nom,</span>
+<span id="cb29-14"><a href="#cb29-14" aria-hidden="true" tabindex="-1"></a>      <span class="at">hovertemplate =</span> <span class="fu">paste</span>(<span class="st">"&lt;i&gt;Aéroport:&lt;/i&gt; %{text}&lt;br&gt;Trafic: %{y}"</span>) ,</span>
+<span id="cb29-15"><a href="#cb29-15" aria-hidden="true" tabindex="-1"></a>      <span class="at">type =</span> <span class="st">'scatter'</span>, <span class="at">mode =</span> <span class="st">'lines+markers'</span>)</span>
+<span id="cb29-16"><a href="#cb29-16" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb29-17"><a href="#cb29-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(figure_plotly)</span>
+<span id="cb29-18"><a href="#cb29-18" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<p>Par la suite, nous pouvons ajouter la ligne suivante à notre fichier <code>main.R</code></p>
+</section>
+<section id="tableau-html-pour-afficher-des-données" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="tableau-html-pour-afficher-des-données"><span class="header-section-number">3.2</span> Tableau HTML pour afficher des données</h2>
+<ol start="4" type="1">
+<li>Faire une fonction</li>
+</ol>
+<p>Faire un tableauDT</p>
+<p>Préparer le code pour DT</p>
+<p>Appli4</p>
+<p>Faire un leaflet</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>aeroports <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv2</span>(<span class="st">"apt_localisation.csv"</span>)</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>aeroports <span class="ot">&lt;-</span> <span class="fu">st_as_sf</span>(aeroports, <span class="at">coords =</span> <span class="fu">c</span>(<span class="st">"Longitude"</span>, <span class="st">"Latitude"</span>), <span class="at">crs =</span> <span class="dv">4326</span>)</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>trafic_aeroports <span class="ot">&lt;-</span> aeroports <span class="sc">%&gt;%</span></span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(pax_apt, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"Code OACI"</span> <span class="ot">=</span> <span class="st">"apt"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">trafic =</span> apt_pax_dep <span class="sc">+</span> apt_pax_tr <span class="sc">+</span> apt_pax_arr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>palette <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"darkred"</span>, <span class="st">"forestgreen"</span>, <span class="st">"dodgerblue"</span>, <span class="st">"gold"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>trafic_aeroports <span class="ot">&lt;-</span> trafic_aeroports <span class="sc">%&gt;%</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">volume =</span> <span class="fu">ntile</span>(trafic, <span class="dv">4</span>)</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span></span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> palette[volume]</span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a>icons <span class="ot">&lt;-</span> <span class="fu">awesomeIcons</span>(</span>
+<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">icon =</span> <span class="st">'ios-close'</span>,</span>
+<span id="cb32-11"><a href="#cb32-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">iconColor =</span> <span class="st">'black'</span>,</span>
+<span id="cb32-12"><a href="#cb32-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">library =</span> <span class="st">'ion'</span>,</span>
+<span id="cb32-13"><a href="#cb32-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">markerColor =</span> trafic_aeroports<span class="sc">$</span>color</span>
+<span id="cb32-14"><a href="#cb32-14" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb32-15"><a href="#cb32-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-16"><a href="#cb32-16" aria-hidden="true" tabindex="-1"></a><span class="fu">leaflet</span>(trafic_aeroports) <span class="sc">%&gt;%</span> <span class="fu">addTiles</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb32-17"><a href="#cb32-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">addMarkers</span>(<span class="at">popup =</span> <span class="sc">~</span><span class="fu">paste0</span>(Nom, <span class="st">": "</span>, trafic))</span>
+<span id="cb32-18"><a href="#cb32-18" aria-hidden="true" tabindex="-1"></a>  <span class="co">#addAwesomeMarkers(icon=icons, label=~as.character(trafic))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Appli5 Préparer un premier shiny sans plotly &amp; leaflet</p>
+<p>Appli6 Ajouter à l’UI le plotly &amp; leaflet</p>
+<p>Appli7 Contrôle de l’environnement avec renv</p>
+
+
+</section>
+</section>
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>Ces fichiers ne sont pas générés manuellement. Ce sont des outils adaptés (<code>renv</code> pour <code>R</code>, <code>pip</code> pour <code>Python</code>) qui font ce travail de versionnage de l’environnement.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Si vous êtes peu familier avec ce type de fichiers, vous pouvez consulter la <a href="https://book.utilitr.org/03_Fiches_thematiques/Fiche_import_fichiers_plats.html">fiche <code>utilitR</code></a> sur le sujet<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>Si vous êtes peu familier avec les données géographiques, vous pouvez retenir l’idée qu’il s’agit de données traditionnelles auxquelles s’ajoute une dimension spatiale. Cette dernière vise à localiser les données sur la terre. La localisation se fait dans un espace à deux dimensions (espace cartésien) alors que notre planète est une sphère en trois dimensions. Le principe d’un système de projection est de faire ce passage en deux dimensions des positions. Le plus connu est le système GPS, qui est un héritier lointain de la représentation du monde par <a href="https://fr.wikipedia.org/wiki/G%C3%A9rard_Mercator">Mercator</a>. Ce système est connu sous le nom de WGS 84 et porte le code EPSG 4326. L’autre système à retenir est le Lambert 93 (code EPSG 2154) qui est la projection légale en France (celle-ci, <em>a contrario</em> du Mercator, ne déforme pas la France sur une carte). Pour en savoir plus sur les systèmes de représentation, les avantages et inconvénients de chacun, il existe de nombreuses ressources en ligne. Des éléments introductifs, et des démonstrations interactives, en lien avec la librairie <code>Geopandas</code> de <code>Python</code> sont disponibles <a href="https://pythonds.linogaliana.fr/content/manipulation/03_geopandas_intro.html#principe">ici</a>.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
