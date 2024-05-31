@@ -568,7 +568,7 @@ Le code complet pour répliquer cet exercice est donné ci-dessous.
 <summary>
 Code de l'exercice
 </summary>
-```{r}
+```{.r include="intermediates/exo3.R"}
 ```
 </details>
 
@@ -587,8 +587,16 @@ Tester sur d'autres aéroports de la liste
 :::
 
 ```{r}
-
+source("intermediates/exo3b.R")
 ```
+
+<details>
+<summary>
+Code de l'exercice
+</summary>
+```{.r include="intermediates/exo3b.R"}
+```
+</details>
 
 4. Faire une fonction
 
