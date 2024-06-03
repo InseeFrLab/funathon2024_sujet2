@@ -609,11 +609,41 @@ La première valorisation que nous intégrerons dans notre application est
 le modèle de figure ci-dessus. La deuxième sera un tableau
 permettant de visualiser certaines données directement dans le _dashboard_. 
 
+Pour le prochain exercice, vous pourrez utiliser ces objets
+
+```{r}
+#| echo: true 
+YEARS_LIST  <- as.character(2018:2022)
+MONTHS_LIST <- c(paste0("0", 1:9), 10:12)
+```
+
+
 ::: {.callout-note}
 ## Exercice 4: un beau tableau pour nos données
 
-DT ou GT ?
+Nous allons intégrer dans notre application deux tableaux de
+statistiques descriptives.
+
+1. Choisir un mois et une année
+à partir des objets `YEARS_LIST` et `MONTHS_LIST` pour faire
+un filtre sur le _dataframe_ `pax_apt_all`. Une fois
+que vous êtes satisfaits, transformer cela en
+fonction `create_data_from_input` prenant en argument un _dataframe_, 
+une année et un mois
+
+<details>
+<summary>
+Code de l'exercice
+</summary>
+```{.r include="R/divers_functions.R" start-line=1 end-line=6}
+```
+</details>
+
+
+2. 
+
 :::
+
 
 Faire un tableauDT
 
