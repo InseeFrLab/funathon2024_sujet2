@@ -1,8 +1,20 @@
-
 create_data_from_input <- function(data, years, months){
   data <- data %>%
     filter(mois %in% months, an %in% years)
   return(data)
+}
+
+summary_stat_airport <- function(data){
+  table2 <- data %>%
+    group_by(apt, apt_nom) %>%
+    summarise(
+      paxdep = round(sum(apt_pax_dep, na.rm = T),3),
+      paxarr = round(sum(apt_pax_arr, na.rm = T),3),
+      paxtra = round(sum(apt_pax_tr, na.rm = T),3)) %>%
+    arrange(desc(paxdep)) %>%
+    ungroup()
+  
+  return(table2)
 }
 
 summary_stat_liaisons <- function(data){
@@ -13,16 +25,4 @@ summary_stat_liaisons <- function(data){
     ) %>%
     ungroup()
   return(agg_data)
-}
-summary_stat_airport <- function(data){
-  table2 <- data %>%
-    group_by(apt, apt_nom) %>%
-    summarise(
-      paxdep = round(sum(apt_pax_dep, na.rm = T)/1000000,3),
-      paxarr = round(sum(apt_pax_arr, na.rm = T)/1000000,3),
-      paxtra = round(sum(apt_pax_tr, na.rm = T)/1000000,3)) %>%
-    arrange(desc(paxdep)) %>%
-    ungroup()
-  
-  return(table2)
 }
