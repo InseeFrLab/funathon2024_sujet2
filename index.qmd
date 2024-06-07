@@ -683,14 +683,8 @@ Code de l'exercice
 
 Nous avons maintenant tous les ingrédients pour faire un tableau de
 statistiques descriptives lisible et esthétique. Pour cela, nous allons
-utiliser le _package_ [`GT`](https://gt.rstudio.com/)
-
-::: {.callout-note}
-## Exercice 4b: un beau tableau (enfin !)
-
-1. Faire un tableau basique, sans aucune option
-2. Modifier l'ordre des colonnes
-:::
+utiliser le _package_ [`GT`](https://gt.rstudio.com/). Avant
+de créer cette table, nous allons créer une colonne supplémentaire:
 
 ```{r}
 #| echo: false
@@ -698,48 +692,93 @@ utiliser le _package_ [`GT`](https://gt.rstudio.com/)
 source("intermediates/exo4a.R")
 ```
 
-Question 1:
-
-```{r}
-gt(stats_aeroports)
-```
-
-Question 2:
-
-```{r}
-gt(stats_aeroports) %>%
-  cols_move(columns = "apt", after = "apt_nom")
-```
-
-Question 3:
-
-```{r}
-gt(stats_aeroports) %>%
-  cols_move(columns = "apt", after = "apt_nom") %>%
-  fmt_number(columns = starts_with("pax"), suffixing = TRUE)
-```
-
-Question 4
-
 ```{r}
 stats_aeroports_table <- stats_aeroports %>%
   mutate(name_clean = paste0(str_to_sentence(apt_nom), " _(", apt, ")_")
 ) %>%
 select(name_clean, everything())
-
-gt(stats_aeroports_table) %>%
-  cols_hide(columns = starts_with("apt")) %>%
-  fmt_markdown(columns = "name_clean") %>%
-  fmt_number(columns = starts_with("pax"), suffixing = TRUE)
 ```
 
-Question 5
+Celle-ci nous permettra, une fois mise en forme, d'avoir une colonne
+plus esthétique. 
+
+::: {.callout-note}
+## Exercice 4b: un beau tableau (enfin !)
+
+Les différentes questions vont permettre de construire et formatter
+progressivement notre tableau. Si vous êtes bloqués, les réponses
+sont ci-dessous dans des menus déroulants. 
+
+1. En premier lieu, utiliser `GT` pour faire un tableau basique sur le _dataframe_ `stats_aeroports_table`.
+N'utiliser
+aucune option, celles-ci vont être progressivement ajoutées. 
+2. Retirer les colonnes `apt` et	`apt_nom` de notre table. 
+
+<details>
+<summary>Il y a plusieurs
+manières de faire, voici un indice sur la "meilleure"
+</summary>
+Il est possible d'utiliser des fonctions de sélection de colonnes
+issues du _tidyverse_ dans `gt`, notamment la fonction `starts_with` (à ne pas
+confondre avec celle de `stringr`)
+</details>
+
+3. Formatter les colonnes numériques (pour la sélection des colonnes numériques, voir l'indice ci-dessus). 
+En consultant la documentation de `gt`, appliquer l'option qui permet de rendre plus concise la notation
+des milliers (K) et millions (M). 
+
+4. Utiliser `fmt_markdown` pour appliquer une mise en forme adaptée à la colonne `name_clean`
+5. Mettre en forme les noms de colonne (`cols_labels`), le titre (`tab_header`) et la couleur de la partie supérieure du tableau (`tab_style`), les notes (`tab_source_note`) pour avoir un tableau esthéthique et informatif
+6. Transformer la table en tableau interactif avec `opt_interactive`[^note-interactive]
+:::
+
+[^note-interactive]: Vous perdrez la mise en forme du _header_ du tableau qui n'est pas conciliable avec l'interactivité. 
+
+Les réponses aux différentes questions sont données de manière successives ci-dessous.
+La table finale, obtenue à l'issue de l'exercice est la suivante:
 
 ```{r}
-gt(stats_aeroports_table) %>%
-  cols_hide(columns = starts_with("apt")) %>%
-  fmt_markdown(columns = "name_clean") %>%
-  fmt_number(columns = starts_with("pax"), suffixing = TRUE) %>%
+#| code-fold: true
+#| code-summary: "Réponse question 1"
+#| output: false
+library(gt)
+table_aeroports <- gt(stats_aeroports_table)
+table_aeroports
+```
+
+```{r}
+#| code-fold: true
+#| code-summary: "Réponse question 2"
+#| output: false
+table_aeroports <- table_aeroports %>%
+  cols_hide(columns = starts_with("apt"))
+table_aeroports
+```
+
+```{r}
+#| code-fold: true
+#| code-summary: "Réponse question 3"
+#| output: false
+table_aeroports <- table_aeroports %>%
+  fmt_number(columns = starts_with("pax"), suffixing = TRUE)
+table_aeroports
+```
+
+
+```{r}
+#| code-fold: true
+#| code-summary: "Réponse question 4"
+#| output: false
+table_aeroports <- table_aeroports %>%
+  fmt_markdown(columns = "name_clean")
+table_aeroports
+```
+
+```{r}
+#| code-fold: true
+#| code-summary: "Réponse question 5"
+#| output: false
+table_aeroports <- table_aeroports %>%
   cols_label(
     name_clean = md("**Aéroport**"),
     paxdep = md("**Départs**"),
@@ -753,77 +792,110 @@ gt(stats_aeroports_table) %>%
   tab_style(
     style = cell_fill(color = "powderblue"),
     locations = cells_title()
-  )
+  ) %>%
+  tab_source_note(source_note = md("_Source: DGAC, à partir des données sur data.gouv.fr_"))
+  
+table_aeroports
 ```
-
-Question 6
 
 ```{r}
-gt(stats_aeroports_table) %>%
-  cols_hide(columns = starts_with("apt")) %>%
-  fmt_markdown(columns = "name_clean") %>%
-  fmt_number(columns = starts_with("pax"), suffixing = TRUE) %>%
-  cols_label(
-    name_clean = md("**Aéroport**"),
-    paxdep = md("**Départs**"),
-    paxarr = md("**Arrivée**"),
-    paxtra = md("**Transit**")
-  ) %>%
-  tab_header(
-    title = md("**Statistiques de fréquentation**"),
-    subtitle = md("Classement des aéroports")
-  ) %>%
-  tab_source_note(source_note = md("_Source: DGAC, à partir des données sur data.gouv.fr_")) %>%
+#| code-fold: true
+#| code-summary: "Réponse question 6"
+table_aeroports <- table_aeroports %>%
   opt_interactive()
+table_aeroports
 ```
 
   
-  
-  
-  
-Faire un tableauDT
+Nous proposons de transformer ce code en fonction, cela facilitera l'utilisation
+ultérieure de celui-ci dans notre application. 
 
-Préparer le code pour DT
+::: {.callout-note}
+## Exercice 4c (optionnel): transformer en fonction notre chaîne `gt`
 
-Appli4
+Cet exercice est optionnel. Transformer le code ci-dessus en fonction. 
+Mettre à jour `main.R` pour utiliser ceci dans votre application.
+:::
 
-Faire un leaflet
+<details>
+<summary>
+Code de `R/tables.R`
+</summary>
+```{.r include="R/tables.R"}
+```
+</details>
 
-```r
-aeroports <- readr::read_csv2("apt_localisation.csv")
+<details>
+<summary>
+Code de `main.R`
+</summary>
+```{.r include="intermediates/exo4c.R"}
+```
+</details>
 
-library(sf)
-aeroports <- st_as_sf(aeroports, coords = c("Longitude", "Latitude"), crs = 4326)
 
-trafic_aeroports <- aeroports %>%
-  inner_join(pax_apt, by = c("Code OACI" = "apt")) %>%
-  mutate(trafic = apt_pax_dep + apt_pax_tr + apt_pax_arr)
+## Carte des aéroports
+
+La dernière valorisation que nous allons intégrer est une carte interactive
+du trafic de nos aéroports. Cette carte va être assez basique. Si vous
+désirez mettre en oeuvre des visualisations plus complexes, vous pouvez
+tout à fait le faire. 
+
+
+::: {.callout-note}
+## Exercice 5: carte aérienne du trafic aéroportuaire
+
+
+:::
+
+
+```{r}
+selected_date <- as.Date("2018-01-01")
+trafic_date <- pax_apt_all %>%
+  mutate(
+    date = as.Date(paste(an, mois, "01", sep="-"))
+  ) %>%
+  filter(date == selected_date)
+trafic_aeroports <- airports_location %>%
+  inner_join(trafic_date, by = c("Code.OACI" = "apt"))
 ```
 
-```r
-palette <- c("darkred", "forestgreen", "dodgerblue", "gold")
+```{r}
+palette <- c("green", "blue", "red")
 ```
 
-```r
+```{r}
+library(leaflet)
+  
 trafic_aeroports <- trafic_aeroports %>%
   mutate(
-    volume = ntile(trafic, 4)
+    volume = ntile(trafic, 3)
 ) %>%
   mutate(
     color = palette[volume]
   )
   
+carte_interactive <- leaflet(trafic_aeroports) %>% addTiles() %>%
+  addMarkers(popup = ~paste0(Nom, ": ", trafic)) 
+```
+
+```{r}
 icons <- awesomeIcons(
-  icon = 'ios-close',
+  icon = 'plane',
   iconColor = 'black',
-  library = 'ion',
+  library = 'fa',
   markerColor = trafic_aeroports$color
 )
 
-leaflet(trafic_aeroports) %>% addTiles() %>%
-  addMarkers(popup = ~paste0(Nom, ": ", trafic))
-  #addAwesomeMarkers(icon=icons, label=~as.character(trafic))
+
+carte_interactive <- leaflet(trafic_aeroports) %>% addTiles() %>%
+  addAwesomeMarkers(
+  icon=icons[],
+  label=~paste0(Nom, "", " (",Code.OACI, ") : ", trafic, " voyageurs")
+)
+carte_interactive
 ```
+
 
 
 Appli5
