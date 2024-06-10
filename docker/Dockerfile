@@ -1,12 +1,13 @@
 ARG BASE_IMAGE=inseefrlab/onyxia-rstudio
 FROM $BASE_IMAGE
 
-WORKDIR /app
-
 # Clone repository
 RUN git clone https://github.com/InseeFrLab/funathon2024_sujet2 .
 
-RUN "cd funathon2024_sujet2 && Rscript -e 'renv::restore()'"
+WORKDIR /funathon2024_sujet2
+
+
+RUN "Rscript -e 'renv::restore()'"
 
 # Expose port where shiny app will broadcast
 ARG SHINY_PORT=3838
