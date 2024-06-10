@@ -6,6 +6,24 @@ on:
 name: Quarto Publish
 
 jobs:
+  test-intermediates:
+    runs-on: ubuntu-latest
+    container: inseefrlab/onyxia-rstudio
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.ref }}
+          repository: ${{github.event.pull_request.head.repo.full_name}}
+      - name: Render website
+        run: |
+          SCRIPT_DIR="intermediates"
+          for script in "$SCRIPT_DIR"/*.R; do
+            echo "Running $script"
+            Rscript "$script"
+          done
   build-deploy:
     runs-on: ubuntu-latest
     container: inseefrlab/onyxia-rstudio

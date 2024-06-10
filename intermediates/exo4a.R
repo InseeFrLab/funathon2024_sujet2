@@ -4,11 +4,13 @@ library(stringr)
 library(sf)
 library(ggplot2)
 library(plotly)
+library(leaflet)
 
 source("R/import_data.R")
 source("R/create_data_list.R")
 source("R/clean_dataframe.R")
 source("R/divers_functions.R")
+source("R/figures.R")
 
 YEARS_LIST  <- as.character(2018:2022)
 MONTHS_LIST <- c(paste0("0", 1:9), 10:12)
@@ -48,12 +50,5 @@ stats_liaisons  <- summary_stat_liaisons(
 
 # VALORISATIONS ----------------------------------------------
 
-figure_ggplot <- ggplot(trafic_aeroports) + geom_line(aes(x = date, y = trafic))
+figure_plotly <- plot_airport_line(trafic_aeroports,default_airport)
 
-
-figure_plotly <- trafic_aeroports %>%
-  plot_ly(
-    x = ~date, y = ~trafic,
-    text = ~apt_nom,
-    hovertemplate = paste("<i>Aéroport:</i> %{text}<br>Trafic: %{y}") ,
-    type = 'scatter', mode = 'lines+markers')

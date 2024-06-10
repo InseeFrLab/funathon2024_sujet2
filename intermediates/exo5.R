@@ -32,6 +32,8 @@ airports_location <- st_read(urls$geojson$airport)
 
 liste_aeroports <- unique(pax_apt_all$apt)
 default_airport <- liste_aeroports[1]
+selected_date <- as.Date("2018-01-01")
+
 
 # OBJETS NECESSAIRES A L'APPLICATION ------------------------
 
@@ -55,3 +57,8 @@ stats_liaisons  <- summary_stat_liaisons(
 figure_plotly <- plot_airport_line(trafic_aeroports,default_airport)
 
 table_airports <- create_table_airports(stats_aeroports)
+
+carte_interactive <- map_leaflet_airport(
+  pax_apt_all, airports_location,
+  selected_date = selected_date
+)
