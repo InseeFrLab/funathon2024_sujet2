@@ -34,4 +34,7 @@ trafic_aeroports <- pax_apt_all %>%
 
 # VALORISATIONS ----------------------------------------------
 
+figure_ggplot <- trafic_aeroports %>%
+  ggplot(.) + geom_line(aes(x = date, y = trafic))
+
 figure_plotly <- plot_airport_line(trafic_aeroports,default_airport)

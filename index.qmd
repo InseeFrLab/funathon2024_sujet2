@@ -534,7 +534,7 @@ source("intermediates/exo3.R")
 Enchaînement des opérations attendues à cette étape
 </summary>
 
-```{.r include="intermediates/exo3.R" end-line=10}
+```{.r include="intermediates/exo3.R" end-line=32}
 ```
 </details>
 
@@ -862,6 +862,10 @@ tout à fait le faire.
 Pour cet exercice, nous allons fixer une date pour prototyper notre 
 code. Cela nous facilitera la transformation ultérieure en fonction. 
 
+```{r}
+months <- 1
+years <- 2019
+```
 
 Voici également une palette de couleurs qui sera utile à la fin de l'exercice. 
 
