@@ -7,7 +7,7 @@ RUN git clone https://github.com/InseeFrLab/funathon2024_sujet2 .
 WORKDIR /funathon2024_sujet2
 
 
-RUN "Rscript -e 'renv::restore()'"
+RUN "Rscript -e \"renv::restore()\""
 
 # Expose port where shiny app will broadcast
 ARG SHINY_PORT=3838
