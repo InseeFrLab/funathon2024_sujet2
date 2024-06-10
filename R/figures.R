@@ -7,7 +7,7 @@ plot_airport_line <- function(df, selected_airport){
       date = as.Date(paste(anmois, "01", sep=""), format = "%Y%m%d")
     )
   
-  figure_plotly <- trafic_aeroports %>%
+  figure_plotly <- df %>%
     plot_ly(
       x = ~date, y = ~trafic,
       text = ~apt_nom,

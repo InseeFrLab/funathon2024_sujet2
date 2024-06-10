@@ -19,8 +19,7 @@ function(input, output) {
       )
     )
   })
-  
-  
+
   output$table <- render_gt(
     create_table_airports(table_liaisons())
   )
@@ -32,8 +31,8 @@ function(input, output) {
     )
   )
   
-  output$plotline <- renderPlotly(
-    plot_airport_line(pax_apt_all, input$input_airport)
+  output$lineplot <- renderPlotly(
+    plot_airport_line(pax_apt_all, input$select)
   )
 
 }
