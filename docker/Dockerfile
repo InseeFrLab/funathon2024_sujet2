@@ -1,4 +1,4 @@
-ARG BASE_IMAGE=inseefrlab/onyxia-rstudio
+ARG BASE_IMAGE=inseefrlab/onyxia-vscode-r
 FROM $BASE_IMAGE
 
 # Clone repository
