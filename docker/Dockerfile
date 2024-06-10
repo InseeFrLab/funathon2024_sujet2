@@ -4,6 +4,7 @@ FROM inseefrlab/onyxia-rstudio:r4.3.2-2024.02.13
 RUN git clone https://github.com/InseeFrLab/funathon2024_sujet2 .
 
 RUN cd /funathon2024_sujet2 && \
+  ls && \
   Rscript -e "renv::restore()"
 
 # Expose port where shiny app will broadcast
