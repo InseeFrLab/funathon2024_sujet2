@@ -26,3 +26,4 @@ summary_stat_liaisons <- function(data){
     ungroup()
   return(agg_data)
 }
+

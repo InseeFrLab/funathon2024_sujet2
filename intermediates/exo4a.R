@@ -13,7 +13,7 @@ source("R/divers_functions.R")
 source("R/figures.R")
 
 YEARS_LIST  <- as.character(2018:2022)
-MONTHS_LIST <- c(paste0("0", 1:9), 10:12)
+MONTHS_LIST <- 1:12
 year <- YEARS_LIST[1]
 month <- MONTHS_LIST[1]
 
@@ -37,7 +37,7 @@ trafic_aeroports <- pax_apt_all %>%
   mutate(trafic = apt_pax_dep + apt_pax_tr + apt_pax_arr) %>%
   filter(apt %in% default_airport) %>%
   mutate(
-    date = as.Date(paste(an, mois, "01", sep="-"))
+    date = as.Date(paste(anmois, "01", sep=""), format = "%Y%m%d")
   )
 
 stats_aeroports <- summary_stat_airport(

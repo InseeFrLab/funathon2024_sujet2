@@ -15,7 +15,7 @@ source("R/tables.R")
 source("R/figures.R")
 
 YEARS_LIST  <- as.character(2018:2022)
-MONTHS_LIST <- c(paste0("0", 1:9), 10:12)
+MONTHS_LIST <- 1:12
 year <- YEARS_LIST[1]
 month <- MONTHS_LIST[1]
 
@@ -32,7 +32,6 @@ airports_location <- st_read(urls$geojson$airport)
 
 liste_aeroports <- unique(pax_apt_all$apt)
 default_airport <- liste_aeroports[1]
-selected_date <- as.Date("2018-01-01")
 
 
 # OBJETS NECESSAIRES A L'APPLICATION ------------------------
@@ -41,7 +40,7 @@ trafic_aeroports <- pax_apt_all %>%
   mutate(trafic = apt_pax_dep + apt_pax_tr + apt_pax_arr) %>%
   filter(apt %in% default_airport) %>%
   mutate(
-    date = as.Date(paste(an, mois, "01", sep="-"))
+    date = as.Date(paste(anmois, "01", sep=""), format = "%Y%m%d")
   )
 
 stats_aeroports <- summary_stat_airport(
@@ -60,5 +59,5 @@ table_airports <- create_table_airports(stats_aeroports)
 
 carte_interactive <- map_leaflet_airport(
   pax_apt_all, airports_location,
-  selected_date = selected_date
+  month, year
 )

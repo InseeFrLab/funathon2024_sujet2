@@ -1,32 +1,38 @@
 function(input, output) {
   
-  output$texte <- renderText({
-    paste0("Pax in France - DGAC on data.gouv.fr")
-  })
   #create reactive dataframes which will be called below----
-  pax_apt = reactive({
+  # pax_apt = reactive({
+  #   return(
+  #     summary_stat_airport(
+  #       create_data_from_input(pax_apt_all, input$yea, input$mon)
+  #     )
+  #   )
+  # })
+  table_liaisons = reactive({
     return(
-      create_data_from_input(pax_apt_all, input$yea, input$mon)
+      summary_stat_airport(
+        create_data_from_input(
+          pax_apt_all,
+          year(input$date),
+          month(input$date)
+        )
+      )
     )
   })
-  pax_lsn = reactive({
-    return(
-      create_data_from_input(pax_lsn_all, input$yea, input$mon)
-      )
-  })
   
-  #Table1 pax by faisceau from lsn----
-  output$table1 <- DT::renderDataTable(
-    DT::datatable(
-      summary_stat_liaisons(pax_lsn())
-      )
+  output$table <- render_gt(
+    create_table_airports(table_liaisons())
   )
   
-
-  #Table2 pax by apt airport----
-  output$table2 = DT::renderDataTable(
-      DT::datatable(
-        summary_stat_airport(pax_apt())
-        )
+  output$carte <- renderLeaflet(
+    map_leaflet_airport(
+      pax_apt_all, airports_location,
+      month, year
     )
+  )
+  
+  output$figure <- renderPlotly(
+    plot_airport_line(trafic_aeroports, input$input_airport)
+  )
+
 }

@@ -4,7 +4,7 @@ plot_airport_line <- function(df, selected_airport){
     mutate(trafic = apt_pax_dep + apt_pax_tr + apt_pax_arr) %>%
     filter(apt %in% selected_airport) %>%
     mutate(
-      date = as.Date(paste(an, mois, "01", sep="-"))
+      date = as.Date(paste(anmois, "01", sep=""), format = "%Y%m%d")
     )
   
   figure_plotly <- trafic_aeroports %>%
@@ -18,15 +18,15 @@ plot_airport_line <- function(df, selected_airport){
 }
 
 
-map_leaflet_airport <- function(df, airports_location, selected_date){
+map_leaflet_airport <- function(df, airports_location, months, years){
   
   palette <- c("green", "blue", "red")
 
   trafic_date <- df %>%
     mutate(
-      date = as.Date(paste(an, mois, "01", sep="-"))
+      date = as.Date(paste(anmois, "01", sep=""), format = "%Y%m%d")
     ) %>%
-    filter(date == selected_date)
+    filter(mois %in% months, an %in% years)
   trafic_aeroports <- airports_location %>%
     inner_join(trafic_date, by = c("Code.OACI" = "apt"))
   

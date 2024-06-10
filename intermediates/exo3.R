@@ -28,7 +28,7 @@ trafic_aeroports <- pax_apt_all %>%
   mutate(trafic = apt_pax_dep + apt_pax_tr + apt_pax_arr) %>%
   filter(apt %in% default_airport) %>%
   mutate(
-    date = as.Date(paste(an, mois, "01", sep="-"))
+    date = as.Date(paste(anmois, "01", sep=""), format = "%Y%m%d")
   )
 
 

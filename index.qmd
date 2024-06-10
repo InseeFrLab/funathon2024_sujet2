@@ -270,6 +270,13 @@ Aide si vous êtes bloqué sur cette question
 
 Pour extraire des éléments d'une chaine de caractère à partir de la position, il est recommandé d'utiliser la fonction `str_sub` du package `stringr`. Pour créer de nouvelles colonnes, il est recommandé d'utiliser la fonction `mutate` du package dplyr. 
 
+::: {.callout-warning}
+## Conseil pour se faciliter la vie ultérieurement
+
+Il est recommandé d'utiliser `str_remove` pour retirer les zéros en début de mois
+qui pourront nous créer des difficultés ultérieurement
+:::
+
 Si vous êtes toujours bloqué, la solution est donnée plus bas 👇
 
 </details>
@@ -625,7 +632,7 @@ Pour le prochain exercice, vous pourrez utiliser ces objets
 ```{r}
 #| echo: true 
 YEARS_LIST  <- as.character(2018:2022)
-MONTHS_LIST <- c(paste0("0", 1:9), 10:12)
+MONTHS_LIST <- 1:12
 ```
 
 
@@ -855,9 +862,6 @@ tout à fait le faire.
 Pour cet exercice, nous allons fixer une date pour prototyper notre 
 code. Cela nous facilitera la transformation ultérieure en fonction. 
 
-```{r}
-selected_date <- as.Date("2018-01-01")
-```
 
 Voici également une palette de couleurs qui sera utile à la fin de l'exercice. 
 
@@ -869,7 +873,7 @@ palette <- c("green", "blue", "red")
 ## Exercice 5: carte aérienne du trafic aéroportuaire
 
 1. Créer un _dataframe_ `trafic_date` en ne conservant que les observations
-de `pax_apt_all` égales à `selected_date`. Utiliser celui-ci en faisant
+de `pax_apt_all` égales à un certain mois et année (vous pouvez vous inspirer d'un `filter` fait précédemment). Utiliser celui-ci en faisant
 une jointure avec `airports_location` par le biais des variables, respectivement,
 `Code.OACI` et `apt`. Nommer ce _dataframe_ `trafic_aeroports`
 2. A partir de l'[exemple de démarrage de `leaflet`](https://rstudio.github.io/leaflet/articles/markers.html),
@@ -903,9 +907,9 @@ et non `icon = icons`.
 #| code-summary: "Question 1"
 trafic_date <- pax_apt_all %>%
   mutate(
-    date = as.Date(paste(an, mois, "01", sep="-"))
+    date = as.Date(paste(anmois, "01", sep=""), format = "%Y%m%d")
   ) %>%
-  filter(date == selected_date)
+  filter(mois %in% months, an %in% years)
 trafic_aeroports <- airports_location %>%
   inner_join(trafic_date, by = c("Code.OACI" = "apt"))
 ```
