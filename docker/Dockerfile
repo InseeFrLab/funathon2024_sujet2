@@ -10,5 +10,7 @@ ARG SHINY_PORT=3838
 EXPOSE $SHINY_PORT
 RUN echo "local({options(shiny.port = ${SHINY_PORT}, shiny.host = '0.0.0.0')})" >> /usr/local/lib/R/etc/Rprofile.site
 
+WORKDIR /funathon2024_sujet2
+
 # Endpoint
-CMD ["Rscript", "-e", "myshinyapp::runApp()"]
+CMD ["Rscript", "-e", "runApp()"]
