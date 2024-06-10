@@ -20,7 +20,7 @@ source("R/figures.R")
 
 # Global variables ---------------------------
 
-YEARS_LIST <- as.character(2018:2022)
+YEARS_LIST <- 2018:2022
 MONTHS_LIST = 1:12
 
 # Load data ----------------------------------

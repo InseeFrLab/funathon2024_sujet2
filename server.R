@@ -20,6 +20,7 @@ function(input, output) {
     )
   })
   
+  
   output$table <- render_gt(
     create_table_airports(table_liaisons())
   )
@@ -27,12 +28,12 @@ function(input, output) {
   output$carte <- renderLeaflet(
     map_leaflet_airport(
       pax_apt_all, airports_location,
-      month, year
+      month(input$date), year(input$date)
     )
   )
   
-  output$figure <- renderPlotly(
-    plot_airport_line(trafic_aeroports, input$input_airport)
+  output$plotline <- renderPlotly(
+    plot_airport_line(pax_apt_all, input$input_airport)
   )
 
 }

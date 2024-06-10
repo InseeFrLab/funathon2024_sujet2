@@ -33,7 +33,7 @@ ui <- page_navbar(
       card(leafletOutput("carte")),
       card(card_header("Fréquentation d'un aéroport", class = "bg-dark"),
            input_airport,
-           plotlyOutput("figure")
+           plotlyOutput("lineplot")
           ),
       col_widths = c(12,12)
     ),
