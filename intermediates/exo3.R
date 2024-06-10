@@ -1,6 +1,28 @@
+library(readr)
 library(dplyr)
-library(ggplot2)
+library(stringr)
+library(sf)
 library(plotly)
+
+source("R/import_data.R")
+source("R/create_data_list.R")
+source("R/clean_dataframe.R")
+source("R/figures.R")
+
+
+# Load data ----------------------------------
+urls <- create_data_list("./sources.yml")
+
+
+pax_apt_all <- import_airport_data(unlist(urls$airports))
+pax_cie_all <- import_compagnies_data(unlist(urls$compagnies))
+pax_lsn_all <- import_liaisons_data(unlist(urls$liaisons))
+
+airports_location <- st_read(urls$geojson$airport)
+
+liste_aeroports <- unique(pax_apt_all$apt)
+default_airport <- liste_aeroports[1]
+
 
 trafic_aeroports <- pax_apt_all %>%
   mutate(trafic = apt_pax_dep + apt_pax_tr + apt_pax_arr) %>%
@@ -9,12 +31,7 @@ trafic_aeroports <- pax_apt_all %>%
     date = as.Date(paste(an, mois, "01", sep="-"))
   )
 
-figure_ggplot <- ggplot(trafic_aeroports) + geom_line(aes(x = date, y = trafic))
 
+# VALORISATIONS ----------------------------------------------
 
-figure_plotly <- trafic_aeroports %>%
-  plot_ly(
-    x = ~date, y = ~trafic,
-    text = ~apt_nom,
-    hovertemplate = paste("<i>Aéroport:</i> %{text}<br>Trafic: %{y}") ,
-    type = 'scatter', mode = 'lines+markers')
+figure_plotly <- plot_airport_line(trafic_aeroports,default_airport)

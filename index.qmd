@@ -590,9 +590,9 @@ déplacer la définition de cette fonction dans `R/figures.R`
 
 <details>
 <summary>
-Code de l'exercice
+Fichier `R/figures.R` à l'issue de cet exercice
 </summary>
-```{.r include="R/figures.R" end-line="18"}
+```{.r include="R/figures.R" end-line="18" filename="R/figures.R"}
 ```
 </details>
 
@@ -602,6 +602,17 @@ Par la suite, nous pouvons ajouter la ligne suivante à notre fichier `main.R`
 #| output: false
 source("R/figures.R")
 ```
+
+et utiliser cette fonction à la fin du fichier. 
+
+<details>
+<summary>
+Fichier `main.R` à l'issue de cet exercice
+</summary>
+```{.r include="intermediates/exo3.R" filename="main.R"}
+```
+</details>
+
 
 ## Tableau HTML pour afficher des données
 
@@ -821,7 +832,7 @@ Mettre à jour `main.R` pour utiliser ceci dans votre application.
 <summary>
 Code de `R/tables.R`
 </summary>
-```{.r include="R/tables.R"}
+```{.r include="R/tables.R" filename="R/tables.R"}
 ```
 </details>
 
@@ -829,7 +840,7 @@ Code de `R/tables.R`
 <summary>
 Code de `main.R`
 </summary>
-```{.r include="intermediates/exo4c.R"}
+```{.r include="intermediates/exo4c.R" filename="main.R"}
 ```
 </details>
 
@@ -961,7 +972,7 @@ définir `selected_date` dans votre script.
 <summary>
 Code de `R/figures.R` à reprendre
 </summary>
-```{.r include="R/figures.R" start-line="20"}
+```{.r include="R/figures.R" start-line="20" filename="R/figures.R (fin du fichier)"}
 ```
 </details>
 
@@ -969,7 +980,7 @@ Code de `R/figures.R` à reprendre
 <summary>
 Code de `intermediates/exo5.R` à reprendre
 </summary>
-```{.r include="intermediates/exo5.R" start-line="20"}
+```{.r include="intermediates/exo5.R" start-line="20" filename="main.R"}
 ```
 </details>
 

@@ -22,7 +22,7 @@ jobs:
           Rscript -e "renv::restore()"
           SCRIPT_DIR="intermediates"
           for script in "$SCRIPT_DIR"/*.R; do
-            echo "Running $script"
+            echo "---------- Running $script"
             Rscript "$script"
           done
   build-deploy:
