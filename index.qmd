@@ -14,19 +14,23 @@ filters:
 
 # Introduction {.unnumbered}
 
+## Objectif
+
 L'objectif de ce tutoriel est d'amener, pas à pas, à la conception
-voire à la mise à disposition d'un tableau de bord
+voire à la mise à disposition d'un tableau de bord (_dashboard_)
 du trafic aérien avec {{< fa brands r-project >}}.
-Une démonstration de cette application est disponible à l'adresse <>.
+Une démonstration de cette application est disponible à l'adresse <https://rplane-dashboard.kub.sspcloud.fr/>.
 
 
-L'application interactive proposée présentera un nombre de fonctionnalités
-limitées afin de se concentrer sur la démarche. L'objectif est de construire
+Afin de se concentrer sur la démarche, cette application interactive
+présentera un nombre limité de fonctionnalités
+limitées. L'objectif est de construire
 progressivement celle-ci en suivant les étapes logiques du déroulement d'un
 projet de développement d'application interactive: découverte et exploration des données, création de statistiques
 descriptives et de visualisations simples sur un jeu de données, 
 extension du nombre de visualisations accessibles par la création d'une application. Ce tutoriel est également l'occasion de découvrir quelques
-bonnes pratiques de programmation avec `R` afin de rendre les projets plus
+bonnes pratiques de programmation avec {{< fa brands r-project >}}
+afin de rendre les projets plus
 fiables, évolutifs et lisibles. 
 
 Les exercices de conception pas à pas de l'application s'adressent aussi bien à des
@@ -42,6 +46,15 @@ ingrédients dans l'application que vous développez.
 :::
 
 
+## Pourquoi faire une application interactive ?
+
+Cette question peut apparaître naive. Pourtant, elle mérite d'être posée 
+car elle permet de réfléchir à la cible de l'application, 
+
+
+
+Elle est néanmoins fondamentale car
+elle définit la nature de la 
 
 
 # Exploration des données de trafic aérien
