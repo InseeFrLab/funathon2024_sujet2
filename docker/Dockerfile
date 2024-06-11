@@ -4,7 +4,7 @@ FROM inseefrlab/onyxia-rstudio:r4.3.2-2024.02.13
 ADD global.R .
 ADD ui.R .
 ADD server.R .
-ADD sources.yaml .
+ADD sources.yml .
 ADD renv.lock .
 ADD renv .
 ADD R .
