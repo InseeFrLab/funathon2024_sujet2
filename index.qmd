@@ -10,21 +10,18 @@ filters:
 ```
 
 
-![](img/cockpit.png){width="25%" fig-align="center"}
-
-# Introduction {.unnumbered}
+# Introduction
 
 ## Objectif
 
 L'objectif de ce tutoriel est d'amener, pas à pas, à la conception
 voire à la mise à disposition d'un tableau de bord (_dashboard_)
 du trafic aérien avec {{< fa brands r-project >}}.
-Une démonstration de cette application est disponible à l'adresse <https://rplane-dashboard.kub.sspcloud.fr/>.
+Une démonstration de cette application est disponible à l'adresse <https://rplane-dashboard.kub.sspcloud.fr/>. Ce tutoriel est également l'occasion d'apprendre quelques bonnes pratiques pour les projets {{< fa brands r-project >}} et {{< fa brands python >}}.
 
 
 Afin de se concentrer sur la démarche, cette application interactive
-présentera un nombre limité de fonctionnalités
-limitées. L'objectif est de construire
+présentera un nombre limité de fonctionnalités. L'objectif est de construire
 progressivement celle-ci en suivant les étapes logiques du déroulement d'un
 projet de développement d'application interactive: découverte et exploration des données, création de statistiques
 descriptives et de visualisations simples sur un jeu de données, 
@@ -55,21 +52,75 @@ elle guide les choix techniques ultérieurs et la répartition des tâches entre
 les différents profils pouvant intervenir dans la vie du projet s'il est mis en
 production (statisticien ou _data scientist_, équipes informatiques...). 
 
+En général, on fait de la visualisation de données car les sources de données
+exploitées présentent tellement de dimensions pouvant intéresser un utilisateur
+qu'il est plus pertinent de le laisser explorer les données que de définir
+pour lui les statistiques à mettre en avant. L'interactivité permise par les sites
+web est particulièrement adaptée pour cela: le fait d'afficher ou masquer
+des visualisations en fonction de choix de l'utilisateur
+évite de noyer l'information par rapport à des supports figés.
+
 Les _frameworks_ `Shiny` ({{< fa brands r-project >}}),
 `Streamlit` ou `Dash` ({{< fa brands python >}}) permettent de rapidement
-mettre en oeuvre des valorisations intéressantes. Pour une phase de construction
-d'un prototype, c'est un choix technique intéressant.  
-Le partage
-de celles-ci, au-delà de partage d'écran, est moins évident car cela 
-fait appel à des notions informatiques qui dépassent le champ de compétence
-des statisticiens ou _data scientists_. Pour un projet amené à être partagé
-à une audience large, sans les compétences techniques pour faire tourner elle-même
-le code, ceci est un critère à prendre en considération. D'autres solutions techniques,
-plus simple à mettre en oeuvre, comme les sites web statiques
+mettre en oeuvre ce type de site web. Pour une phase de construction
+d'un prototype, c'est un choix technique intéressant qui peut provoquer l'effet
+_wahou_ attendu pour lancer le projet à plus grande échelle. En effet, ces solutions
+techniques permettent, avec les outils bien connus des praticiens de la donnée, {{< fa brands r-project >}} ou {{< fa brands python >}} principalement, de créer rapidement un site web fonctionnel, ergonomique et effectuant des opérations en fonction d'actions de l'utilisateur
+sur la page web. Tout ceci sans avoir à maîtriser des notions complexes de
+développement web. 
+
+Néanmoins, passée cette phase d'expérimentation,
+le partage
+de ces applications, au-delà d'un partage d'écran pour des démonstrations,
+est moins évident. C'est parce que la connaissance de ces notions complexes qui permettent le bon fonctionnement d'un site web et dont la maîtrise n'est pas nécessaire lorsqu'on se lance dans la construction du site deviennent utiles passée la phase d'expérimentation. 
+Celles-ci dépassent néanmoins le champ de compétence
+des statisticiens ou _data scientists_. 
+
+Autrement dit, si le projet a l'ambition d'être partagé
+à une audience large qui n'a pas les compétences techniques pour faire tourner elle-même
+le code, il convient de prendre en compte le fait qu'il faudra dans l'équipe projet
+des compétences de développement web. Si le projet est expérimental, c'est moins un problème: `Shiny`, `Dash` ou `Streamlit` permettront d'avoir rapidement un prototype viable. 
+
+Il existe heureusement des solutions techniques plus simples à mettre en oeuvre que `Shiny`,
+`Streamlit` ou `Dash`. Les sites web statiques font partie de cet
+éventail des possibles et représentent souvent une alternative pertinente aux applications interactives à condition qu'ils soient bien pensés. 
+Ils sont notamment pertinents pour les applications de visualisation
+de données où cette dernière est déjà préparée en amont. Avoir un serveur `R` ou `Python`
+se justifie en effet si des étapes complexes de structuration de données interviennent. Néanmoins, si celles-ci ne sont pas nécessaires, un
+simple enrobage avec un constructeur de site comme `Quarto` peut suffire, à condition
+que
+les productions graphiques ne soient pas trop complexes à créer. Pour des sites faisant intervenir des interactions complexes entre actions d'un utilisateur (bouton, menu déroulant, etc. ) et
+affichage, il faudra recourir à du  `Javascript` (technologie utilisée par les sites spécialisés dans la _dataviz_), ce qui fait, à nouveau, appel à des compétences qui dépassent celles des _data scientists_ ou statisticiens classiques. 
+
+En résumé, les éléments ci-dessus ont vocation à servir de mise en garde. `Shiny`, `Dash` ou `Streamlit` sont d'excellents outils techniques lorsqu'ils sont utilisés à bon escient. Néanmoins, leur simplicité d'usage ne doit pas amener à oublier de se poser des questions vitales comme celui du cycle de vie du projet, du public cible ou encore de la compétence des équipes amenées à le maintenir s'il perdure au-delà d'une phase d'expérimentation.
+
+::: {.callout-warning collapse="true"}
+## Site statique vs application réactive
+
+La solution que nous allons proposer 
+pour les sites statiques, `Quarto` associé
+à `Github Pages`, peut être utilisée dans le cadre des parcours 
+_"rapport reproductible"_ ou _"dashboard / application interactive"_. 
+
+La distinction principale entre ces deux approches est qu'elles
+s'appuient sur des serveurs différents. Un site statique repose
+sur un serveur web là où `Streamlit` s'appuie sur 
+serveur classique en _backend_. La différence principale
+entre ces deux types de serveurs
+réside principalement dans leur fonction et leur utilisation:
+
+- Un __serveur web__ est spécifiquement conçu pour stocker, traiter et livrer des pages web aux clients. Cela inclut des fichiers HTML, CSS, JavaScript, images, etc. Les serveurs web écoutent les requêtes HTTP/HTTPS provenant des navigateurs des utilisateurs et y répondent en envoyant les données demandées.
+- Un **serveur _backend_** classique est conçu pour effectuer des opérations en réponse à un _front_, en l'occurrence une page web. 
+Dans le contexte d'une application `Streamlit` (resp. `Shiny`), il s'agit d'un serveur avec l'environnement `Python` (resp. `R`) _ad hoc_ pour
+exécuter le code nécessaire à répondre à toute action d'un utilisateur de l'application. 
+
+:::
+
 
 
 # Exploration des données de trafic aérien
 
+TO DO: expliquer la démarche
 
 ## Préliminaire: récupérer le projet squelette avec `Git` {{< fa brands git-alt >}}
 
@@ -88,9 +139,12 @@ sur le bouton suivant
 
 Si vous avez utilisé le lien de lancement rapide mis à disposition
 sur la page [inseefrlab.github.io/funathon2024/](https://inseefrlab.github.io/funathon2024/)
-ou ci-dessus, 
-vous pouvez sauter l'étape de récupération du modèle de projet avec `Git`, cela
+ou ci-dessus ☝️, 
+vous pouvez sauter l'étape de récupération du modèle de projet avec `Git` {{< fa brands git-alt >}}, cela
 a été fait automatiquement lors de la création de votre environnement `RStudio`. 
+Cela ne vous dispense d'ailleurs pas de faire du `Git` tout au long du tutoriel,
+c'est une bonne pratique, même sur
+des projets ponctuels ou vous êtes seuls à travailler. 
 
 ::: {.callout-note collapse="true"}
 ## Récupérer le projet si vous n'avez pas utilisé le bouton proposé
@@ -156,7 +210,7 @@ Les fichiers `server.R` et `ui.R` constituent le coeur de notre application
 `Shiny`. Ils représentent, respectivement, le moteur de calcul (le serveur)
 et l'interface utilisateur de notre application. Le fichier `global.R` stocke
 un certain nombre d'objets utiles à l'application mais qui n'ont pas besoin
-d'être recalculé à chaque action sur l'interface graphique. 
+d'être recalculé à chaque action sur l'interface graphique. Nous allons progressivement construire ces fichiers pendant les différents exercices.
 
 
 ## Installer les _packages_ nécessaires pour ce tutoriel
@@ -195,23 +249,58 @@ consacre un chapitre au sujet.
 
 ### Créer l'environnement
 
-L'intérêt d'utiliser `renv` est que recréer l'environnement nécessaire
-au bon fonctionnement de l'application est très simple avec la commande:
+Si vous avez déjà tenté de partager un code qui fonctionnait chez vous,
+il est presque certain que la personne ayant voulu le réutiliser a rencontré
+une erreur si elle a tenté de le faire tourner. C'est tout à fait normal car
+vous avez distribué votre code, éventuellement vos données, mais pas le troisième
+pilier de l'image précédente, à savoir la configuration de l'environnement dans lequel votre code fonctionnait. La solution la plus fiable, mais peu pratique, serait de donner votre ordinateur à la personne qui tente de réutiliser votre code. En livrant votre ordinateur, vous fournissez votre environnement de travail mais également beaucoup d'éléments supplémentaires qui ne sont pas indispensables à l'application.
+
+Une solution plus simple est de fournir les spécifications qui ont permis à votre
+code de fonctionner. Dans un monde idéal, il s'agit de fournir la liste
+des _packages_ et leur version. Si la personne à qui vous partagez votre code et vos données a cette même liste de versions de _packages_, et pas de _packages_ supplémentaires venant polluer l'environnement, les chances d'avoir la même application que vous sont très élevées. 
+
+`renv` est un gestionnaire de _packages_ qui permet de faire ces deux opérations:
+
+1. Enregistrer la liste de _packages_ après avoir fait tourné un code
+2. Restaurer l'environnement à partir de cette liste
+
+En l'occurrence, pour vous, l'important est le second point: pouvoir recréer l'environnement nécessaire
+au bon fonctionnement de l'application. Ceci est très simple grâce à la commande
 
 ```r
 renv::restore()
 ```
 
+Cette commande doit être lancée depuis la console `R` ouverte dans le projet qui
+a été récupéré. L'environnement créé n'est pas figé. 
 Il est tout à fait possible, ensuite, d'installer des _packages_ supplémentaires
 par le biais de `install.packages`. L'environnement proposé par notre fichier
 `renv.lock` est le minimum
 requis pour reproduire l'application mais ce n'est pas un environnement figé.
 Si vous ajoutez des _packages_ utiles pour votre application, avant la phase de mise en production, n'oubliez pas
-de faire `renv::snapshot()` pour mettre à jour le fichier `renv.lock`. 
+de faire `renv::snapshot()` pour mettre à jour le fichier `renv.lock` (c'est le point 1. évoqué précédemment). 
+
+
+::: {.callout-warning collapse="true"}
+## Ce que `renv` évite
+
+On retrouve parfois sur internet un code similaire à celui-ci :
+
+```r
+# A ne pas reproduire chez vous 😨
+if (!requireNamespace("dplyr", quietly = TRUE)) {
+  install.packages("dplyr")
+}
+```
+
+C'est une gestion artisanale de l'environnement qui n'est pas conseillée. `renv` sera plus simple et
+plus fiable.
+
+:::
 
 Maintenant que nous disposons d'un environnement fonctionnel, 
 nous pouvons avancer sur la conception du projet. La première étape est d'explorer
-les jeux de données que nous utiliserons dans l'application
+les jeux de données que nous utiliserons dans l'application.
 
 # Récupérer les données
 
@@ -223,7 +312,23 @@ Notre application utilisera quatres sources différentes:
 - Le trafic pour différentes compagnies (format CSV)
 - Les localisations des aéroports (format geojson)
 
+Une bonne pratique, lorsqu'on utilise plusieurs sources,
+est de lister celles-ci dans un fichier `YAML` plutôt que de les inscrire
+en brut dans le code. Ce dernier sera plus lisible grâce à cette approche.
+
+<details>
+<summary>
+
+Voir le fichier `sources.yml`
+
+</summary>
+```{.yaml include="sources.yml" filename="sources.yml"}
+```
+</details>
+
+
 ## Importer la liste des sources disponibles
+
 
 ::: {.callout-note collapse="false" icon=false}
 ## `<i class="bi bi-book"></i>`{=html} Exercice 1: lire les sources dans {{< fa brands r-project >}}
@@ -238,7 +343,7 @@ prenant un argument `source_file` et renvoyant cette liste.
 
 <details>
 <summary>
-Voir la solution
+Voir la solution à cet exercice
 </summary>
 ```{.r include="R/create_data_list.R"}
 ```
@@ -1017,11 +1122,19 @@ Code de `intermediates/exo5.R` à reprendre
 </details>
 
 
-Appli5
+# Création de l'application 
+
+Maintenant tous les ingrédients sont là pour transformer cette chaîne en application
+interactive. 
+
+::: {.callout-note collapse="false" icon=false}
+## `<i class="bi bi-book"></i>`{=html} Exercice 6: création de l'application
+
+1. Créer le fichier `global.R` en ne conservant que les lignes jusqu'à la création (incluse)
+de l'objet `trafic_aeroports`
+:::
+
 Préparer un premier shiny sans plotly & leaflet
 
-Appli6
-Ajouter à l'UI le plotly & leaflet
 
-Appli7
-Contrôle de l'environnement avec renv
+# Mise à disposition
