@@ -18,7 +18,7 @@
     "href": "index.html#pourquoi-faire-une-application-interactive",
     "title": "Un tableau de bord du trafic aérien avec  ou ",
     "section": "0.2 Pourquoi faire une application interactive ?",
-    "text": "0.2 Pourquoi faire une application interactive ?\nCette question peut apparaître naive. Pourtant, elle mérite d’être posée car elle permet de réfléchir à la cible de l’application,\nElle est néanmoins fondamentale car elle définit la nature de la"
+    "text": "0.2 Pourquoi faire une application interactive ?\nCette question peut apparaître naive. Pourtant, elle mérite d’être posée car elle permet de réfléchir à l’objectif de l’application et à son public cible. Cette réflexion devrait être menée systématiquement car elle guide les choix techniques ultérieurs et la répartition des tâches entre les différents profils pouvant intervenir dans la vie du projet s’il est mis en production (statisticien ou data scientist, équipes informatiques…).\nElle est néanmoins fondamentale car elle définit la nature de la"
   },
   {
     "objectID": "index.html#préliminaire-récupérer-le-projet-squelette-avec-git-fa-brands-git-alt",
