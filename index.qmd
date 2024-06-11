@@ -1223,4 +1223,4 @@ Cette application était un squelette minimal d'application. N'hésitez pas à c
 :::
 
 
-# Mise à disposition
+# Partager cette application: une ouverture vers la mise en production
