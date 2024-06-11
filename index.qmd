@@ -49,7 +49,11 @@ ingrédients dans l'application que vous développez.
 ## Pourquoi faire une application interactive ?
 
 Cette question peut apparaître naive. Pourtant, elle mérite d'être posée 
-car elle permet de réfléchir à la cible de l'application, 
+car elle permet de réfléchir à l'objectif de l'application et à son
+public cible. Cette réflexion devrait être menée systématiquement car
+elle guide les choix techniques ultérieurs et la répartition des tâches entre
+les différents profils pouvant intervenir dans la vie du projet s'il est mis en
+production (statisticien ou _data scientist_, équipes informatiques...). 
 
 
 

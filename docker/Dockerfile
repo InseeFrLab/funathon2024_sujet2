@@ -15,4 +15,4 @@ EXPOSE $SHINY_PORT
 RUN echo "local({options(shiny.port = ${SHINY_PORT}, shiny.host = '0.0.0.0')})" >> /usr/local/lib/R/etc/Rprofile.site
 
 # Set init.sh as the entrypoint
-ENTRYPOINT ["init.sh"]
+CMD ["init.sh"]
