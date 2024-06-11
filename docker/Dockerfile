@@ -14,6 +14,7 @@ ARG SHINY_PORT=3838
 EXPOSE $SHINY_PORT
 RUN echo "local({options(shiny.port = ${SHINY_PORT}, shiny.host = '0.0.0.0')})" >> /usr/local/lib/R/etc/Rprofile.site
 
+RUN Rscript -e "renv::restore()"
 
 # Endpoint
 CMD ["Rscript", "-e", "shiny::runApp()"]
