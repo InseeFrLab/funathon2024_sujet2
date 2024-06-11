@@ -7,7 +7,7 @@ ADD server.R .
 ADD sources.yml .
 ADD renv.lock .
 ADD renv .
-ADD R .
+ADD R R/
 
 # Expose port where shiny app will broadcast
 ARG SHINY_PORT=3838
