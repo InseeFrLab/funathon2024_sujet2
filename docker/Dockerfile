@@ -13,4 +13,4 @@ RUN echo "local({options(shiny.port = ${SHINY_PORT}, shiny.host = '0.0.0.0')})" 
 WORKDIR /funathon2024_sujet2
 
 # Endpoint
-CMD ["Rscript", "-e", "runApp()"]
+CMD ["Rscript", "-e", "shiny::runApp()"]
