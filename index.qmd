@@ -1212,5 +1212,15 @@ Code de `server.R` à reprendre
 
 :::
 
+::: {.callout-note collapse="false" icon=false}
+## `<i class="bi bi-book"></i>`{=html} Exercice 8 (optionnel): amusez-vous à enrichir l'application
+
+Cette application était un squelette minimal d'application. N'hésitez pas à créer votre propre version. Voici quelques idées:
+
+- Changer l'apparence graphique ;
+- Créer une application avec plusieurs pages ; 
+- Enrichir les productions graphiques sur l'application...
+:::
+
 
 # Mise à disposition

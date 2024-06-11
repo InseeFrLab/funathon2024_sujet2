@@ -1,13 +1,5 @@
 function(input, output) {
   
-  #create reactive dataframes which will be called below----
-  # pax_apt = reactive({
-  #   return(
-  #     summary_stat_airport(
-  #       create_data_from_input(pax_apt_all, input$yea, input$mon)
-  #     )
-  #   )
-  # })
   table_liaisons = reactive({
     return(
       summary_stat_airport(
