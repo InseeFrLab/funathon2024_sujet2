@@ -201,8 +201,8 @@ Notre application utilisera quatres sources différentes:
 
 ## Importer la liste des sources disponibles
 
-::: {.callout-note}
-## Exercice 1: lire les sources dans {{< fa brands r-project >}}
+::: {.callout-note collapse="false" icon=false}
+## `<i class="bi bi-book"></i>`{=html} Exercice 1: lire les sources dans {{< fa brands r-project >}}
 
 1. Le package `yaml` comporte une fonction `read_yaml` pour transformer
 un fichier `YAML` en liste imbriquée. Tester cette fonction sur le fichier `sources.yml`. 
@@ -236,8 +236,8 @@ urls <- create_data_list("sources.yml")
 ```
 
 
-::: {.callout-note}
-## Exercice 2: découvrir les différentes sources
+::: {.callout-note collapse="false" icon=false}
+## `<i class="bi bi-book"></i>`{=html} Exercice 2: découvrir les différentes sources
 
 Cet exercice est, en apparence, un peu long. Néanmoins la première partie
 de celui-ci permet la construction d'une fonction générique d'import
@@ -523,8 +523,8 @@ default_airport
 source("intermediates/exo3.R")
 ```
 
-::: {.callout-note}
-## Exercice 3: graphiques de fréquentation des aéroports
+::: {.callout-note collapse="false" icon=false}
+## `<i class="bi bi-book"></i>`{=html} Exercice 3: graphiques de fréquentation des aéroports
 
 1. Créer une variable `trafic` égale `apt_pax_dep + apt_pax_tr + apt_pax_arr`
 2. Ne conserver que les données relatives à l'aéroport `default_airport`
@@ -583,8 +583,8 @@ Code de l'exercice
 Nous proposons de le transformer en fonction, ce sera plus simple à intégrer
 ultérieurement dans notre application
 
-::: {.callout-note}
-## Exercice 3b: une fonction de production graphique
+::: {.callout-note collapse="false" icon=false}
+## `<i class="bi bi-book"></i>`{=html} Exercice 3b: une fonction de production graphique
 
 Transformer le code ci-dessus en une fonction afin que
 
@@ -636,8 +636,8 @@ MONTHS_LIST <- 1:12
 ```
 
 
-::: {.callout-note}
-## Exercice 4a: préparer les données avant de faire un beau tableau
+::: {.callout-note collapse="false" icon=false}
+## `<i class="bi bi-book"></i>`{=html} Exercice 4a: préparer les données avant de faire un beau tableau
 
 Nous allons intégrer dans notre application deux tableaux de
 statistiques descriptives.
@@ -720,8 +720,8 @@ select(name_clean, everything())
 Celle-ci nous permettra, une fois mise en forme, d'avoir une colonne
 plus esthétique. 
 
-::: {.callout-note}
-## Exercice 4b: un beau tableau (enfin !)
+::: {.callout-note collapse="false" icon=false}
+## `<i class="bi bi-book"></i>`{=html} Exercice 4b: un beau tableau (enfin !)
 
 Les différentes questions vont permettre de construire et formatter
 progressivement notre tableau. Si vous êtes bloqués, les réponses
@@ -828,8 +828,8 @@ table_aeroports
 Nous proposons de transformer ce code en fonction, cela facilitera l'utilisation
 ultérieure de celui-ci dans notre application. 
 
-::: {.callout-note}
-## Exercice 4c (optionnel): transformer en fonction notre chaîne `gt`
+::: {.callout-note collapse="false" icon=false}
+## `<i class="bi bi-book"></i>`{=html} Exercice 4c (optionnel): transformer en fonction notre chaîne `gt`
 
 Cet exercice est optionnel. Transformer le code ci-dessus en fonction. 
 Mettre à jour `main.R` pour utiliser ceci dans votre application.
@@ -873,8 +873,8 @@ Voici également une palette de couleurs qui sera utile à la fin de l'exercice.
 palette <- c("green", "blue", "red")
 ```
 
-::: {.callout-note}
-## Exercice 5: carte aérienne du trafic aéroportuaire
+::: {.callout-note collapse="false" icon=false}
+## `<i class="bi bi-book"></i>`{=html} Exercice 5: carte aérienne du trafic aéroportuaire
 
 1. Créer un _dataframe_ `trafic_date` en ne conservant que les observations
 de `pax_apt_all` égales à un certain mois et année (vous pouvez vous inspirer d'un `filter` fait précédemment). Utiliser celui-ci en faisant
@@ -967,8 +967,8 @@ de transformer la production de cette carte en fonction, cela nous permettra
 d'avoir une application légère. Là encore c'est un exercice optionnel mais
 intéressant à faire pour découvrir la logique de la programmation fonctionnelle. 
 
-::: {.callout-note}
-## Exercice 5b (optionnel): une fonction pour notre carte
+::: {.callout-note collapse="false" icon=false}
+## `<i class="bi bi-book"></i>`{=html} Exercice 5b (optionnel): une fonction pour notre carte
 
 - Créer une fonction `map_leaflet_airport` avec les arguments `df`, `airports_location`
 et `selected_date` produisant la carte. Insérer celle-ci dans le script `R/figures.R`
