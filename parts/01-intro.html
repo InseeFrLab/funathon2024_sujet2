@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>✈️ – intro</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-fixed">
+
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">✈️</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../trame.qmd" rel="" target="">
+ <span class="menu-text">Consigne de l’exercice</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://rplane-dashboard.kub.sspcloud.fr/" rel="" target="">
+ <span class="menu-text">Tableau de bord (version <i class="fa-brands fa-r-project" aria-label="r-project"></i>)</span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools ms-auto">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a>
+  <ul class="collapse">
+  <li><a href="#objectif" id="toc-objectif" class="nav-link" data-scroll-target="#objectif">Objectif</a></li>
+  <li><a href="#pourquoi-faire-une-application-interactive" id="toc-pourquoi-faire-une-application-interactive" class="nav-link" data-scroll-target="#pourquoi-faire-une-application-interactive">Pourquoi faire une application interactive ?</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
+<section id="objectif" class="level2">
+<h2 class="anchored" data-anchor-id="objectif">Objectif</h2>
+<p>L’objectif de ce tutoriel est d’amener, pas à pas, à la conception voire à la mise à disposition d’un tableau de bord (<em>dashboard</em>) du trafic aérien avec <i class="fa-brands fa-r-project" aria-label="r-project"></i>. Une démonstration de cette application est disponible à l’adresse <a href="https://rplane-dashboard.kub.sspcloud.fr/" class="uri">https://rplane-dashboard.kub.sspcloud.fr/</a>. Ce tutoriel est également l’occasion d’apprendre quelques bonnes pratiques pour les projets <i class="fa-brands fa-r-project" aria-label="r-project"></i> et <i class="fa-brands fa-python" aria-label="python"></i>.</p>
+<p>Afin de se concentrer sur la démarche, cette application interactive présentera un nombre limité de fonctionnalités. L’objectif est de construire progressivement celle-ci en suivant les étapes logiques du déroulement d’un projet de développement d’application interactive: découverte et exploration des données, création de statistiques descriptives et de visualisations simples sur un jeu de données, extension du nombre de visualisations accessibles par la création d’une application. Ce tutoriel est également l’occasion de découvrir quelques bonnes pratiques de programmation avec <i class="fa-brands fa-r-project" aria-label="r-project"></i> afin de rendre les projets plus fiables, évolutifs et lisibles.</p>
+<p>Les exercices de conception pas à pas de l’application s’adressent aussi bien à des débutants qu’à des utilisateurs plus experts. La mise à disposition, c’est-à-dire la mise en production de cette application, fait appel à des concepts et outils plus avancés et est donc moins accessible à des débutants.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Si vous désirez aller plus loin sur certaines dimensions de ce projet, vous pouvez tout à fait essayer de vous-mêmes d’introduire de nouveaux ingrédients dans l’application que vous développez.</p>
+</div>
+</div>
+</section>
+<section id="pourquoi-faire-une-application-interactive" class="level2">
+<h2 class="anchored" data-anchor-id="pourquoi-faire-une-application-interactive">Pourquoi faire une application interactive ?</h2>
+<p>Cette question peut apparaître naive. Pourtant, elle mérite d’être posée car elle permet de réfléchir à l’objectif de l’application et à son public cible. Cette réflexion devrait être menée systématiquement car elle guide les choix techniques ultérieurs et la répartition des tâches entre les différents profils pouvant intervenir dans la vie du projet s’il est mis en production (statisticien ou <em>data scientist</em>, équipes informatiques…).</p>
+<p>En général, on fait de la visualisation de données car les sources de données exploitées présentent tellement de dimensions pouvant intéresser un utilisateur qu’il est plus pertinent de le laisser explorer les données que de définir pour lui les statistiques à mettre en avant. L’interactivité permise par les sites web est particulièrement adaptée pour cela: le fait d’afficher ou masquer des visualisations en fonction de choix de l’utilisateur évite de noyer l’information par rapport à des supports figés.</p>
+<p>Les <em>frameworks</em> <code>Shiny</code> (<i class="fa-brands fa-r-project" aria-label="r-project"></i>), <code>Streamlit</code> ou <code>Dash</code> (<i class="fa-brands fa-python" aria-label="python"></i>) permettent de rapidement mettre en oeuvre ce type de site web. Pour une phase de construction d’un prototype, c’est un choix technique intéressant qui peut provoquer l’effet <em>wahou</em> attendu pour lancer le projet à plus grande échelle. En effet, ces solutions techniques permettent, avec les outils bien connus des praticiens de la donnée, <i class="fa-brands fa-r-project" aria-label="r-project"></i> ou <i class="fa-brands fa-python" aria-label="python"></i> principalement, de créer rapidement un site web fonctionnel, ergonomique et effectuant des opérations en fonction d’actions de l’utilisateur sur la page web. Tout ceci sans avoir à maîtriser des notions complexes de développement web.</p>
+<p>Néanmoins, passée cette phase d’expérimentation, le partage de ces applications, au-delà d’un partage d’écran pour des démonstrations, est moins évident. C’est parce que la connaissance de ces notions complexes qui permettent le bon fonctionnement d’un site web et dont la maîtrise n’est pas nécessaire lorsqu’on se lance dans la construction du site deviennent utiles passée la phase d’expérimentation. Celles-ci dépassent néanmoins le champ de compétence des statisticiens ou <em>data scientists</em>.</p>
+<p>Autrement dit, si le projet a l’ambition d’être partagé à une audience large qui n’a pas les compétences techniques pour faire tourner elle-même le code, il convient de prendre en compte le fait qu’il faudra dans l’équipe projet des compétences de développement web. Si le projet est expérimental, c’est moins un problème: <code>Shiny</code>, <code>Dash</code> ou <code>Streamlit</code> permettront d’avoir rapidement un prototype viable.</p>
+<p>Il existe heureusement des solutions techniques plus simples à mettre en oeuvre que <code>Shiny</code>, <code>Streamlit</code> ou <code>Dash</code>. Les sites web statiques font partie de cet éventail des possibles et représentent souvent une alternative pertinente aux applications interactives à condition qu’ils soient bien pensés. Ils sont notamment pertinents pour les applications de visualisation de données où cette dernière est déjà préparée en amont. Avoir un serveur <code>R</code> ou <code>Python</code> se justifie en effet si des étapes complexes de structuration de données interviennent. Néanmoins, si celles-ci ne sont pas nécessaires, un simple enrobage avec un constructeur de site comme <code>Quarto</code> peut suffire, à condition que les productions graphiques ne soient pas trop complexes à créer. Pour des sites faisant intervenir des interactions complexes entre actions d’un utilisateur (bouton, menu déroulant, etc. ) et affichage, il faudra recourir à du <code>Javascript</code> (technologie utilisée par les sites spécialisés dans la <em>dataviz</em>), ce qui fait, à nouveau, appel à des compétences qui dépassent celles des <em>data scientists</em> ou statisticiens classiques.</p>
+<p>En résumé, les éléments ci-dessus ont vocation à servir de mise en garde. <code>Shiny</code>, <code>Dash</code> ou <code>Streamlit</code> sont d’excellents outils techniques lorsqu’ils sont utilisés à bon escient. Néanmoins, leur simplicité d’usage ne doit pas amener à oublier de se poser des questions vitales comme celui du cycle de vie du projet, du public cible ou encore de la compétence des équipes amenées à le maintenir s’il perdure au-delà d’une phase d’expérimentation.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Site statique vs application réactive
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>La solution que nous allons proposer pour les sites statiques, <code>Quarto</code> associé à <code>Github Pages</code>, peut être utilisée dans le cadre des parcours <em>“rapport reproductible”</em> ou <em>“dashboard / application interactive”</em>.</p>
+<p>La distinction principale entre ces deux approches est qu’elles s’appuient sur des serveurs différents. Un site statique repose sur un serveur web là où <code>Streamlit</code> s’appuie sur serveur classique en <em>backend</em>. La différence principale entre ces deux types de serveurs réside principalement dans leur fonction et leur utilisation:</p>
+<ul>
+<li>Un <strong>serveur web</strong> est spécifiquement conçu pour stocker, traiter et livrer des pages web aux clients. Cela inclut des fichiers HTML, CSS, JavaScript, images, etc. Les serveurs web écoutent les requêtes HTTP/HTTPS provenant des navigateurs des utilisateurs et y répondent en envoyant les données demandées.</li>
+<li>Un <strong>serveur <em>backend</em></strong> classique est conçu pour effectuer des opérations en réponse à un <em>front</em>, en l’occurrence une page web. Dans le contexte d’une application <code>Streamlit</code> (resp. <code>Shiny</code>), il s’agit d’un serveur avec l’environnement <code>Python</code> (resp. <code>R</code>) <em>ad hoc</em> pour exécuter le code nécessaire à répondre à toute action d’un utilisateur de l’application.</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
