@@ -1125,16 +1125,92 @@ Code de `intermediates/exo5.R` à reprendre
 # Création de l'application 
 
 Maintenant tous les ingrédients sont là pour transformer cette chaîne en application
-interactive. 
+interactive. L'architecture de notre application sera la suivante:
+
+![](img/ui-r.png)
+
+Comme toute application _web_, `Shiny` repose sur deux piliers: 
+
+- l'interface utilisateur (UI) qui présente au navigateur des actions possibles et affiche des _output_ adaptés
+- le serveur qui répond à ces actions de l'utilisateur, produit les _output_ et les envoie à l'interface
+
+Supprimer les fichiers `ui.R` et `server.R` dans votre dossier de travail. Nous allons les recréer progressivement afin de comprendre, pas à pas, la logique d'une application.
 
 ::: {.callout-note collapse="false" icon=false}
-## `<i class="bi bi-book"></i>`{=html} Exercice 6: création de l'application
+## `<i class="bi bi-book"></i>`{=html} Exercice 6: création de la structure de l'application
 
-1. Créer le fichier `global.R` en ne conservant que les lignes jusqu'à la création (incluse)
+1. Créer le fichier `global.R` à partir de `main.R` en ne conservant que les lignes jusqu'à la création (incluse)
 de l'objet `trafic_aeroports`
+
+<details>
+<summary>
+Le fichier `global.R` attendu
+</summary>
+```{.r include="global.R"}
+```
+</details>
+
+L'objectif de la suite de l'exercice est de comprendre comment fonctionne une
+application. Celle-ci sera enrichie ensuite de nos productions graphiques. 
+
+Créer les fichiers `ui.R` et `server.R` à partir des modèles ci-dessous
+
+<details>
+<summary>
+Code de `ui.R` à reprendre
+</summary>
+```{.r include="intermediates/exo6/ui.R" filename="ui.R"}
+```
+</details>
+
+<details>
+<summary>
+Code de `server.R` à reprendre
+</summary>
+```{.r include="intermediates/exo6/server.R" filename="server.R"}
+```
+</details>
+
+Lancer l'application en lançant `shiny::runApp()` depuis la console `R`. Si `firefox` affiche un message de blocage de l'ouverture d'une fenêtre, autoriser celle-ci. 
+
+1. Observer votre console, notamment les messages lors du lancement de l'application
+2. Jouer avec les _inputs_ et observer la manière dont l'affichage s'ajuste
+
+Maintenant, se pencher sur le code source et observer l'aller-retour entre les objets du script `ui.R` et `server.R`. 
+
+Tuer l'application avec le bouton stop de la console. 
+
 :::
 
-Préparer un premier shiny sans plotly & leaflet
+
+::: {.callout-note collapse="false" icon=false}
+## `<i class="bi bi-book"></i>`{=html} Exercice 7: finaliser l'application
+
+Le sujet le plus difficile, quand on découvre `Shiny` est la gestion de la réactivité,
+c'est-à-dire de l'aller-retour entre interface utilisateur et serveur. 
+Pour comprendre cela, la manière la plus directe est sans doute de se plonger
+dans le code de l'application complète:
+
+<details>
+<summary>
+Code de `ui.R` à reprendre
+</summary>
+```{.r include="ui.R" filename="ui.R"}
+```
+</details>
+
+<details>
+<summary>
+Code de `server.R` à reprendre
+</summary>
+```{.r include="server.R" filename="server.R"}
+```
+</details>
+
+1. Observer la manière dont le fichier `ui.R` a évolué. 
+2. Observer les nouveaux éléments dans `server.R` et la manière dont ceux-ci sont projetés ensuite dans l'interface utilisateur
+
+:::
 
 
 # Mise à disposition
