@@ -2,12 +2,13 @@ project:
   type: website
 
 website:
-  title: "Site"
+  title: "✈️"
   navbar:
     left:
       - href: trame.qmd
-        text: Home
-      - about.qmd
+        text: Consigne de l'exercice
+      - href: https://rplane-dashboard.kub.sspcloud.fr/
+        text: Tableau de bord (version {{< fa brands r-project >}})
 
 format:
   html:

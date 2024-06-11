@@ -120,11 +120,15 @@ exécuter le code nécessaire à répondre à toute action d'un utilisateur de l
 
 # Exploration des données de trafic aérien
 
-TO DO: expliquer la démarche
+Pour pouvoir proposer un tableau de bord pertinent, le premier geste à avoir
+est d'explorer soi-même les données. L'objectif de cette partie est de guider
+le travail exploratoire. Le travail ultérieur sur l'application visera à 
+consolider et généraliser ces explorations de données. 
+
 
 ## Préliminaire: récupérer le projet squelette avec `Git` {{< fa brands git-alt >}}
 
-Si vous disposez d'un compte sur le [sspcloud](https://www.sspcloud.fr/),
+Si vous disposez d'un compte sur le [`sspcloud`](https://www.sspcloud.fr/),
 la méthode recommandée pour se lancer dans ce tutoriel est de cliquer
 sur le bouton suivant
 
