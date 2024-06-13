@@ -213,3 +213,134 @@ Supprimer les fichiers `ui.R` et `server.R` dans votre dossier de travail. Nous 
 
 
 # Partager cette application: une ouverture vers la mise en production
+
+::: {.callout-warning}
+## Difficulté technique de cette partie
+Cette partie est __plus avancée__ car elle fait appel à des notions techniques assez complexes
+dont certaines sortent, à proprement parler, du champ de compétences des _data scientists_. 
+
+Il est néanmoins fort utile d'apprendre afin d'être autonome dans la mise à disposition
+de ses applications, un format de valorisation de plus en plus commun. 
+:::
+
+Dans cette partie on propose de déployer l'application sur le SSP Cloud et de la rendre accessible depuis Internet. L'exercice constitue une introduction à la mise en production d'applications dans un environnement Cloud. Pour aller plus loin, n'hésitez pas à consulter [ce cours de 3e année de l'ENSAE](https://ensae-reproductibilite.github.io/website/).
+
+
+## Conteneurisation de l'application
+
+Pour déployer son application, la première étape consiste à la [conteneuriser](https://ensae-reproductibilite.github.io/website/chapters/portability.html#les-conteneurs), ce qui signifie la mettre dans une sorte de boîte virtuelle contenant tout ce dont l'application a besoin pour fonctionner. Le conteneur sépare l'application de son environnement extérieur, ce qui permet d'éviter les conflits avec d'autres applications ou dépendances sur le même système. Puisque le conteneur contient tout ce dont l'application a besoin (comme les bibliothèques et les dépendances), l'application peut être déplacée et exécutée sur n'importe quel système qui supporte les conteneurs, sans se soucier des différences entre ces systèmes.
+
+Ainsi, conteneuriser une application permet de la rendre plus facile à déployer, plus fiable et plus portable (en utilisant efficacement les ressources du système). `Docker` est un outil populaire pour créer et gérer des conteneurs. Le fichier `Dockerfile` contient le code nécessaire pour construire l'image `Docker` de l'application finale située dans le répertoire `correction`. Vous pouvez consulter la [documentation `Docker`](https://docs.docker.com/build/building/packaging/) pour tenter de comprendre comment l'image est construite. 
+
+Nous ne vous demandons pas de construire l'image vous-même, l'image est déjà publique sur [`Dockerhub`](https://hub.docker.com/r/inseefrlab/funathon2024-sujet2/) et peut-être utilisée pour déployer l'application. Néanmoins, il est intéressant, pour comprendre la logique de fonctionnement de Docker, de regarder la recette de construction de cette image
+
+```{.python include="docker/Dockerfile" filename="Dockerfile"}
+```
+
+Les principales étapes de cette construction d'image sont les suivantes:
+
+* 1️⃣ On part d'une image de base qui correspond à celle dans laquelle on a développé notre application et qui fonctionnait. On pourrait partir d'un environnement plus minimaliste (une machine Linux avec seulement `R` installé, comme les images [`rocker`](https://rocker-project.org/)) mais nous aurions peut-être à installer des librairies système en plus par un processus d'essai-erreur coûteux en temps
+
+<details>
+<summary>
+Partie du `Dockerfile` en question
+</summary>
+
+```{.python include="docker/Dockerfile" filename="Dockerfile" end-line=1}
+```
+
+</details>
+
+* 2️⃣ On ajoute dans le conteneur les fichiers indispensables au fonctionnement de notre application. Le conteneur, par défaut, n'a pas les fichiers de notre projet, on doit donc dire à `Docker` quels fichiers on désire avoir dans notre application
+
+<details>
+<summary>
+Partie du `Dockerfile` en question
+</summary>
+
+```{.python include="docker/Dockerfile" filename="Dockerfile" start-line=3 end-line=10}
+```
+
+</details>
+
+* 3️⃣ On définit des paramètres sur le routage de notre application dans le conteneur. Ces paramètres nous serons utiles ultérieurement, lors du déploiement
+
+<details>
+<summary>
+Partie du `Dockerfile` en question
+</summary>
+
+```{.python include="docker/Dockerfile" filename="Dockerfile" start-line=12 end-line=15}
+```
+
+</details>
+
+* 4️⃣ On restaure l'environnement avec `renv`. De cette manière, on est assuré que l'application aura le même environnement que celui que nous avons prévu lors de la phase de développement. 
+
+<details>
+<summary>
+Partie du `Dockerfile` en question
+</summary>
+
+```{.python include="docker/Dockerfile" filename="Dockerfile" start-line=17 end-line=17}
+```
+
+</details>
+
+* 5️⃣ On définit la commande qui sera exécutée au lancement de notre application. En l'occurrence, c'est une ligne de commande Linux pour lancer l'application `Shiny`
+
+<details>
+<summary>
+Partie du `Dockerfile` en question
+</summary>
+
+```{.python include="docker/Dockerfile" filename="Dockerfile" start-line=19 end-line=20}
+```
+
+</details>
+
+Si le `Dockerfile` est la recette pour créer notre application, où se trouve la cuisine pour préparer
+notre plat ? En général, on passe par des systèmes d'intégration continue, des serveurs mis à disposition
+en complément de forges `Git` pour tester le `Dockerfile`. Pour en savoir plus sur l'intégration continue, 
+vous pouvez consulter le [cours de 3e année de l'ENSAE](https://ensae-reproductibilite.github.io/website/chapters/portability.html#les-conteneurs). 
+
+Voici le fichier `.github/workflows/shiny.yaml` qui contient la suite d'instruction donnée aux serveurs
+de `Github` pour exécuter notre chaine de production de l'image `Docker`. Celui-ci est quasiment une reprise mot pour mot de l'exemple de la [documentation Github](https://docs.github.com/en/actions/creating-actions/creating-a-docker-container-action).
+
+<details>
+<summary>
+Le _workflow_ `Github` en question
+</summary>
+
+```{.python include=".github/workflows/shiny.yaml" filename=".github/workflows/shiny.yaml"}
+```
+
+</details>
+
+## Utilisation de l'image Docker pour mettre à disposition le `Shiny`
+
+Nous avons créé une image Docker qui est disponible sur Dockerhub, le réseau social de Docker. 
+Pour rendre celle-ci vivante, nous devons la déployer dans un conteneur. 
+
+::: {.callout-tip collapse="false" icon=false}
+## `<i class="bi bi-book"></i>`{=html} Exercice 7: Déploiement de l'application Shiny
+
+L'image peut à présent être récupérée et déployée. Dans notre cas, on va la déployer sur un cluster Kubernetes, l'infrastructure sous-jacente du SSP Cloud. Le fonctionnement de Kubernetes est technique et nous ne rentrerons pas dans les détails ici. Les fichiers nécessaires au déploiement se trouvent dans un dépôt séparé (https://github.com/InseeFrLab/funathon2024_sujet2_cd), nommé dépôt [Git-ops](https://docs.github.com/en/actions/creating-actions/creating-a-docker-container-action).
+
+Afin de déployer l'application, suivre les instructions suivantes:
+
+- Inspecter les fichiers `deployment/deployment.yml`, `deployment/service.yml` et `deployment/ingress.yml` et repérer les éléments suivants:
+    - L'emplacement où est spécifié l'image à déployer;
+    - L'emplacement où est spécifié les ressources computationnelles allouées;
+    - L'emplacement où est spécifié l'URL à laquelle sera exposée l'application sur Internet. La modifier (à 2 reprises) pour y indiquer une adresse personalisée pour le déploiement. Seule contrainte, elle doit être de la forme `*.lab.sspcloud.fr`;
+- Ouvrir un `Terminal`;
+- Clôner le dépôt (`git clone https://github.com/InseeFrLab/funathon2024_sujet2_cd`)
+- Se placer à la racine du projet (`cd funathon2024_sujet2_cd`);
+- Appliquer les contrats Kubernetes avec la commande `kubectl apply -f kubernetes/`;
+- Vérifier le lancement du conteneur avec la commande `kubectl get pods`. Le nom associé devrait être de la forme `funathon2024-sujet2-deployment-*`;
+- Attendre que le conteneur obtienne le statut `Running`.
+- Copier le nom associé à votre service et faire `kubectl logs <nom_copié>`
+
+3. Entrer dans un navigateur l'URL spécifiée dans le fichier `kubernetes/ingress.yaml`, et vérifier que l'application fonctionne correctement ! Jouer avec et observer, dans le terminal que vous aviez ouvert, l'évolution de vos _logs_ quand vous faites une action
+
+:::
