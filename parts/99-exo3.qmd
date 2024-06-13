@@ -1,0 +1,101 @@
+::: {.callout-note collapse="false" icon=false}
+## `<i class="bi bi-book"></i>`{=html} Exercice 3: graphiques de fréquentation des aéroports
+
+1. Créer une variable `trafic` égale `apt_pax_dep + apt_pax_tr + apt_pax_arr`
+2. Ne conserver que les données relatives à l'aéroport `default_airport`
+3. Créer une variable `date` qui utilise les colonnes `an` et `mois`. Cette variable de date doit être au format `date`, pas au format `chr`
+
+<details>
+<summary>
+Enchaînement des opérations attendues à cette étape
+</summary>
+
+```{.r include="intermediates/exo3.R" end-line=32}
+```
+</details>
+
+4. Faire une figure `ggplot` toute simple pour observer la dynamique des données.
+Vous devriez obtenir une figure similaire à celle-ci:
+
+```{r}
+#| echo: false
+figure_ggplot
+```
+
+Il est inutile d'aller plus loin sur la lisibilité de la figure `ggplot`
+car nous n'allons pas l'utiliser _in fine_ puisque nous allons faire une application interactive par la suite.
+Il est donc
+plus intéressant d'avoir une figure un minimum réactive pour impliquer
+l'utilisateur de l'application.
+
+5. Il est donc plus pertinent de faire une figure avec la librairie
+`Plotly`. Pour cela, vous pouvez vous inspirer de [cette page](https://plotly.com/r/line-charts/).
+La figure que vous devriez avoir est la suivante:
+
+```{r}
+#| echo: false
+figure_plotly
+```
+
+<details>
+
+<summary>
+Aide: le code pour générer la figure
+</summary>
+
+```{.r include="intermediates/exo3.R" start-line=15}
+```
+
+</details>
+
+:::
+
+Le code complet pour répliquer cet exercice est donné ci-dessous. 
+
+<details>
+<summary>
+Code de l'exercice
+</summary>
+```{.r include="intermediates/exo3.R"}
+```
+</details>
+
+Nous proposons de le transformer en fonction, ce sera plus simple à intégrer
+ultérieurement dans notre application
+
+::: {.callout-note collapse="false" icon=false}
+## `<i class="bi bi-book"></i>`{=html} Exercice 3b: une fonction de production graphique
+
+Transformer le code ci-dessus en une fonction afin que
+
+* les _inputs_ soient les suivants: un _dataframe_, un aéroport à sélectionner
+* la sortie soit notre figure `plotly`
+
+Tester la fonction sur d'autres aéroports de la liste. Quand vous êtes satisfaits de celle-ci, 
+déplacer la définition de cette fonction dans `R/figures.R`
+:::
+
+<details>
+<summary>
+Fichier `R/figures.R` à l'issue de cet exercice
+</summary>
+```{.r include="R/figures.R" end-line="18" filename="R/figures.R"}
+```
+</details>
+
+Par la suite, nous pouvons ajouter la ligne suivante à notre fichier `main.R`
+
+```{r}
+#| output: false
+source("R/figures.R")
+```
+
+et utiliser cette fonction à la fin du fichier. 
+
+<details>
+<summary>
+Fichier `main.R` à l'issue de cet exercice
+</summary>
+```{.r include="intermediates/exo3.R" filename="main.R"}
+```
+</details>

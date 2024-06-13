@@ -1,0 +1,83 @@
+
+
+
+Si vous disposez d'un compte sur le [`sspcloud`](https://www.sspcloud.fr/),
+la méthode recommandée pour se lancer dans ce tutoriel est de cliquer
+sur le bouton suivant
+
+```{=html}
+<center>
+<a href="https://datalab.sspcloud.fr/launcher/ide/rstudio?version=1.15.25&autoLaunch=true&networking.user.enabled=true&git.repository=«https%3A%2F%2Fgithub.com%2FInseeFrLab%2Ffunathon2024_sujet2.git»&onyxia.friendlyName=«config-funathon2024»&kubernetes.role=«admin»" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/SSP%20Cloud-Ouvrir_dans_RStudio-blue?logo=rstudio&amp;logoColor=blue" alt="Onyxia"></a>
+</center>
+<br>
+```
+
+
+
+Si vous avez utilisé le lien de lancement rapide mis à disposition
+sur la page [inseefrlab.github.io/funathon2024/](https://inseefrlab.github.io/funathon2024/)
+ou ci-dessus ☝️, 
+vous pouvez sauter l'étape de récupération du modèle de projet avec `Git` {{< fa brands git-alt >}}, cela
+a été fait automatiquement lors de la création de votre environnement `RStudio`. 
+Cela ne vous dispense d'ailleurs pas de faire du `Git` tout au long du tutoriel,
+c'est une bonne pratique, même sur
+des projets ponctuels ou vous êtes seuls à travailler. 
+
+::: {.callout-note collapse="true"}
+## Récupérer le projet si vous n'avez pas utilisé le bouton proposé
+
+:::: {.panel-tabset}
+## Interface graphique
+
+La fiche `utilitR` sur l'[utilisation de `Git`](https://book.utilitr.org/03_Fiches_thematiques/Fiche_git_utilisation.html#recuperer-url
+) explicite la démarche générale pour
+récupérer du code grâce à `Git`. Il est recommandé de lire celle-ci si vous
+n'êtes pas familier de `Git`. 
+
+Les étapes suivantes permettront de récupérer le projet:
+
+1️⃣ En premier lieu, dans `RStudio`, créer un nouveau projet et sélectionner `Version Control`. 
+
+![](https://book.utilitr.org/pics_resized/git/create_project_1.png)
+
+2️⃣ Choisir `Git`, ce qui devrait ouvrir une fenêtre similaire à celle ci-dessous:
+
+![](https://book.utilitr.org/pics_resized/git/create_project_2.png)
+
+3️⃣ Dans la fenêtre `Repository URL`, passer la valeur
+
+```r
+https://github.com/inseefrlab/funathon2024_sujet2.git
+```
+
+laisser les valeurs par défaut qui viennent ensuite et créer le projet. 
+
+
+## Depuis le terminal
+
+Après avoir ouvert un terminal dans `RStudio`, faire 
+
+```bash
+git clone https://github.com/inseefrlab/funathon2024_sujet2.git
+```
+
+puis, dans l'explorateur de fichiers (fenêtre en bas à droite), cliquer
+sur le fichier `RTraffic.Rproj` pour ouvrir le projet. 
+::::
+
+:::
+
+
+## Se placer dans le projet `RStudio` associé au sujet
+
+A la racine du projet, on trouve notamment le fichier `RTraffic.Rproj`. Il s'agit d'un fichier de projet `RStudio`. Lorsqu'on travaille sur du code {{< fa brands r-project >}} avec `RStudio`, il est généralement préférable de travailler dans le cadre d'un projet. 
+
+Entre autres raisons, évoquées dans la documentation [`utilitr`](https://book.utilitr.org/03_Fiches_thematiques/Fiche_rprojects.html), cela favorise la reproductibilité: lorsqu'on se situe dans un projet `RStudio`, tous les chemins peuvent être définis de manière *relative* (à la racine du projet) plutôt que de manière absolue (à la racine de la machine). Ainsi, le projet s'exécutera de la même manière qu'il soit exécuté depuis une machine _Windows_ ou _Linux_ par exemple, avec des noms d'utilisateurs différents ou s'ils se situent dans des dossiers différents au sein de _"Mes Documents"_.
+
+::: {.callout-note collapse="true"}
+## Plus de détails dans [`utilitR`](https://book.utilitr.org/03_Fiches_thematiques/Fiche_rprojects.html) 
+
+Pour plus de détails sur les bénéfices d'utiliser les projets `RStudio` ou leur utilisation en pratique, n'hésitez pas à consulter la [fiche 
+`utilitR`](https://book.utilitr.org/03_Fiches_thematiques/Fiche_rprojects.html) dédiée.
+:::
+

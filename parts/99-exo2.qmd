@@ -1,0 +1,254 @@
+::: {.callout-note collapse="false" icon=false}
+## `<i class="bi bi-book"></i>`{=html} Exercice 2: découvrir les différentes sources
+
+Cet exercice est, en apparence, un peu long. Néanmoins la première partie
+de celui-ci permet la construction d'une fonction générique d'import
+des données qui permet ensuite de gagner
+du temps et d'éviter la redondance de code. 
+
+#### Données aéroports {.unnumbered}
+
+* Comme les données sont des CSV européens (séparateur `;`),
+utiliser `read_csv2` du package `readr` pour lire les données à partir 
+de la liste de fichiers `unlist(urls$airports)`[^utilitr-csv].
+* Il est recommandé de ne pas laisser les types par défaut des colonnes mais de figer ceux-ci avec l'argument suivant:
+
+```{.r}
+col_types = cols(
+  ANMOIS = col_character(),
+  APT = col_character(),
+  APT_NOM = col_character(),
+  APT_ZON = col_character(),
+  .default = col_double()
+)
+```
+
+* A partir de la variable `ANMOIS`, créer les variables `an` et `mois`.
+
+<details>
+<summary>
+Aide si vous êtes bloqué sur cette question
+</summary>
+
+Pour extraire des éléments d'une chaine de caractère à partir de la position, il est recommandé d'utiliser la fonction `str_sub` du package `stringr`. Pour créer de nouvelles colonnes, il est recommandé d'utiliser la fonction `mutate` du package dplyr. 
+
+::: {.callout-warning}
+## Conseil pour se faciliter la vie ultérieurement
+
+Il est recommandé d'utiliser `str_remove` pour retirer les zéros en début de mois
+qui pourront nous créer des difficultés ultérieurement
+:::
+
+Si vous êtes toujours bloqué, la solution est donnée plus bas 👇
+
+</details>
+
+* Créer une fonction `clean_dataframe` qui reprend le code de création des variables `an` et `mois`, ajoute une étape de passage des noms de colonne en minuscule et renvoie le dataframe en sortie
+
+<details>
+<summary>
+Solution
+</summary>
+
+```{.r include="R/clean_dataframe.R"}
+```
+</details>
+
+* Créer une fonction `import_airport_data` qui prend en _input_ `list_files`
+et intègre les deux étapes précédentes: la lecture des données, le nettoyage
+avec `clean_dataframe`.
+
+<details>
+<summary>
+Solution
+</summary>
+
+```{.r include="R/import_data.R" start-line=1 end-line=17}
+```
+
+* Reporter cette fonction dans un fichier `R/clean_dataframe.R` et faire
+
+```{.r}
+source("R/clean_dataframe.R")
+```
+
+</details>
+
+#### Données compagnies {.unnumbered}
+
+Sur le même principe, créer une fonction `import_compagnies_data` qui effectue
+la même suite d'opérations. Faire néanmoins attention aux types des colonnes. 
+
+```{r}
+#| eval: false
+#| code-fold: true
+#| code-summary: "Recommandation de paramètre pour read_csv pour l'import de ces fichiers"
+col_types = cols(
+  ANMOIS = col_character(),
+  CIE = col_character(),
+  CIE_NOM = col_character(),
+  CIE_NAT = col_character(),
+  CIE_PAYS = col_character(),
+  .default = col_double()
+)
+```
+
+
+<details>
+<summary>
+Solution
+</summary>
+
+```{.r include="R/import_data.R" start-line=20 end-line=38}
+```
+
+</details>
+
+#### Données liaisons  {.unnumbered}
+
+Sur le même principe, créer une fonction `import_liaisons_data` qui effectue
+la même suite d'opérations. Faire néanmoins attention aux types des colonnes. 
+
+```{r}
+#| eval: false
+#| code-fold: true
+#| code-summary: "Recommandation de paramètre pour read_csv pour l'import de ces fichiers"
+col_types = cols(
+  ANMOIS = col_character(),
+  LSN = col_character(),
+  LSN_DEP_NOM = col_character(),
+  LSN_ARR_NOM = col_character(),
+  LSN_SCT = col_character(),
+  LSN_FSC = col_character(),
+  .default = col_double()
+)
+```
+
+<details>
+<summary>
+Solution
+</summary>
+
+```{.r include="R/import_data.R" start-line=41 end-line=60}
+```
+
+</details>
+
+#### Localisations des aéroports {.unnumbered}
+
+Il s'agit d'un jeu de données spatial. Pour en savoir plus sur ce type de données,
+il est recommandé de consulter la [fiche  `utilitR`](https://book.utilitr.org/03_Fiches_thematiques/Fiche_donnees_spatiales.html) sur
+le sujet ou [ce cours introductif](https://rgeo.linogaliana.fr/exercises/geospatial-wrangling.html).
+
+1. Utiliser la fonction `st_read` du package `sf` pour lire ces données (dont la localisation est stockée dans la variable `urls$geojson$aiport`). Stocker l'objet obtenu sous le nom `airports_location`
+2. Vérifier que les données sont bien dans le système de représentation `WGS 84`[^crs]
+
+<details>
+<summary>
+Aide
+</summary>
+La fonction à utiliser est `sf_crs`
+</details>
+
+3. Il est toujours utile de vérifier que nos données sont bien localisées où on les attend. Pour cela, il est pertinent de faire une carte avec un fond de carte contextuel, même si celle-ci n'est pas très soignée. Pour faire ceci, le plus simple est d'utiliser la [fonction `addMarkers`](https://rstudio.github.io/leaflet/articles/markers.html) du package `leaflet`.
+Essayez de faire cette carte vous-mêmes ou consultez l'aide ci-dessous
+
+<details>
+<summary>
+Code pour faire une carte `leaflet` minimale
+</summary>
+```{.r}
+leaflet(airports_location) %>%
+  addTiles() %>%
+  addMarkers(popup = ~Nom)
+```
+</details>
+
+Reporter toutes ces fonctions dans un fichier `R/import_data.R`. 
+:::
+
+[^utilitr-csv]: Si vous êtes peu familier avec ce type de fichiers, vous pouvez consulter la [fiche `utilitR`](https://book.utilitr.org/03_Fiches_thematiques/Fiche_import_fichiers_plats.html) sur le sujet
+[^crs]: Si vous êtes peu familier avec les données géographiques, vous pouvez retenir l'idée qu'il s'agit de données traditionnelles auxquelles s'ajoute une dimension spatiale. Cette dernière vise à localiser les données sur la terre. La localisation se fait dans un espace à deux dimensions (espace cartésien) alors que notre planète est une sphère en trois dimensions. Le principe d'un système de projection est de faire ce passage en deux dimensions des positions. Le plus connu est le système GPS, qui est un héritier lointain de la représentation du monde par [Mercator](https://fr.wikipedia.org/wiki/G%C3%A9rard_Mercator). Ce système est connu sous le nom de WGS 84 et porte le code EPSG 4326. L'autre système à retenir est le Lambert 93 (code EPSG 2154) qui est la projection légale en France (celle-ci, _a contrario_ du Mercator, ne déforme pas la France sur une carte). Pour en savoir plus sur les systèmes de représentation, les avantages et inconvénients de chacun, il existe de nombreuses ressources en ligne. Des éléments introductifs, et des démonstrations interactives, en lien avec la librairie `Geopandas` de `Python` sont disponibles [ici](https://pythonds.linogaliana.fr/content/manipulation/03_geopandas_intro.html#principe). 
+
+
+A l'issue de cet exercice, vous devriez avoir le fichier `R/import_data.R` suivant
+
+<details>
+<summary>
+Le fichier `R/import_data.R` attendu
+</summary>
+
+```{.r include="R/import_data.R" filename="R/import_data.R"}
+```
+
+</details>
+
+La carte `leaflet` que vous devriez avoir obtenue à la fin de l'exercice
+est la suivante:
+
+```{r}
+#| echo: false
+#| output: false
+library(sf)
+library(leaflet)
+airports_location <- st_read(urls$geojson$airport)
+```
+
+```{r}
+leaflet(airports_location) %>%
+  addTiles() %>%
+  addMarkers(popup = ~Nom)
+```
+
+A l'issue de l'exercice, 
+le code centralisé dans le script `R/import_data.R`
+peut être importé via le code suivant
+
+```{r}
+source("R/import_data.R")  
+```
+
+Vous pouvez initier un script nommé `main.R` avec les lignes suivante:
+
+```{.r include="global.R" start-line=24 end-line=34 filename="main.R"}
+```
+
+en les faisant précéder de l'import des
+scripts que nous avons déjà créé dans le dossier `R`:
+
+```r
+source("R/create_data_list.R")
+source("R/import_data.R")  
+source("R/clean_dataframe.R")
+```
+
+Une bonne pratique est de tester son script dans une session vierge. Cela amène
+à construire pas à pas une chaine plus reproductible. Pour cela, 
+
+- Aller dans les options de {{< fa brands r-project >}} via `Tools > Global Options` et décocher la case `Restore .RData into workspace at setup`
+- Redémarrer votre
+session {{< fa brands r-project >}} via le menu `Session > Restart R` ou le
+raccourci <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>F10</kbd>
+- Exécuter votre fichier `main.R`. Vous devriez rencontrer des erreurs car nous n'avons pas géré les import de librairies dans ce script puisque notre session actuelle ne bénéficie plus des import antérieurs.
+
+Une bonne pratique pour comprendre cette exigence de reproductibilité
+est d'itérativement ajouter les librairies utiles à mesure qu'on rencontre des erreurs (notre code étant très rapide à tourner, cette logique d'essai-erreur n'est pas très coûteuse). 
+Si vous ne désirez pas faire ceci (dommage, c'est un bon exercice), vous
+pouvez trouver les imports de packages à faire pour que notre script soit
+reproductible. 
+
+<details>
+<summary>
+L'environnement minimal de reproductibilité pour que le script `main.R` fonctionne
+</summary>
+
+```{.r}
+library(readr)
+library(dplyr)
+library(stringr)
+library(sf)
+``` 
+
+</details>
+
+Ces librairies sont à écrire au début de `main.R`. 

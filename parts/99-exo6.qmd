@@ -1,0 +1,45 @@
+::: {.callout-note collapse="false" icon=false}
+## `<i class="bi bi-book"></i>`{=html} Exercice 6: création de la structure de l'application
+
+1. Créer le fichier `global.R` à partir de `main.R` en ne conservant que les lignes jusqu'à la création (incluse)
+de l'objet `trafic_aeroports`
+
+<details>
+<summary>
+Le fichier `global.R` attendu
+</summary>
+```{.r include="global.R"}
+```
+</details>
+
+L'objectif de la suite de l'exercice est de comprendre comment fonctionne une
+application. Celle-ci sera enrichie ensuite de nos productions graphiques. 
+
+Créer les fichiers `ui.R` et `server.R` à partir des modèles ci-dessous
+
+<details>
+<summary>
+Code de `ui.R` à reprendre
+</summary>
+```{.r include="intermediates/exo6/ui.R" filename="ui.R"}
+```
+</details>
+
+<details>
+<summary>
+Code de `server.R` à reprendre
+</summary>
+```{.r include="intermediates/exo6/server.R" filename="server.R"}
+```
+</details>
+
+Lancer l'application en lançant `shiny::runApp()` depuis la console `R`. Si `firefox` affiche un message de blocage de l'ouverture d'une fenêtre, autoriser celle-ci. 
+
+1. Observer votre console, notamment les messages lors du lancement de l'application
+2. Jouer avec les _inputs_ et observer la manière dont l'affichage s'ajuste
+
+Maintenant, se pencher sur le code source et observer l'aller-retour entre les objets du script `ui.R` et `server.R`. 
+
+Tuer l'application avec le bouton stop de la console. 
+
+:::

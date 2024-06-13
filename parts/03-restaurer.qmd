@@ -1,0 +1,89 @@
+### Principe
+
+Pour progresser dans ce tutoriel, un certain nombre de _packages_
+doivent être installés. Sans eux, même avec le code de l'application, vous
+ne serez pas en mesure de reproduire celle-ci. 
+
+Les bonnes pratiques pour la gestion de 
+l'environnement sont assez proches en {{< fa brands r-project >}} et {{< fa brands python >}}.
+Le principal général est qu'il existe des outils qui permettent à un utilisateur de lister l'ensemble des packages dans son environnement avec leur version. Grâce à cette liste, d'autres personnes pourront reproduire l'application si elles disposent des mêmes _inputs_ (le code, les données...). 
+
+En effet, il est important de voir l'application comme le résultat de la combinaison de plusieurs ingrédients. Dans notre cas, nous en avons trois:
+
+* Du code {{< fa brands r-project >}} ou {{< fa brands python >}} : celui-ci a été récupéré par le biais de `Git` lors du lancement du projet
+* Des éléments de configuration:
+    + le fichier `renv.lock` ({{< fa brands r-project >}}) ou `requirements.txt` ({{< fa brands python >}}) qui permettra de reconstruire notre environnement à l'identique grâce à des outils adaptés[^generation]
+    + le fichier `sources.yaml` qui liste l'emplacement des sources sur le site [data.gouv](https://www.data.gouv.fr/fr/)
+* Des données: nous évoquerons celles-ci lors de la prochaine partie.
+
+
+![Illustration du principe de séparation du code, des données et de la configuration](./img/environment.png)
+
+De manière générale, c'est une bonne pratique de structurer son projet comme une
+combinaison de ces facteurs. Cela vous amènera à faire des projets plus reproductibles
+mais aussi à la structure plus lisible. 
+
+Pour les utilisateurs de `R`, la [formation de l'Insee aux bonnes pratiques](https://inseefrlab.github.io/formation-bonnes-pratiques-git-R/)
+consacre une partie aux environnements reproductibles avec `renv`. Pour les utilisateurs
+de `Python`, le [cours de mise en production de projets _data science_](https://ensae-reproductibilite.github.io/website/chapters/portability.html)
+consacre un chapitre au sujet. 
+
+[^generation]: Ces fichiers ne sont pas générés manuellement. Ce sont des outils adaptés (`renv` pour `R`, `pip` pour `Python`) qui font ce travail de versionnage de l'environnement. 
+
+### Créer l'environnement
+
+Si vous avez déjà tenté de partager un code qui fonctionnait chez vous,
+il est presque certain que la personne ayant voulu le réutiliser a rencontré
+une erreur si elle a tenté de le faire tourner. C'est tout à fait normal car
+vous avez distribué votre code, éventuellement vos données, mais pas le troisième
+pilier de l'image précédente, à savoir la configuration de l'environnement dans lequel votre code fonctionnait. La solution la plus fiable, mais peu pratique, serait de donner votre ordinateur à la personne qui tente de réutiliser votre code. En livrant votre ordinateur, vous fournissez votre environnement de travail mais également beaucoup d'éléments supplémentaires qui ne sont pas indispensables à l'application.
+
+Une solution plus simple est de fournir les spécifications qui ont permis à votre
+code de fonctionner. Dans un monde idéal, il s'agit de fournir la liste
+des _packages_ et leur version. Si la personne à qui vous partagez votre code et vos données a cette même liste de versions de _packages_, et pas de _packages_ supplémentaires venant polluer l'environnement, les chances d'avoir la même application que vous sont très élevées. 
+
+`renv` est un gestionnaire de _packages_ qui permet de faire ces deux opérations:
+
+1. Enregistrer la liste de _packages_ après avoir fait tourné un code
+2. Restaurer l'environnement à partir de cette liste
+
+En l'occurrence, pour vous, l'important est le second point: pouvoir recréer l'environnement nécessaire
+au bon fonctionnement de l'application. Ceci est très simple grâce à la commande
+
+```{.r filename="A lancer dans la console R"}
+renv::restore()
+```
+
+Cette commande doit être lancée depuis la console `R` ouverte dans le projet qui
+a été récupéré[^renv-script]. L'environnement créé n'est pas figé. 
+Il est tout à fait possible, ensuite, d'installer des _packages_ supplémentaires
+par le biais de `install.packages`. L'environnement proposé par notre fichier
+`renv.lock` est le minimum
+requis pour reproduire l'application mais ce n'est pas un environnement figé.
+Si vous ajoutez des _packages_ utiles pour votre application, avant la phase de mise en production, n'oubliez pas
+de faire `renv::snapshot()` pour mettre à jour le fichier `renv.lock` (c'est le point 1. évoqué précédemment). 
+
+[^renv-script]: Si vous utilisez `renv` dans vos futurs projets, ce que nous vous recommandons, cette commande n'est pas à inscrire dans vos scripts. Vous pouvez indiquer que cette commande est nécessaire dans le `README` de votre projet. 
+
+::: {.callout-warning collapse="true"}
+## Ce que `renv` évite
+
+On retrouve parfois sur internet un code similaire à celui-ci :
+
+```r
+# A ne pas reproduire chez vous 😨
+if (!requireNamespace("dplyr", quietly = TRUE)) {
+  install.packages("dplyr")
+}
+```
+
+C'est une gestion artisanale de l'environnement qui n'est pas conseillée. `renv` sera plus simple et
+plus fiable. De manière générale, ce n'est pas une bonne pratique de gérer l'installation des _packages_
+dans le script. En effet, c'est un élément de configuration et, comme nous l'avons dit, celle-ci doit se faire
+en dehors du script.  
+
+:::
+
+Maintenant que nous disposons d'un environnement fonctionnel, 
+nous pouvons avancer sur la conception du projet. La première étape est d'explorer
+les jeux de données que nous utiliserons dans l'application.

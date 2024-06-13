@@ -1,0 +1,119 @@
+::: {.callout-note collapse="false" icon=false}
+## `<i class="bi bi-book"></i>`{=html} Exercice 5: carte aérienne du trafic aéroportuaire
+
+1. Créer un _dataframe_ `trafic_date` en ne conservant que les observations
+de `pax_apt_all` égales à un certain mois et année (vous pouvez vous inspirer d'un `filter` fait précédemment). Utiliser celui-ci en faisant
+une jointure avec `airports_location` par le biais des variables, respectivement,
+`Code.OACI` et `apt`. Nommer ce _dataframe_ `trafic_aeroports`
+2. A partir de l'[exemple de démarrage de `leaflet`](https://rstudio.github.io/leaflet/articles/markers.html),
+créer une carte interactive qui affiche, lorsqu'on clique sur l'un des
+marqueurs, le nom de l'aéroport et sa fréquentation. 
+3. Créer une variable nommée `volume` qui classe chaque observation dans son [tercile](https://fr.wiktionary.org/wiki/tercile) et transforme la valeur
+en couleur à partir de `palette`.  
+4. A partir du code suivant et de la [fonction `addAwesomeMarkers`](https://rstudio.github.io/leaflet/articles/markers.html#awesome-icons),
+reproduire une carte similaire à celle présentée plus bas. 
+
+```r
+icons <- awesomeIcons(
+  icon = 'plane',
+  iconColor = 'black',
+  library = 'fa',
+  markerColor = trafic_aeroports$color
+)
+```
+
+:::: {.callout-warning collapse="true"}
+## Subtilité par rapport à l'exemple de [la documentation](https://rstudio.github.io/leaflet/articles/markers.html#awesome-icons)
+Par rapport à l'exemple dans [la documentation](https://rstudio.github.io/leaflet/articles/markers.html#awesome-icons),
+il faut légèrement modifier le code de sorte à faire `icon=icons[]`
+et non `icon = icons`.
+::::
+:::
+
+
+```{r}
+#| code-fold: true
+#| code-summary: "Question 1"
+trafic_date <- pax_apt_all %>%
+  mutate(
+    date = as.Date(paste(anmois, "01", sep=""), format = "%Y%m%d")
+  ) %>%
+  filter(mois %in% months, an %in% years)
+trafic_aeroports <- airports_location %>%
+  inner_join(trafic_date, by = c("Code.OACI" = "apt"))
+```
+
+
+```{r}
+#| output: false
+#| code-fold: true
+#| code-summary: "Question 2"
+library(leaflet)
+  
+leaflet(trafic_aeroports) %>% addTiles() %>%
+  addMarkers(popup = ~paste0(Nom, ": ", trafic)) 
+```
+
+```{r}
+#| code-fold: true
+#| code-summary: "Question 3"
+trafic_aeroports <- trafic_aeroports %>%
+  mutate(
+    volume = ntile(trafic, 3)
+) %>%
+  mutate(
+    color = palette[volume]
+  )
+```  
+
+
+```{r}
+#| code-fold: true
+#| code-summary: "Question 3"
+icons <- awesomeIcons(
+  icon = 'plane',
+  iconColor = 'black',
+  library = 'fa',
+  markerColor = trafic_aeroports$color
+)
+
+
+carte_interactive <- leaflet(trafic_aeroports) %>% addTiles() %>%
+  addAwesomeMarkers(
+  icon=icons[],
+  label=~paste0(Nom, "", " (",Code.OACI, ") : ", trafic, " voyageurs")
+)
+carte_interactive
+```
+
+
+Comme précédemment, nous proposons
+de transformer la production de cette carte en fonction, cela nous permettra
+d'avoir une application légère. Là encore c'est un exercice optionnel mais
+intéressant à faire pour découvrir la logique de la programmation fonctionnelle. 
+
+::: {.callout-note collapse="false" icon=false}
+## `<i class="bi bi-book"></i>`{=html} Exercice 5b (optionnel): une fonction pour notre carte
+
+- Créer une fonction `map_leaflet_airport` avec les arguments `df`, `airports_location`
+et `selected_date` produisant la carte. Insérer celle-ci dans le script `R/figures.R`
+- Mettre à jour `main.R` pour utiliser cette fonction dans votre chaine. N'oubliez pas de
+définir `selected_date` dans votre script. 
+:::
+
+<details>
+<summary>
+Code de `R/figures.R` à reprendre
+</summary>
+```{.r include="R/figures.R" start-line="20" filename="R/figures.R (fin du fichier)"}
+```
+</details>
+
+<details>
+<summary>
+Code de `intermediates/exo5.R` à reprendre
+</summary>
+```{.r include="intermediates/exo5.R" start-line="20" filename="main.R"}
+```
+</details>
+

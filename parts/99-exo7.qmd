@@ -1,0 +1,38 @@
+::: {.callout-note collapse="false" icon=false}
+## `<i class="bi bi-book"></i>`{=html} Exercice 7: finaliser l'application
+
+Le sujet le plus difficile, quand on découvre `Shiny` est la gestion de la réactivité,
+c'est-à-dire de l'aller-retour entre interface utilisateur et serveur. 
+Pour comprendre cela, la manière la plus directe est sans doute de se plonger
+dans le code de l'application complète:
+
+<details>
+<summary>
+Code de `ui.R` à reprendre
+</summary>
+```{.r include="ui.R" filename="ui.R"}
+```
+</details>
+
+<details>
+<summary>
+Code de `server.R` à reprendre
+</summary>
+```{.r include="server.R" filename="server.R"}
+```
+</details>
+
+1. Observer la manière dont le fichier `ui.R` a évolué. 
+2. Observer les nouveaux éléments dans `server.R` et la manière dont ceux-ci sont projetés ensuite dans l'interface utilisateur
+
+:::
+
+::: {.callout-note collapse="false" icon=false}
+## `<i class="bi bi-book"></i>`{=html} Exercice 8 (optionnel): amusez-vous à enrichir l'application
+
+Cette application était un squelette minimal d'application. N'hésitez pas à créer votre propre version. Voici quelques idées:
+
+- Changer l'apparence graphique ;
+- Créer une application avec plusieurs pages ; 
+- Enrichir les productions graphiques sur l'application...
+:::
