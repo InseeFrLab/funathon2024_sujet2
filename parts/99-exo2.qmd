@@ -13,6 +13,11 @@ utiliser `read_csv2` du package `readr` pour lire les données à partir
 de la liste de fichiers `unlist(urls$airports)`[^utilitr-csv].
 * Il est recommandé de ne pas laisser les types par défaut des colonnes mais de figer ceux-ci avec l'argument suivant:
 
+::::: {.panel-tabset group="language"}
+
+
+## {{< fa brands r-project >}}
+
 ```{.r}
 col_types = cols(
   ANMOIS = col_character(),
@@ -22,6 +27,19 @@ col_types = cols(
   .default = col_double()
 )
 ```
+
+## {{< fa brands python >}}
+
+```{.python}
+col_types = {
+    "ANMOIS": "str",  
+    "APT": "str",     
+    "APT_NOM": "str", 
+    "APT_ZON": "str", 
+}
+```
+
+:::::
 
 * A partir de la variable `ANMOIS`, créer les variables `an` et `mois`.
 
