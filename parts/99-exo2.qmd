@@ -31,17 +31,23 @@ col_types = cols(
 ## {{< fa brands python >}}
 
 ```{.python}
+import polars as pl
 col_types = {
-    "ANMOIS": "str",  
-    "APT": "str",     
-    "APT_NOM": "str", 
-    "APT_ZON": "str", 
+    "ANMOIS": pl.Utf8,  
+    "APT": pl.Utf8,     
+    "APT_NOM": pl.Utf8, 
+    "APT_ZON": pl.Utf8,
 }
 ```
 
 :::::
 
 * A partir de la variable `ANMOIS`, créer les variables `an` et `mois`.
+
+::::: {.panel-tabset group="language"}
+
+
+## {{< fa brands r-project >}}
 
 <details>
 <summary>
@@ -61,7 +67,21 @@ Si vous êtes toujours bloqué, la solution est donnée plus bas 👇
 
 </details>
 
+## {{< fa brands python >}}
+
+Vous pouvez utiliser les méthodes de données textuelles `str.sub` et `str.replace` de `Pandas`
+
+:::::
+
+
+
+
 * Créer une fonction `clean_dataframe` qui reprend le code de création des variables `an` et `mois`, ajoute une étape de passage des noms de colonne en minuscule et renvoie le dataframe en sortie
+
+::::: {.panel-tabset group="language"}
+
+
+## {{< fa brands r-project >}}
 
 <details>
 <summary>
@@ -71,6 +91,21 @@ Solution
 ```{.r include="R/clean_dataframe.R"}
 ```
 </details>
+
+
+## {{< fa brands python >}}
+
+<details>
+<summary>
+Solution
+</summary>
+
+```{.r include="src/clean_dataframe.py"}
+```
+</details>
+
+
+:::::
 
 * Créer une fonction `import_airport_data` qui prend en _input_ `list_files`
 et intègre les deux étapes précédentes: la lecture des données, le nettoyage

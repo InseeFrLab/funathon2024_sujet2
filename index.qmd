@@ -109,6 +109,9 @@ urls <- create_data_list("sources.yml")
 
 ## {{< fa brands python >}}
 
+```python
+urls = create_data_list("sources.yml")
+```
 
 :::
 
