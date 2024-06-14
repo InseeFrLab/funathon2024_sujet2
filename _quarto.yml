@@ -10,6 +10,9 @@ website:
       - href: https://rplane-dashboard.kub.sspcloud.fr/
         text: Tableau de bord (version {{< fa brands r-project >}})
 
+render:
+  - index.qmd
+
 format:
   html:
     theme: cosmo
