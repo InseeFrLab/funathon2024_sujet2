@@ -324,12 +324,16 @@ folium.GeoJson(airports_location).add_to(m)
 
 </details>
 
-Reporter toutes ces fonctions dans un fichier `R/import_data.R`. 
+Reporter toutes ces fonctions dans un fichier `R/import_data.R` ({{< fa brands r-project >}}) ou `Python` ({{< fa brands python >}})
 :::
 
-[^utilitr-csv]: Si vous êtes peu familier avec ce type de fichiers, vous pouvez consulter la [fiche `utilitR`](https://book.utilitr.org/03_Fiches_thematiques/Fiche_import_fichiers_plats.html) sur le sujet
+[^utilitr-csv]: Si vous êtes peu familier avec ce type de fichiers, vous pouvez consulter la [fiche `utilitR`](https://book.utilitr.org/03_Fiches_thematiques/Fiche_import_fichiers_plats.html) sur le sujet ({{< fa brands r-project >}}) 
 [^crs]: Si vous êtes peu familier avec les données géographiques, vous pouvez retenir l'idée qu'il s'agit de données traditionnelles auxquelles s'ajoute une dimension spatiale. Cette dernière vise à localiser les données sur la terre. La localisation se fait dans un espace à deux dimensions (espace cartésien) alors que notre planète est une sphère en trois dimensions. Le principe d'un système de projection est de faire ce passage en deux dimensions des positions. Le plus connu est le système GPS, qui est un héritier lointain de la représentation du monde par [Mercator](https://fr.wikipedia.org/wiki/G%C3%A9rard_Mercator). Ce système est connu sous le nom de WGS 84 et porte le code EPSG 4326. L'autre système à retenir est le Lambert 93 (code EPSG 2154) qui est la projection légale en France (celle-ci, _a contrario_ du Mercator, ne déforme pas la France sur une carte). Pour en savoir plus sur les systèmes de représentation, les avantages et inconvénients de chacun, il existe de nombreuses ressources en ligne. Des éléments introductifs, et des démonstrations interactives, en lien avec la librairie `Geopandas` de `Python` sont disponibles [ici](https://pythonds.linogaliana.fr/content/manipulation/03_geopandas_intro.html#principe). 
 
+
+::::: {.panel-tabset group="language"}
+
+## {{< fa brands r-project >}}
 
 A l'issue de cet exercice, vous devriez avoir le fichier `R/import_data.R` suivant
 
@@ -342,6 +346,24 @@ Le fichier `R/import_data.R` attendu
 ```
 
 </details>
+
+## {{< fa brands python >}}
+
+
+A l'issue de cet exercice, vous devriez avoir le fichier `src/import_data.py` suivant
+
+<details>
+<summary>
+Le fichier `R/import_data.R` attendu
+</summary>
+
+```{.r include="src/import_data.py" filename="src/import_data.py"}
+```
+
+</details>
+
+
+:::::
 
 La carte `leaflet` que vous devriez avoir obtenue à la fin de l'exercice
 est la suivante:
