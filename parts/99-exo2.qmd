@@ -262,7 +262,7 @@ col_types = {
 Solution
 </summary>
 
-```{.python include="src/import_data.R" start-line=49 end-line=70}
+```{.python include="src/import_data.py" start-line=49 end-line=70}
 ```
 
 </details>
@@ -354,7 +354,7 @@ A l'issue de cet exercice, vous devriez avoir le fichier `src/import_data.py` su
 
 <details>
 <summary>
-Le fichier `R/import_data.R` attendu
+Le fichier `src/import_data.py` attendu
 </summary>
 
 ```{.r include="src/import_data.py" filename="src/import_data.py"}
@@ -382,6 +382,11 @@ leaflet(airports_location) %>%
   addMarkers(popup = ~Nom)
 ```
 
+::::: {.panel-tabset group="language"}
+
+## {{< fa brands r-project >}}
+
+
 A l'issue de l'exercice, 
 le code centralisé dans le script `R/import_data.R`
 peut être importé via le code suivant
@@ -389,6 +394,7 @@ peut être importé via le code suivant
 ```{r}
 source("R/import_data.R")  
 ```
+
 
 Vous pouvez initier un script nommé `main.R` avec les lignes suivante:
 
@@ -434,3 +440,15 @@ library(sf)
 </details>
 
 Ces librairies sont à écrire au début de `main.R`. 
+
+## {{< fa brands python >}}
+
+A l'issue de l'exercice, 
+le code centralisé dans le script `src/import_data.py`
+peut être importé via le code suivant
+
+```{.python}
+import src.import_data as sid
+```
+
+:::::
