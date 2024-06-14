@@ -34,7 +34,7 @@ Code de l'exercice
 </details>
 
 3. Voici une fonction pour faire le même type d'opération sur la base des
-liaisons. 
+liaisons agrégées par grandes zones (métropole, outre-mer, international, etc.). 
 
 <details>
 <summary>
