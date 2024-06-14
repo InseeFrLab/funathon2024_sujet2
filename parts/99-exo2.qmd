@@ -78,34 +78,31 @@ Vous pouvez utiliser les méthodes de données textuelles `str.sub` et `str.repl
 
 * Créer une fonction `clean_dataframe` qui reprend le code de création des variables `an` et `mois`, ajoute une étape de passage des noms de colonne en minuscule et renvoie le dataframe en sortie
 
+<details>
+<summary>
+Solution
+</summary>
+
 ::::: {.panel-tabset group="language"}
 
 
 ## {{< fa brands r-project >}}
 
-<details>
-<summary>
-Solution
-</summary>
 
 ```{.r include="R/clean_dataframe.R"}
 ```
-</details>
 
 
 ## {{< fa brands python >}}
 
-<details>
-<summary>
-Solution
-</summary>
-
-```{.r include="src/clean_dataframe.py"}
+```{.python include="src/clean_dataframe.py"}
 ```
-</details>
 
 
 :::::
+
+</details>
+
 
 * Créer une fonction `import_airport_data` qui prend en _input_ `list_files`
 et intègre les deux étapes précédentes: la lecture des données, le nettoyage
@@ -116,8 +113,13 @@ avec `clean_dataframe`.
 Solution
 </summary>
 
+::::: {.panel-tabset group="language"}
+
+## {{< fa brands r-project >}}
+
 ```{.r include="R/import_data.R" start-line=1 end-line=17}
 ```
+
 
 * Reporter cette fonction dans un fichier `R/clean_dataframe.R` et faire
 
@@ -125,12 +127,32 @@ Solution
 source("R/clean_dataframe.R")
 ```
 
+## {{< fa brands python >}}
+
+```{.python include="src/import_data.py" start-line=1 end-line=12}
+```
+
+* Reporter cette fonction dans un fichier `src/clean_dataframe.py` et faire
+
+
+```{.python}
+from src.clean_dataframe import clean_dataframe
+```
+
+:::::
+
+
+
 </details>
 
 #### Données compagnies {.unnumbered}
 
 Sur le même principe, créer une fonction `import_compagnies_data` qui effectue
 la même suite d'opérations. Faire néanmoins attention aux types des colonnes. 
+
+::::: {.panel-tabset group="language"}
+
+## {{< fa brands r-project >}}
 
 ```{r}
 #| eval: false
@@ -156,6 +178,35 @@ Solution
 ```
 
 </details>
+
+
+## {{< fa python >}}
+
+Recommandation de paramètre pour read_csv pour l'import de ces fichiers
+
+```{.python}
+col_types = {
+  ANMOIS = "str",
+  CIE = "str",
+  CIE_NOM = "str",
+  CIE_NAT = "str",
+  CIE_PAYS = "str"
+}
+```
+
+
+<details>
+<summary>
+Solution
+</summary>
+
+```{.r include="src/import_data.py" start-line=15 end-line=35}
+```
+
+</details>
+
+
+:::::
 
 #### Données liaisons  {.unnumbered}
 

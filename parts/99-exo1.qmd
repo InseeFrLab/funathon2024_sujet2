@@ -1,5 +1,3 @@
-::: {.panel-tabset group="language"}
-
 Les consignes de cet exercice sont identiques selon le langage car les librairies `R` et `Python` pour lire des fichiers YAML portent le même nom.
 
 :::: {.callout-note collapse="false" icon=false}
@@ -12,6 +10,8 @@ un fichier `YAML` en liste imbriquée. Tester cette fonction sur le fichier `sou
 prenant un argument `source_file` et renvoyant cette liste.
 
 ::::
+
+::: {.panel-tabset group="language"}
 
 ## {{< fa brands r-project >}}
 

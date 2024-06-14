@@ -1,16 +1,4 @@
 def clean_dataframe(df):
-    """
-    Cleans the DataFrame by performing various operations:
-    - Creates 'an' and 'mois' columns from the 'ANMOIS' column.
-    - Removes leading zeros from the 'mois' column.
-    - Converts all column names to lowercase.
-
-    Args:
-        df (pl.DataFrame): The input DataFrame.
-
-    Returns:
-        pl.DataFrame: The cleaned DataFrame.
-    """
     # Create 'an' and 'mois' columns
     df['an'] = df['ANMOIS'].str.slice(0, 4)
     df['mois'] = df['ANMOIS'].str.slice(4, 2)
@@ -23,5 +11,25 @@ def clean_dataframe(df):
 
     return df
 
-# Example usage
-# df = clean_dataframe(df)
+
+def import_compagnies_data(list_files):
+    # Define the data types for each column
+    col_types = {
+        "ANMOIS": "str",
+        "CIE": "str",
+        "CIE_NOM": "str",
+        "CIE_NAT": "str",
+        "CIE_PAYS": "str"
+    }
+
+    # Read the CSV file(s) with the specified column types
+    pax_cie_all = pd.read_csv(
+        list_files,
+        sep=";",
+        dtype=col_types
+    )
+
+    # Clean the DataFrame (assuming clean_dataframe is a predefined function)
+    pax_cie_all = clean_dataframe(pax_cie_all)
+
+    return pax_cie_all
