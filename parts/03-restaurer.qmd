@@ -14,7 +14,7 @@ En effet, il est important de voir l'application comme le résultat de la combin
 * Des éléments de configuration:
     + le fichier `renv.lock` ({{< fa brands r-project >}}) ou `requirements.txt` ({{< fa brands python >}}) qui permettra de reconstruire notre environnement à l'identique grâce à des outils adaptés[^generation]
     + le fichier `sources.yaml` qui liste l'emplacement des sources sur le site [data.gouv](https://www.data.gouv.fr/fr/)
-* Des données: nous évoquerons celles-ci lors de la prochaine partie.
+* Des données : nous évoquerons celles-ci lors de la prochaine partie.
 
 
 ![Illustration du principe de séparation du code, des données et de la configuration](./img/environment.png)
@@ -42,9 +42,9 @@ Une solution plus simple est de fournir les spécifications qui ont permis à vo
 code de fonctionner. Dans un monde idéal, il s'agit de fournir la liste
 des _packages_ et leur version. Si la personne à qui vous partagez votre code et vos données a cette même liste de versions de _packages_, et pas de _packages_ supplémentaires venant polluer l'environnement, les chances d'avoir la même application que vous sont très élevées. 
 
-`renv` est un gestionnaire de _packages_ qui permet de faire ces deux opérations:
+`renv` est un gestionnaire de _packages_ qui permet de faire ces deux opérations :
 
-1. Enregistrer la liste de _packages_ après avoir fait tourné un code
+1. Enregistrer la liste de _packages_ après avoir fait tourner un code
 2. Restaurer l'environnement à partir de cette liste
 
 En l'occurrence, pour vous, l'important est le second point: pouvoir recréer l'environnement nécessaire

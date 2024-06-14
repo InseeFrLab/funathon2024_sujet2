@@ -21,7 +21,7 @@ le travail exploratoire. Le travail ultérieur sur l'application visera à
 consolider et généraliser ces explorations de données. 
 
 
-## Préliminaire: récupérer le projet squelette avec `Git` {{< fa brands git-alt >}}
+## Préliminaire : récupérer le projet squelette avec `Git` {{< fa brands git-alt >}}
 
 {{< include "parts/02-recuperation.qmd" >}}
 
@@ -57,7 +57,7 @@ Les fichiers `server.R` et `ui.R` constituent le coeur de notre application
 `Shiny`. Ils représentent, respectivement, le moteur de calcul (le serveur)
 et l'interface utilisateur de notre application. Nous reviendrons sur ce concept. Le fichier `global.R` stocke
 un certain nombre d'objets utiles à l'application mais qui n'ont pas besoin
-d'être recalculé à chaque action sur l'interface graphique. Nous allons progressivement construire ces fichiers pendant les différents exercices.
+d'être recalculés à chaque action sur l'interface graphique. Nous allons progressivement construire ces fichiers pendant les différents exercices.
 
 
 ## Installer les _packages_ nécessaires pour ce tutoriel
@@ -68,7 +68,7 @@ d'être recalculé à chaque action sur l'interface graphique. Nous allons progr
 # Récupérer les données
 
 Les sources sont listées dans le fichier `sources.yaml`. 
-Notre tutoriel utilisera quatres sources différentes:
+Notre tutoriel utilisera quatres sources différentes :
 
 - Le trafic au niveau de chaque aéroport (format _CSV_)
 - Le nombre de passagers pour différentes liaisons (format _CSV_)
@@ -194,11 +194,11 @@ palette <- c("green", "blue", "red")
 # Création de l'application 
 
 Maintenant tous les ingrédients sont là pour transformer cette chaîne en application
-interactive. L'architecture de notre application sera la suivante:
+interactive. L'architecture de notre application sera la suivante :
 
 ![](img/ui-r.png)
 
-Comme toute application _web_, `Shiny` repose sur deux piliers: 
+Comme toute application _web_, `Shiny` repose sur deux piliers : 
 
 - l'interface utilisateur (UI) qui présente au navigateur des actions possibles et affiche des _output_ adaptés
 - le serveur qui répond à ces actions de l'utilisateur, produit les _output_ et les envoie à l'interface
@@ -212,7 +212,7 @@ Supprimer les fichiers `ui.R` et `server.R` dans votre dossier de travail. Nous 
 
 
 
-# Partager cette application: une ouverture vers la mise en production
+# Partager cette application : une ouverture vers la mise en production
 
 ::: {.callout-warning}
 ## Difficulté technique de cette partie
@@ -237,7 +237,7 @@ Nous ne vous demandons pas de construire l'image vous-même, l'image est déjà 
 ```{.python include="docker/Dockerfile" filename="Dockerfile"}
 ```
 
-Les principales étapes de cette construction d'image sont les suivantes:
+Les principales étapes de cette construction d'image sont les suivantes :
 
 * 1️⃣ On part d'une image de base qui correspond à celle dans laquelle on a développé notre application et qui fonctionnait. On pourrait partir d'un environnement plus minimaliste (une machine Linux avec seulement `R` installé, comme les images [`rocker`](https://rocker-project.org/)) mais nous aurions peut-être à installer des librairies système en plus par un processus d'essai-erreur coûteux en temps
 
@@ -323,13 +323,13 @@ Nous avons créé une image Docker qui est disponible sur Dockerhub, le réseau 
 Pour rendre celle-ci vivante, nous devons la déployer dans un conteneur. 
 
 ::: {.callout-tip collapse="false" icon=false}
-## `<i class="bi bi-book"></i>`{=html} Exercice 7: Déploiement de l'application Shiny
+## `<i class="bi bi-book"></i>`{=html} Exercice 7 : Déploiement de l'application Shiny
 
 L'image peut à présent être récupérée et déployée. Dans notre cas, on va la déployer sur un cluster Kubernetes, l'infrastructure sous-jacente du SSP Cloud. Le fonctionnement de Kubernetes est technique et nous ne rentrerons pas dans les détails ici. Les fichiers nécessaires au déploiement se trouvent dans un dépôt séparé (https://github.com/InseeFrLab/funathon2024_sujet2_cd), nommé dépôt [Git-ops](https://docs.github.com/en/actions/creating-actions/creating-a-docker-container-action).
 
-Afin de déployer l'application, suivre les instructions suivantes:
+Afin de déployer l'application, suivre les instructions suivantes :
 
-- Inspecter les fichiers `deployment/deployment.yml`, `deployment/service.yml` et `deployment/ingress.yml` et repérer les éléments suivants:
+- Inspecter les fichiers `deployment/deployment.yml`, `deployment/service.yml` et `deployment/ingress.yml` et repérer les éléments suivants :
     - L'emplacement où est spécifié l'image à déployer;
     - L'emplacement où est spécifié les ressources computationnelles allouées;
     - L'emplacement où est spécifié l'URL à laquelle sera exposée l'application sur Internet. La modifier (à 2 reprises) pour y indiquer une adresse personalisée pour le déploiement. Seule contrainte, elle doit être de la forme `*.lab.sspcloud.fr`;
