@@ -31,12 +31,11 @@ col_types = cols(
 ## {{< fa brands python >}}
 
 ```{.python}
-import polars as pl
 col_types = {
-    "ANMOIS": pl.Utf8,  
-    "APT": pl.Utf8,     
-    "APT_NOM": pl.Utf8, 
-    "APT_ZON": pl.Utf8,
+    "ANMOIS": "str",  
+    "APT": "str",     
+    "APT_NOM": "str", 
+    "APT_ZON": "str",
 }
 ```
 
@@ -44,15 +43,16 @@ col_types = {
 
 * A partir de la variable `ANMOIS`, créer les variables `an` et `mois`.
 
-::::: {.panel-tabset group="language"}
-
-
-## {{< fa brands r-project >}}
-
 <details>
 <summary>
 Aide si vous êtes bloqué sur cette question
 </summary>
+
+
+::::: {.panel-tabset group="language"}
+
+## {{< fa brands r-project >}}
+
 
 Pour extraire des éléments d'une chaine de caractère à partir de la position, il est recommandé d'utiliser la fonction `str_sub` du package `stringr`. Pour créer de nouvelles colonnes, il est recommandé d'utiliser la fonction `mutate` du package dplyr. 
 
@@ -65,7 +65,6 @@ qui pourront nous créer des difficultés ultérieurement
 
 Si vous êtes toujours bloqué, la solution est donnée plus bas 👇
 
-</details>
 
 ## {{< fa brands python >}}
 
@@ -73,6 +72,7 @@ Vous pouvez utiliser les méthodes de données textuelles `str.sub` et `str.repl
 
 :::::
 
+</details>
 
 
 
