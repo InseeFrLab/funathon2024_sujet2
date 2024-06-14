@@ -180,7 +180,7 @@ Solution
 </details>
 
 
-## {{< fa python >}}
+## {{< fa brands python >}}
 
 Recommandation de paramètre pour read_csv pour l'import de ces fichiers
 
@@ -200,7 +200,7 @@ col_types = {
 Solution
 </summary>
 
-```{.r include="src/import_data.py" start-line=15 end-line=35}
+```{.r include="src/import_data.py" start-line=26 end-line=46}
 ```
 
 </details>
@@ -212,6 +212,10 @@ Solution
 
 Sur le même principe, créer une fonction `import_liaisons_data` qui effectue
 la même suite d'opérations. Faire néanmoins attention aux types des colonnes. 
+
+::::: {.panel-tabset group="language"}
+
+## {{< fa brands r-project >}}
 
 ```{r}
 #| eval: false
@@ -238,20 +242,62 @@ Solution
 
 </details>
 
+## {{< fa brands python >}}
+
+Conseil pour les colonnes:
+
+```{.python}
+col_types = {
+  "ANMOIS": "str",
+  "LSN": "str",
+  "LSN_DEP_NOM": "str",
+  "LSN_ARR_NOM": "str",
+  "LSN_SCT": "str",
+  "LSN_FSC": "str"
+}
+```
+
+<details>
+<summary>
+Solution
+</summary>
+
+```{.python include="src/import_data.R" start-line=49 end-line=70}
+```
+
+</details>
+
+:::::
+
 #### Localisations des aéroports {.unnumbered}
 
 Il s'agit d'un jeu de données spatial. Pour en savoir plus sur ce type de données,
-il est recommandé de consulter la [fiche  `utilitR`](https://book.utilitr.org/03_Fiches_thematiques/Fiche_donnees_spatiales.html) sur
-le sujet ou [ce cours introductif](https://rgeo.linogaliana.fr/exercises/geospatial-wrangling.html).
+il est recommandé de consulter :
 
-1. Utiliser la fonction `st_read` du package `sf` pour lire ces données (dont la localisation est stockée dans la variable `urls$geojson$aiport`). Stocker l'objet obtenu sous le nom `airports_location`
+- Pour les utilisateurs de {{< fa brands r-project >}}: la [fiche `utilitR`](https://book.utilitr.org/03_Fiches_thematiques/Fiche_donnees_spatiales.html) sur
+le sujet ou [ce cours introductif](https://rgeo.linogaliana.fr/exercises/geospatial-wrangling.html).
+- Pour les utilisateurs de {{< fa brands python >}}: ce chapitre du [cours de `Python` de l'ENSAE](https://pythonds.linogaliana.fr/content/manipulation/04a_webscraping_TP.html).
+
+::::: {.panel-tabset group="language"}
+
+## {{< fa brands r-project >}}
+
+1. Utiliser la fonction `st_read` du package `sf` pour lire ces données (dont la localisation est stockée dans la variable `urls$geojson$airport`). Stocker l'objet obtenu sous le nom `airports_location`
+
+## {{< fa brands python >}}
+
+1. Utiliser la fonction `read_file` du package `geopandas` pour lire ces données (dont la localisation est stockée dans la variable `urls['geojson']['airport']`). Stocker l'objet obtenu sous le nom `airports_location`
+
+
+:::::
+
 2. Vérifier que les données sont bien dans le système de représentation `WGS 84`[^crs]
 
 <details>
 <summary>
 Aide
 </summary>
-La fonction à utiliser est `sf_crs`
+La fonction à utiliser est `sf_crs` {{< fa brands r-project >}} ou l'attribut `crs` pour {{< fa brands python >}} 
 </details>
 
 3. Il est toujours utile de vérifier que nos données sont bien localisées où on les attend. Pour cela, il est pertinent de faire une carte avec un fond de carte contextuel, même si celle-ci n'est pas très soignée. Pour faire ceci, le plus simple est d'utiliser la [fonction `addMarkers`](https://rstudio.github.io/leaflet/articles/markers.html) du package `leaflet`.
@@ -262,10 +308,20 @@ Essayez de faire cette carte vous-mêmes ou consultez l'aide ci-dessous
 Code pour faire une carte `leaflet` minimale
 </summary>
 ```{.r}
+# En R
 leaflet(airports_location) %>%
   addTiles() %>%
   addMarkers(popup = ~Nom)
 ```
+
+```{.python}
+# En Python
+import folium 
+m = folium.Map()
+
+folium.GeoJson(airports_location).add_to(m)
+```
+
 </details>
 
 Reporter toutes ces fonctions dans un fichier `R/import_data.R`. 

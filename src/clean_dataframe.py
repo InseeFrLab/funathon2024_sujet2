@@ -10,26 +10,3 @@ def clean_dataframe(df):
     df.columns = df.columns.str.lower()
 
     return df
-
-
-def import_compagnies_data(list_files):
-    # Define the data types for each column
-    col_types = {
-        "ANMOIS": "str",
-        "CIE": "str",
-        "CIE_NOM": "str",
-        "CIE_NAT": "str",
-        "CIE_PAYS": "str"
-    }
-
-    # Read the CSV file(s) with the specified column types
-    pax_cie_all = pd.read_csv(
-        list_files,
-        sep=";",
-        dtype=col_types
-    )
-
-    # Clean the DataFrame (assuming clean_dataframe is a predefined function)
-    pax_cie_all = clean_dataframe(pax_cie_all)
-
-    return pax_cie_all
