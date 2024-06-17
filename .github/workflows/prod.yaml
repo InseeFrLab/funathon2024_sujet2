@@ -28,8 +28,6 @@ jobs:
   test-intermediates-python:
     runs-on: ubuntu-latest
     container: inseefrlab/onyxia-vscode-python
-    permissions:
-      contents: write
     steps:
       - uses: actions/checkout@v4
         with:
