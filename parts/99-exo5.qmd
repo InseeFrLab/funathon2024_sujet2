@@ -69,7 +69,7 @@ trafic_aeroports <- trafic_aeroports %>%
 
 ```{r}
 #| code-fold: true
-#| code-summary: "Question 3"
+#| code-summary: "Question 4"
 icons <- awesomeIcons(
   icon = 'plane',
   iconColor = 'black',
