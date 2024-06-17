@@ -5,6 +5,10 @@ from plotnine import ggplot, geom_line, aes
 
 import src.import_data as sid
 from src.create_data_list import create_data_list
+from src.divers_functions import (
+  create_data_from_input,
+  summary_stat_airport
+)
 
 YEARS_LIST = [str(year) for year in range(2018, 2023)]
 MONTHS_LIST = list(range(1, 13))
