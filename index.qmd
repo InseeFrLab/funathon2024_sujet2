@@ -223,6 +223,10 @@ tout à fait le faire.
 Pour cet exercice, nous allons fixer une date pour prototyper notre 
 code. Cela nous facilitera la transformation ultérieure en fonction. 
 
+::::: {.panel-tabset group="language"}
+
+## {{< fa brands r-project >}}
+
 ```{r}
 months <- 1
 years <- 2019
@@ -233,6 +237,22 @@ Voici également une palette de couleurs qui sera utile à la fin de l'exercice.
 ```{r}
 palette <- c("green", "blue", "red")
 ```
+
+## {{< fa brands python >}}
+
+```{r}
+months = 1
+years = 2019
+```
+
+Voici également une palette de couleurs qui sera utile à la fin de l'exercice. 
+
+```{r}
+palette = c("green", "blue", "red")
+```
+
+:::::
+
 
 {{< include "parts/99-exo5.qmd" >}}
 
