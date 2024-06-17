@@ -54,8 +54,8 @@ trafic_aeroports['date'] = pd.to_datetime(
   trafic_aeroports['anmois'] + '01', format='%Y%m%d'
 )
 
-stats_aeroports = summary_stat_liaisons(
-  create_data_from_input(pax_lsn_all, year, month)
+stats_aeroports = summary_stat_airport(
+  create_data_from_input(pax_apt_all, year, month)
 )
 
 

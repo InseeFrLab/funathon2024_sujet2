@@ -45,9 +45,6 @@ trafic_aeroports <- pax_apt_all %>%
 stats_aeroports <- summary_stat_airport(
   create_data_from_input(pax_apt_all, year, month)
 )
-stats_liaisons  <- summary_stat_liaisons(
-  create_data_from_input(pax_lsn_all, year, month)
-)
 
 
 # VALORISATIONS ----------------------------------------------
