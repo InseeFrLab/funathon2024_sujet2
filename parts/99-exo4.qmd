@@ -11,6 +11,10 @@ que vous êtes satisfaits, transformer cela en
 fonction `create_data_from_input` prenant en argument un _dataframe_, 
 une année et un mois
 
+::::: {.panel-tabset group="language"}
+
+## {{< fa brands r-project >}}
+
 <details>
 <summary>
 Code de l'exercice
@@ -18,6 +22,19 @@ Code de l'exercice
 ```{.r include="R/divers_functions.R" start-line=1 end-line=6}
 ```
 </details>
+
+## {{< fa brands python >}}
+
+<details>
+<summary>
+Code de l'exercice
+</summary>
+```{.python include="src/divers_functions.py" start-line=1 end-line=6}
+```
+</details>
+
+
+:::::
 
 
 2. Pour chaque aéroport, calculer le nombre total
