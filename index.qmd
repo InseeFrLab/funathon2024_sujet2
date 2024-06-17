@@ -165,9 +165,9 @@ default_airport
 source("intermediates/exo3.R")
 ```
 
-Dans le prochain exercice, nous proposons d'abord de créer un `ggplot` minimal pour vérifier que
+Dans le prochain exercice, nous proposons d'abord de créer une figure minimale (avec `ggplot` {{< fa brands r-project >}} ou son équivalent {{< fa brands python >}} `plotnine`) pour vérifier que
 nos données ont bien la dimension temporelle attendue. Cependant, comme `Shiny` est un système
-interactif, on privilégiera la librairie [`Plotly`](https://plotly.com/r/) pour faire des figures. 
+interactif, on privilégiera la librairie [`Plotly`](https://plotly.com/r/) pour faire des figures: il s'agit d'une librairie `Javascript` qui peut être appelée grâce à des librairies clientes en {{< fa brands r-project >}} ou {{< fa brands python >}}. 
 
 {{< include "parts/99-exo3.qmd" >}}
 

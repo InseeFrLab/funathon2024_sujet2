@@ -39,10 +39,12 @@ trafic_aeroports = (
 )
 trafic_aeroports['date'] = pd.to_datetime(
   trafic_aeroports['anmois'] + '01', format='%Y%m%d'
-  )
+)
 
 
 # VALORISATIONS ----------------------------------------------
+
+from src.figures import plot_airport_line
 
 
 figure_ggplot = (

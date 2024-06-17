@@ -3,18 +3,37 @@
 
 1. Créer une variable `trafic` égale `apt_pax_dep + apt_pax_tr + apt_pax_arr`
 2. Ne conserver que les données relatives à l'aéroport `default_airport`
-3. Créer une variable `date` qui utilise les colonnes `an` et `mois`. Cette variable de date doit être au format `date`, pas au format `chr`
+3. Créer une variable `date` qui utilise les colonnes `an` et `mois`. Cette variable de date doit être au format `date`, pas au format `chr`.
+
 
 <details>
 <summary>
 Enchaînement des opérations attendues à cette étape
 </summary>
 
+::::: {.panel-tabset group="language"}
+
+## {{< fa brands r-project >}}
+
 ```{.r include="intermediates/exo3.R" end-line=32}
 ```
+
+```{.python include="intermediates/exo3.py" end-line=42}
+```
+
+
+::::
+
+
 </details>
 
-4. Faire une figure `ggplot` toute simple pour observer la dynamique des données.
+
+
+4. Faire une figure toute simple pour observer la dynamique des données:
+
+* Pour les utilisateurs de {{< fa brands r-project >}}, ce sera bien sûr avec `ggplot` ;
+* Pour les utilisateurs de {{< fa brands python >}}, vous pouvez utiliser le module graphique de votre choix: `matplotlib`, `seaborn` ou `plotnine`. Nous recommandons néanmoins [`plotnine`](https://plotnine.org/), la transposition en {{< fa brands python >}} de la grammaire des graphiques `ggplot`
+
 Vous devriez obtenir une figure similaire à celle-ci:
 
 ```{r}
@@ -22,14 +41,13 @@ Vous devriez obtenir une figure similaire à celle-ci:
 figure_ggplot
 ```
 
-Il est inutile d'aller plus loin sur la lisibilité de la figure `ggplot`
-car nous n'allons pas l'utiliser _in fine_ puisque nous allons faire une application interactive par la suite.
+Il est inutile d'aller plus loin sur la lisibilité de la figure car nous n'allons pas l'utiliser _in fine_ puisque nous allons faire une application interactive par la suite.
 Il est donc
 plus intéressant d'avoir une figure un minimum réactive pour impliquer
 l'utilisateur de l'application.
 
 5. Il est donc plus pertinent de faire une figure avec la librairie
-`Plotly`. Pour cela, vous pouvez vous inspirer de [cette page](https://plotly.com/r/line-charts/).
+`Plotly`. Pour cela, vous pouvez vous inspirer de [cette page](https://plotly.com/r/line-charts/) ({{< fa brands r-project >}}) ou [celle-ci](https://plotly.com/python/line-charts/) ({{< fa brands python >}}).
 La figure que vous devriez avoir est la suivante:
 
 ```{r}
@@ -43,8 +61,19 @@ figure_plotly
 Aide: le code pour générer la figure
 </summary>
 
-```{.r include="intermediates/exo3.R" start-line=15}
+::::: {.panel-tabset group="language"}
+
+## {{< fa brands r-project >}}
+
+```{.r include="intermediates/exo3.R" start-line=37}
 ```
+
+## {{< fa brands python >}}
+
+```{.python include="intermediates/exo3.R" start-line=48}
+```
+
+:::::
 
 </details>
 
@@ -56,8 +85,22 @@ Le code complet pour répliquer cet exercice est donné ci-dessous.
 <summary>
 Code de l'exercice
 </summary>
+
+::::: {.panel-tabset group="language"}
+
+## {{< fa brands r-project >}}
+
 ```{.r include="intermediates/exo3.R"}
 ```
+
+## {{< fa brands python >}}
+
+```{.python include="intermediates/exo3.py"}
+```
+
+:::::
+
+
 </details>
 
 Nous proposons de le transformer en fonction, ce sera plus simple à intégrer
@@ -72,15 +115,22 @@ Transformer le code ci-dessus en une fonction afin que
 * la sortie soit notre figure `plotly`
 
 Tester la fonction sur d'autres aéroports de la liste. Quand vous êtes satisfaits de celle-ci, 
-déplacer la définition de cette fonction dans `R/figures.R`
+déplacer la définition de cette fonction dans `R/figures.R` ({{< fa brands r-project >}}) ou `src/figures.py` ({{< fa brands python >}}). 
 :::
 
+::::: {.panel-tabset group="language"}
+
+## {{< fa brands r-project >}}
+
 <details>
+
 <summary>
 Fichier `R/figures.R` à l'issue de cet exercice
 </summary>
+
 ```{.r include="R/figures.R" end-line="18" filename="R/figures.R"}
 ```
+
 </details>
 
 Par la suite, nous pouvons ajouter la ligne suivante à notre fichier `main.R`
@@ -92,10 +142,36 @@ source("R/figures.R")
 
 et utiliser cette fonction à la fin du fichier. 
 
+
+## {{< fa brands python >}}
+
+<details>
+
+<summary>
+Fichier `R/figures.R` à l'issue de cet exercice
+</summary>
+
+```{.python include="src/figures.py" end-line="23" filename="src/figures.py"}
+```
+
+</details>
+
+Par la suite, nous pouvons ajouter la ligne suivante à notre fichier `main.py`
+
+```{.python}
+from src.figures import plot_airport_line
+```
+
+et utiliser cette fonction à la fin du fichier. 
+
 <details>
 <summary>
-Fichier `main.R` à l'issue de cet exercice
+Fichier `main.py` à l'issue de cet exercice
 </summary>
-```{.r include="intermediates/exo3.R" filename="main.R"}
+```{.python include="intermediates/exo3.py" filename="main.py"}
 ```
 </details>
+
+:::::
+
+
