@@ -4,3 +4,5 @@ pyyaml
 plotly
 plotnine
 great_tables
+folium
+streamlit
