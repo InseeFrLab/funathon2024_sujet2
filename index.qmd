@@ -223,6 +223,7 @@ tout à fait le faire.
 Pour cet exercice, nous allons fixer une date pour prototyper notre 
 code. Cela nous facilitera la transformation ultérieure en fonction. 
 
+
 ::::: {.panel-tabset group="language"}
 
 ## {{< fa brands r-project >}}
