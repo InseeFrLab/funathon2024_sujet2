@@ -201,7 +201,7 @@ MONTHS_LIST <- 1:12
 ## {{< fa brands python >}}
 
 
-```{.r}
+```{.python}
 YEARS_LIST = [str(year) for year in range(2018, 2023)]
 MONTHS_LIST = list(range(1, 13))
 ```

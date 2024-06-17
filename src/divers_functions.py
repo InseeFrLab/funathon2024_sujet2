@@ -11,7 +11,7 @@ def summary_stat_airport(data):
     table2 = (
         data
         .groupby("apt", "apt_nom")
-        .agg({"paxdep": "sum", "paxarr": "sum", "paxtra": "sum"})
+        .agg({"apt_pax_dep": "sum", "apt_pax_arr": "sum", "apt_pax_tr": "sum"})
         .sort_values("paxdep", ascending = False)
     )
     return table2
