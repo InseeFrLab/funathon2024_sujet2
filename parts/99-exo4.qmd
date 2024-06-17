@@ -76,6 +76,10 @@ adéquats (correction ci-dessous)
 
 Voici une proposition de script `main.R` (resp. `main.py`)  à l'issue de cet exercice
 
+::::: {.panel-tabset group="language"}
+
+## {{< fa brands r-project >}}
+
 <details>
 <summary>
 Code de l'exercice
@@ -83,6 +87,19 @@ Code de l'exercice
 ```{.r include="intermediates/exo4a.R"}
 ```
 </details>
+
+## {{< fa brands python >}}
+
+<details>
+<summary>
+Code de l'exercice
+</summary>
+```{.r include="intermediates/exo4a.py"}
+```
+</details>
+
+:::::
+
 
 Nous avons maintenant tous les ingrédients pour faire un tableau de
 statistiques descriptives lisibles et esthétiques. Pour cela, nous allons
