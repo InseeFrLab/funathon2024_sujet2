@@ -1,3 +1,5 @@
+from great_tables import GT, md
+
 def create_table_airports(stats_aeroports):
 
     table_gt = (
