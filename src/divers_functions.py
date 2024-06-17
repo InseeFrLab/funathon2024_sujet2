@@ -17,5 +17,5 @@ def summary_stat_airport(data):
         .sort_values("apt_pax_dep", ascending=False)
         .reset_index()
     )
-    table2.columns = table2.columns.str.replace("apt_pax", "pax")
+    table2.columns = table2.columns.str.replace("apt_pax_", "pax")
     return table2
