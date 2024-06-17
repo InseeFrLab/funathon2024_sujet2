@@ -12,8 +12,10 @@ def create_data_from_input(data, year, month):
 def summary_stat_airport(data):
     table2 = (
         data
-        .groupby("apt", "apt_nom")
-        .agg({"paxdep": "sum", "paxarr": "sum", "paxtra": "sum"})
-        .sort_values("paxdep", ascending = False)
+        .groupby(["apt", "apt_nom"])
+        .agg({"apt_pax_dep": "sum", "apt_pax_arr": "sum", "apt_pax_tr": "sum"})
+        .sort_values("apt_pax_dep", ascending=False)
+        .reset_index()
     )
+    table2.columns = table2.columns.str.replace("apt_pax", "pax")
     return table2
