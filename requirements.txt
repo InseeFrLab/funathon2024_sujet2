@@ -6,3 +6,4 @@ plotnine
 great_tables
 folium
 streamlit
+streamlit-folium
