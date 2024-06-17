@@ -1,8 +1,10 @@
 def create_data_from_input(data, year, month):
   data = (
     data
-    .loc[data['mois'].astype(str) == str(month)]
-    .loc[data["an"].astype(str) == str(year)]
+    .loc[
+      (data['mois'].astype(str) == str(month)) &
+      (data["an"].astype(str) == str(year))
+    ]
   )
   return data
 
