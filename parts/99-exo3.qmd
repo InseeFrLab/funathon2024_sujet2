@@ -145,17 +145,6 @@ et utiliser cette fonction à la fin du fichier.
 
 ## {{< fa brands python >}}
 
-<details>
-
-<summary>
-Fichier `R/figures.R` à l'issue de cet exercice
-</summary>
-
-```{.python include="src/figures.py" end-line="23" filename="src/figures.py"}
-```
-
-</details>
-
 Par la suite, nous pouvons ajouter la ligne suivante à notre fichier `main.py`
 
 ```{.python}
