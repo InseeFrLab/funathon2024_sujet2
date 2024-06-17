@@ -1,0 +1,6 @@
+pandas
+geopandas
+pyyaml
+plotly
+plotnine
+great_tables
