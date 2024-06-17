@@ -1,7 +1,6 @@
 import pandas as pd
 import geopandas as gpd
 import plotly.express as px
-from plotnine import ggplot, geom_line, aes
 
 import src.import_data as sid
 from src.create_data_list import create_data_list
@@ -62,16 +61,7 @@ stats_aeroports = summary_stat_airport(
 
 # VALORISATIONS ----------------------------------------------
 
-
-figure_plotly = px.line(
-  trafic_aeroports, x="date", y="trafic",
-  text="apt_nom"
-)
-
-figure_plotly.update_traces(
-  mode="markers+lines", type = "scatter",
-  hovertemplate="<i>Aéroport:</i> %{text}<br>Trafic: %{y}"
-)
+figure_plotly = plot_airport_line(trafic_aeroports, default_airport)
 
 table_airports = create_table_airports(stats_aeroports)
 

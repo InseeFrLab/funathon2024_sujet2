@@ -4,7 +4,7 @@ def plot_airport_line(df, selected_airport):
 
   trafic_aeroports = (
     df
-    .loc[df['apt'] == default_airport]
+    .loc[df['apt'] == selected_airport]
   )
   trafic_aeroports['date'] = pd.to_datetime(
     trafic_aeroports['anmois'] + '01', format='%Y%m%d'
@@ -24,6 +24,7 @@ def plot_airport_line(df, selected_airport):
 
 
 
+import pandas as pd
 import folium
 
 def map_leaflet_airport(df, airports_location, months, years):
@@ -32,13 +33,12 @@ def map_leaflet_airport(df, airports_location, months, years):
         
     # Filter by months and years
     trafic_date = df.loc[
-        (df['mois'].astype(int) == months) & (df['an'].astype(int) == years)
+        (df['mois'].astype(int) == months) & (df['an'].astype(int) == int(years))
     ]
         
     # Perform an inner join with airport locations
     trafic_aeroports = airports_location.merge(trafic_date, left_on="Code.OACI", right_on="apt", suffixes = ["_x", ""])
     trafic_aeroports['date'] = trafic_aeroports['date'].dt.strftime('%Y-%m-%d')
-
 
     palette = ['green', 'blue', 'red']  # Define your color palette
 
@@ -46,7 +46,6 @@ def map_leaflet_airport(df, airports_location, months, years):
     trafic_aeroports['color']  = trafic_aeroports['volume'].apply(lambda x: palette[x-1])
 
     m = folium.Map()
-
 
     # Iterate over each point in the GeoDataFrame
     for idx, row in trafic_aeroports.iterrows():
