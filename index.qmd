@@ -135,13 +135,29 @@ sur le trafic aérien au niveau d'un aéroport. Cela nous facilitera ensuite
 l'intégration dans une application interactive. 
 
 Pour cela, nous allons créer les deux objets temporaires suivants,
-que vous pouvez mettre à la fin du fichier `main.R` pour le moment
+que vous pouvez mettre à la fin du fichier `main.R` (ou `main.py`) pour le moment
+
+::::: {.panel-tabset group="language"}
+
+## {{< fa brands r-project >}}
 
 ```{r}
 liste_aeroports <- unique(pax_apt_all$apt)
 default_airport <- liste_aeroports[1]
 default_airport
 ```
+
+## {{< fa brands python >}}
+
+
+```{.python}
+liste_aeroports = pax_apt_all['apt'].unique()
+default_airport = liste_aeroports[0]
+default_airport
+```
+
+:::::
+
 
 ```{r}
 #| output: false
