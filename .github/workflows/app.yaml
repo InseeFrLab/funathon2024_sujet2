@@ -8,7 +8,7 @@ on:
       - main
 
 jobs:
-  docker:
+  docker-shiny:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -36,6 +36,37 @@ jobs:
           tags: |
             ${{ steps.docker_meta.outputs.tags }}
             ${{ github.ref == 'refs/heads/main' && 'inseefrlab/funathon2024-sujet2:latest' || '' }}
+          labels: ${{ steps.docker_meta.outputs.labels }}
+      - name: Image digest
+        run: echo ${{ steps.docker_build.outputs.digest }}
+  docker-streamlit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Docker meta
+        id: docker_meta
+        uses: docker/metadata-action@v3
+        with:
+          images: inseefrlab/funathon2024-sujet2
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v1
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+      - name: Login to DockerHub
+        if: github.event_name != 'pull_request'
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: Build and push
+        uses: docker/build-push-action@v3
+        with:
+          context: .
+          file: ./docker/Dockerfile_python
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: |
+            ${{ steps.docker_meta.outputs.tags }}
+            ${{ github.ref == 'refs/heads/main' && 'inseefrlab/funathon2024-sujet2:python' || '' }}
           labels: ${{ steps.docker_meta.outputs.labels }}
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}

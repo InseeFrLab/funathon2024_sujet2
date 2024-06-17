@@ -1,0 +1,12 @@
+FROM inseefrlab/onyxia-jupyter-python:py3.10.9
+
+# Add files necessary for the running app
+ADD app.py .
+ADD sources.yml .
+ADD requirements.txt .
+COPY src src/
+
+RUN pip install -r requirements.txt
+
+EXPOSE 8000
+CMD ["streamlit", "run", "app.py", "--server.port=8000", "--server.address=0.0.0.0"]

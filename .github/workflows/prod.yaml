@@ -27,7 +27,7 @@ jobs:
           done
   test-intermediates-python:
     runs-on: ubuntu-latest
-    container: inseefrlab/onyxia-vscode-python
+    container: inseefrlab/onyxia-jupyter-python:py3.10.9
     steps:
       - uses: actions/checkout@v4
         with:
