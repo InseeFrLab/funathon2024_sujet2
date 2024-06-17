@@ -2,6 +2,9 @@ from great_tables import GT, md
 
 def create_table_airports(stats_aeroports):
 
+    stats_aeroports['name_clean'] = stats_aeroports['apt_nom'].str.title() + " _(" + stats_aeroports['apt'] + ")_"
+    stats_aeroports = stats_aeroports[ ['name_clean'] + [ col for col in stats_aeroports.columns if col != 'name_clean' ] ]
+
     table_gt = (
         GT(stats_aeroports.head(15))
         .cols_hide(columns = stats_aeroports.filter(like = "apt").columns.tolist())
