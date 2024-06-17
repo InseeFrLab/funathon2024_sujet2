@@ -19,7 +19,7 @@ une année et un mois
 <summary>
 Code de l'exercice
 </summary>
-```{.r include="R/divers_functions.R" start-line=1 end-line=6}
+```{.r include="R/divers_functions.R" end-line=6}
 ```
 </details>
 
@@ -29,7 +29,7 @@ Code de l'exercice
 <summary>
 Code de l'exercice
 </summary>
-```{.python include="src/divers_functions.py" start-line=1 end-line=6}
+```{.python include="src/divers_functions.py" end-line=5}
 ```
 </details>
 
@@ -42,32 +42,39 @@ de passager. Puis classer les aérports du plus fréquenté
 au moins fréquenté. Une fois que vous êtes satisfaits de
 votre chaine d'opération, créer une fonction `summary_stat_airport`.
 
-<details>
-<summary>
-Code de l'exercice
-</summary>
-```{.r include="R/divers_functions.R" start-line=8 end-line=19}
-```
-</details>
+::::: {.panel-tabset group="language"}
 
-3. Voici une fonction pour faire le même type d'opération sur la base des
-liaisons. 
+## {{< fa brands r-project >}}
 
 <details>
 <summary>
 Code de l'exercice
 </summary>
-```{.r include="R/divers_functions.R" start-line=20}
+```{.r include="R/divers_functions.R" start-line=8}
 ```
 </details>
 
-Reporter les fonctions créées dans cet exercice dans un script `divers_functions.R`.
-Enrichir le script `main.R` pour utiliser celles-ci en créant les _dataframes_
+## {{< fa brands python >}}
+
+<details>
+<summary>
+Code de l'exercice
+</summary>
+```{.python include="src/divers_functions.py" start-line=9}
+```
+</details>
+
+
+:::::
+
+
+Reporter les fonctions créées dans cet exercice dans un script `R/divers_functions.R` ({{< fa brands r-project >}}) ou `src/divers_functions.py`.
+Enrichir le script `main.R` (resp. `main.py`) pour utiliser celles-ci en créant les _dataframes_
 adéquats (correction ci-dessous)
 
 :::
 
-Voici une proposition de script `main.R` à l'issue de cet exercice
+Voici une proposition de script `main.R` (resp. `main.py`)  à l'issue de cet exercice
 
 <details>
 <summary>
