@@ -11,7 +11,7 @@ Une démonstration de cette application est disponible à l'adresse <https://rpl
 Afin de se concentrer sur la démarche, cette application interactive
 présentera un nombre limité de fonctionnalités. L'objectif est de construire
 progressivement celle-ci en suivant les étapes logiques du déroulement d'un
-projet de développement d'application interactive: découverte et exploration des données, création de statistiques
+projet de développement d'application interactive : découverte et exploration des données, création de statistiques
 descriptives et de visualisations simples sur un jeu de données, 
 extension du nombre de visualisations accessibles par la création d'une application. Ce tutoriel est également l'occasion de découvrir quelques
 bonnes pratiques de programmation avec {{< fa brands r-project >}}
@@ -44,7 +44,7 @@ En général, on fait de la visualisation de données car les sources de donnée
 exploitées présentent tellement de dimensions pouvant intéresser un utilisateur
 qu'il est plus pertinent de le laisser explorer les données que de définir
 pour lui les statistiques à mettre en avant. L'interactivité permise par les sites
-web est particulièrement adaptée pour cela: le fait d'afficher ou masquer
+web est particulièrement adaptée pour cela : le fait d'afficher ou masquer
 des visualisations en fonction de choix de l'utilisateur
 évite de noyer l'information par rapport à des supports figés.
 
@@ -67,10 +67,10 @@ des statisticiens ou _data scientists_.
 Autrement dit, si le projet a l'ambition d'être partagé
 à une audience large qui n'a pas les compétences techniques pour faire tourner elle-même
 le code, il convient de prendre en compte le fait qu'il faudra dans l'équipe projet
-des compétences de développement web. Si le projet est expérimental, c'est moins un problème: `Shiny`, `Dash` ou `Streamlit` permettront d'avoir rapidement un prototype viable. 
+des compétences de développement web. Si le projet est expérimental, c'est moins un problème : `Shiny`, `Dash` ou `Streamlit` permettront d'avoir rapidement un prototype viable. 
 
 Il existe heureusement des solutions techniques plus simples à mettre en oeuvre que `Shiny`,
-`Streamlit` ou `Dash`. Les sites web statiques font partie de cet
+`Streamlit` ou `Dash`. Les __sites web statiques__ font partie de cet
 éventail des possibles et représentent souvent une alternative pertinente aux applications interactives à condition qu'ils soient bien pensés. 
 Ils sont notamment pertinents pour les applications de visualisation
 de données où cette dernière est déjà préparée en amont. Avoir un serveur `R` ou `Python`
@@ -80,7 +80,7 @@ que
 les productions graphiques ne soient pas trop complexes à créer. Pour des sites faisant intervenir des interactions complexes entre actions d'un utilisateur (bouton, menu déroulant, etc. ) et
 affichage, il faudra recourir à du  `Javascript` (technologie utilisée par les sites spécialisés dans la _dataviz_), ce qui fait, à nouveau, appel à des compétences qui dépassent celles des _data scientists_ ou statisticiens classiques. 
 
-En résumé, les éléments ci-dessus ont vocation à servir de mise en garde. `Shiny`, `Dash` ou `Streamlit` sont d'excellents outils techniques lorsqu'ils sont utilisés à bon escient. Néanmoins, leur simplicité d'usage ne doit pas amener à oublier de se poser des questions vitales comme celui du cycle de vie du projet, du public cible ou encore de la compétence des équipes amenées à le maintenir s'il perdure au-delà d'une phase d'expérimentation.
+En résumé, les éléments ci-dessus ont vocation à servir de mise en garde. `Shiny`, `Dash` ou `Streamlit` sont d'excellents outils techniques lorsqu'ils sont utilisés à bon escient. Néanmoins, leur simplicité d'usage ne doit pas amener à oublier de se poser des questions cruciales comme celui du cycle de vie du projet, du public cible ou encore de la compétence des équipes amenées à le maintenir s'il perdure au-delà d'une phase d'expérimentation.
 
 ::: {.callout-warning collapse="true"}
 ## Site statique vs application réactive
@@ -95,7 +95,7 @@ s'appuient sur des serveurs différents. Un site statique repose
 sur un serveur web là où `Streamlit` s'appuie sur 
 serveur classique en _backend_. La différence principale
 entre ces deux types de serveurs
-réside principalement dans leur fonction et leur utilisation:
+réside principalement dans leur fonction et leur utilisation :
 
 - Un __serveur web__ est spécifiquement conçu pour stocker, traiter et livrer des pages web aux clients. Cela inclut des fichiers HTML, CSS, JavaScript, images, etc. Les serveurs web écoutent les requêtes HTTP/HTTPS provenant des navigateurs des utilisateurs et y répondent en envoyant les données demandées.
 - Un **serveur _backend_** classique est conçu pour effectuer des opérations en réponse à un _front_, en l'occurrence une page web. 
