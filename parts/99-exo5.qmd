@@ -2,18 +2,20 @@
 ## `<i class="bi bi-book"></i>`{=html} Exercice 5: carte aérienne du trafic aéroportuaire
 
 1. Créer un _dataframe_ `trafic_date` en ne conservant que les observations
-de `pax_apt_all` égales à un certain mois et année (vous pouvez vous inspirer d'un `filter` fait précédemment). Utiliser celui-ci en faisant
+de `pax_apt_all` égales à un certain mois et année (vous pouvez vous inspirer d'un filtre fait précédemment). Utiliser celui-ci en faisant
 une jointure avec `airports_location` par le biais des variables, respectivement,
 `Code.OACI` et `apt`. Nommer ce _dataframe_ `trafic_aeroports`
-2. A partir de l'[exemple de démarrage de `leaflet`](https://rstudio.github.io/leaflet/articles/markers.html),
+2. A partir de l'[exemple de démarrage de `leaflet`](https://rstudio.github.io/leaflet/articles/markers.html) {{< fa brands r-project >}} ou de l'[exemple canonique `folium`](https://python-visualization.github.io/folium/latest/getting_started.html#Adding-markers) ({{< fa brands python >}}),
 créer une carte interactive qui affiche, lorsqu'on clique sur l'un des
 marqueurs, le nom de l'aéroport et sa fréquentation. 
 3. Créer une variable nommée `volume` qui classe chaque observation dans son [tercile](https://fr.wiktionary.org/wiki/tercile) et transforme la valeur
 en couleur à partir de `palette`.  
-4. A partir du code suivant et de la [fonction `addAwesomeMarkers`](https://rstudio.github.io/leaflet/articles/markers.html#awesome-icons),
-reproduire une carte similaire à celle présentée plus bas. 
+4. Reproduire une carte similaire à celle présentée plus bas:
+    * En {{< fa brands r-project >}}, vous aurez besoin de la [fonction `addAwesomeMarkers`](https://rstudio.github.io/leaflet/articles/markers.html#awesome-icons) et de l'exemple de code ci-dessous
+    * En {{< fa brands python >}}, il vous suffit de modifier les paramètres de l'argument `icon`
 
-```r
+```{.r}
+# Aide pour l'exemple R
 icons <- awesomeIcons(
   icon = 'plane',
   iconColor = 'black',
@@ -23,12 +25,16 @@ icons <- awesomeIcons(
 ```
 
 :::: {.callout-warning collapse="true"}
-## Subtilité par rapport à l'exemple de [la documentation](https://rstudio.github.io/leaflet/articles/markers.html#awesome-icons)
+## Subtilité par rapport à l'exemple de [la documentation](https://rstudio.github.io/leaflet/articles/markers.html#awesome-icons) pour {{< fa brands r-project >}}
 Par rapport à l'exemple dans [la documentation](https://rstudio.github.io/leaflet/articles/markers.html#awesome-icons),
 il faut légèrement modifier le code de sorte à faire `icon=icons[]`
 et non `icon = icons`.
 ::::
 :::
+
+::::: {.panel-tabset group="language"}
+
+## {{< fa brands r-project >}}
 
 
 ```{r}
@@ -69,7 +75,7 @@ trafic_aeroports <- trafic_aeroports %>%
 
 ```{r}
 #| code-fold: true
-#| code-summary: "Question 3"
+#| code-summary: "Question 4"
 icons <- awesomeIcons(
   icon = 'plane',
   iconColor = 'black',
@@ -83,9 +89,19 @@ carte_interactive <- leaflet(trafic_aeroports) %>% addTiles() %>%
   icon=icons[],
   label=~paste0(Nom, "", " (",Code.OACI, ") : ", trafic, " voyageurs")
 )
-carte_interactive
 ```
 
+## {{< fa brands python >}}
+
+Voir la solution de l'exercice suivant
+
+:::::
+
+
+```{r}
+#| echo: false
+carte_interactive
+```
 
 Comme précédemment, nous proposons
 de transformer la production de cette carte en fonction, cela nous permettra
@@ -95,11 +111,14 @@ intéressant à faire pour découvrir la logique de la programmation fonctionnel
 ::: {.callout-note collapse="false" icon=false}
 ## `<i class="bi bi-book"></i>`{=html} Exercice 5b (optionnel): une fonction pour notre carte
 
-- Créer une fonction `map_leaflet_airport` avec les arguments `df`, `airports_location`
-et `selected_date` produisant la carte. Insérer celle-ci dans le script `R/figures.R`
-- Mettre à jour `main.R` pour utiliser cette fonction dans votre chaine. N'oubliez pas de
-définir `selected_date` dans votre script. 
+- Créer une fonction `map_leaflet_airport` avec les arguments `df`, `airports_location`, `month` et `year` produisant la carte. Insérer celle-ci dans le script `R/figures.R` (dans `src/figures.py` pour `Python`).
+- Mettre à jour `main.R` ou  `main.py` pour utiliser cette fonction dans votre chaine. N'oubliez pas de
+définir `month` et `year` dans votre script. 
 :::
+
+::::: {.panel-tabset group="language"}
+
+## {{< fa brands r-project >}}
 
 <details>
 <summary>
@@ -111,9 +130,30 @@ Code de `R/figures.R` à reprendre
 
 <details>
 <summary>
-Code de `intermediates/exo5.R` à reprendre
+Code de `main.R` à reprendre
 </summary>
-```{.r include="intermediates/exo5.R" start-line="20" filename="main.R"}
+```{.r include="intermediates/exo5.R" filename="main.R"}
 ```
 </details>
 
+## {{< fa brands python >}}
+
+
+<details>
+<summary>
+Code de `src/figures.py` à reprendre
+</summary>
+```{.r include="src/figures.py" start-line="27" filename="src/figures.py (fin du fichier)"}
+```
+</details>
+
+<details>
+<summary>
+Code de `main.py` à reprendre
+</summary>
+```{.r include="intermediates/exo5.py" filename="main.py"}
+```
+</details>
+
+
+:::::

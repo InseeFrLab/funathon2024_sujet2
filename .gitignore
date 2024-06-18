@@ -1,4 +1,6 @@
 _site/
+*/__pycache__/
+__pycache__/
 
 # History files
 .Rhistory

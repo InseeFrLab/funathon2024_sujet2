@@ -99,13 +99,23 @@ Voir le fichier `sources.yml`
 Nous pouvons maintenant utiliser cette fonction
 pour lister tous nos URL des sources.
 
+::: {.panel-tabset group="language"}
+
+## {{< fa brands r-project >}}
+
 ```{r}
 urls <- create_data_list("sources.yml")
 ```
 
+## {{< fa brands python >}}
+
+```{.python}
+urls = create_data_list("sources.yml")
+```
+
+:::
 
 {{< include "parts/99-exo2.qmd" >}}
-
 
 # Exploration des données
 
@@ -124,7 +134,11 @@ sur le trafic aérien au niveau d'un aéroport. Cela nous facilitera ensuite
 l'intégration dans une application interactive. 
 
 Pour cela, nous allons créer les deux objets temporaires suivants,
-que vous pouvez mettre à la fin du fichier `main.R` pour le moment
+que vous pouvez mettre à la fin du fichier `main.R` (ou `main.py`) pour le moment
+
+::::: {.panel-tabset group="language"}
+
+## {{< fa brands r-project >}}
 
 ```{r}
 liste_aeroports <- unique(pax_apt_all$apt)
@@ -132,15 +146,27 @@ default_airport <- liste_aeroports[1]
 default_airport
 ```
 
+## {{< fa brands python >}}
+
+
+```{.python}
+liste_aeroports = pax_apt_all['apt'].unique()
+default_airport = liste_aeroports[0]
+default_airport
+```
+
+:::::
+
+
 ```{r}
 #| output: false
 #| echo: false
 source("intermediates/exo3.R")
 ```
 
-Dans le prochain exercice, nous proposons d'abord de créer un `ggplot` minimal pour vérifier que
+Dans le prochain exercice, nous proposons d'abord de créer une figure minimale (avec `ggplot` {{< fa brands r-project >}} ou son équivalent {{< fa brands python >}} `plotnine`) pour vérifier que
 nos données ont bien la dimension temporelle attendue. Cependant, comme `Shiny` est un système
-interactif, on privilégiera la librairie [`Plotly`](https://plotly.com/r/) pour faire des figures. 
+interactif, on privilégiera la librairie [`Plotly`](https://plotly.com/r/) pour faire des figures: il s'agit d'une librairie `Javascript` qui peut être appelée grâce à des librairies clientes en {{< fa brands r-project >}} ou {{< fa brands python >}}. 
 
 {{< include "parts/99-exo3.qmd" >}}
 
@@ -150,19 +176,38 @@ interactif, on privilégiera la librairie [`Plotly`](https://plotly.com/r/) pour
 La première valorisation que nous intégrerons dans notre application est
 le modèle de figure ci-dessus. La deuxième sera un tableau
 permettant de visualiser certaines données directement dans le _dashboard_. 
-Il existe plusieurs _packages_ pour faire cela. Le plus
-complet est [`GT`](https://gt.rstudio.com/), développé par `RStudio`. En peu de temps,
-ce _package_ est devenu un incontournable et propose des fonctionnalités bien
+Il existe plusieurs _packages_ pour faire cela, que ce soit en {{< fa brands r-project >}} ou {{< fa brands python >}}. 
+
+L'écosystème le plus
+complet pour faire cela est développé par `Posit` et
+est quasi équivalent qu'on fasse du {{< fa brands r-project >}} ou du {{< fa brands python >}} (il est plus complet en {{< fa brands r-project >}} car plus ancien dans ce langage). 
+Il s'agit du _package_ [`GT`](https://gt.rstudio.com/) ({{< fa brands r-project >}}) ou [`Great Tables`](https://posit-dev.github.io/great-tables/articles/intro.html) ({{< fa brands python >}}). En peu de temps,
+ces _packages_ sont devenus incontournables et proposent des fonctionnalités bien
 plus complètes que les solutions qui existaient par le passé, notamment [`DT`](https://rstudio.github.io/DT/).
 
 
 Pour le prochain exercice, vous pourrez utiliser ces objets
+
+::::: {.panel-tabset group="language"}
+
+## {{< fa brands r-project >}}
 
 ```{r}
 #| echo: true 
 YEARS_LIST  <- as.character(2018:2022)
 MONTHS_LIST <- 1:12
 ```
+
+## {{< fa brands python >}}
+
+
+```{.python}
+YEARS_LIST = [str(year) for year in range(2018, 2023)]
+MONTHS_LIST = list(range(1, 13))
+```
+
+
+:::::
 
 
 {{< include "parts/99-exo4.qmd" >}}
@@ -178,6 +223,11 @@ tout à fait le faire.
 Pour cet exercice, nous allons fixer une date pour prototyper notre 
 code. Cela nous facilitera la transformation ultérieure en fonction. 
 
+
+::::: {.panel-tabset group="language"}
+
+## {{< fa brands r-project >}}
+
 ```{r}
 months <- 1
 years <- 2019
@@ -188,6 +238,22 @@ Voici également une palette de couleurs qui sera utile à la fin de l'exercice.
 ```{r}
 palette <- c("green", "blue", "red")
 ```
+
+## {{< fa brands python >}}
+
+```{r}
+months = 1
+years = 2019
+```
+
+Voici également une palette de couleurs qui sera utile à la fin de l'exercice. 
+
+```{r}
+palette = c("green", "blue", "red")
+```
+
+:::::
+
 
 {{< include "parts/99-exo5.qmd" >}}
 
