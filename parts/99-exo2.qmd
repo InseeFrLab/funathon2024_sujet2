@@ -157,7 +157,7 @@ la même suite d'opérations. Faire néanmoins attention aux types des colonnes.
 ```{r}
 #| eval: false
 #| code-fold: true
-#| code-summary: "Recommandation de paramètre pour read_csv pour l'import de ces fichiers"
+#| code-summary: "Recommandation de paramètre pour read_csv2 pour l'import de ces fichiers"
 col_types = cols(
   ANMOIS = col_character(),
   CIE = col_character(),
