@@ -15,7 +15,7 @@ source("R/tables.R")
 source("R/figures.R")
 
 YEARS_LIST  <- as.character(2018:2022)
-MONTHS_LIST <- c(paste0("0", 1:9), 10:12)
+MONTHS_LIST <- 1:12
 year <- YEARS_LIST[1]
 month <- MONTHS_LIST[1]
 
