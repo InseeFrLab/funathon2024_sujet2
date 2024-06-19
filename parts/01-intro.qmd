@@ -34,10 +34,9 @@ L'environnement vers lequel on désire converger
 
 
 Les exercices de conception pas à pas de l'application s'adressent aussi bien à des
-débutants qu'à des utilisateurs plus experts. La mise à disposition, c'est-à-dire
-la mise en production de cette application, fait appel à des concepts
-et outils plus
-avancés et est donc moins accessible à des débutants.
+débutants qu'à des utilisateurs plus avancés. La mise à disposition, c'est-à-dire
+la mise en production de cette application, fait toutefois appel à des concepts
+et outils plus avancés et est donc moins accessible à des débutants.
 
 
 ::: {.callout-note}
