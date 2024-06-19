@@ -9,25 +9,38 @@ sur le bouton suivant
 
 ## {{< fa brands r-project >}}
 
-La démarche de récupération a été expliquée au cours de la présentation de l'environnement technique
+La démarche de récupération a été expliquée au cours de la présentation de l'environnement technique. Voici, en résumé, les gestes à faire:
 
-<details>
-<summary>
-Vidéo de présentation
-</summary>
-{{< video src="https://minio.lab.sspcloud.fr/projet-funathon/2024/diffusion/20240618_session_presentation.mp4" controls="yes" start="5340" >}}
-</details>
+- Forker le dépôt [{{< fa brands github >}} `InseeFrLab/funathon2024_sujet2`](https://github.com/InseeFrLab/funathon2024_sujet2)
+- Cliquer sur le bouton ci-dessous:
+
+```{=html}
+<a href="https://datalab.sspcloud.fr/launcher/ide/rstudio?version=1.15.25&autoLaunch=false&networking.user.enabled=true&git.repository=«https%3A%2F%2Fgithub.com%2FInseeFrLab%2Ffunathon2024_sujet2.git»&onyxia.friendlyName=«config-funathon2024»&kubernetes.role=«admin»" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/SSP%20Cloud-Ouvrir_dans_RStudio-blue?logo=rstudio&amp;logoColor=blue" alt="Onyxia"></a>
+<br>
+```
+
+- Sur la page `SSPCloud` qui s'ouvre, changer l'URL indiqué dans l'onglet `Git` pour mettre celui de votre _fork_
+
+_Revoir la vidéo de présentation sur [https://inseefrlab.github.io/funathon2024](https://inseefrlab.github.io/funathon2024) (à démarrer à partir de 1h29mn)_
+
+
+## {{< fa brands python >}}
+
+La démarche de récupération est assez similaire à celle expliquée pour {{< fa brands r-project >}}. Voici, en résumé, les gestes à faire:
+
+- Forker le dépôt [{{< fa brands github >}} `InseeFrLab/funathon2024_sujet2`](https://github.com/InseeFrLab/funathon2024_sujet2)
+- Cliquer sur le bouton ci-dessous:
 
 ```{=html}
 <center>
-<a href="https://datalab.sspcloud.fr/launcher/ide/rstudio?version=1.15.25&autoLaunch=false&networking.user.enabled=true&git.repository=«https%3A%2F%2Fgithub.com%2FInseeFrLab%2Ffunathon2024_sujet2.git»&onyxia.friendlyName=«config-funathon2024»&kubernetes.role=«admin»" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/SSP%20Cloud-Ouvrir_dans_RStudio-blue?logo=rstudio&amp;logoColor=blue" alt="Onyxia"></a>
+<a href="https://datalab.sspcloud.fr/launcher/ide/vscode-python?version=1.11.35&autoLaunch=true&networking.user.enabled=true&git.repository=«https%3A%2F%2Fgithub.com%2Finseefrlab%2Ffunathon2024_sujet2.git»&git.cache=«36000»&kubernetes.role=«admin»" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/SSP%20Cloud-Ouvrir_dans_VSCode-blue?logo=vscode&amp;logoColor=blue" alt="Onyxia"></a>
 </center>
 <br>
 ```
 
-## {{< fa brands python >}}
+- Sur la page `SSPCloud` qui s'ouvre, changer l'URL indiqué dans l'onglet `Git` pour mettre celui de votre _fork_
 
-TO DO
+_Revoir la vidéo de présentation sur [https://inseefrlab.github.io/funathon2024](https://inseefrlab.github.io/funathon2024) (à démarrer à partir de 1h29mn)_
 
 
 :::

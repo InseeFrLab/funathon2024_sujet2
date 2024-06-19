@@ -12,6 +12,7 @@ filters:
 
 <br>
 
+
 ```{=html}
 <table>
   <thead>
@@ -38,6 +39,7 @@ filters:
 ```
 
 {{< include "parts/01-intro.qmd" >}}
+
 
 # Exploration des données de trafic aérien
 
