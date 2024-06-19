@@ -8,9 +8,8 @@ du temps et d'éviter la redondance de code.
 
 #### Données aéroports {.unnumbered}
 
-* Comme les données sont des CSV européens (séparateur `;`),
-utiliser `read_csv2` du package `readr` pour lire les données à partir 
-de la liste de fichiers `unlist(urls$airports)`[^utilitr-csv].
+* Les données sont des CSV européens (avec le séparateur `;`). Il est donc conseillé d'utiliser la fonction `read_csv2` du package `readr` pour lire les données à partir 
+de la liste de fichiers `unlist(urls$airports)`[^utilitr-csv] si vous utilisez {{< fa brands r-project >}}, et d'utiliser la fonction `read_csv` du package `pandas` pour lire les données à partir de la liste de fichiers `urls['airports']` si vous utilisez {{< fa brands python >}}.
 * Il est recommandé de ne pas laisser les types par défaut des colonnes mais de figer ceux-ci avec l'argument suivant:
 
 ::::: {.panel-tabset group="language"}
