@@ -11,10 +11,31 @@ filters:
 ```
 
 <br>
-<span class="level-button level-debutant">Débutant</span>
-<span class="level-button level-intermediaire">Intermédiaire</span>
-<span class="level-button level-expert">Expert</span>
 
+```{=html}
+<table>
+  <thead>
+    <tr>
+      <th>Niveau technique</th>
+      <th>Enjeux</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><span class="level-button level-debutant">Débutant</span></td>
+      <td>Suivre les consignes, tester les exemples, reprendre et comprendre les corrections. <b>Ne pas se préoccuper de la fin du tutoriel (l'ouverture vers la mise en production)</b>.</td>
+    </tr>
+    <tr>
+      <td><span class="level-button level-intermediaire">Intermédiaire</span></td>
+      <td>Chercher à faire les exercices et ne regarder les aides que si nécessaire. <b>Ne pas se préoccuper de la fin du tutoriel (l'ouverture vers la mise en production)</b>.</td>
+    </tr>
+    <tr>
+      <td><span class="level-button level-expert">Expert</span></td>
+      <td>Faire les premiers exercices en autonomie. <b>L'objectif principal est de faire la partie mise en production</b>.</td>
+    </tr>
+  </tbody>
+</table>
+```
 
 {{< include "parts/01-intro.qmd" >}}
 

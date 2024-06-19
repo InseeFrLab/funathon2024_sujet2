@@ -29,6 +29,7 @@ ces deux langages est assez minime. L'un des objectifs de ce tutoriel est de vou
 
 ![Environnement bien structuré](https://inseefrlab.github.io/formation-bonnes-pratiques-git-R/slides/img/environment.png){#fig-clean}
 
+L'environnement vers lequel on désire converger
 :::
 
 
@@ -75,12 +76,12 @@ techniques permettent, avec les outils bien connus des praticiens de la donnée 
 sur la page web. Tout ceci sans avoir à maîtriser des notions complexes de
 développement web. 
 
-### Une mise à disposition plus complexe
+### Une mise à disposition parfois complexe
 
 Néanmoins, passée cette phase d'expérimentation,
 le partage
 de ces applications, au-delà d'un partage d'écran pour des démonstrations,
-est moins évident. C'est parce que la connaissance de ces notions complexes qui permettent le bon fonctionnement d'un site web et dont la maîtrise n'est pas nécessaire lorsqu'on se lance dans la construction du site deviennent utiles passée la phase d'expérimentation. 
+n'est pas toujours évident (d'où le fait, nous y reviendrons, que la dernière partie de ce tutoriel s'adresse plutôt à un niveau expert. C'est parce que la connaissance de ces notions complexes qui permettent le bon fonctionnement d'un site web et dont la maîtrise n'est pas nécessaire lorsqu'on se lance dans la construction du site deviennent utiles passée la phase d'expérimentation. 
 Celles-ci dépassent néanmoins le champ de compétence
 des statisticiens ou _data scientists_. 
 
