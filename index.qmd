@@ -10,6 +10,7 @@ filters:
 <a href="https://datalab.sspcloud.fr/launcher/ide/rstudio?version=1.15.25&autoLaunch=false&networking.user.enabled=true&git.repository=«https%3A%2F%2Fgithub.com%2FInseeFrLab%2Ffunathon2024_sujet2.git»&onyxia.friendlyName=«config-funathon2024»&kubernetes.role=«admin»" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/SSP%20Cloud-Ouvrir_dans_RStudio-blue?logo=rstudio&amp;logoColor=blue" alt="Onyxia"></a>
 ```
 
+<br>
 <span class="level-button level-debutant">Débutant</span>
 <span class="level-button level-intermediaire">Intermédiaire</span>
 <span class="level-button level-expert">Expert</span>

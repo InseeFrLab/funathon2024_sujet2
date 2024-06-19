@@ -5,7 +5,11 @@
 L'objectif de ce tutoriel est d'amener, pas à pas, à la conception
 voire à la mise à disposition d'un tableau de bord (_dashboard_)
 du trafic aérien avec {{< fa brands r-project >}} ou {{< fa brands python >}}.
-Une démonstration de cette application est disponible à l'adresse <https://rplane-dashboard.kub.sspcloud.fr/> ({{< fa brands r-project >}}) ou <https://pylot-dashboard.kub.sspcloud.fr/> ({{< fa brands python >}}). Ce tutoriel est également l'occasion d'apprendre quelques bonnes pratiques pour les projets {{< fa brands r-project >}} et {{< fa brands python >}}.
+Ce tutoriel est également l'occasion d'apprendre quelques bonnes pratiques pour les projets {{< fa brands r-project >}} et {{< fa brands python >}}.
+Une démonstration de cette application est disponible sur
+
+* <https://rplane-dashboard.kub.sspcloud.fr/> ({{< fa brands r-project >}}) ;
+* <https://pylot-dashboard.kub.sspcloud.fr/> ({{< fa brands python >}}). 
 
 L'objectif est de construire
 progressivement cette application en suivant les étapes logiques du déroulement d'un
@@ -17,13 +21,23 @@ L'objectif secondaire de ce tutoriel est de faire découvrir quelques
 bonnes pratiques de programmation avec {{< fa brands r-project >}} ou {{< fa brands python >}}
 afin de rendre les projets plus
 fiables, évolutifs et lisibles. Comme vous pourrez le faire au cours de celui-ci, la différence entre
-ces deux langages est assez minime.  
+ces deux langages est assez minime. L'un des objectifs de ce tutoriel est de vous amener à structurer votre projet selon la norme suivante:
+
+::: {#fig-environment layout-ncol=2}
+
+![_Environnement mal structuré_](https://inseefrlab.github.io/formation-bonnes-pratiques-git-R/slides/img/environment_messy.png){#fig-messy}
+
+![Environnement bien structuré](https://inseefrlab.github.io/formation-bonnes-pratiques-git-R/slides/img/environment.png){#fig-clean}
+
+:::
+
 
 Les exercices de conception pas à pas de l'application s'adressent aussi bien à des
 débutants qu'à des utilisateurs plus experts. La mise à disposition, c'est-à-dire
 la mise en production de cette application, fait appel à des concepts
 et outils plus
 avancés et est donc moins accessible à des débutants.
+
 
 ::: {.callout-note}
 Afin de se concentrer sur la démarche, cette application interactive
@@ -42,6 +56,8 @@ elle guide les choix techniques ultérieurs et la répartition des tâches entre
 les différents profils pouvant intervenir dans la vie du projet s'il est mis en
 production (statisticien ou _data scientist_, équipes informatiques...). 
 
+### Une valorisation de données attractive
+
 En général, on fait de la visualisation de données car les sources de données
 exploitées présentent tellement de dimensions pouvant intéresser un utilisateur
 qu'il est plus pertinent de le laisser explorer les données que de définir
@@ -55,9 +71,11 @@ Les _frameworks_ `Shiny` ({{< fa brands r-project >}}),
 mettre en oeuvre ce type de site web. Pour une phase de construction
 d'un prototype, c'est un choix technique intéressant qui peut provoquer l'effet
 _wahou_ attendu pour lancer le projet à plus grande échelle. En effet, ces solutions
-techniques permettent, avec les outils bien connus des praticiens de la donnée, {{< fa brands r-project >}} ou {{< fa brands python >}} principalement, de créer rapidement un site web fonctionnel, ergonomique et effectuant des opérations en fonction d'actions de l'utilisateur
+techniques permettent, avec les outils bien connus des praticiens de la donnée ({{< fa brands r-project >}} ou {{< fa brands python >}}) de créer rapidement un site web fonctionnel, ergonomique et effectuant des opérations en fonction d'actions de l'utilisateur
 sur la page web. Tout ceci sans avoir à maîtriser des notions complexes de
 développement web. 
+
+### Une mise à disposition plus complexe
 
 Néanmoins, passée cette phase d'expérimentation,
 le partage
@@ -87,15 +105,10 @@ En résumé, les éléments ci-dessus ont vocation à servir de mise en garde. `
 ::: {.callout-warning collapse="true"}
 ## Site statique vs application réactive
 
-La solution que nous allons proposer 
-pour les sites statiques, `Quarto` associé
-à `Github Pages`, peut être utilisée dans le cadre des parcours 
-_"rapport reproductible"_ ou _"dashboard / application interactive"_. 
-
 La distinction principale entre ces deux approches est qu'elles
 s'appuient sur des serveurs différents. Un site statique repose
-sur un serveur web là où `Streamlit` s'appuie sur 
-serveur classique en _backend_. La différence principale
+sur un serveur web là où `Shiny`/`Streamlit` s'appuient sur 
+des serveurs classiques en _backend_. La différence principale
 entre ces deux types de serveurs
 réside principalement dans leur fonction et leur utilisation :
 
