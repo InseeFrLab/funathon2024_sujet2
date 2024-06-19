@@ -47,9 +47,9 @@ Si vous disposez de temps supplémentaire, n'hésitez pas à ajouter des fonctio
 :::
 
 
-## Pourquoi faire une application interactive ?
+## Pourquoi développer une application interactive ?
 
-Cette question peut apparaître naive. Pourtant, elle mérite d'être posée 
+Cette question peut apparaître naïve. Pourtant, elle mérite d'être posée 
 car elle permet de réfléchir:
 
 * __à l'objectif de l'application__ ;
