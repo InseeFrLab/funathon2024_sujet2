@@ -30,7 +30,7 @@ col_types = cols(
 ## {{< fa brands python >}}
 
 ```{.python}
-col_types = {
+dtype = {
     "ANMOIS": "str",  
     "APT": "str",     
     "APT_NOM": "str", 
