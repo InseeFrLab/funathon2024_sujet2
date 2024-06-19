@@ -51,7 +51,11 @@ Si vous disposez de temps supplémentaire, n'hésitez pas à ajouter des fonctio
 ## Pourquoi faire une application interactive ?
 
 Cette question peut apparaître naive. Pourtant, elle mérite d'être posée 
-car elle permet de __réfléchir à l'objectif de l'application et à son public cible__.
+car elle permet de réfléchir:
+
+* __à l'objectif de l'application__ ;
+* __à son public cible__.
+
 Cette réflexion devrait être menée systématiquement car
 elle guide les choix techniques ultérieurs et la répartition des tâches entre
 les différents profils pouvant intervenir dans la vie du projet s'il est mis en

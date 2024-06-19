@@ -341,6 +341,7 @@ de ses applications, un format de valorisation de plus en plus commun.
 Dans cette partie on propose de déployer l'application sur le SSP Cloud et de la rendre accessible depuis Internet. L'exercice constitue une introduction à la mise en production d'applications dans un environnement Cloud. Pour aller plus loin, n'hésitez pas à consulter [ce cours de 3e année de l'ENSAE](https://ensae-reproductibilite.github.io/website/).
 
 
+
 ## Conteneurisation de l'application
 
 Pour déployer son application, la première étape consiste à la [conteneuriser](https://ensae-reproductibilite.github.io/website/chapters/portability.html#les-conteneurs), ce qui signifie la mettre dans une sorte de boîte virtuelle contenant tout ce dont l'application a besoin pour fonctionner. Le conteneur sépare l'application de son environnement extérieur, ce qui permet d'éviter les conflits avec d'autres applications ou dépendances sur le même système. Puisque le conteneur contient tout ce dont l'application a besoin (comme les bibliothèques et les dépendances), l'application peut être déplacée et exécutée sur n'importe quel système qui supporte les conteneurs, sans se soucier des différences entre ces systèmes.
