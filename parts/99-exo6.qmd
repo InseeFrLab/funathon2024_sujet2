@@ -8,7 +8,7 @@ de l'objet `trafic_aeroports`
 <summary>
 Le fichier `global.R` attendu
 </summary>
-```{.r include="global.R"}
+```{.r include="intermediates/exo6/global.R"}
 ```
 </details>
 

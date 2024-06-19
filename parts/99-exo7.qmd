@@ -10,7 +10,7 @@ dans le code de l'application complète:
 <summary>
 Code de `ui.R` à reprendre
 </summary>
-```{.r include="ui.R" filename="ui.R"}
+```{.r include="correction/ui.R" filename="ui.R"}
 ```
 </details>
 
@@ -18,7 +18,7 @@ Code de `ui.R` à reprendre
 <summary>
 Code de `server.R` à reprendre
 </summary>
-```{.r include="server.R" filename="server.R"}
+```{.r include="correction/server.R" filename="server.R"}
 ```
 </details>
 

@@ -21,16 +21,16 @@ prenant un argument `source_file` et renvoyant cette liste.
 Voir la solution à cet exercice
 </summary>
 
-```{.python include="R/create_data_list.R"}
+```{.python include="correction/R/create_data_list.R"}
 ```
 
 </details>
 
-La fonction-solution de cet exercice est dans le fichier `R/create_data_list.R`. Elle peut être importée
+La fonction-solution de cet exercice est dans le fichier `correction/R/create_data_list.R`. Elle peut être importée
 dans l'environnement global grâce à la commande:
 
 ```{r}
-source("R/create_data_list.R")
+source("correction/R/create_data_list.R")
 ```
 
 

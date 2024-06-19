@@ -124,7 +124,7 @@ définir `month` et `year` dans votre script.
 <summary>
 Code de `R/figures.R` à reprendre
 </summary>
-```{.r include="R/figures.R" start-line="20" filename="R/figures.R (fin du fichier)"}
+```{.r include="correction/R/figures.R" start-line="20" filename="R/figures.R (fin du fichier)"}
 ```
 </details>
 

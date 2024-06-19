@@ -4,10 +4,10 @@ library(stringr)
 library(sf)
 library(plotly)
 
-source("R/import_data.R")
-source("R/create_data_list.R")
-source("R/clean_dataframe.R")
-source("R/figures.R")
+source("correction/R/import_data.R")
+source("correction/R/create_data_list.R")
+source("correction/R/clean_dataframe.R")
+source("correction/R/figures.R")
 
 
 # Load data ----------------------------------

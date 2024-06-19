@@ -35,9 +35,9 @@ on peut se concentrer sur les fichiers suivants:
 ```
 funathon_sujet2/
 ├── renv.lock
-├── global.R
-├── server.R
-└── ui.R
+├── correction/global.R
+├── correction/server.R
+└── correction/ui.R
 ```
 
 Le premier fichier (`renv.lock`) correspond à la liste des _packages_ nécessaires
@@ -269,7 +269,7 @@ Comme toute application _web_, `Shiny` repose sur deux piliers :
 - l'interface utilisateur (UI) qui présente au navigateur des actions possibles et affiche des _output_ adaptés
 - le serveur qui répond à ces actions de l'utilisateur, produit les _output_ et les envoie à l'interface
 
-Supprimer les fichiers `ui.R` et `server.R` dans votre dossier de travail. Nous allons les recréer progressivement afin de comprendre, pas à pas, la logique d'une application.
+Nous allons recréer `ui.R` et `server.R` progressivement afin de comprendre, pas à pas, la logique d'une application.
 
 {{< include "parts/99-exo6.qmd" >}}
 
@@ -305,7 +305,7 @@ Nous ne vous demandons pas de construire l'image vous-même, l'image est déjà 
 
 Les principales étapes de cette construction d'image sont les suivantes :
 
-* 1️⃣ On part d'une image de base qui correspond à celle dans laquelle on a développé notre application et qui fonctionnait. On pourrait partir d'un environnement plus minimaliste (une machine Linux avec seulement `R` installé, comme les images [`rocker`](https://rocker-project.org/)) mais nous aurions peut-être à installer des librairies système en plus par un processus d'essai-erreur coûteux en temps
+* 1️⃣ On part d'une image de base qui correspond à celle dans laquelle on a développé notre application et qui fonctionnait. On pourrait partir d'un environnement plus minimaliste (une machine Linux avec seulement `R` installé, comme les images [`rocker`](https://rocker-project.org/)) mais nous aurions peut-être à installer des librairies système en plus par un processus d'essai-erreur coûteux en temps.
 
 <details>
 <summary>
@@ -317,7 +317,7 @@ Partie du `Dockerfile` en question
 
 </details>
 
-* 2️⃣ On ajoute dans le conteneur les fichiers indispensables au fonctionnement de notre application. Le conteneur, par défaut, n'a pas les fichiers de notre projet, on doit donc dire à `Docker` quels fichiers on désire avoir dans notre application
+* 2️⃣ On ajoute dans le conteneur les fichiers indispensables au fonctionnement de notre application. Le conteneur, par défaut, n'a pas les fichiers de notre projet, on doit donc dire à `Docker` quels fichiers on désire avoir dans notre application.
 
 <details>
 <summary>
@@ -329,7 +329,7 @@ Partie du `Dockerfile` en question
 
 </details>
 
-* 3️⃣ On définit des paramètres sur le routage de notre application dans le conteneur. Ces paramètres nous serons utiles ultérieurement, lors du déploiement
+* 3️⃣ On définit des paramètres sur le routage de notre application dans le conteneur. Ces paramètres nous seront utiles ultérieurement, lors du déploiement.
 
 <details>
 <summary>
@@ -370,7 +370,7 @@ notre plat ? En général, on passe par des systèmes d'intégration continue, d
 en complément de forges `Git` pour tester le `Dockerfile`. Pour en savoir plus sur l'intégration continue, 
 vous pouvez consulter le [cours de 3e année de l'ENSAE](https://ensae-reproductibilite.github.io/website/chapters/portability.html#les-conteneurs). 
 
-Voici le fichier `.github/workflows/shiny.yaml` qui contient la suite d'instruction donnée aux serveurs
+Voici le fichier `.github/workflows/app.yaml` qui contient la suite d'instruction donnée aux serveurs
 de `Github` pour exécuter notre chaine de production de l'image `Docker`. Celui-ci est quasiment une reprise mot pour mot de l'exemple de la [documentation Github](https://docs.github.com/en/actions/creating-actions/creating-a-docker-container-action).
 
 <details>
@@ -378,7 +378,7 @@ de `Github` pour exécuter notre chaine de production de l'image `Docker`. Celui
 Le _workflow_ `Github` en question
 </summary>
 
-```{.python include=".github/workflows/shiny.yaml" filename=".github/workflows/shiny.yaml"}
+```{.python include=".github/workflows/app.yaml" filename=".github/workflows/app.yaml"}
 ```
 
 </details>

@@ -3,9 +3,9 @@ library(dplyr)
 library(stringr)
 library(sf)
 
-source("R/import_data.R")
-source("R/create_data_list.R")
-source("R/clean_dataframe.R")
+source("correction/R/import_data.R")
+source("correction/R/create_data_list.R")
+source("correction/R/clean_dataframe.R")
 
 
 # Load data ----------------------------------

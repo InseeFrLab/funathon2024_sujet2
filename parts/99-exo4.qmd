@@ -19,7 +19,7 @@ une année et un mois
 <summary>
 Code de l'exercice
 </summary>
-```{.r include="R/divers_functions.R" end-line=6}
+```{.r include="correction/R/divers_functions.R" end-line=6}
 ```
 </details>
 
@@ -50,7 +50,7 @@ votre chaine d'opération, créer une fonction `summary_stat_airport`.
 <summary>
 Code de l'exercice
 </summary>
-```{.r include="R/divers_functions.R" start-line=8}
+```{.r include="correction/R/divers_functions.R" start-line=8}
 ```
 </details>
 
@@ -303,7 +303,7 @@ Mettre à jour `main.R` ou `main.py` pour utiliser ceci dans votre application.
 <summary>
 Code de `R/tables.R`
 </summary>
-```{.r include="R/tables.R" filename="R/tables.R"}
+```{.r include="correction/R/tables.R" filename="R/tables.R"}
 ```
 </details>
 

@@ -89,7 +89,7 @@ Solution
 ## {{< fa brands r-project >}}
 
 
-```{.r include="R/clean_dataframe.R"}
+```{.r include="correction/R/clean_dataframe.R"}
 ```
 
 
@@ -117,7 +117,7 @@ Solution
 
 ## {{< fa brands r-project >}}
 
-```{.r include="R/import_data.R" start-line=1 end-line=17}
+```{.r include="correction/R/import_data.R" start-line=1 end-line=17}
 ```
 
 
@@ -174,7 +174,7 @@ col_types = cols(
 Solution
 </summary>
 
-```{.r include="R/import_data.R" start-line=20 end-line=38}
+```{.r include="correction/R/import_data.R" start-line=20 end-line=38}
 ```
 
 </details>
@@ -237,7 +237,7 @@ col_types = cols(
 Solution
 </summary>
 
-```{.r include="R/import_data.R" start-line=41 end-line=60}
+```{.r include="correction/R/import_data.R" start-line=41 end-line=60}
 ```
 
 </details>
@@ -342,7 +342,7 @@ A l'issue de cet exercice, vous devriez avoir le fichier `R/import_data.R` suiva
 Le fichier `R/import_data.R` attendu
 </summary>
 
-```{.r include="R/import_data.R" filename="R/import_data.R"}
+```{.r include="correction/R/import_data.R" filename="R/import_data.R"}
 ```
 
 </details>
@@ -392,13 +392,18 @@ le code centralisé dans le script `R/import_data.R`
 peut être importé via le code suivant
 
 ```{r}
-source("R/import_data.R")  
+#| include: false
+source("correction/R/import_data.R")  
 ```
 
+```{r}
+#| eval: false
+source("R/import_data.R")
+```
 
 Vous pouvez initier un script nommé `main.R` avec les lignes suivante:
 
-```{.r include="global.R" start-line=24 end-line=34 filename="main.R"}
+```{.r include="correction/global.R" start-line=24 end-line=34 filename="main.R"}
 ```
 
 en les faisant précéder de l'import des

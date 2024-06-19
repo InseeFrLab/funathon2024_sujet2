@@ -11,12 +11,12 @@ library(gt)
 library(leaflet)
 library(bslib)
 
-source("R/import_data.R")
-source("R/create_data_list.R")
-source("R/clean_dataframe.R")
-source("R/divers_functions.R")
-source("R/tables.R")
-source("R/figures.R")
+source("correction/R/import_data.R")
+source("correction/R/create_data_list.R")
+source("correction/R/clean_dataframe.R")
+source("correction/R/divers_functions.R")
+source("correction/R/tables.R")
+source("correction/R/figures.R")
 
 # Global variables ---------------------------
 

@@ -11,6 +11,7 @@
 Enchaînement des opérations attendues à cette étape
 </summary>
 
+
 ::::: {.panel-tabset group="language"}
 
 ## {{< fa brands r-project >}}
@@ -18,11 +19,13 @@ Enchaînement des opérations attendues à cette étape
 ```{.r include="intermediates/exo3.R" end-line=32}
 ```
 
+## {{< fa brands python >}}
+
 ```{.python include="intermediates/exo3.py" end-line=42}
 ```
 
 
-::::
+:::::
 
 
 </details>
@@ -128,7 +131,7 @@ déplacer la définition de cette fonction dans `R/figures.R` ({{< fa brands r-p
 Fichier `R/figures.R` à l'issue de cet exercice
 </summary>
 
-```{.r include="R/figures.R" end-line="18" filename="R/figures.R"}
+```{.r include="correction/R/figures.R" end-line="18" filename="R/figures.R"}
 ```
 
 </details>
@@ -137,6 +140,13 @@ Par la suite, nous pouvons ajouter la ligne suivante à notre fichier `main.R`
 
 ```{r}
 #| output: false
+#| include: false
+source("correction/R/figures.R")
+```
+
+```{r}
+#| output: false
+#| eval: false
 source("R/figures.R")
 ```
 
