@@ -11,11 +11,13 @@ website:
         text: Consigne de l'exercice
       - href: https://rplane-dashboard.kub.sspcloud.fr/
         text: Tableau de bord (version {{< fa brands r-project >}})
+      - href: https://pylot-dashboard.kub.sspcloud.fr/
+        text: Tableau de bord (version {{< fa brands python >}})
 
 
 format:
   html:
-    theme: cosmo
+    theme: [cosmo, custom.scss]
     toc: true
     code-link: true
 

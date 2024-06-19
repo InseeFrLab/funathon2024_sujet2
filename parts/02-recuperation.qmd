@@ -5,6 +5,12 @@ Si vous disposez d'un compte sur le [`sspcloud`](https://www.sspcloud.fr/),
 la méthode recommandée pour se lancer dans ce tutoriel est de cliquer
 sur le bouton suivant
 
+::: {.panel-tabset group="language"}
+
+## {{< fa brands r-project >}}
+
+A updater
+
 ```{=html}
 <center>
 <a href="https://datalab.sspcloud.fr/launcher/ide/rstudio?version=1.15.25&autoLaunch=true&networking.user.enabled=true&git.repository=«https%3A%2F%2Fgithub.com%2FInseeFrLab%2Ffunathon2024_sujet2.git»&onyxia.friendlyName=«config-funathon2024»&kubernetes.role=«admin»" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/SSP%20Cloud-Ouvrir_dans_RStudio-blue?logo=rstudio&amp;logoColor=blue" alt="Onyxia"></a>
@@ -12,7 +18,12 @@ sur le bouton suivant
 <br>
 ```
 
+## {{< fa brands python >}}
 
+TO DO
+
+
+:::
 
 Si vous avez utilisé le lien de lancement rapide mis à disposition
 sur la page [inseefrlab.github.io/funathon2024/](https://inseefrlab.github.io/funathon2024/)

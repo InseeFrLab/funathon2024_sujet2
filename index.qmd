@@ -10,6 +10,10 @@ filters:
 <a href="https://datalab.sspcloud.fr/launcher/ide/rstudio?version=1.15.25&autoLaunch=false&networking.user.enabled=true&git.repository=«https%3A%2F%2Fgithub.com%2FInseeFrLab%2Ffunathon2024_sujet2.git»&onyxia.friendlyName=«config-funathon2024»&kubernetes.role=«admin»" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/SSP%20Cloud-Ouvrir_dans_RStudio-blue?logo=rstudio&amp;logoColor=blue" alt="Onyxia"></a>
 ```
 
+<span class="level-button level-debutant">Débutant</span>
+<span class="level-button level-intermediaire">Intermédiaire</span>
+<span class="level-button level-expert">Expert</span>
+
 
 {{< include "parts/01-intro.qmd" >}}
 
@@ -32,6 +36,10 @@ Le projet récupéré comporte de nombreux fichiers. Nous allons
 progressivement les découvrir dans ce tutoriel. A l'heure actuelle,
 on peut se concentrer sur les fichiers suivants:
 
+::: {.panel-tabset group="language"}
+
+## {{< fa brands r-project >}}
+
 ```
 funathon_sujet2/
 ├── renv.lock
@@ -52,6 +60,25 @@ Observer la composition de ce fichier (100 premières lignes)
 ```{.yaml include="renv.lock" filename="renv.lock" end-line=100}
 ```
 </details>
+
+
+## {{< fa brands python >}}
+
+TO BE COMPLETED
+
+<details>
+<summary>
+Observer la composition de ce fichier (100 premières lignes)
+</summary>
+```{.yaml include="requirements.txt" filename="requirements.txt"}
+```
+</details>
+
+
+:::
+
+
+_Morceau R, faire équivalent pour Python_: 
 
 Les fichiers `server.R` et `ui.R` constituent le coeur de notre application 
 `Shiny`. Ils représentent, respectivement, le moteur de calcul (le serveur)
