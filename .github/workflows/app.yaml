@@ -11,7 +11,7 @@ jobs:
   docker-shiny:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: Docker meta
         id: docker_meta
         uses: docker/metadata-action@v5
@@ -42,7 +42,7 @@ jobs:
   docker-streamlit:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: Docker meta
         id: docker_meta
         uses: docker/metadata-action@v5
