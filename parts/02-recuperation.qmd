@@ -57,7 +57,14 @@ des projets ponctuels ou vous êtes seuls à travailler.
 ::: {.callout-note collapse="true"}
 ## Récupérer le projet si vous n'avez pas utilisé le bouton proposé
 
+::::: {.panel-tabset group="language"}
+
+## {{< fa brands r-project >}}
+
 :::: {.panel-tabset}
+
+
+
 ## Interface graphique
 
 La fiche `utilitR` sur l'[utilisation de `Git`](https://book.utilitr.org/03_Fiches_thematiques/Fiche_git_utilisation.html#recuperer-url
@@ -96,10 +103,33 @@ puis, dans l'explorateur de fichiers (fenêtre en bas à droite), cliquer
 sur le fichier `RTraffic.Rproj` pour ouvrir le projet. 
 ::::
 
+## {{< fa brands python >}}
+
+- Ouvrir un terminal depuis `VSCode` (`Terminal` > `New Terminal`).
+- Récupérer, sur la page d’accueil de votre dépôt, l’url du dépôt distant. Il prend la forme suivante
+
+```{.python}
+https://github.com/<username>/<reponame>.git
+```
+
+- Dans le terminal, taper
+
+```{.python}
+git clone repo_url
+```
+
+où `repo_url` est l'URL de votre _fork_
+
+:::::
+
 :::
 
 
-## Se placer dans le projet `RStudio` associé au sujet
+## Se placer dans l'environnement du projet 
+
+::::: {.panel-tabset group="language"}
+
+## {{< fa brands r-project >}}
 
 A la racine du projet, on trouve notamment le fichier `RTraffic.Rproj`. Il s'agit d'un fichier de projet `RStudio`. Lorsqu'on travaille sur du code {{< fa brands r-project >}} avec `RStudio`, il est généralement préférable de travailler dans le cadre d'un projet. 
 
@@ -112,3 +142,17 @@ Pour plus de détails sur les bénéfices d'utiliser les projets `RStudio` ou le
 `utilitR`](https://book.utilitr.org/03_Fiches_thematiques/Fiche_rprojects.html) dédiée.
 :::
 
+## {{< fa brands python >}}
+
+Les utilisateurs de {{< fa brands python >}} connaissent deux environnements de travail très différents: la ligne de commande pour exécuter des scripts ou les _notebooks_ `Jupyter` pour avoir un environnement interactif.
+
+Les seconds sont pratiques pour prototyper et expérimenter. Mais ils ne sont pas faits pour construire des applications. Nous proposons donc la méthode de travail suivante:
+
+- Créer un `Jupyter Notebook` à la racine du projet (au même niveau que le `README.md`)[^creation-nb]. Celui-ci sera votre espace pour écrire du code expérimental. Lorsqu'il sera fonctionnel, vous pourrez le reporter dans des scripts comme indiqués dans les consignes.
+- Dans un terminal, faire `cd funathon2024_sujet2` (ou remplacer par le nom de dossier différent si vous l'avez changé). C'est dans ce terminal que vous testerez vos scripts. 
+
+
+[^creation-nb]: Pour le créer, vous pouvez taper <kbd>F1</kbd> et dans la barre qui s'ouvre, taper _notebook_ et cliquer sur `Create: New Jupyter Notebook`. Enregistrer le fichier 
+
+
+:::::
