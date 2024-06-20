@@ -65,6 +65,8 @@ col1, col2 = st.columns(2)
 
 # COLUMN 1 =======================================
 
+col1.markdown("👉️ [Retourner au tutoriel pour construire cette application](https://inseefrlab.github.io/funathon2024_sujet2/)")
+
 selected_date = col1.date_input(
     "Mois choisi",
     pd.to_datetime("2019-01-01"),

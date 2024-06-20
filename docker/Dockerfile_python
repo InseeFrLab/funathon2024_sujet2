@@ -5,6 +5,7 @@ ADD correction/app.py .
 ADD correction/sources.yml .
 ADD requirements.txt .
 COPY correction/src src/
+COPY correction/.streamlit .streamlit/
 
 
 RUN pip install -r requirements.txt
