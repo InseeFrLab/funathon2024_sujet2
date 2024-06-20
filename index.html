@@ -183,7 +183,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#exploration-des-données-de-trafic-aérien" id="toc-exploration-des-données-de-trafic-aérien" class="nav-link" data-scroll-target="#exploration-des-données-de-trafic-aérien"><span class="header-section-number">2</span> Exploration des données de trafic aérien</a>
   <ul class="collapse">
   <li><a href="#préliminaire-récupérer-le-projet-squelette-avec-git-fa-brands-git-alt" id="toc-préliminaire-récupérer-le-projet-squelette-avec-git-fa-brands-git-alt" class="nav-link" data-scroll-target="#préliminaire-récupérer-le-projet-squelette-avec-git-fa-brands-git-alt"><span class="header-section-number">2.1</span> Préliminaire : récupérer le projet squelette avec <code>Git</code> <i class="fa-brands fa-git-alt" aria-label="git-alt"></i></a></li>
-  <li><a href="#se-placer-dans-le-projet-rstudio-associé-au-sujet" id="toc-se-placer-dans-le-projet-rstudio-associé-au-sujet" class="nav-link" data-scroll-target="#se-placer-dans-le-projet-rstudio-associé-au-sujet"><span class="header-section-number">2.2</span> Se placer dans le projet <code>RStudio</code> associé au sujet</a></li>
+  <li><a href="#se-placer-dans-lenvironnement-du-projet" id="toc-se-placer-dans-lenvironnement-du-projet" class="nav-link" data-scroll-target="#se-placer-dans-lenvironnement-du-projet"><span class="header-section-number">2.2</span> Se placer dans l’environnement du projet</a></li>
   <li><a href="#architecture-du-projet" id="toc-architecture-du-projet" class="nav-link" data-scroll-target="#architecture-du-projet"><span class="header-section-number">2.3</span> Architecture du projet</a></li>
   <li><a href="#installer-les-packages-nécessaires-pour-ce-tutoriel" id="toc-installer-les-packages-nécessaires-pour-ce-tutoriel" class="nav-link" data-scroll-target="#installer-les-packages-nécessaires-pour-ce-tutoriel"><span class="header-section-number">2.4</span> Installer les <em>packages</em> nécessaires pour ce tutoriel</a>
   <ul class="collapse">
@@ -443,8 +443,12 @@ Récupérer le projet si vous n’avez pas utilisé le bouton proposé
 </div>
 </div>
 </section>
-<section id="se-placer-dans-le-projet-rstudio-associé-au-sujet" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="se-placer-dans-le-projet-rstudio-associé-au-sujet"><span class="header-section-number">2.2</span> Se placer dans le projet <code>RStudio</code> associé au sujet</h2>
+<section id="se-placer-dans-lenvironnement-du-projet" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="se-placer-dans-lenvironnement-du-projet"><span class="header-section-number">2.2</span> Se placer dans l’environnement du projet</h2>
+<div class="tabset-margin-container"></div><div class="panel-tabset" data-group="language">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true"><i class="fa-brands fa-r-project" aria-label="r-project"></i></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false"><i class="fa-brands fa-python" aria-label="python"></i></a></li></ul>
+<div class="tab-content" data-group="language">
+<div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
 <p>A la racine du projet, on trouve notamment le fichier <code>RTraffic.Rproj</code>. Il s’agit d’un fichier de projet <code>RStudio</code>. Lorsqu’on travaille sur du code <i class="fa-brands fa-r-project" aria-label="r-project"></i> avec <code>RStudio</code>, il est généralement préférable de travailler dans le cadre d’un projet.</p>
 <p>Entre autres raisons, évoquées dans la documentation <a href="https://book.utilitr.org/03_Fiches_thematiques/Fiche_rprojects.html"><code>utilitr</code></a>, cela favorise la reproductibilité: lorsqu’on se situe dans un projet <code>RStudio</code>, tous les chemins peuvent être définis de manière <em>relative</em> (à la racine du projet) plutôt que de manière absolue (à la racine de la machine). Ainsi, le projet s’exécutera de la même manière qu’il soit exécuté depuis une machine <em>Windows</em> ou <em>Linux</em> par exemple, avec des noms d’utilisateurs différents ou s’ils se situent dans des dossiers différents au sein de <em>“Mes Documents”</em>.</p>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -463,14 +467,25 @@ Plus de détails dans <a href="https://book.utilitr.org/03_Fiches_thematiques/Fi
 </div>
 </div>
 </div>
+</div>
+<div id="tabset-4-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-2-tab">
+<p>Les utilisateurs de <i class="fa-brands fa-python" aria-label="python"></i> connaissent deux environnements de travail très différents: la ligne de commande pour exécuter des scripts ou les <em>notebooks</em> <code>Jupyter</code> pour avoir un environnement interactif.</p>
+<p>Les seconds sont pratiques pour prototyper et expérimenter. Mais ils ne sont pas faits pour construire des applications. Nous proposons donc la méthode de travail suivante:</p>
+<ul>
+<li>Créer un <code>Jupyter Notebook</code> à la racine du projet (au même niveau que le <code>README.md</code>)<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. Celui-ci sera votre espace pour écrire du code expérimental. Lorsqu’il sera fonctionnel, vous pourrez le reporter dans des scripts comme indiqués dans les consignes.</li>
+<li>Dans un terminal, faire <code>cd funathon2024_sujet2</code> (ou remplacer par le nom de dossier différent si vous l’avez changé). C’est dans ce terminal que vous testerez vos scripts.</li>
+</ul>
+</div>
+</div>
+</div>
 </section>
 <section id="architecture-du-projet" class="level2" data-number="2.3">
 <h2 data-number="2.3" class="anchored" data-anchor-id="architecture-du-projet"><span class="header-section-number">2.3</span> Architecture du projet</h2>
 <p>Le projet récupéré comporte de nombreux fichiers. Nous allons progressivement les découvrir dans ce tutoriel. A l’heure actuelle, on peut se concentrer sur les fichiers suivants:</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset" data-group="language">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true"><i class="fa-brands fa-r-project" aria-label="r-project"></i></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false"><i class="fa-brands fa-python" aria-label="python"></i></a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-5-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-1" role="tab" aria-controls="tabset-5-1" aria-selected="true"><i class="fa-brands fa-r-project" aria-label="r-project"></i></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-2" role="tab" aria-controls="tabset-5-2" aria-selected="false"><i class="fa-brands fa-python" aria-label="python"></i></a></li></ul>
 <div class="tab-content" data-group="language">
-<div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
+<div id="tabset-5-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-5-1-tab">
 <pre><code>funathon_sujet2/
 ├── renv.lock
 ├── correction/global.R
@@ -588,7 +603,7 @@ Observer la composition de ce fichier (100 premières lignes)
 </div>
 </details>
 </div>
-<div id="tabset-4-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-2-tab">
+<div id="tabset-5-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-5-2-tab">
 <p>TO BE COMPLETED</p>
 <details>
 <summary>
@@ -626,7 +641,7 @@ Observer la composition de ce fichier (100 premières lignes)
 <li>Du code <i class="fa-brands fa-r-project" aria-label="r-project"></i> ou <i class="fa-brands fa-python" aria-label="python"></i> : celui-ci a été récupéré par le biais de <code>Git</code> lors du lancement du projet</li>
 <li>Des éléments de configuration:
 <ul>
-<li>le fichier <code>renv.lock</code> (<i class="fa-brands fa-r-project" aria-label="r-project"></i>) ou <code>requirements.txt</code> (<i class="fa-brands fa-python" aria-label="python"></i>) qui permettra de reconstruire notre environnement à l’identique grâce à des outils adaptés<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></li>
+<li>le fichier <code>renv.lock</code> (<i class="fa-brands fa-r-project" aria-label="r-project"></i>) ou <code>requirements.txt</code> (<i class="fa-brands fa-python" aria-label="python"></i>) qui permettra de reconstruire notre environnement à l’identique grâce à des outils adaptés<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></li>
 <li>le fichier <code>sources.yaml</code> qui liste l’emplacement des sources sur le site <a href="https://www.data.gouv.fr/fr/">data.gouv</a></li>
 </ul></li>
 <li>Des données : nous évoquerons celles-ci lors de la prochaine partie.</li>
@@ -656,7 +671,7 @@ Observer la composition de ce fichier (100 premières lignes)
 </div>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>renv<span class="sc">::</span><span class="fu">restore</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Cette commande doit être lancée depuis la console <code>R</code> ouverte dans le projet qui a été récupéré<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>. L’environnement créé n’est pas figé. Il est tout à fait possible, ensuite, d’installer des <em>packages</em> supplémentaires par le biais de <code>install.packages</code>. L’environnement proposé par notre fichier <code>renv.lock</code> est le minimum requis pour reproduire l’application mais ce n’est pas un environnement figé. Si vous ajoutez des <em>packages</em> utiles pour votre application, avant la phase de mise en production, n’oubliez pas de faire <code>renv::snapshot()</code> pour mettre à jour le fichier <code>renv.lock</code> (c’est le point 1. évoqué précédemment).</p>
+<p>Cette commande doit être lancée depuis la console <code>R</code> ouverte dans le projet qui a été récupéré<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>. L’environnement créé n’est pas figé. Il est tout à fait possible, ensuite, d’installer des <em>packages</em> supplémentaires par le biais de <code>install.packages</code>. L’environnement proposé par notre fichier <code>renv.lock</code> est le minimum requis pour reproduire l’application mais ce n’est pas un environnement figé. Si vous ajoutez des <em>packages</em> utiles pour votre application, avant la phase de mise en production, n’oubliez pas de faire <code>renv::snapshot()</code> pour mettre à jour le fichier <code>renv.lock</code> (c’est le point 1. évoqué précédemment).</p>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -749,9 +764,9 @@ Ce que <code>renv</code> évite
 </div>
 </div>
 <div class="tabset-margin-container"></div><div class="panel-tabset" data-group="language">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-5-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-1" role="tab" aria-controls="tabset-5-1" aria-selected="true"><i class="fa-brands fa-r-project" aria-label="r-project"></i></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-2" role="tab" aria-controls="tabset-5-2" aria-selected="false"><i class="fa-brands fa-python" aria-label="python"></i></a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-6-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-1" role="tab" aria-controls="tabset-6-1" aria-selected="true"><i class="fa-brands fa-r-project" aria-label="r-project"></i></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-2" role="tab" aria-controls="tabset-6-2" aria-selected="false"><i class="fa-brands fa-python" aria-label="python"></i></a></li></ul>
 <div class="tab-content" data-group="language">
-<div id="tabset-5-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-5-1-tab">
+<div id="tabset-6-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-6-1-tab">
 <details>
 <summary>
 Voir la solution à cet exercice
@@ -774,7 +789,7 @@ Voir la solution à cet exercice
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"correction/R/create_data_list.R"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
-<div id="tabset-5-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-5-2-tab">
+<div id="tabset-6-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-6-2-tab">
 <details>
 <summary>
 Voir la solution à cet exercice
@@ -805,14 +820,14 @@ Voir la solution à cet exercice
 <h2 data-number="3.2" class="anchored" data-anchor-id="importer-les-premières-bases"><span class="header-section-number">3.2</span> Importer les premières bases</h2>
 <p>Nous pouvons maintenant utiliser cette fonction pour lister tous nos URL des sources.</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset" data-group="language">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-6-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-1" role="tab" aria-controls="tabset-6-1" aria-selected="true"><i class="fa-brands fa-r-project" aria-label="r-project"></i></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-2" role="tab" aria-controls="tabset-6-2" aria-selected="false"><i class="fa-brands fa-python" aria-label="python"></i></a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-7-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-1" role="tab" aria-controls="tabset-7-1" aria-selected="true"><i class="fa-brands fa-r-project" aria-label="r-project"></i></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-7-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-2" role="tab" aria-controls="tabset-7-2" aria-selected="false"><i class="fa-brands fa-python" aria-label="python"></i></a></li></ul>
 <div class="tab-content" data-group="language">
-<div id="tabset-6-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-6-1-tab">
+<div id="tabset-7-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-7-1-tab">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>urls <span class="ot">&lt;-</span> <span class="fu">create_data_list</span>(<span class="st">"sources.yml"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
-<div id="tabset-6-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-6-2-tab">
+<div id="tabset-7-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-7-2-tab">
 <div class="sourceCode" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>urls <span class="op">=</span> create_data_list(<span class="st">"sources.yml"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
@@ -833,13 +848,13 @@ Voir la solution à cet exercice
 <section id="données-aéroports" class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="données-aéroports">Données aéroports</h4>
 <ul>
-<li>Comme les données sont des CSV européens (séparateur <code>;</code>), utiliser <code>read_csv2</code> du package <code>readr</code> pour lire les données à partir de la liste de fichiers <code>unlist(urls$airports)</code><a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>.</li>
+<li>Comme les données sont des CSV européens (séparateur <code>;</code>), utiliser <code>read_csv2</code> du package <code>readr</code> pour lire les données à partir de la liste de fichiers <code>unlist(urls$airports)</code><a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>.</li>
 <li>Il est recommandé de ne pas laisser les types par défaut des colonnes mais de figer ceux-ci avec l’argument suivant:</li>
 </ul>
 <div class="tabset-margin-container"></div><div class="panel-tabset" data-group="language">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-7-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-1" role="tab" aria-controls="tabset-7-1" aria-selected="true"><i class="fa-brands fa-r-project" aria-label="r-project"></i></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-7-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-2" role="tab" aria-controls="tabset-7-2" aria-selected="false"><i class="fa-brands fa-python" aria-label="python"></i></a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-8-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-1" role="tab" aria-controls="tabset-8-1" aria-selected="true"><i class="fa-brands fa-r-project" aria-label="r-project"></i></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-8-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-2" role="tab" aria-controls="tabset-8-2" aria-selected="false"><i class="fa-brands fa-python" aria-label="python"></i></a></li></ul>
 <div class="tab-content" data-group="language">
-<div id="tabset-7-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-7-1-tab">
+<div id="tabset-8-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-8-1-tab">
 <div class="sourceCode" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>col_types <span class="ot">=</span> <span class="fu">cols</span>(</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">ANMOIS =</span> <span class="fu">col_character</span>(),</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">APT =</span> <span class="fu">col_character</span>(),</span>
@@ -848,7 +863,7 @@ Voir la solution à cet exercice
 <span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">.default =</span> <span class="fu">col_double</span>()</span>
 <span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="tabset-7-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-7-2-tab">
+<div id="tabset-8-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-8-2-tab">
 <div class="sourceCode" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>col_types <span class="op">=</span> {</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"ANMOIS"</span>: <span class="st">"str"</span>,  </span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"APT"</span>: <span class="st">"str"</span>,     </span>
@@ -866,9 +881,9 @@ Voir la solution à cet exercice
 Aide si vous êtes bloqué sur cette question
 </summary>
 <div class="tabset-margin-container"></div><div class="panel-tabset" data-group="language">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-8-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-1" role="tab" aria-controls="tabset-8-1" aria-selected="true"><i class="fa-brands fa-r-project" aria-label="r-project"></i></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-8-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-2" role="tab" aria-controls="tabset-8-2" aria-selected="false"><i class="fa-brands fa-python" aria-label="python"></i></a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-9-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-1" role="tab" aria-controls="tabset-9-1" aria-selected="true"><i class="fa-brands fa-r-project" aria-label="r-project"></i></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-9-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-2" role="tab" aria-controls="tabset-9-2" aria-selected="false"><i class="fa-brands fa-python" aria-label="python"></i></a></li></ul>
 <div class="tab-content" data-group="language">
-<div id="tabset-8-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-8-1-tab">
+<div id="tabset-9-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-9-1-tab">
 <p>Pour extraire des éléments d’une chaine de caractère à partir de la position, il est recommandé d’utiliser la fonction <code>str_sub</code> du package <code>stringr</code>. Pour créer de nouvelles colonnes, il est recommandé d’utiliser la fonction <code>mutate</code> du package dplyr.</p>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -885,7 +900,7 @@ Conseil pour se faciliter la vie ultérieurement
 </div>
 <p>Si vous êtes toujours bloqué, la solution est donnée plus bas 👇</p>
 </div>
-<div id="tabset-8-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-8-2-tab">
+<div id="tabset-9-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-9-2-tab">
 <p>Vous pouvez utiliser les méthodes de données textuelles <code>str.sub</code> et <code>str.replace</code> de <code>Pandas</code></p>
 </div>
 </div>
@@ -899,9 +914,9 @@ Conseil pour se faciliter la vie ultérieurement
 Solution
 </summary>
 <div class="tabset-margin-container"></div><div class="panel-tabset" data-group="language">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-9-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-1" role="tab" aria-controls="tabset-9-1" aria-selected="true"><i class="fa-brands fa-r-project" aria-label="r-project"></i></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-9-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-2" role="tab" aria-controls="tabset-9-2" aria-selected="false"><i class="fa-brands fa-python" aria-label="python"></i></a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-10-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-10-1" role="tab" aria-controls="tabset-10-1" aria-selected="true"><i class="fa-brands fa-r-project" aria-label="r-project"></i></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-10-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-10-2" role="tab" aria-controls="tabset-10-2" aria-selected="false"><i class="fa-brands fa-python" aria-label="python"></i></a></li></ul>
 <div class="tab-content" data-group="language">
-<div id="tabset-9-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-9-1-tab">
+<div id="tabset-10-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-10-1-tab">
 <div class="sourceCode" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>clean_dataframe <span class="ot">&lt;-</span> <span class="cf">function</span>(df){</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  </span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Create an et mois columns</span></span>
@@ -921,7 +936,7 @@ Solution
 <span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="tabset-9-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-9-2-tab">
+<div id="tabset-10-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-10-2-tab">
 <div class="sourceCode" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> clean_dataframe(df):</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Create 'an' and 'mois' columns</span></span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>    df[<span class="st">'an'</span>] <span class="op">=</span> df[<span class="st">'ANMOIS'</span>].astype(<span class="bu">str</span>).<span class="bu">str</span>[:<span class="dv">4</span>]</span>
@@ -946,9 +961,9 @@ Solution
 Solution
 </summary>
 <div class="tabset-margin-container"></div><div class="panel-tabset" data-group="language">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-10-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-10-1" role="tab" aria-controls="tabset-10-1" aria-selected="true"><i class="fa-brands fa-r-project" aria-label="r-project"></i></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-10-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-10-2" role="tab" aria-controls="tabset-10-2" aria-selected="false"><i class="fa-brands fa-python" aria-label="python"></i></a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-11-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-11-1" role="tab" aria-controls="tabset-11-1" aria-selected="true"><i class="fa-brands fa-r-project" aria-label="r-project"></i></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-11-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-11-2" role="tab" aria-controls="tabset-11-2" aria-selected="false"><i class="fa-brands fa-python" aria-label="python"></i></a></li></ul>
 <div class="tab-content" data-group="language">
-<div id="tabset-10-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-10-1-tab">
+<div id="tabset-11-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-11-1-tab">
 <div class="sourceCode" id="cb21" data-startfrom="1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>import_airport_data <span class="ot">&lt;-</span> <span class="cf">function</span>(list_files){</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  </span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  pax_apt_all <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv2</span>(</span>
@@ -971,7 +986,7 @@ Solution
 </ul>
 <div class="sourceCode" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"R/clean_dataframe.R"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="tabset-10-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-10-2-tab">
+<div id="tabset-11-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-11-2-tab">
 <div class="sourceCode" id="cb23" data-startfrom="1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> .clean_dataframe <span class="im">import</span> clean_dataframe</span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -997,9 +1012,9 @@ Solution
 <h4 class="unnumbered anchored" data-anchor-id="données-compagnies">Données compagnies</h4>
 <p>Sur le même principe, créer une fonction <code>import_compagnies_data</code> qui effectue la même suite d’opérations. Faire néanmoins attention aux types des colonnes.</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset" data-group="language">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-11-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-11-1" role="tab" aria-controls="tabset-11-1" aria-selected="true"><i class="fa-brands fa-r-project" aria-label="r-project"></i></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-11-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-11-2" role="tab" aria-controls="tabset-11-2" aria-selected="false"><i class="fa-brands fa-python" aria-label="python"></i></a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-12-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-12-1" role="tab" aria-controls="tabset-12-1" aria-selected="true"><i class="fa-brands fa-r-project" aria-label="r-project"></i></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-12-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-12-2" role="tab" aria-controls="tabset-12-2" aria-selected="false"><i class="fa-brands fa-python" aria-label="python"></i></a></li></ul>
 <div class="tab-content" data-group="language">
-<div id="tabset-11-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-11-1-tab">
+<div id="tabset-12-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-12-1-tab">
 <div class="cell">
 <details>
 <summary>Recommandation de paramètre pour read_csv2 pour l’import de ces fichiers</summary>
@@ -1038,7 +1053,7 @@ Solution
 <span id="cb26-38"><a href="#cb26-38" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="tabset-11-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-11-2-tab">
+<div id="tabset-12-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-12-2-tab">
 <p>Recommandation de paramètre pour read_csv pour l’import de ces fichiers</p>
 <div class="sourceCode" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>col_types <span class="op">=</span> {</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  ANMOIS <span class="op">=</span> <span class="st">"str"</span>,</span>
@@ -1081,9 +1096,9 @@ Solution
 <h4 class="unnumbered anchored" data-anchor-id="données-liaisons">Données liaisons</h4>
 <p>Sur le même principe, créer une fonction <code>import_liaisons_data</code> qui effectue la même suite d’opérations. Faire néanmoins attention aux types des colonnes.</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset" data-group="language">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-12-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-12-1" role="tab" aria-controls="tabset-12-1" aria-selected="true"><i class="fa-brands fa-r-project" aria-label="r-project"></i></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-12-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-12-2" role="tab" aria-controls="tabset-12-2" aria-selected="false"><i class="fa-brands fa-python" aria-label="python"></i></a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-13-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-13-1" role="tab" aria-controls="tabset-13-1" aria-selected="true"><i class="fa-brands fa-r-project" aria-label="r-project"></i></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-13-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-13-2" role="tab" aria-controls="tabset-13-2" aria-selected="false"><i class="fa-brands fa-python" aria-label="python"></i></a></li></ul>
 <div class="tab-content" data-group="language">
-<div id="tabset-12-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-12-1-tab">
+<div id="tabset-13-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-13-1-tab">
 <div class="cell">
 <details>
 <summary>Recommandation de paramètre pour read_csv pour l’import de ces fichiers</summary>
@@ -1124,7 +1139,7 @@ Solution
 <span id="cb30-60"><a href="#cb30-60" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="tabset-12-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-12-2-tab">
+<div id="tabset-13-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-13-2-tab">
 <p>Conseil pour les colonnes:</p>
 <div class="sourceCode" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>col_types <span class="op">=</span> {</span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">"ANMOIS"</span>: <span class="st">"str"</span>,</span>
@@ -1173,14 +1188,14 @@ Solution
 <li>Pour les utilisateurs de <i class="fa-brands fa-python" aria-label="python"></i>: ce chapitre du <a href="https://pythonds.linogaliana.fr/content/manipulation/04a_webscraping_TP.html">cours de <code>Python</code> de l’ENSAE</a>.</li>
 </ul>
 <div class="tabset-margin-container"></div><div class="panel-tabset" data-group="language">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-13-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-13-1" role="tab" aria-controls="tabset-13-1" aria-selected="true"><i class="fa-brands fa-r-project" aria-label="r-project"></i></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-13-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-13-2" role="tab" aria-controls="tabset-13-2" aria-selected="false"><i class="fa-brands fa-python" aria-label="python"></i></a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-14-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-14-1" role="tab" aria-controls="tabset-14-1" aria-selected="true"><i class="fa-brands fa-r-project" aria-label="r-project"></i></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-14-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-14-2" role="tab" aria-controls="tabset-14-2" aria-selected="false"><i class="fa-brands fa-python" aria-label="python"></i></a></li></ul>
 <div class="tab-content" data-group="language">
-<div id="tabset-13-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-13-1-tab">
+<div id="tabset-14-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-14-1-tab">
 <ol type="1">
 <li>Utiliser la fonction <code>st_read</code> du package <code>sf</code> pour lire ces données (dont la localisation est stockée dans la variable <code>urls$geojson$airport</code>). Stocker l’objet obtenu sous le nom <code>airports_location</code></li>
 </ol>
 </div>
-<div id="tabset-13-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-13-2-tab">
+<div id="tabset-14-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-14-2-tab">
 <ol type="1">
 <li>Utiliser la fonction <code>read_file</code> du package <code>geopandas</code> pour lire ces données (dont la localisation est stockée dans la variable <code>urls['geojson']['airport']</code>). Stocker l’objet obtenu sous le nom <code>airports_location</code></li>
 </ol>
@@ -1188,7 +1203,7 @@ Solution
 </div>
 </div>
 <ol start="2" type="1">
-<li>Vérifier que les données sont bien dans le système de représentation <code>WGS 84</code><a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></li>
+<li>Vérifier que les données sont bien dans le système de représentation <code>WGS 84</code><a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></li>
 </ol>
 <details>
 <summary>
@@ -1219,9 +1234,9 @@ Code pour faire une carte <code>leaflet</code> minimale
 </div>
 </div>
 <div class="tabset-margin-container"></div><div class="panel-tabset" data-group="language">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-14-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-14-1" role="tab" aria-controls="tabset-14-1" aria-selected="true"><i class="fa-brands fa-r-project" aria-label="r-project"></i></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-14-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-14-2" role="tab" aria-controls="tabset-14-2" aria-selected="false"><i class="fa-brands fa-python" aria-label="python"></i></a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-15-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-15-1" role="tab" aria-controls="tabset-15-1" aria-selected="true"><i class="fa-brands fa-r-project" aria-label="r-project"></i></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-15-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-15-2" role="tab" aria-controls="tabset-15-2" aria-selected="false"><i class="fa-brands fa-python" aria-label="python"></i></a></li></ul>
 <div class="tab-content" data-group="language">
-<div id="tabset-14-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-14-1-tab">
+<div id="tabset-15-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-15-1-tab">
 <p>A l’issue de cet exercice, vous devriez avoir le fichier <code>R/import_data.R</code> suivant</p>
 <details>
 <summary>
@@ -1294,7 +1309,7 @@ Le fichier <code>R/import_data.R</code> attendu
 </div>
 </details>
 </div>
-<div id="tabset-14-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-14-2-tab">
+<div id="tabset-15-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-15-2-tab">
 <p>A l’issue de cet exercice, vous devriez avoir le fichier <code>src/import_data.py</code> suivant</p>
 <details>
 <summary>
@@ -1385,14 +1400,14 @@ Le fichier <code>src/import_data.py</code> attendu
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">addTiles</span>() <span class="sc">%&gt;%</span></span>
 <span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">addMarkers</span>(<span class="at">popup =</span> <span class="sc">~</span>Nom)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="leaflet html-widget html-fill-item" id="htmlwidget-2c37536f5cc3e7c8a22b" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-2c37536f5cc3e7c8a22b">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org/copyright/\">OpenStreetMap<\/a>,  <a href=\"https://opendatacommons.org/licenses/odbl/\">ODbL<\/a>"}]},{"method":"addMarkers","args":[[-23.37,-22.59,-22.43,-22.26,-22.01,-21.48,-20.89,-20.77,-20.64,-17.55,-17.49,-16.72,-16.69,-16.44,-16.43,-16.05,-15.12,-14.95,-12.81,-9.77,-8.800000000000001,3.66,4.82,14.59,16.27,17.9,18.1,41.5,41.92,42.52,42.55,42.74,43.1,43.19,43.32,43.38,43.44,43.47,43.55,43.56,43.58,43.64,43.67,44.83,44.9,45.04,45.73,45.79,46.76,47.04,47.16,47.31,47.43,47.59,48.07,48.45,48.54,48.72,48.77,48.97,49.01,49.17,49.45,50.56],[-149.52,167.46,-151.36,166.47,166.21,168.04,55.51,167.24,166.57,-149.61,-149.76,-151.47,-151.02,-151.75,-152.24,-145.66,-148.23,-147.66,45.28,-139.01,-140.23,-54.04,-52.36,-61,-61.53,-62.84,-63.05,9.1,8.800000000000001,8.789999999999999,9.48,2.87,6.15,0.01,3.35,-0.42,5.22,-1.53,6.95,2.29,3.96,1.37,7.22,-0.72,2.42,1.49,5.08,3.16,-56.17,5.44,-1.61,-2.16,0.72,7.53,-1.73,-4.42,7.63,2.38,4.21,2.44,2.55,-0.45,2.11,3.09],null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},["TUBUAI MATAURA","ILE DES PINS","RURUTU","NOUMEA MAGENTA","NOUMEA LA TONTOUTA","MARE","LA REUNION-ROLAND GARROS","LIFOU","OUVEA","TAHITI FAA'A","MOOREA","RAIATEA","HUAHINE","BORA BORA","MAUPITI","FAKARAVA","TIKEHAU","RANGIROA","MAYOTTE-DZAOUDZI-PAMANDZI","HIVA OA-ATUONA","NUKU HIVA","MARIPASOULA","CAYENNE-FELIX EBOUE","MARTINIQUE-AIME CESAIRE","POINTE-A-PITRE-LE RAIZET","ST-BARTHELEMY","ST-MARTIN-GRAND-CASE","FIGARI-SUD-CORSE","AJACCIO-NAPOLEON-BONAPARTE","CALVI-STE-CATHERINE","BASTIA-PORETTA","PERPIGNAN-RIVESALTES","TOULON-HYERES","TARBES-LOURDES-PYRENEES","BEZIERS-VIAS","PAU-PYRENEES","MARSEILLE-PROVENCE","BIARRITZ-PAYS-BASQUE","CANNES-MANDELIEU","CASTRES-MAZAMET","MONTPELLIER-MEDITERRANEE","TOULOUSE-BLAGNAC","NICE-COTE D'AZUR","BORDEAUX-MERIGNAC","AURILLAC","BRIVE-SOUILLAC","LYON-ST-EXUPERY","CLERMONT-FERRAND-AUVERGNE","ST-PIERRE-POINTE BLANCHE","DOLE-TAVAUX","NANTES-ATLANTIQUE","ST-NAZAIRE-MONTOIR","TOURS-VAL DE LOIRE","BALE-MULHOUSE","RENNES-ST-JACQUES","BREST-BRETAGNE","STRASBOURG-ENTZHEIM","PARIS-ORLY","CHALONS-VATRY","PARIS-LE BOURGET","PARIS-CHARLES DE GAULLE","CAEN-CARPIQUET","BEAUVAIS-TILLE","LILLE-LESQUIN"],null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[-23.37,50.56],"lng":[-152.24,168.04]}},"evals":[],"jsHooks":[]}</script>
+<div class="leaflet html-widget html-fill-item" id="htmlwidget-7a39f40bc657668d92ad" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-7a39f40bc657668d92ad">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org/copyright/\">OpenStreetMap<\/a>,  <a href=\"https://opendatacommons.org/licenses/odbl/\">ODbL<\/a>"}]},{"method":"addMarkers","args":[[-23.37,-22.59,-22.43,-22.26,-22.01,-21.48,-20.89,-20.77,-20.64,-17.55,-17.49,-16.72,-16.69,-16.44,-16.43,-16.05,-15.12,-14.95,-12.81,-9.77,-8.800000000000001,3.66,4.82,14.59,16.27,17.9,18.1,41.5,41.92,42.52,42.55,42.74,43.1,43.19,43.32,43.38,43.44,43.47,43.55,43.56,43.58,43.64,43.67,44.83,44.9,45.04,45.73,45.79,46.76,47.04,47.16,47.31,47.43,47.59,48.07,48.45,48.54,48.72,48.77,48.97,49.01,49.17,49.45,50.56],[-149.52,167.46,-151.36,166.47,166.21,168.04,55.51,167.24,166.57,-149.61,-149.76,-151.47,-151.02,-151.75,-152.24,-145.66,-148.23,-147.66,45.28,-139.01,-140.23,-54.04,-52.36,-61,-61.53,-62.84,-63.05,9.1,8.800000000000001,8.789999999999999,9.48,2.87,6.15,0.01,3.35,-0.42,5.22,-1.53,6.95,2.29,3.96,1.37,7.22,-0.72,2.42,1.49,5.08,3.16,-56.17,5.44,-1.61,-2.16,0.72,7.53,-1.73,-4.42,7.63,2.38,4.21,2.44,2.55,-0.45,2.11,3.09],null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},["TUBUAI MATAURA","ILE DES PINS","RURUTU","NOUMEA MAGENTA","NOUMEA LA TONTOUTA","MARE","LA REUNION-ROLAND GARROS","LIFOU","OUVEA","TAHITI FAA'A","MOOREA","RAIATEA","HUAHINE","BORA BORA","MAUPITI","FAKARAVA","TIKEHAU","RANGIROA","MAYOTTE-DZAOUDZI-PAMANDZI","HIVA OA-ATUONA","NUKU HIVA","MARIPASOULA","CAYENNE-FELIX EBOUE","MARTINIQUE-AIME CESAIRE","POINTE-A-PITRE-LE RAIZET","ST-BARTHELEMY","ST-MARTIN-GRAND-CASE","FIGARI-SUD-CORSE","AJACCIO-NAPOLEON-BONAPARTE","CALVI-STE-CATHERINE","BASTIA-PORETTA","PERPIGNAN-RIVESALTES","TOULON-HYERES","TARBES-LOURDES-PYRENEES","BEZIERS-VIAS","PAU-PYRENEES","MARSEILLE-PROVENCE","BIARRITZ-PAYS-BASQUE","CANNES-MANDELIEU","CASTRES-MAZAMET","MONTPELLIER-MEDITERRANEE","TOULOUSE-BLAGNAC","NICE-COTE D'AZUR","BORDEAUX-MERIGNAC","AURILLAC","BRIVE-SOUILLAC","LYON-ST-EXUPERY","CLERMONT-FERRAND-AUVERGNE","ST-PIERRE-POINTE BLANCHE","DOLE-TAVAUX","NANTES-ATLANTIQUE","ST-NAZAIRE-MONTOIR","TOURS-VAL DE LOIRE","BALE-MULHOUSE","RENNES-ST-JACQUES","BREST-BRETAGNE","STRASBOURG-ENTZHEIM","PARIS-ORLY","CHALONS-VATRY","PARIS-LE BOURGET","PARIS-CHARLES DE GAULLE","CAEN-CARPIQUET","BEAUVAIS-TILLE","LILLE-LESQUIN"],null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[-23.37,50.56],"lng":[-152.24,168.04]}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <div class="tabset-margin-container"></div><div class="panel-tabset" data-group="language">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-15-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-15-1" role="tab" aria-controls="tabset-15-1" aria-selected="true"><i class="fa-brands fa-r-project" aria-label="r-project"></i></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-15-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-15-2" role="tab" aria-controls="tabset-15-2" aria-selected="false"><i class="fa-brands fa-python" aria-label="python"></i></a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-16-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-16-1" role="tab" aria-controls="tabset-16-1" aria-selected="true"><i class="fa-brands fa-r-project" aria-label="r-project"></i></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-16-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-16-2" role="tab" aria-controls="tabset-16-2" aria-selected="false"><i class="fa-brands fa-python" aria-label="python"></i></a></li></ul>
 <div class="tab-content" data-group="language">
-<div id="tabset-15-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-15-1-tab">
+<div id="tabset-16-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-16-1-tab">
 <p>A l’issue de l’exercice, le code centralisé dans le script <code>R/import_data.R</code> peut être importé via le code suivant</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"R/import_data.R"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1436,7 +1451,7 @@ L’environnement minimal de reproductibilité pour que le script <code>main.R</
 </details>
 <p>Ces librairies sont à écrire au début de <code>main.R</code>.</p>
 </div>
-<div id="tabset-15-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-15-2-tab">
+<div id="tabset-16-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-16-2-tab">
 <p>A l’issue de l’exercice, le code centralisé dans le script <code>src/import_data.py</code> peut être importé via le code suivant</p>
 <div class="sourceCode" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> src.import_data <span class="im">as</span> sid</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -1451,9 +1466,9 @@ L’environnement minimal de reproductibilité pour que le script <code>main.R</
 <p>Pour commencer, nous allons prototyper la production d’une figure sur le trafic aérien au niveau d’un aéroport. Cela nous facilitera ensuite l’intégration dans une application interactive.</p>
 <p>Pour cela, nous allons créer les deux objets temporaires suivants, que vous pouvez mettre à la fin du fichier <code>main.R</code> (ou <code>main.py</code>) pour le moment</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset" data-group="language">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-16-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-16-1" role="tab" aria-controls="tabset-16-1" aria-selected="true"><i class="fa-brands fa-r-project" aria-label="r-project"></i></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-16-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-16-2" role="tab" aria-controls="tabset-16-2" aria-selected="false"><i class="fa-brands fa-python" aria-label="python"></i></a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-17-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-17-1" role="tab" aria-controls="tabset-17-1" aria-selected="true"><i class="fa-brands fa-r-project" aria-label="r-project"></i></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-17-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-17-2" role="tab" aria-controls="tabset-17-2" aria-selected="false"><i class="fa-brands fa-python" aria-label="python"></i></a></li></ul>
 <div class="tab-content" data-group="language">
-<div id="tabset-16-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-16-1-tab">
+<div id="tabset-17-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-17-1-tab">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>liste_aeroports <span class="ot">&lt;-</span> <span class="fu">unique</span>(pax_apt_all<span class="sc">$</span>apt)</span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>default_airport <span class="ot">&lt;-</span> liste_aeroports[<span class="dv">1</span>]</span>
@@ -1463,7 +1478,7 @@ L’environnement minimal de reproductibilité pour que le script <code>main.R</
 </div>
 </div>
 </div>
-<div id="tabset-16-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-16-2-tab">
+<div id="tabset-17-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-17-2-tab">
 <div class="sourceCode" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>liste_aeroports <span class="op">=</span> pax_apt_all[<span class="st">'apt'</span>].unique()</span>
 <span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>default_airport <span class="op">=</span> liste_aeroports[<span class="dv">0</span>]</span>
 <span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>default_airport</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1493,9 +1508,9 @@ L’environnement minimal de reproductibilité pour que le script <code>main.R</
 Enchaînement des opérations attendues à cette étape
 </summary>
 <div class="tabset-margin-container"></div><div class="panel-tabset" data-group="language">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-17-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-17-1" role="tab" aria-controls="tabset-17-1" aria-selected="true"><i class="fa-brands fa-r-project" aria-label="r-project"></i></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-17-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-17-2" role="tab" aria-controls="tabset-17-2" aria-selected="false"><i class="fa-brands fa-python" aria-label="python"></i></a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-18-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-18-1" role="tab" aria-controls="tabset-18-1" aria-selected="true"><i class="fa-brands fa-r-project" aria-label="r-project"></i></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-18-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-18-2" role="tab" aria-controls="tabset-18-2" aria-selected="false"><i class="fa-brands fa-python" aria-label="python"></i></a></li></ul>
 <div class="tab-content" data-group="language">
-<div id="tabset-17-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-17-1-tab">
+<div id="tabset-18-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-18-1-tab">
 <div class="sourceCode" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
 <span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
@@ -1529,7 +1544,7 @@ Enchaînement des opérations attendues à cette étape
 <span id="cb46-31"><a href="#cb46-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">date =</span> <span class="fu">as.Date</span>(<span class="fu">paste</span>(anmois, <span class="st">"01"</span>, <span class="at">sep=</span><span class="st">""</span>), <span class="at">format =</span> <span class="st">"%Y%m%d"</span>)</span>
 <span id="cb46-32"><a href="#cb46-32" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="tabset-17-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-17-2-tab">
+<div id="tabset-18-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-18-2-tab">
 <div class="sourceCode" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> geopandas <span class="im">as</span> gpd</span>
 <span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
@@ -1595,8 +1610,8 @@ Enchaînement des opérations attendues à cette étape
 </ol>
 <div class="cell">
 <div class="cell-output-display">
-<div class="plotly html-widget html-fill-item" id="htmlwidget-c225a203b9ce18445f90" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-c225a203b9ce18445f90">{"x":{"visdat":{"23f66d4efbc2":["function () ","plotlyVisDat"]},"cur_data":"23f66d4efbc2","attrs":{"23f66d4efbc2":{"x":{},"y":{},"text":{},"hovertemplate":"<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","mode":"lines+markers","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"xaxis":{"domain":[0,1],"automargin":true,"title":"date"},"yaxis":{"domain":[0,1],"automargin":true,"title":"trafic"},"hovermode":"closest","showlegend":false},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"x":["2018-01-01","2018-02-01","2018-03-01","2018-04-01","2018-05-01","2018-06-01","2018-07-01","2018-08-01","2018-09-01","2018-10-01","2018-11-01","2018-12-01","2019-01-01","2019-02-01","2019-03-01","2019-04-01","2019-05-01","2019-06-01","2019-07-01","2019-08-01","2019-09-01","2019-10-01","2019-11-01","2019-12-01","2020-01-01","2020-02-01","2020-03-01","2020-04-01","2020-05-01","2020-06-01","2020-07-01","2020-08-01","2020-09-01","2020-10-01","2020-11-01","2020-12-01","2021-01-01","2021-02-01","2021-03-01","2021-04-01","2021-05-01","2021-06-01","2021-07-01","2021-08-01","2021-09-01","2021-10-01","2021-11-01","2021-12-01","2022-01-01","2022-02-01","2022-03-01","2022-04-01","2022-05-01","2022-06-01","2022-07-01","2022-08-01","2022-09-01","2022-10-01","2022-11-01","2022-12-01"],"y":[33287,24714,26961,26224,30432,31595,49489,51680,29485,33197,22810,37085,31356,23307,29516,27718,24752,31779,45422,45361,29509,32017,24739,39382,34512,23982,21577,636,1396,4228,14969,17913,12227,15812,11596,28325,24765,7009,5029,5993,9618,16516,36841,38763,24106,25236,20873,34227,29441,19869,25972,19815,28922,31479,50968,50499,31330,34781,26573,43846],"text":["MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY"],"hovertemplate":["<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}"],"mode":"lines+markers","type":"scatter","marker":{"color":"rgba(31,119,180,1)","line":{"color":"rgba(31,119,180,1)"}},"error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"line":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<div class="plotly html-widget html-fill-item" id="htmlwidget-4494ce6c2ca0be6c21f5" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-4494ce6c2ca0be6c21f5">{"x":{"visdat":{"23f6225a6cca":["function () ","plotlyVisDat"]},"cur_data":"23f6225a6cca","attrs":{"23f6225a6cca":{"x":{},"y":{},"text":{},"hovertemplate":"<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","mode":"lines+markers","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"xaxis":{"domain":[0,1],"automargin":true,"title":"date"},"yaxis":{"domain":[0,1],"automargin":true,"title":"trafic"},"hovermode":"closest","showlegend":false},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"x":["2018-01-01","2018-02-01","2018-03-01","2018-04-01","2018-05-01","2018-06-01","2018-07-01","2018-08-01","2018-09-01","2018-10-01","2018-11-01","2018-12-01","2019-01-01","2019-02-01","2019-03-01","2019-04-01","2019-05-01","2019-06-01","2019-07-01","2019-08-01","2019-09-01","2019-10-01","2019-11-01","2019-12-01","2020-01-01","2020-02-01","2020-03-01","2020-04-01","2020-05-01","2020-06-01","2020-07-01","2020-08-01","2020-09-01","2020-10-01","2020-11-01","2020-12-01","2021-01-01","2021-02-01","2021-03-01","2021-04-01","2021-05-01","2021-06-01","2021-07-01","2021-08-01","2021-09-01","2021-10-01","2021-11-01","2021-12-01","2022-01-01","2022-02-01","2022-03-01","2022-04-01","2022-05-01","2022-06-01","2022-07-01","2022-08-01","2022-09-01","2022-10-01","2022-11-01","2022-12-01"],"y":[33287,24714,26961,26224,30432,31595,49489,51680,29485,33197,22810,37085,31356,23307,29516,27718,24752,31779,45422,45361,29509,32017,24739,39382,34512,23982,21577,636,1396,4228,14969,17913,12227,15812,11596,28325,24765,7009,5029,5993,9618,16516,36841,38763,24106,25236,20873,34227,29441,19869,25972,19815,28922,31479,50968,50499,31330,34781,26573,43846],"text":["MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY","MAYOTTE-MARCEL HENRY"],"hovertemplate":["<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}","<i>Aéroport:<\/i> %{text}<br>Trafic: %{y}"],"mode":"lines+markers","type":"scatter","marker":{"color":"rgba(31,119,180,1)","line":{"color":"rgba(31,119,180,1)"}},"error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"line":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <details>
@@ -1604,15 +1619,15 @@ Enchaînement des opérations attendues à cette étape
 Aide: le code pour générer la figure
 </summary>
 <div class="tabset-margin-container"></div><div class="panel-tabset" data-group="language">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-18-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-18-1" role="tab" aria-controls="tabset-18-1" aria-selected="true"><i class="fa-brands fa-r-project" aria-label="r-project"></i></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-18-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-18-2" role="tab" aria-controls="tabset-18-2" aria-selected="false"><i class="fa-brands fa-python" aria-label="python"></i></a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-19-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-19-1" role="tab" aria-controls="tabset-19-1" aria-selected="true"><i class="fa-brands fa-r-project" aria-label="r-project"></i></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-19-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-19-2" role="tab" aria-controls="tabset-19-2" aria-selected="false"><i class="fa-brands fa-python" aria-label="python"></i></a></li></ul>
 <div class="tab-content" data-group="language">
-<div id="tabset-18-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-18-1-tab">
+<div id="tabset-19-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-19-1-tab">
 <div class="sourceCode" id="cb48" data-startfrom="37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r" style="counter-reset: source-line 36;"><span id="cb48-37"><a href="#cb48-37" aria-hidden="true" tabindex="-1"></a>figure_ggplot <span class="ot">&lt;-</span> trafic_aeroports <span class="sc">%&gt;%</span></span>
 <span id="cb48-38"><a href="#cb48-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(.) <span class="sc">+</span> <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> trafic))</span>
 <span id="cb48-39"><a href="#cb48-39" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb48-40"><a href="#cb48-40" aria-hidden="true" tabindex="-1"></a>figure_plotly <span class="ot">&lt;-</span> <span class="fu">plot_airport_line</span>(trafic_aeroports, default_airport)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="tabset-18-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-18-2-tab">
+<div id="tabset-19-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-19-2-tab">
 <div class="sourceCode" id="cb49" data-startfrom="48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python" style="counter-reset: source-line 47;"></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
@@ -1627,9 +1642,9 @@ Aide: le code pour générer la figure
 Code de l’exercice
 </summary>
 <div class="tabset-margin-container"></div><div class="panel-tabset" data-group="language">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-19-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-19-1" role="tab" aria-controls="tabset-19-1" aria-selected="true"><i class="fa-brands fa-r-project" aria-label="r-project"></i></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-19-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-19-2" role="tab" aria-controls="tabset-19-2" aria-selected="false"><i class="fa-brands fa-python" aria-label="python"></i></a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-20-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-20-1" role="tab" aria-controls="tabset-20-1" aria-selected="true"><i class="fa-brands fa-r-project" aria-label="r-project"></i></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-20-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-20-2" role="tab" aria-controls="tabset-20-2" aria-selected="false"><i class="fa-brands fa-python" aria-label="python"></i></a></li></ul>
 <div class="tab-content" data-group="language">
-<div id="tabset-19-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-19-1-tab">
+<div id="tabset-20-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-20-1-tab">
 <div class="sourceCode" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
 <span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
@@ -1671,7 +1686,7 @@ Code de l’exercice
 <span id="cb50-39"><a href="#cb50-39" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb50-40"><a href="#cb50-40" aria-hidden="true" tabindex="-1"></a>figure_plotly <span class="ot">&lt;-</span> <span class="fu">plot_airport_line</span>(trafic_aeroports, default_airport)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="tabset-19-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-19-2-tab">
+<div id="tabset-20-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-20-2-tab">
 <div class="sourceCode" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> geopandas <span class="im">as</span> gpd</span>
 <span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
@@ -1763,9 +1778,9 @@ Code de l’exercice
 </div>
 </div>
 <div class="tabset-margin-container"></div><div class="panel-tabset" data-group="language">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-20-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-20-1" role="tab" aria-controls="tabset-20-1" aria-selected="true"><i class="fa-brands fa-r-project" aria-label="r-project"></i></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-20-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-20-2" role="tab" aria-controls="tabset-20-2" aria-selected="false"><i class="fa-brands fa-python" aria-label="python"></i></a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-21-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-21-1" role="tab" aria-controls="tabset-21-1" aria-selected="true"><i class="fa-brands fa-r-project" aria-label="r-project"></i></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-21-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-21-2" role="tab" aria-controls="tabset-21-2" aria-selected="false"><i class="fa-brands fa-python" aria-label="python"></i></a></li></ul>
 <div class="tab-content" data-group="language">
-<div id="tabset-20-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-20-1-tab">
+<div id="tabset-21-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-21-1-tab">
 <details>
 <summary>
 Fichier <code>R/figures.R</code> à l’issue de cet exercice
@@ -1800,7 +1815,7 @@ Fichier <code>R/figures.R</code> à l’issue de cet exercice
 </div>
 <p>et utiliser cette fonction à la fin du fichier.</p>
 </div>
-<div id="tabset-20-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-20-2-tab">
+<div id="tabset-21-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-21-2-tab">
 <p>Par la suite, nous pouvons ajouter la ligne suivante à notre fichier <code>main.py</code></p>
 <div class="sourceCode" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> src.figures <span class="im">import</span> plot_airport_line</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>et utiliser cette fonction à la fin du fichier.</p>
@@ -1888,15 +1903,15 @@ Fichier <code>main.py</code> à l’issue de cet exercice
 <p>L’écosystème le plus complet pour faire cela est développé par <code>Posit</code> et est quasi équivalent qu’on fasse du <i class="fa-brands fa-r-project" aria-label="r-project"></i> ou du <i class="fa-brands fa-python" aria-label="python"></i> (il est plus complet en <i class="fa-brands fa-r-project" aria-label="r-project"></i> car plus ancien dans ce langage). Il s’agit du <em>package</em> <a href="https://gt.rstudio.com/"><code>GT</code></a> (<i class="fa-brands fa-r-project" aria-label="r-project"></i>) ou <a href="https://posit-dev.github.io/great-tables/articles/intro.html"><code>Great Tables</code></a> (<i class="fa-brands fa-python" aria-label="python"></i>). En peu de temps, ces <em>packages</em> sont devenus incontournables et proposent des fonctionnalités bien plus complètes que les solutions qui existaient par le passé, notamment <a href="https://rstudio.github.io/DT/"><code>DT</code></a>.</p>
 <p>Pour le prochain exercice, vous pourrez utiliser ces objets</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset" data-group="language">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-21-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-21-1" role="tab" aria-controls="tabset-21-1" aria-selected="true"><i class="fa-brands fa-r-project" aria-label="r-project"></i></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-21-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-21-2" role="tab" aria-controls="tabset-21-2" aria-selected="false"><i class="fa-brands fa-python" aria-label="python"></i></a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-22-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-22-1" role="tab" aria-controls="tabset-22-1" aria-selected="true"><i class="fa-brands fa-r-project" aria-label="r-project"></i></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-22-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-22-2" role="tab" aria-controls="tabset-22-2" aria-selected="false"><i class="fa-brands fa-python" aria-label="python"></i></a></li></ul>
 <div class="tab-content" data-group="language">
-<div id="tabset-21-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-21-1-tab">
+<div id="tabset-22-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-22-1-tab">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>YEARS_LIST  <span class="ot">&lt;-</span> <span class="fu">as.character</span>(<span class="dv">2018</span><span class="sc">:</span><span class="dv">2022</span>)</span>
 <span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>MONTHS_LIST <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">12</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
-<div id="tabset-21-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-21-2-tab">
+<div id="tabset-22-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-22-2-tab">
 <div class="sourceCode" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>YEARS_LIST <span class="op">=</span> [<span class="bu">str</span>(year) <span class="cf">for</span> year <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2018</span>, <span class="dv">2023</span>)]</span>
 <span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>MONTHS_LIST <span class="op">=</span> <span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">13</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -1919,9 +1934,9 @@ Fichier <code>main.py</code> à l’issue de cet exercice
 <li>Choisir un mois et une année à partir des objets <code>YEARS_LIST</code> et <code>MONTHS_LIST</code> pour faire un filtre sur le <em>dataframe</em> <code>pax_apt_all</code>. Une fois que vous êtes satisfaits, transformer cela en fonction <code>create_data_from_input</code> prenant en argument un <em>dataframe</em>, une année et un mois</li>
 </ol>
 <div class="tabset-margin-container"></div><div class="panel-tabset" data-group="language">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-22-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-22-1" role="tab" aria-controls="tabset-22-1" aria-selected="true"><i class="fa-brands fa-r-project" aria-label="r-project"></i></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-22-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-22-2" role="tab" aria-controls="tabset-22-2" aria-selected="false"><i class="fa-brands fa-python" aria-label="python"></i></a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-23-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-23-1" role="tab" aria-controls="tabset-23-1" aria-selected="true"><i class="fa-brands fa-r-project" aria-label="r-project"></i></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-23-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-23-2" role="tab" aria-controls="tabset-23-2" aria-selected="false"><i class="fa-brands fa-python" aria-label="python"></i></a></li></ul>
 <div class="tab-content" data-group="language">
-<div id="tabset-22-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-22-1-tab">
+<div id="tabset-23-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-23-1-tab">
 <details>
 <summary>
 Code de l’exercice
@@ -1934,7 +1949,7 @@ Code de l’exercice
 <span id="cb58-6"><a href="#cb58-6" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="tabset-22-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-22-2-tab">
+<div id="tabset-23-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-23-2-tab">
 <details>
 <summary>
 Code de l’exercice
@@ -1952,9 +1967,9 @@ Code de l’exercice
 <li>Pour chaque aéroport, calculer le nombre total de passager. Puis classer les aérports du plus fréquenté au moins fréquenté. Une fois que vous êtes satisfaits de votre chaine d’opération, créer une fonction <code>summary_stat_airport</code>.</li>
 </ol>
 <div class="tabset-margin-container"></div><div class="panel-tabset" data-group="language">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-23-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-23-1" role="tab" aria-controls="tabset-23-1" aria-selected="true"><i class="fa-brands fa-r-project" aria-label="r-project"></i></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-23-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-23-2" role="tab" aria-controls="tabset-23-2" aria-selected="false"><i class="fa-brands fa-python" aria-label="python"></i></a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-24-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-24-1" role="tab" aria-controls="tabset-24-1" aria-selected="true"><i class="fa-brands fa-r-project" aria-label="r-project"></i></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-24-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-24-2" role="tab" aria-controls="tabset-24-2" aria-selected="false"><i class="fa-brands fa-python" aria-label="python"></i></a></li></ul>
 <div class="tab-content" data-group="language">
-<div id="tabset-23-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-23-1-tab">
+<div id="tabset-24-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-24-1-tab">
 <details>
 <summary>
 Code de l’exercice
@@ -1983,7 +1998,7 @@ Code de l’exercice
 <span id="cb60-29"><a href="#cb60-29" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="tabset-23-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-23-2-tab">
+<div id="tabset-24-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-24-2-tab">
 <details>
 <summary>
 Code de l’exercice
@@ -2011,9 +2026,9 @@ Code de l’exercice
 </div>
 <p>Voici une proposition de script <code>main.R</code> (resp. <code>main.py</code>) à l’issue de cet exercice</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset" data-group="language">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-24-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-24-1" role="tab" aria-controls="tabset-24-1" aria-selected="true"><i class="fa-brands fa-r-project" aria-label="r-project"></i></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-24-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-24-2" role="tab" aria-controls="tabset-24-2" aria-selected="false"><i class="fa-brands fa-python" aria-label="python"></i></a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-25-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-25-1" role="tab" aria-controls="tabset-25-1" aria-selected="true"><i class="fa-brands fa-r-project" aria-label="r-project"></i></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-25-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-25-2" role="tab" aria-controls="tabset-25-2" aria-selected="false"><i class="fa-brands fa-python" aria-label="python"></i></a></li></ul>
 <div class="tab-content" data-group="language">
-<div id="tabset-24-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-24-1-tab">
+<div id="tabset-25-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-25-1-tab">
 <details>
 <summary>
 Code de l’exercice
@@ -2072,7 +2087,7 @@ Code de l’exercice
 <span id="cb62-52"><a href="#cb62-52" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="tabset-24-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-24-2-tab">
+<div id="tabset-25-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-25-2-tab">
 <details>
 <summary>
 Code de l’exercice
@@ -2153,9 +2168,9 @@ Code de l’exercice
 </div>
 <p>Nous avons maintenant tous les ingrédients pour faire un tableau de statistiques descriptives lisibles et esthétiques. Avant de créer cette table, nous allons créer une colonne supplémentaire:</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset" data-group="language">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-25-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-25-1" role="tab" aria-controls="tabset-25-1" aria-selected="true"><i class="fa-brands fa-r-project" aria-label="r-project"></i></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-25-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-25-2" role="tab" aria-controls="tabset-25-2" aria-selected="false"><i class="fa-brands fa-python" aria-label="python"></i></a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-26-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-26-1" role="tab" aria-controls="tabset-26-1" aria-selected="true"><i class="fa-brands fa-r-project" aria-label="r-project"></i></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-26-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-26-2" role="tab" aria-controls="tabset-26-2" aria-selected="false"><i class="fa-brands fa-python" aria-label="python"></i></a></li></ul>
 <div class="tab-content" data-group="language">
-<div id="tabset-25-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-25-1-tab">
+<div id="tabset-26-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-26-1-tab">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>stats_aeroports_table <span class="ot">&lt;-</span> stats_aeroports <span class="sc">%&gt;%</span></span>
 <span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">name_clean =</span> <span class="fu">paste0</span>(<span class="fu">str_to_sentence</span>(apt_nom), <span class="st">" _("</span>, apt, <span class="st">")_"</span>)</span>
@@ -2163,7 +2178,7 @@ Code de l’exercice
 <span id="cb64-4"><a href="#cb64-4" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(name_clean, <span class="fu">everything</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
-<div id="tabset-25-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-25-2-tab">
+<div id="tabset-26-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-26-2-tab">
 <div class="sourceCode" id="cb65"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>stats_aeroports[<span class="st">'name_clean'</span>] <span class="op">=</span> stats_aeroports[<span class="st">'apt_nom'</span>].<span class="bu">str</span>.title() <span class="op">+</span> <span class="st">" _("</span> <span class="op">+</span> stats_aeroports[<span class="st">'apt'</span>] <span class="op">+</span> <span class="st">")_"</span></span>
 <span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>stats_aeroports <span class="op">=</span> stats_aeroports[ [<span class="st">'name_clean'</span>] <span class="op">+</span> [ col <span class="cf">for</span> col <span class="kw">in</span> stats_aeroports.columns <span class="cf">if</span> col <span class="op">!=</span> <span class="st">'name_clean'</span> ] ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -2201,16 +2216,16 @@ Il y a plusieurs manières de faire, voici un indice sur la “meilleure”
 <li><p>Formatter les colonnes numériques (pour la sélection des colonnes numériques, voir l’indice ci-dessus). En consultant la documentation de <code>gt</code>, appliquer l’option qui permet de rendre plus concise la notation des milliers (K) et millions (M).</p></li>
 <li><p>Utiliser <code>fmt_markdown</code> pour appliquer une mise en forme adaptée à la colonne <code>name_clean</code></p></li>
 <li><p>Mettre en forme les noms de colonne (<code>cols_labels</code>), le titre (<code>tab_header</code>), les notes (<code>tab_source_note</code>) pour avoir un tableau esthéthique et informatif. Pour les utilisateurs de <i class="fa-brands fa-r-project" aria-label="r-project"></i>, vous pouvez aussi modifier la couleur de la partie supérieure du tableau (<code>tab_style</code>).</p></li>
-<li><p>Pour les utilisateurs de <i class="fa-brands fa-r-project" aria-label="r-project"></i>, transformer la table en tableau interactif avec <code>opt_interactive</code><a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>.</p></li>
+<li><p>Pour les utilisateurs de <i class="fa-brands fa-r-project" aria-label="r-project"></i>, transformer la table en tableau interactif avec <code>opt_interactive</code><a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>.</p></li>
 </ol>
 </div>
 </div>
 </div>
 <p>Les réponses aux différentes questions sont données de manière successives ci-dessous. La table finale, obtenue à l’issue de l’exercice est la suivante:</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset" data-group="language">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-26-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-26-1" role="tab" aria-controls="tabset-26-1" aria-selected="true"><i class="fa-brands fa-r-project" aria-label="r-project"></i></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-26-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-26-2" role="tab" aria-controls="tabset-26-2" aria-selected="false"><i class="fa-brands fa-python" aria-label="python"></i></a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-27-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-27-1" role="tab" aria-controls="tabset-27-1" aria-selected="true"><i class="fa-brands fa-r-project" aria-label="r-project"></i></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-27-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-27-2" role="tab" aria-controls="tabset-27-2" aria-selected="false"><i class="fa-brands fa-python" aria-label="python"></i></a></li></ul>
 <div class="tab-content" data-group="language">
-<div id="tabset-26-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-26-1-tab">
+<div id="tabset-27-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-27-1-tab">
 <div class="cell">
 <details>
 <summary>Réponse question 1</summary>
@@ -2275,23 +2290,23 @@ Il y a plusieurs manières de faire, voici un indice sur la “meilleure”
 </details>
 <div class="cell-output-display">
 
-<div id="qzukzdwmfv" class=".gt_table" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#qzukzdwmfv table {
+<div id="uxyfwiwvsx" class=".gt_table" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#uxyfwiwvsx table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#qzukzdwmfv thead, #qzukzdwmfv tbody, #qzukzdwmfv tfoot, #qzukzdwmfv tr, #qzukzdwmfv td, #qzukzdwmfv th {
+#uxyfwiwvsx thead, #uxyfwiwvsx tbody, #uxyfwiwvsx tfoot, #uxyfwiwvsx tr, #uxyfwiwvsx td, #uxyfwiwvsx th {
   border-style: none;
 }
 
-#qzukzdwmfv p {
+#uxyfwiwvsx p {
   margin: 0;
   padding: 0;
 }
 
-#qzukzdwmfv .gt_table {
+#uxyfwiwvsx .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -2317,12 +2332,12 @@ Il y a plusieurs manières de faire, voici un indice sur la “meilleure”
   border-left-color: #D3D3D3;
 }
 
-#qzukzdwmfv .gt_caption {
+#uxyfwiwvsx .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#qzukzdwmfv .gt_title {
+#uxyfwiwvsx .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2334,7 +2349,7 @@ Il y a plusieurs manières de faire, voici un indice sur la “meilleure”
   border-bottom-width: 0;
 }
 
-#qzukzdwmfv .gt_subtitle {
+#uxyfwiwvsx .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2346,7 +2361,7 @@ Il y a plusieurs manières de faire, voici un indice sur la “meilleure”
   border-top-width: 0;
 }
 
-#qzukzdwmfv .gt_heading {
+#uxyfwiwvsx .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2358,13 +2373,13 @@ Il y a plusieurs manières de faire, voici un indice sur la “meilleure”
   border-right-color: #D3D3D3;
 }
 
-#qzukzdwmfv .gt_bottom_border {
+#uxyfwiwvsx .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#qzukzdwmfv .gt_col_headings {
+#uxyfwiwvsx .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2379,7 +2394,7 @@ Il y a plusieurs manières de faire, voici un indice sur la “meilleure”
   border-right-color: #D3D3D3;
 }
 
-#qzukzdwmfv .gt_col_heading {
+#uxyfwiwvsx .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2399,7 +2414,7 @@ Il y a plusieurs manières de faire, voici un indice sur la “meilleure”
   overflow-x: hidden;
 }
 
-#qzukzdwmfv .gt_column_spanner_outer {
+#uxyfwiwvsx .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2411,15 +2426,15 @@ Il y a plusieurs manières de faire, voici un indice sur la “meilleure”
   padding-right: 4px;
 }
 
-#qzukzdwmfv .gt_column_spanner_outer:first-child {
+#uxyfwiwvsx .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#qzukzdwmfv .gt_column_spanner_outer:last-child {
+#uxyfwiwvsx .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#qzukzdwmfv .gt_column_spanner {
+#uxyfwiwvsx .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2431,11 +2446,11 @@ Il y a plusieurs manières de faire, voici un indice sur la “meilleure”
   width: 100%;
 }
 
-#qzukzdwmfv .gt_spanner_row {
+#uxyfwiwvsx .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#qzukzdwmfv .gt_group_heading {
+#uxyfwiwvsx .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2461,7 +2476,7 @@ Il y a plusieurs manières de faire, voici un indice sur la “meilleure”
   text-align: left;
 }
 
-#qzukzdwmfv .gt_empty_group_heading {
+#uxyfwiwvsx .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2476,15 +2491,15 @@ Il y a plusieurs manières de faire, voici un indice sur la “meilleure”
   vertical-align: middle;
 }
 
-#qzukzdwmfv .gt_from_md > :first-child {
+#uxyfwiwvsx .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#qzukzdwmfv .gt_from_md > :last-child {
+#uxyfwiwvsx .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#qzukzdwmfv .gt_row {
+#uxyfwiwvsx .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2503,7 +2518,7 @@ Il y a plusieurs manières de faire, voici un indice sur la “meilleure”
   overflow-x: hidden;
 }
 
-#qzukzdwmfv .gt_stub {
+#uxyfwiwvsx .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2516,7 +2531,7 @@ Il y a plusieurs manières de faire, voici un indice sur la “meilleure”
   padding-right: 5px;
 }
 
-#qzukzdwmfv .gt_stub_row_group {
+#uxyfwiwvsx .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2530,15 +2545,15 @@ Il y a plusieurs manières de faire, voici un indice sur la “meilleure”
   vertical-align: top;
 }
 
-#qzukzdwmfv .gt_row_group_first td {
+#uxyfwiwvsx .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#qzukzdwmfv .gt_row_group_first th {
+#uxyfwiwvsx .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#qzukzdwmfv .gt_summary_row {
+#uxyfwiwvsx .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2548,16 +2563,16 @@ Il y a plusieurs manières de faire, voici un indice sur la “meilleure”
   padding-right: 5px;
 }
 
-#qzukzdwmfv .gt_first_summary_row {
+#uxyfwiwvsx .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#qzukzdwmfv .gt_first_summary_row.thick {
+#uxyfwiwvsx .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#qzukzdwmfv .gt_last_summary_row {
+#uxyfwiwvsx .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2567,7 +2582,7 @@ Il y a plusieurs manières de faire, voici un indice sur la “meilleure”
   border-bottom-color: #D3D3D3;
 }
 
-#qzukzdwmfv .gt_grand_summary_row {
+#uxyfwiwvsx .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2577,7 +2592,7 @@ Il y a plusieurs manières de faire, voici un indice sur la “meilleure”
   padding-right: 5px;
 }
 
-#qzukzdwmfv .gt_first_grand_summary_row {
+#uxyfwiwvsx .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2587,7 +2602,7 @@ Il y a plusieurs manières de faire, voici un indice sur la “meilleure”
   border-top-color: #D3D3D3;
 }
 
-#qzukzdwmfv .gt_last_grand_summary_row_top {
+#uxyfwiwvsx .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2597,11 +2612,11 @@ Il y a plusieurs manières de faire, voici un indice sur la “meilleure”
   border-bottom-color: #D3D3D3;
 }
 
-#qzukzdwmfv .gt_striped {
+#uxyfwiwvsx .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#qzukzdwmfv .gt_table_body {
+#uxyfwiwvsx .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2610,7 +2625,7 @@ Il y a plusieurs manières de faire, voici un indice sur la “meilleure”
   border-bottom-color: #D3D3D3;
 }
 
-#qzukzdwmfv .gt_footnotes {
+#uxyfwiwvsx .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2624,7 +2639,7 @@ Il y a plusieurs manières de faire, voici un indice sur la “meilleure”
   border-right-color: #D3D3D3;
 }
 
-#qzukzdwmfv .gt_footnote {
+#uxyfwiwvsx .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2633,7 +2648,7 @@ Il y a plusieurs manières de faire, voici un indice sur la “meilleure”
   padding-right: 5px;
 }
 
-#qzukzdwmfv .gt_sourcenotes {
+#uxyfwiwvsx .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2647,7 +2662,7 @@ Il y a plusieurs manières de faire, voici un indice sur la “meilleure”
   border-right-color: #D3D3D3;
 }
 
-#qzukzdwmfv .gt_sourcenote {
+#uxyfwiwvsx .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2655,63 +2670,63 @@ Il y a plusieurs manières de faire, voici un indice sur la “meilleure”
   padding-right: 5px;
 }
 
-#qzukzdwmfv .gt_left {
+#uxyfwiwvsx .gt_left {
   text-align: left;
 }
 
-#qzukzdwmfv .gt_center {
+#uxyfwiwvsx .gt_center {
   text-align: center;
 }
 
-#qzukzdwmfv .gt_right {
+#uxyfwiwvsx .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#qzukzdwmfv .gt_font_normal {
+#uxyfwiwvsx .gt_font_normal {
   font-weight: normal;
 }
 
-#qzukzdwmfv .gt_font_bold {
+#uxyfwiwvsx .gt_font_bold {
   font-weight: bold;
 }
 
-#qzukzdwmfv .gt_font_italic {
+#uxyfwiwvsx .gt_font_italic {
   font-style: italic;
 }
 
-#qzukzdwmfv .gt_super {
+#uxyfwiwvsx .gt_super {
   font-size: 65%;
 }
 
-#qzukzdwmfv .gt_footnote_marks {
+#uxyfwiwvsx .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#qzukzdwmfv .gt_asterisk {
+#uxyfwiwvsx .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#qzukzdwmfv .gt_indent_1 {
+#uxyfwiwvsx .gt_indent_1 {
   text-indent: 5px;
 }
 
-#qzukzdwmfv .gt_indent_2 {
+#uxyfwiwvsx .gt_indent_2 {
   text-indent: 10px;
 }
 
-#qzukzdwmfv .gt_indent_3 {
+#uxyfwiwvsx .gt_indent_3 {
   text-indent: 15px;
 }
 
-#qzukzdwmfv .gt_indent_4 {
+#uxyfwiwvsx .gt_indent_4 {
   text-indent: 20px;
 }
 
-#qzukzdwmfv .gt_indent_5 {
+#uxyfwiwvsx .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -2719,7 +2734,7 @@ Il y a plusieurs manières de faire, voici un indice sur la “meilleure”
 <div class="gt_heading gt_title gt_font_normal" style="text-size:bigger;"><strong>Statistiques de fréquentation</strong></div>
 <div class="gt_heading gt_subtitle ">Classement des aéroports</div>
 </div>
-<div id="qzukzdwmfv" class="reactable html-widget" style="width:auto;height:auto;"></div>
+<div id="uxyfwiwvsx" class="reactable html-widget" style="width:auto;height:auto;"></div>
 <div style="font-family:system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;border-top-style:solid;border-top-width:2px;border-top-color:#D3D3D3;border-bottom-style:solid;border-bottom-width:2px;border-bottom-color:#D3D3D3;padding-top:6px;padding-bottom:6px;padding-left:10px;padding-right:10px;">
 <div>
 
@@ -2730,12 +2745,12 @@ Il y a plusieurs manières de faire, voici un indice sur la “meilleure”
 </div>
 <div></div>
 </div>
-<script type="application/json" data-for="qzukzdwmfv">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"name_clean":["Paris-charles de gaulle _(LFPG)_","Paris-orly _(LFPO)_","Nice-cote d'azur _(LFMN)_","Lyon-st-exupery _(LFLL)_","Toulouse-blagnac _(LFBO)_","Marseille-provence _(LFML)_","Bale-mulhouse _(LFSB)_","Bordeaux-merignac _(LFBD)_","Nantes-atlantique _(LFRS)_","Beauvais-tille _(LFOB)_","La reunion-roland garros _(FMEE)_","Pointe-a-pitre-le raizet _(TFFR)_","Martinique-aime cesaire _(TFFF)_","Montpellier-mediterranee _(LFMT)_","Lille-lesquin _(LFQQ)_","Tahiti faa'a _(NTAA)_","Strasbourg-entzheim _(LFST)_","Brest-bretagne _(LFRB)_","Grenoble-alpes-isere _(LFLS)_","Biarritz-pays-basque _(LFBZ)_","Ajaccio-napoleon-bonaparte _(LFKJ)_","Noumea la tontouta _(NWWW)_","Bastia-poretta _(LFKB)_","Chambery-aix-les-bains _(LFLB)_","Rennes-st-jacques _(LFRN)_","Pau-pyrenees _(LFBP)_","Cayenne-felix eboue _(SOCA)_","Noumea magenta _(NWWM)_","Clermont-ferrand-auvergne _(LFLC)_","Toulon-hyeres _(LFTH)_","Perpignan-rivesaltes _(LFMP)_","Mayotte-marcel henry _(FMCZ)_","Carcassonne-salvaza _(LFMK)_","Bora bora _(NTTB)_","Lifou _(NWWL)_","Raiatea _(NTTR)_","Limoges-bellegarde _(LFBL)_","Nimes-garons _(LFTW)_","Autres apt (om) _(ZZOM)_","Figari-sud-corse _(LFKF)_","Tarbes-lourdes-pyrenees _(LFBT)_","St-martin-grand-case _(TFFG)_","St-pierre-pierrefonds _(FMEP)_","St-barthelemy _(TFFJ)_","Metz-nancy-lorraine _(LFJL)_","Caen-carpiquet _(LFRK)_","Ile des pins _(NWWE)_","Tours-val de loire _(LFOT)_","Lorient-lann-bihoue _(LFRH)_","Paris-le bourget _(LFPB)_","Ouvea _(NWWV)_","Mare _(NWWR)_","Autres apt (mt) _(ZZMT)_","Calvi-ste-catherine _(LFKC)_","Huahine _(NTTH)_","Dole-tavaux _(LFGJ)_","Bergerac-dordogne-perigord _(LFBE)_","Beziers-vias _(LFMU)_","Dinard-pleurtuit-st-malo _(LFRD)_","Rangiroa _(NTTG)_","Rodez-aveyron _(LFCR)_","Quimper-pluguffan _(LFRQ)_","Poitiers-biard _(LFBI)_","La rochelle-ile de re _(LFBH)_","Wallis-hihifo _(NLWW)_","Chalons-vatry _(LFOK)_","Brive-souillac _(LFSL)_","Moorea _(NTTM)_","Castres-mazamet _(LFCK)_","Nuku hiva _(NTMD)_","Maripasoula _(SOOA)_","Aurillac _(LFLW)_","Agen-la garenne _(LFBA)_","Deauville-normandie _(LFRG)_","Hiva oa-atuona _(NTMN)_","St-pierre-pointe blanche _(LFVP)_","Maupiti _(NTTP)_","Tubuai mataura _(NTAT)_","Tikehau _(NTGC)_","Fakarava _(NTGF)_","Rurutu _(NTAR)_","Courchevel _(LFLJ)_","St-nazaire-montoir _(LFRZ)_","Futuna _(NLWF)_","Raivavae _(NTAV)_","Hao _(NTTO)_","Chateauroux-deols _(LFLX)_","Albert-bray _(LFAQ)_"],"paxdep":[2597751,1161426,367646,355363,340036,293834,222750,195048,170975,128104,112430,111998,91004,63071,54976,43348,39338,38435,35543,34386,30024,29353,29165,26015,24407,24068,19266,18437,15513,15004,13408,13108,10148,9986,8498,7813,7493,7114,6791,6606,6135,6089,6034,5949,5569,5459,5185,5138,4837,4416,4051,3971,3910,3881,3842,3685,3476,3066,2566,2379,2375,2366,2327,2245,2142,2109,2081,1859,1841,1768,1404,1389,1335,1270,1232,1102,1098,1062,1056,1024,1021,596,586,516,493,381,166,119],"paxarr":[2615400,1222901,363372,369899,337295,304546,241617,190208,166728,136452,127167,126329,99705,63662,56499,55449,40479,34913,37206,30939,28119,28587,27115,25320,23858,22375,22073,20461,14817,13973,12783,18977,10011,8632,7489,6972,6798,7021,4781,5597,5610,7609,7181,5160,6060,5241,4635,4927,4083,4603,3955,3573,3445,3260,2943,3954,2924,2995,2137,2055,2051,1848,2225,2125,2123,2269,1788,1092,1497,1548,1247,1209,1178,1275,1030,1031,685,711,789,720,536,804,578,472,222,430,166,124],"paxtra":[2938,54,733,4586,3594,5151,7,4044,2078,83,4768,5137,6007,88,1027,885,137,1848,172,0,0,0,0,11,557,162,1825,0,673,0,0,1202,0,1730,0,3145,24,0,4681,0,0,124,0,0,308,13,0,0,0,0,0,0,70,0,3063,0,0,0,0,1202,0,0,1628,0,0,2,0,1156,0,497,431,0,0,837,488,0,5,535,1192,272,568,0,153,0,277,663,0,0]},"columns":[{"id":"name_clean","name":"<strong>Aéroport<\/strong>","type":"character","style":"function(rowInfo, colInfo) {\nconst rowIndex = rowInfo.index + 1\n}","cell":["<div data-qmd=\"Paris-charles de gaulle _(LFPG)_\"><div class='gt_from_md'><p>Paris-charles de gaulle <em>(LFPG)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Paris-orly _(LFPO)_\"><div class='gt_from_md'><p>Paris-orly <em>(LFPO)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Nice-cote d'azur _(LFMN)_\"><div class='gt_from_md'><p>Nice-cote d’azur <em>(LFMN)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Lyon-st-exupery _(LFLL)_\"><div class='gt_from_md'><p>Lyon-st-exupery <em>(LFLL)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Toulouse-blagnac _(LFBO)_\"><div class='gt_from_md'><p>Toulouse-blagnac <em>(LFBO)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Marseille-provence _(LFML)_\"><div class='gt_from_md'><p>Marseille-provence <em>(LFML)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Bale-mulhouse _(LFSB)_\"><div class='gt_from_md'><p>Bale-mulhouse <em>(LFSB)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Bordeaux-merignac _(LFBD)_\"><div class='gt_from_md'><p>Bordeaux-merignac <em>(LFBD)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Nantes-atlantique _(LFRS)_\"><div class='gt_from_md'><p>Nantes-atlantique <em>(LFRS)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Beauvais-tille _(LFOB)_\"><div class='gt_from_md'><p>Beauvais-tille <em>(LFOB)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"La reunion-roland garros _(FMEE)_\"><div class='gt_from_md'><p>La reunion-roland garros <em>(FMEE)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Pointe-a-pitre-le raizet _(TFFR)_\"><div class='gt_from_md'><p>Pointe-a-pitre-le raizet <em>(TFFR)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Martinique-aime cesaire _(TFFF)_\"><div class='gt_from_md'><p>Martinique-aime cesaire <em>(TFFF)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Montpellier-mediterranee _(LFMT)_\"><div class='gt_from_md'><p>Montpellier-mediterranee <em>(LFMT)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Lille-lesquin _(LFQQ)_\"><div class='gt_from_md'><p>Lille-lesquin <em>(LFQQ)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Tahiti faa'a _(NTAA)_\"><div class='gt_from_md'><p>Tahiti faa’a <em>(NTAA)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Strasbourg-entzheim _(LFST)_\"><div class='gt_from_md'><p>Strasbourg-entzheim <em>(LFST)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Brest-bretagne _(LFRB)_\"><div class='gt_from_md'><p>Brest-bretagne <em>(LFRB)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Grenoble-alpes-isere _(LFLS)_\"><div class='gt_from_md'><p>Grenoble-alpes-isere <em>(LFLS)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Biarritz-pays-basque _(LFBZ)_\"><div class='gt_from_md'><p>Biarritz-pays-basque <em>(LFBZ)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Ajaccio-napoleon-bonaparte _(LFKJ)_\"><div class='gt_from_md'><p>Ajaccio-napoleon-bonaparte <em>(LFKJ)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Noumea la tontouta _(NWWW)_\"><div class='gt_from_md'><p>Noumea la tontouta <em>(NWWW)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Bastia-poretta _(LFKB)_\"><div class='gt_from_md'><p>Bastia-poretta <em>(LFKB)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Chambery-aix-les-bains _(LFLB)_\"><div class='gt_from_md'><p>Chambery-aix-les-bains <em>(LFLB)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Rennes-st-jacques _(LFRN)_\"><div class='gt_from_md'><p>Rennes-st-jacques <em>(LFRN)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Pau-pyrenees _(LFBP)_\"><div class='gt_from_md'><p>Pau-pyrenees <em>(LFBP)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Cayenne-felix eboue _(SOCA)_\"><div class='gt_from_md'><p>Cayenne-felix eboue <em>(SOCA)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Noumea magenta _(NWWM)_\"><div class='gt_from_md'><p>Noumea magenta <em>(NWWM)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Clermont-ferrand-auvergne _(LFLC)_\"><div class='gt_from_md'><p>Clermont-ferrand-auvergne <em>(LFLC)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Toulon-hyeres _(LFTH)_\"><div class='gt_from_md'><p>Toulon-hyeres <em>(LFTH)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Perpignan-rivesaltes _(LFMP)_\"><div class='gt_from_md'><p>Perpignan-rivesaltes <em>(LFMP)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Mayotte-marcel henry _(FMCZ)_\"><div class='gt_from_md'><p>Mayotte-marcel henry <em>(FMCZ)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Carcassonne-salvaza _(LFMK)_\"><div class='gt_from_md'><p>Carcassonne-salvaza <em>(LFMK)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Bora bora _(NTTB)_\"><div class='gt_from_md'><p>Bora bora <em>(NTTB)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Lifou _(NWWL)_\"><div class='gt_from_md'><p>Lifou <em>(NWWL)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Raiatea _(NTTR)_\"><div class='gt_from_md'><p>Raiatea <em>(NTTR)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Limoges-bellegarde _(LFBL)_\"><div class='gt_from_md'><p>Limoges-bellegarde <em>(LFBL)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Nimes-garons _(LFTW)_\"><div class='gt_from_md'><p>Nimes-garons <em>(LFTW)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Autres apt (om) _(ZZOM)_\"><div class='gt_from_md'><p>Autres apt (om) <em>(ZZOM)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Figari-sud-corse _(LFKF)_\"><div class='gt_from_md'><p>Figari-sud-corse <em>(LFKF)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Tarbes-lourdes-pyrenees _(LFBT)_\"><div class='gt_from_md'><p>Tarbes-lourdes-pyrenees <em>(LFBT)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"St-martin-grand-case _(TFFG)_\"><div class='gt_from_md'><p>St-martin-grand-case <em>(TFFG)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"St-pierre-pierrefonds _(FMEP)_\"><div class='gt_from_md'><p>St-pierre-pierrefonds <em>(FMEP)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"St-barthelemy _(TFFJ)_\"><div class='gt_from_md'><p>St-barthelemy <em>(TFFJ)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Metz-nancy-lorraine _(LFJL)_\"><div class='gt_from_md'><p>Metz-nancy-lorraine <em>(LFJL)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Caen-carpiquet _(LFRK)_\"><div class='gt_from_md'><p>Caen-carpiquet <em>(LFRK)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Ile des pins _(NWWE)_\"><div class='gt_from_md'><p>Ile des pins <em>(NWWE)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Tours-val de loire _(LFOT)_\"><div class='gt_from_md'><p>Tours-val de loire <em>(LFOT)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Lorient-lann-bihoue _(LFRH)_\"><div class='gt_from_md'><p>Lorient-lann-bihoue <em>(LFRH)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Paris-le bourget _(LFPB)_\"><div class='gt_from_md'><p>Paris-le bourget <em>(LFPB)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Ouvea _(NWWV)_\"><div class='gt_from_md'><p>Ouvea <em>(NWWV)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Mare _(NWWR)_\"><div class='gt_from_md'><p>Mare <em>(NWWR)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Autres apt (mt) _(ZZMT)_\"><div class='gt_from_md'><p>Autres apt (mt) <em>(ZZMT)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Calvi-ste-catherine _(LFKC)_\"><div class='gt_from_md'><p>Calvi-ste-catherine <em>(LFKC)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Huahine _(NTTH)_\"><div class='gt_from_md'><p>Huahine <em>(NTTH)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Dole-tavaux _(LFGJ)_\"><div class='gt_from_md'><p>Dole-tavaux <em>(LFGJ)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Bergerac-dordogne-perigord _(LFBE)_\"><div class='gt_from_md'><p>Bergerac-dordogne-perigord <em>(LFBE)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Beziers-vias _(LFMU)_\"><div class='gt_from_md'><p>Beziers-vias <em>(LFMU)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Dinard-pleurtuit-st-malo _(LFRD)_\"><div class='gt_from_md'><p>Dinard-pleurtuit-st-malo <em>(LFRD)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Rangiroa _(NTTG)_\"><div class='gt_from_md'><p>Rangiroa <em>(NTTG)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Rodez-aveyron _(LFCR)_\"><div class='gt_from_md'><p>Rodez-aveyron <em>(LFCR)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Quimper-pluguffan _(LFRQ)_\"><div class='gt_from_md'><p>Quimper-pluguffan <em>(LFRQ)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Poitiers-biard _(LFBI)_\"><div class='gt_from_md'><p>Poitiers-biard <em>(LFBI)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"La rochelle-ile de re _(LFBH)_\"><div class='gt_from_md'><p>La rochelle-ile de re <em>(LFBH)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Wallis-hihifo _(NLWW)_\"><div class='gt_from_md'><p>Wallis-hihifo <em>(NLWW)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Chalons-vatry _(LFOK)_\"><div class='gt_from_md'><p>Chalons-vatry <em>(LFOK)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Brive-souillac _(LFSL)_\"><div class='gt_from_md'><p>Brive-souillac <em>(LFSL)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Moorea _(NTTM)_\"><div class='gt_from_md'><p>Moorea <em>(NTTM)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Castres-mazamet _(LFCK)_\"><div class='gt_from_md'><p>Castres-mazamet <em>(LFCK)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Nuku hiva _(NTMD)_\"><div class='gt_from_md'><p>Nuku hiva <em>(NTMD)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Maripasoula _(SOOA)_\"><div class='gt_from_md'><p>Maripasoula <em>(SOOA)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Aurillac _(LFLW)_\"><div class='gt_from_md'><p>Aurillac <em>(LFLW)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Agen-la garenne _(LFBA)_\"><div class='gt_from_md'><p>Agen-la garenne <em>(LFBA)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Deauville-normandie _(LFRG)_\"><div class='gt_from_md'><p>Deauville-normandie <em>(LFRG)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Hiva oa-atuona _(NTMN)_\"><div class='gt_from_md'><p>Hiva oa-atuona <em>(NTMN)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"St-pierre-pointe blanche _(LFVP)_\"><div class='gt_from_md'><p>St-pierre-pointe blanche <em>(LFVP)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Maupiti _(NTTP)_\"><div class='gt_from_md'><p>Maupiti <em>(NTTP)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Tubuai mataura _(NTAT)_\"><div class='gt_from_md'><p>Tubuai mataura <em>(NTAT)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Tikehau _(NTGC)_\"><div class='gt_from_md'><p>Tikehau <em>(NTGC)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Fakarava _(NTGF)_\"><div class='gt_from_md'><p>Fakarava <em>(NTGF)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Rurutu _(NTAR)_\"><div class='gt_from_md'><p>Rurutu <em>(NTAR)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Courchevel _(LFLJ)_\"><div class='gt_from_md'><p>Courchevel <em>(LFLJ)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"St-nazaire-montoir _(LFRZ)_\"><div class='gt_from_md'><p>St-nazaire-montoir <em>(LFRZ)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Futuna _(NLWF)_\"><div class='gt_from_md'><p>Futuna <em>(NLWF)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Raivavae _(NTAV)_\"><div class='gt_from_md'><p>Raivavae <em>(NTAV)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Hao _(NTTO)_\"><div class='gt_from_md'><p>Hao <em>(NTTO)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Chateauroux-deols _(LFLX)_\"><div class='gt_from_md'><p>Chateauroux-deols <em>(LFLX)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Albert-bray _(LFAQ)_\"><div class='gt_from_md'><p>Albert-bray <em>(LFAQ)<\/em><\/p>\n<\/div><\/div>"],"html":true,"align":"left","headerStyle":{"font-weight":"normal"}},{"id":"paxdep","name":"<strong>Départs<\/strong>","type":"numeric","style":"function(rowInfo, colInfo) {\nconst rowIndex = rowInfo.index + 1\n}","cell":["2.60M","1.16M","367.65K","355.36K","340.04K","293.83K","222.75K","195.05K","170.97K","128.10K","112.43K","112.00K","91.00K","63.07K","54.98K","43.35K","39.34K","38.44K","35.54K","34.39K","30.02K","29.35K","29.16K","26.02K","24.41K","24.07K","19.27K","18.44K","15.51K","15.00K","13.41K","13.11K","10.15K","9.99K","8.50K","7.81K","7.49K","7.11K","6.79K","6.61K","6.13K","6.09K","6.03K","5.95K","5.57K","5.46K","5.19K","5.14K","4.84K","4.42K","4.05K","3.97K","3.91K","3.88K","3.84K","3.69K","3.48K","3.07K","2.57K","2.38K","2.38K","2.37K","2.33K","2.25K","2.14K","2.11K","2.08K","1.86K","1.84K","1.77K","1.40K","1.39K","1.33K","1.27K","1.23K","1.10K","1.10K","1.06K","1.06K","1.02K","1.02K","596.00","586.00","516.00","493.00","381.00","166.00","119.00"],"html":true,"align":"right","headerStyle":{"font-weight":"normal"}},{"id":"paxarr","name":"<strong>Arrivée<\/strong>","type":"numeric","style":"function(rowInfo, colInfo) {\nconst rowIndex = rowInfo.index + 1\n}","cell":["2.62M","1.22M","363.37K","369.90K","337.30K","304.55K","241.62K","190.21K","166.73K","136.45K","127.17K","126.33K","99.70K","63.66K","56.50K","55.45K","40.48K","34.91K","37.21K","30.94K","28.12K","28.59K","27.12K","25.32K","23.86K","22.38K","22.07K","20.46K","14.82K","13.97K","12.78K","18.98K","10.01K","8.63K","7.49K","6.97K","6.80K","7.02K","4.78K","5.60K","5.61K","7.61K","7.18K","5.16K","6.06K","5.24K","4.63K","4.93K","4.08K","4.60K","3.96K","3.57K","3.45K","3.26K","2.94K","3.95K","2.92K","3.00K","2.14K","2.06K","2.05K","1.85K","2.23K","2.12K","2.12K","2.27K","1.79K","1.09K","1.50K","1.55K","1.25K","1.21K","1.18K","1.28K","1.03K","1.03K","685.00","711.00","789.00","720.00","536.00","804.00","578.00","472.00","222.00","430.00","166.00","124.00"],"html":true,"align":"right","headerStyle":{"font-weight":"normal"}},{"id":"paxtra","name":"<strong>Transit<\/strong>","type":"numeric","style":"function(rowInfo, colInfo) {\nconst rowIndex = rowInfo.index + 1\n}","cell":["2.94K","54.00","733.00","4.59K","3.59K","5.15K","7.00","4.04K","2.08K","83.00","4.77K","5.14K","6.01K","88.00","1.03K","885.00","137.00","1.85K","172.00","0.00","0.00","0.00","0.00","11.00","557.00","162.00","1.82K","0.00","673.00","0.00","0.00","1.20K","0.00","1.73K","0.00","3.15K","24.00","0.00","4.68K","0.00","0.00","124.00","0.00","0.00","308.00","13.00","0.00","0.00","0.00","0.00","0.00","0.00","70.00","0.00","3.06K","0.00","0.00","0.00","0.00","1.20K","0.00","0.00","1.63K","0.00","0.00","2.00","0.00","1.16K","0.00","497.00","431.00","0.00","0.00","837.00","488.00","0.00","5.00","535.00","1.19K","272.00","568.00","0.00","153.00","0.00","277.00","663.00","0.00","0.00"],"html":true,"align":"right","headerStyle":{"font-weight":"normal"}}],"defaultPageSize":10,"showPageSizeOptions":false,"pageSizeOptions":[10,25,50,100],"paginationType":"numbers","showPagination":true,"showPageInfo":true,"minRows":1,"showSortable":true,"height":"auto","theme":{"color":"#333333","backgroundColor":"#FFFFFF","stripedColor":"rgba(128,128,128,0.05)","style":{"fontFamily":"system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif"},"headerStyle":{"borderTopStyle":"solid","borderTopWidth":"2px","borderTopColor":"#D3D3D3","borderBottomStyle":"solid","borderBottomWidth":"2px","borderBottomColor":"#D3D3D3"}},"elementId":"qzukzdwmfv","dataKey":"311275f30a10f35b729f971f7eabd324"},"children":[]},"class":"reactR_markup"},"evals":["tag.attribs.columns.0.style","tag.attribs.columns.1.style","tag.attribs.columns.2.style","tag.attribs.columns.3.style"],"jsHooks":[]}</script>
+<script type="application/json" data-for="uxyfwiwvsx">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"name_clean":["Paris-charles de gaulle _(LFPG)_","Paris-orly _(LFPO)_","Nice-cote d'azur _(LFMN)_","Lyon-st-exupery _(LFLL)_","Toulouse-blagnac _(LFBO)_","Marseille-provence _(LFML)_","Bale-mulhouse _(LFSB)_","Bordeaux-merignac _(LFBD)_","Nantes-atlantique _(LFRS)_","Beauvais-tille _(LFOB)_","La reunion-roland garros _(FMEE)_","Pointe-a-pitre-le raizet _(TFFR)_","Martinique-aime cesaire _(TFFF)_","Montpellier-mediterranee _(LFMT)_","Lille-lesquin _(LFQQ)_","Tahiti faa'a _(NTAA)_","Strasbourg-entzheim _(LFST)_","Brest-bretagne _(LFRB)_","Grenoble-alpes-isere _(LFLS)_","Biarritz-pays-basque _(LFBZ)_","Ajaccio-napoleon-bonaparte _(LFKJ)_","Noumea la tontouta _(NWWW)_","Bastia-poretta _(LFKB)_","Chambery-aix-les-bains _(LFLB)_","Rennes-st-jacques _(LFRN)_","Pau-pyrenees _(LFBP)_","Cayenne-felix eboue _(SOCA)_","Noumea magenta _(NWWM)_","Clermont-ferrand-auvergne _(LFLC)_","Toulon-hyeres _(LFTH)_","Perpignan-rivesaltes _(LFMP)_","Mayotte-marcel henry _(FMCZ)_","Carcassonne-salvaza _(LFMK)_","Bora bora _(NTTB)_","Lifou _(NWWL)_","Raiatea _(NTTR)_","Limoges-bellegarde _(LFBL)_","Nimes-garons _(LFTW)_","Autres apt (om) _(ZZOM)_","Figari-sud-corse _(LFKF)_","Tarbes-lourdes-pyrenees _(LFBT)_","St-martin-grand-case _(TFFG)_","St-pierre-pierrefonds _(FMEP)_","St-barthelemy _(TFFJ)_","Metz-nancy-lorraine _(LFJL)_","Caen-carpiquet _(LFRK)_","Ile des pins _(NWWE)_","Tours-val de loire _(LFOT)_","Lorient-lann-bihoue _(LFRH)_","Paris-le bourget _(LFPB)_","Ouvea _(NWWV)_","Mare _(NWWR)_","Autres apt (mt) _(ZZMT)_","Calvi-ste-catherine _(LFKC)_","Huahine _(NTTH)_","Dole-tavaux _(LFGJ)_","Bergerac-dordogne-perigord _(LFBE)_","Beziers-vias _(LFMU)_","Dinard-pleurtuit-st-malo _(LFRD)_","Rangiroa _(NTTG)_","Rodez-aveyron _(LFCR)_","Quimper-pluguffan _(LFRQ)_","Poitiers-biard _(LFBI)_","La rochelle-ile de re _(LFBH)_","Wallis-hihifo _(NLWW)_","Chalons-vatry _(LFOK)_","Brive-souillac _(LFSL)_","Moorea _(NTTM)_","Castres-mazamet _(LFCK)_","Nuku hiva _(NTMD)_","Maripasoula _(SOOA)_","Aurillac _(LFLW)_","Agen-la garenne _(LFBA)_","Deauville-normandie _(LFRG)_","Hiva oa-atuona _(NTMN)_","St-pierre-pointe blanche _(LFVP)_","Maupiti _(NTTP)_","Tubuai mataura _(NTAT)_","Tikehau _(NTGC)_","Fakarava _(NTGF)_","Rurutu _(NTAR)_","Courchevel _(LFLJ)_","St-nazaire-montoir _(LFRZ)_","Futuna _(NLWF)_","Raivavae _(NTAV)_","Hao _(NTTO)_","Chateauroux-deols _(LFLX)_","Albert-bray _(LFAQ)_"],"paxdep":[2597751,1161426,367646,355363,340036,293834,222750,195048,170975,128104,112430,111998,91004,63071,54976,43348,39338,38435,35543,34386,30024,29353,29165,26015,24407,24068,19266,18437,15513,15004,13408,13108,10148,9986,8498,7813,7493,7114,6791,6606,6135,6089,6034,5949,5569,5459,5185,5138,4837,4416,4051,3971,3910,3881,3842,3685,3476,3066,2566,2379,2375,2366,2327,2245,2142,2109,2081,1859,1841,1768,1404,1389,1335,1270,1232,1102,1098,1062,1056,1024,1021,596,586,516,493,381,166,119],"paxarr":[2615400,1222901,363372,369899,337295,304546,241617,190208,166728,136452,127167,126329,99705,63662,56499,55449,40479,34913,37206,30939,28119,28587,27115,25320,23858,22375,22073,20461,14817,13973,12783,18977,10011,8632,7489,6972,6798,7021,4781,5597,5610,7609,7181,5160,6060,5241,4635,4927,4083,4603,3955,3573,3445,3260,2943,3954,2924,2995,2137,2055,2051,1848,2225,2125,2123,2269,1788,1092,1497,1548,1247,1209,1178,1275,1030,1031,685,711,789,720,536,804,578,472,222,430,166,124],"paxtra":[2938,54,733,4586,3594,5151,7,4044,2078,83,4768,5137,6007,88,1027,885,137,1848,172,0,0,0,0,11,557,162,1825,0,673,0,0,1202,0,1730,0,3145,24,0,4681,0,0,124,0,0,308,13,0,0,0,0,0,0,70,0,3063,0,0,0,0,1202,0,0,1628,0,0,2,0,1156,0,497,431,0,0,837,488,0,5,535,1192,272,568,0,153,0,277,663,0,0]},"columns":[{"id":"name_clean","name":"<strong>Aéroport<\/strong>","type":"character","style":"function(rowInfo, colInfo) {\nconst rowIndex = rowInfo.index + 1\n}","cell":["<div data-qmd=\"Paris-charles de gaulle _(LFPG)_\"><div class='gt_from_md'><p>Paris-charles de gaulle <em>(LFPG)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Paris-orly _(LFPO)_\"><div class='gt_from_md'><p>Paris-orly <em>(LFPO)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Nice-cote d'azur _(LFMN)_\"><div class='gt_from_md'><p>Nice-cote d’azur <em>(LFMN)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Lyon-st-exupery _(LFLL)_\"><div class='gt_from_md'><p>Lyon-st-exupery <em>(LFLL)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Toulouse-blagnac _(LFBO)_\"><div class='gt_from_md'><p>Toulouse-blagnac <em>(LFBO)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Marseille-provence _(LFML)_\"><div class='gt_from_md'><p>Marseille-provence <em>(LFML)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Bale-mulhouse _(LFSB)_\"><div class='gt_from_md'><p>Bale-mulhouse <em>(LFSB)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Bordeaux-merignac _(LFBD)_\"><div class='gt_from_md'><p>Bordeaux-merignac <em>(LFBD)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Nantes-atlantique _(LFRS)_\"><div class='gt_from_md'><p>Nantes-atlantique <em>(LFRS)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Beauvais-tille _(LFOB)_\"><div class='gt_from_md'><p>Beauvais-tille <em>(LFOB)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"La reunion-roland garros _(FMEE)_\"><div class='gt_from_md'><p>La reunion-roland garros <em>(FMEE)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Pointe-a-pitre-le raizet _(TFFR)_\"><div class='gt_from_md'><p>Pointe-a-pitre-le raizet <em>(TFFR)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Martinique-aime cesaire _(TFFF)_\"><div class='gt_from_md'><p>Martinique-aime cesaire <em>(TFFF)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Montpellier-mediterranee _(LFMT)_\"><div class='gt_from_md'><p>Montpellier-mediterranee <em>(LFMT)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Lille-lesquin _(LFQQ)_\"><div class='gt_from_md'><p>Lille-lesquin <em>(LFQQ)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Tahiti faa'a _(NTAA)_\"><div class='gt_from_md'><p>Tahiti faa’a <em>(NTAA)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Strasbourg-entzheim _(LFST)_\"><div class='gt_from_md'><p>Strasbourg-entzheim <em>(LFST)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Brest-bretagne _(LFRB)_\"><div class='gt_from_md'><p>Brest-bretagne <em>(LFRB)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Grenoble-alpes-isere _(LFLS)_\"><div class='gt_from_md'><p>Grenoble-alpes-isere <em>(LFLS)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Biarritz-pays-basque _(LFBZ)_\"><div class='gt_from_md'><p>Biarritz-pays-basque <em>(LFBZ)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Ajaccio-napoleon-bonaparte _(LFKJ)_\"><div class='gt_from_md'><p>Ajaccio-napoleon-bonaparte <em>(LFKJ)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Noumea la tontouta _(NWWW)_\"><div class='gt_from_md'><p>Noumea la tontouta <em>(NWWW)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Bastia-poretta _(LFKB)_\"><div class='gt_from_md'><p>Bastia-poretta <em>(LFKB)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Chambery-aix-les-bains _(LFLB)_\"><div class='gt_from_md'><p>Chambery-aix-les-bains <em>(LFLB)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Rennes-st-jacques _(LFRN)_\"><div class='gt_from_md'><p>Rennes-st-jacques <em>(LFRN)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Pau-pyrenees _(LFBP)_\"><div class='gt_from_md'><p>Pau-pyrenees <em>(LFBP)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Cayenne-felix eboue _(SOCA)_\"><div class='gt_from_md'><p>Cayenne-felix eboue <em>(SOCA)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Noumea magenta _(NWWM)_\"><div class='gt_from_md'><p>Noumea magenta <em>(NWWM)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Clermont-ferrand-auvergne _(LFLC)_\"><div class='gt_from_md'><p>Clermont-ferrand-auvergne <em>(LFLC)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Toulon-hyeres _(LFTH)_\"><div class='gt_from_md'><p>Toulon-hyeres <em>(LFTH)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Perpignan-rivesaltes _(LFMP)_\"><div class='gt_from_md'><p>Perpignan-rivesaltes <em>(LFMP)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Mayotte-marcel henry _(FMCZ)_\"><div class='gt_from_md'><p>Mayotte-marcel henry <em>(FMCZ)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Carcassonne-salvaza _(LFMK)_\"><div class='gt_from_md'><p>Carcassonne-salvaza <em>(LFMK)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Bora bora _(NTTB)_\"><div class='gt_from_md'><p>Bora bora <em>(NTTB)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Lifou _(NWWL)_\"><div class='gt_from_md'><p>Lifou <em>(NWWL)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Raiatea _(NTTR)_\"><div class='gt_from_md'><p>Raiatea <em>(NTTR)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Limoges-bellegarde _(LFBL)_\"><div class='gt_from_md'><p>Limoges-bellegarde <em>(LFBL)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Nimes-garons _(LFTW)_\"><div class='gt_from_md'><p>Nimes-garons <em>(LFTW)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Autres apt (om) _(ZZOM)_\"><div class='gt_from_md'><p>Autres apt (om) <em>(ZZOM)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Figari-sud-corse _(LFKF)_\"><div class='gt_from_md'><p>Figari-sud-corse <em>(LFKF)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Tarbes-lourdes-pyrenees _(LFBT)_\"><div class='gt_from_md'><p>Tarbes-lourdes-pyrenees <em>(LFBT)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"St-martin-grand-case _(TFFG)_\"><div class='gt_from_md'><p>St-martin-grand-case <em>(TFFG)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"St-pierre-pierrefonds _(FMEP)_\"><div class='gt_from_md'><p>St-pierre-pierrefonds <em>(FMEP)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"St-barthelemy _(TFFJ)_\"><div class='gt_from_md'><p>St-barthelemy <em>(TFFJ)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Metz-nancy-lorraine _(LFJL)_\"><div class='gt_from_md'><p>Metz-nancy-lorraine <em>(LFJL)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Caen-carpiquet _(LFRK)_\"><div class='gt_from_md'><p>Caen-carpiquet <em>(LFRK)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Ile des pins _(NWWE)_\"><div class='gt_from_md'><p>Ile des pins <em>(NWWE)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Tours-val de loire _(LFOT)_\"><div class='gt_from_md'><p>Tours-val de loire <em>(LFOT)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Lorient-lann-bihoue _(LFRH)_\"><div class='gt_from_md'><p>Lorient-lann-bihoue <em>(LFRH)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Paris-le bourget _(LFPB)_\"><div class='gt_from_md'><p>Paris-le bourget <em>(LFPB)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Ouvea _(NWWV)_\"><div class='gt_from_md'><p>Ouvea <em>(NWWV)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Mare _(NWWR)_\"><div class='gt_from_md'><p>Mare <em>(NWWR)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Autres apt (mt) _(ZZMT)_\"><div class='gt_from_md'><p>Autres apt (mt) <em>(ZZMT)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Calvi-ste-catherine _(LFKC)_\"><div class='gt_from_md'><p>Calvi-ste-catherine <em>(LFKC)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Huahine _(NTTH)_\"><div class='gt_from_md'><p>Huahine <em>(NTTH)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Dole-tavaux _(LFGJ)_\"><div class='gt_from_md'><p>Dole-tavaux <em>(LFGJ)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Bergerac-dordogne-perigord _(LFBE)_\"><div class='gt_from_md'><p>Bergerac-dordogne-perigord <em>(LFBE)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Beziers-vias _(LFMU)_\"><div class='gt_from_md'><p>Beziers-vias <em>(LFMU)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Dinard-pleurtuit-st-malo _(LFRD)_\"><div class='gt_from_md'><p>Dinard-pleurtuit-st-malo <em>(LFRD)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Rangiroa _(NTTG)_\"><div class='gt_from_md'><p>Rangiroa <em>(NTTG)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Rodez-aveyron _(LFCR)_\"><div class='gt_from_md'><p>Rodez-aveyron <em>(LFCR)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Quimper-pluguffan _(LFRQ)_\"><div class='gt_from_md'><p>Quimper-pluguffan <em>(LFRQ)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Poitiers-biard _(LFBI)_\"><div class='gt_from_md'><p>Poitiers-biard <em>(LFBI)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"La rochelle-ile de re _(LFBH)_\"><div class='gt_from_md'><p>La rochelle-ile de re <em>(LFBH)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Wallis-hihifo _(NLWW)_\"><div class='gt_from_md'><p>Wallis-hihifo <em>(NLWW)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Chalons-vatry _(LFOK)_\"><div class='gt_from_md'><p>Chalons-vatry <em>(LFOK)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Brive-souillac _(LFSL)_\"><div class='gt_from_md'><p>Brive-souillac <em>(LFSL)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Moorea _(NTTM)_\"><div class='gt_from_md'><p>Moorea <em>(NTTM)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Castres-mazamet _(LFCK)_\"><div class='gt_from_md'><p>Castres-mazamet <em>(LFCK)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Nuku hiva _(NTMD)_\"><div class='gt_from_md'><p>Nuku hiva <em>(NTMD)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Maripasoula _(SOOA)_\"><div class='gt_from_md'><p>Maripasoula <em>(SOOA)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Aurillac _(LFLW)_\"><div class='gt_from_md'><p>Aurillac <em>(LFLW)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Agen-la garenne _(LFBA)_\"><div class='gt_from_md'><p>Agen-la garenne <em>(LFBA)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Deauville-normandie _(LFRG)_\"><div class='gt_from_md'><p>Deauville-normandie <em>(LFRG)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Hiva oa-atuona _(NTMN)_\"><div class='gt_from_md'><p>Hiva oa-atuona <em>(NTMN)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"St-pierre-pointe blanche _(LFVP)_\"><div class='gt_from_md'><p>St-pierre-pointe blanche <em>(LFVP)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Maupiti _(NTTP)_\"><div class='gt_from_md'><p>Maupiti <em>(NTTP)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Tubuai mataura _(NTAT)_\"><div class='gt_from_md'><p>Tubuai mataura <em>(NTAT)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Tikehau _(NTGC)_\"><div class='gt_from_md'><p>Tikehau <em>(NTGC)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Fakarava _(NTGF)_\"><div class='gt_from_md'><p>Fakarava <em>(NTGF)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Rurutu _(NTAR)_\"><div class='gt_from_md'><p>Rurutu <em>(NTAR)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Courchevel _(LFLJ)_\"><div class='gt_from_md'><p>Courchevel <em>(LFLJ)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"St-nazaire-montoir _(LFRZ)_\"><div class='gt_from_md'><p>St-nazaire-montoir <em>(LFRZ)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Futuna _(NLWF)_\"><div class='gt_from_md'><p>Futuna <em>(NLWF)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Raivavae _(NTAV)_\"><div class='gt_from_md'><p>Raivavae <em>(NTAV)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Hao _(NTTO)_\"><div class='gt_from_md'><p>Hao <em>(NTTO)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Chateauroux-deols _(LFLX)_\"><div class='gt_from_md'><p>Chateauroux-deols <em>(LFLX)<\/em><\/p>\n<\/div><\/div>","<div data-qmd=\"Albert-bray _(LFAQ)_\"><div class='gt_from_md'><p>Albert-bray <em>(LFAQ)<\/em><\/p>\n<\/div><\/div>"],"html":true,"align":"left","headerStyle":{"font-weight":"normal"}},{"id":"paxdep","name":"<strong>Départs<\/strong>","type":"numeric","style":"function(rowInfo, colInfo) {\nconst rowIndex = rowInfo.index + 1\n}","cell":["2.60M","1.16M","367.65K","355.36K","340.04K","293.83K","222.75K","195.05K","170.97K","128.10K","112.43K","112.00K","91.00K","63.07K","54.98K","43.35K","39.34K","38.44K","35.54K","34.39K","30.02K","29.35K","29.16K","26.02K","24.41K","24.07K","19.27K","18.44K","15.51K","15.00K","13.41K","13.11K","10.15K","9.99K","8.50K","7.81K","7.49K","7.11K","6.79K","6.61K","6.13K","6.09K","6.03K","5.95K","5.57K","5.46K","5.19K","5.14K","4.84K","4.42K","4.05K","3.97K","3.91K","3.88K","3.84K","3.69K","3.48K","3.07K","2.57K","2.38K","2.38K","2.37K","2.33K","2.25K","2.14K","2.11K","2.08K","1.86K","1.84K","1.77K","1.40K","1.39K","1.33K","1.27K","1.23K","1.10K","1.10K","1.06K","1.06K","1.02K","1.02K","596.00","586.00","516.00","493.00","381.00","166.00","119.00"],"html":true,"align":"right","headerStyle":{"font-weight":"normal"}},{"id":"paxarr","name":"<strong>Arrivée<\/strong>","type":"numeric","style":"function(rowInfo, colInfo) {\nconst rowIndex = rowInfo.index + 1\n}","cell":["2.62M","1.22M","363.37K","369.90K","337.30K","304.55K","241.62K","190.21K","166.73K","136.45K","127.17K","126.33K","99.70K","63.66K","56.50K","55.45K","40.48K","34.91K","37.21K","30.94K","28.12K","28.59K","27.12K","25.32K","23.86K","22.38K","22.07K","20.46K","14.82K","13.97K","12.78K","18.98K","10.01K","8.63K","7.49K","6.97K","6.80K","7.02K","4.78K","5.60K","5.61K","7.61K","7.18K","5.16K","6.06K","5.24K","4.63K","4.93K","4.08K","4.60K","3.96K","3.57K","3.45K","3.26K","2.94K","3.95K","2.92K","3.00K","2.14K","2.06K","2.05K","1.85K","2.23K","2.12K","2.12K","2.27K","1.79K","1.09K","1.50K","1.55K","1.25K","1.21K","1.18K","1.28K","1.03K","1.03K","685.00","711.00","789.00","720.00","536.00","804.00","578.00","472.00","222.00","430.00","166.00","124.00"],"html":true,"align":"right","headerStyle":{"font-weight":"normal"}},{"id":"paxtra","name":"<strong>Transit<\/strong>","type":"numeric","style":"function(rowInfo, colInfo) {\nconst rowIndex = rowInfo.index + 1\n}","cell":["2.94K","54.00","733.00","4.59K","3.59K","5.15K","7.00","4.04K","2.08K","83.00","4.77K","5.14K","6.01K","88.00","1.03K","885.00","137.00","1.85K","172.00","0.00","0.00","0.00","0.00","11.00","557.00","162.00","1.82K","0.00","673.00","0.00","0.00","1.20K","0.00","1.73K","0.00","3.15K","24.00","0.00","4.68K","0.00","0.00","124.00","0.00","0.00","308.00","13.00","0.00","0.00","0.00","0.00","0.00","0.00","70.00","0.00","3.06K","0.00","0.00","0.00","0.00","1.20K","0.00","0.00","1.63K","0.00","0.00","2.00","0.00","1.16K","0.00","497.00","431.00","0.00","0.00","837.00","488.00","0.00","5.00","535.00","1.19K","272.00","568.00","0.00","153.00","0.00","277.00","663.00","0.00","0.00"],"html":true,"align":"right","headerStyle":{"font-weight":"normal"}}],"defaultPageSize":10,"showPageSizeOptions":false,"pageSizeOptions":[10,25,50,100],"paginationType":"numbers","showPagination":true,"showPageInfo":true,"minRows":1,"showSortable":true,"height":"auto","theme":{"color":"#333333","backgroundColor":"#FFFFFF","stripedColor":"rgba(128,128,128,0.05)","style":{"fontFamily":"system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif"},"headerStyle":{"borderTopStyle":"solid","borderTopWidth":"2px","borderTopColor":"#D3D3D3","borderBottomStyle":"solid","borderBottomWidth":"2px","borderBottomColor":"#D3D3D3"}},"elementId":"uxyfwiwvsx","dataKey":"311275f30a10f35b729f971f7eabd324"},"children":[]},"class":"reactR_markup"},"evals":["tag.attribs.columns.0.style","tag.attribs.columns.1.style","tag.attribs.columns.2.style","tag.attribs.columns.3.style"],"jsHooks":[]}</script>
 </div>
 </div>
 </div>
 </div>
-<div id="tabset-26-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-26-2-tab">
+<div id="tabset-27-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-27-2-tab">
 <details>
 <summary>
 Solution suggérée pour l’exercice ci-dessus
@@ -2781,9 +2796,9 @@ Solution suggérée pour l’exercice ci-dessus
 </div>
 </div>
 <div class="tabset-margin-container"></div><div class="panel-tabset" data-group="language">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-27-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-27-1" role="tab" aria-controls="tabset-27-1" aria-selected="true"><i class="fa-brands fa-r-project" aria-label="r-project"></i></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-27-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-27-2" role="tab" aria-controls="tabset-27-2" aria-selected="false"><i class="fa-brands fa-python" aria-label="python"></i></a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-28-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-28-1" role="tab" aria-controls="tabset-28-1" aria-selected="true"><i class="fa-brands fa-r-project" aria-label="r-project"></i></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-28-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-28-2" role="tab" aria-controls="tabset-28-2" aria-selected="false"><i class="fa-brands fa-python" aria-label="python"></i></a></li></ul>
 <div class="tab-content" data-group="language">
-<div id="tabset-27-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-27-1-tab">
+<div id="tabset-28-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-28-1-tab">
 <details>
 <summary>
 Code de <code>R/tables.R</code>
@@ -2900,7 +2915,7 @@ Code de <code>main.R</code>
 </div>
 </details>
 </div>
-<div id="tabset-27-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-27-2-tab">
+<div id="tabset-28-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-28-2-tab">
 <details>
 <summary>
 Code de <code>src/tables.py</code>
@@ -3010,9 +3025,9 @@ Code de <code>main.py</code>
 <p>La dernière valorisation que nous allons intégrer est une carte interactive du trafic de nos aéroports. Cette carte va être assez basique. Si vous désirez mettre en oeuvre des visualisations plus complexes, vous pouvez tout à fait le faire.</p>
 <p>Pour cet exercice, nous allons fixer une date pour prototyper notre code. Cela nous facilitera la transformation ultérieure en fonction.</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset" data-group="language">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-28-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-28-1" role="tab" aria-controls="tabset-28-1" aria-selected="true"><i class="fa-brands fa-r-project" aria-label="r-project"></i></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-28-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-28-2" role="tab" aria-controls="tabset-28-2" aria-selected="false"><i class="fa-brands fa-python" aria-label="python"></i></a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-29-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-29-1" role="tab" aria-controls="tabset-29-1" aria-selected="true"><i class="fa-brands fa-r-project" aria-label="r-project"></i></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-29-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-29-2" role="tab" aria-controls="tabset-29-2" aria-selected="false"><i class="fa-brands fa-python" aria-label="python"></i></a></li></ul>
 <div class="tab-content" data-group="language">
-<div id="tabset-28-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-28-1-tab">
+<div id="tabset-29-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-29-1-tab">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb78"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a>months <span class="ot">&lt;-</span> <span class="dv">1</span></span>
 <span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a>years <span class="ot">&lt;-</span> <span class="dv">2019</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -3022,7 +3037,7 @@ Code de <code>main.py</code>
 <div class="sourceCode cell-code" id="cb79"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a>palette <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"green"</span>, <span class="st">"blue"</span>, <span class="st">"red"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
-<div id="tabset-28-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-28-2-tab">
+<div id="tabset-29-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-29-2-tab">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb80"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a>months <span class="ot">=</span> <span class="dv">1</span></span>
 <span id="cb80-2"><a href="#cb80-2" aria-hidden="true" tabindex="-1"></a>years <span class="ot">=</span> <span class="dv">2019</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -3084,9 +3099,9 @@ Subtilité par rapport à l’exemple de <a href="https://rstudio.github.io/leaf
 </div>
 </div>
 <div class="tabset-margin-container"></div><div class="panel-tabset" data-group="language">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-29-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-29-1" role="tab" aria-controls="tabset-29-1" aria-selected="true"><i class="fa-brands fa-r-project" aria-label="r-project"></i></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-29-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-29-2" role="tab" aria-controls="tabset-29-2" aria-selected="false"><i class="fa-brands fa-python" aria-label="python"></i></a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-30-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-30-1" role="tab" aria-controls="tabset-30-1" aria-selected="true"><i class="fa-brands fa-r-project" aria-label="r-project"></i></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-30-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-30-2" role="tab" aria-controls="tabset-30-2" aria-selected="false"><i class="fa-brands fa-python" aria-label="python"></i></a></li></ul>
 <div class="tab-content" data-group="language">
-<div id="tabset-29-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-29-1-tab">
+<div id="tabset-30-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-30-1-tab">
 <div class="cell">
 <details>
 <summary>Question 1</summary>
@@ -3139,15 +3154,15 @@ Subtilité par rapport à l’exemple de <a href="https://rstudio.github.io/leaf
 </details>
 </div>
 </div>
-<div id="tabset-29-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-29-2-tab">
+<div id="tabset-30-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-30-2-tab">
 <p>Voir la solution de l’exercice suivant</p>
 </div>
 </div>
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="leaflet html-widget html-fill-item" id="htmlwidget-a8578c819860007589b2" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-a8578c819860007589b2">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org/copyright/\">OpenStreetMap<\/a>,  <a href=\"https://opendatacommons.org/licenses/odbl/\">ODbL<\/a>"}]},{"method":"addAwesomeMarkers","args":[[-23.37,-22.59,-22.43,-22.26,-22.01,-21.48,-20.89,-20.77,-20.64,-17.55,-17.49,-16.72,-16.69,-16.44,-16.43,-16.05,-15.12,-14.95,-12.81,-9.77,-8.800000000000001,3.66,4.82,14.59,16.27,17.9,18.1,41.5,41.92,42.52,42.55,42.74,43.1,43.19,43.32,43.38,43.44,43.47,43.56,43.58,43.64,43.67,44.83,44.9,45.04,45.73,45.79,46.76,47.04,47.16,47.31,47.43,47.59,48.07,48.45,48.54,48.72,48.77,48.97,49.01,49.17,49.45,50.56],[-149.52,167.46,-151.36,166.47,166.21,168.04,55.51,167.24,166.57,-149.61,-149.76,-151.47,-151.02,-151.75,-152.24,-145.66,-148.23,-147.66,45.28,-139.01,-140.23,-54.04,-52.36,-61,-61.53,-62.84,-63.05,9.1,8.800000000000001,8.789999999999999,9.48,2.87,6.15,0.01,3.35,-0.42,5.22,-1.53,2.29,3.96,1.37,7.22,-0.72,2.42,1.49,5.08,3.16,-56.17,5.44,-1.61,-2.16,0.72,7.53,-1.73,-4.42,7.63,2.38,4.21,2.44,2.55,-0.45,2.11,3.09],{"icon":"plane","markerColor":["green","blue","green","red","green","blue","blue","blue","blue","red","green","blue","blue","blue","green","green","green","green","blue","green","green","green","blue","red","red","blue","blue","red","red","blue","red","blue","blue","green","green","blue","red","red","green","red","red","red","red","green","green","red","blue","green","green","red","green","green","red","blue","red","blue","red","green","blue","red","blue","red","red"],"iconColor":"black","spin":false,"squareMarker":false,"iconRotate":0,"font":"monospace","prefix":"fa"},null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},null,null,null,null,["TUBUAI MATAURA (NTAT) : 1667 voyageurs","ILE DES PINS (NWWE) : 6986 voyageurs","RURUTU (NTAR) : 1565 voyageurs","NOUMEA MAGENTA (NWWM) : 33611 voyageurs","NOUMEA LA TONTOUTA (NWWW) : 2523 voyageurs","MARE (NWWR) : 7199 voyageurs","LA REUNION-ROLAND GARROS (FMEE) : 26638 voyageurs","LIFOU (NWWL) : 14180 voyageurs","OUVEA (NWWV) : 6076 voyageurs","TAHITI FAA'A (NTAA) : 48915 voyageurs","MOOREA (NTTM) : 1324 voyageurs","RAIATEA (NTTR) : 15164 voyageurs","HUAHINE (NTTH) : 8570 voyageurs","BORA BORA (NTTB) : 11853 voyageurs","MAUPITI (NTTP) : 1636 voyageurs","FAKARAVA (NTGF) : 1812 voyageurs","TIKEHAU (NTGC) : 2472 voyageurs","RANGIROA (NTTG) : 4737 voyageurs","MAYOTTE-DZAOUDZI-PAMANDZI (FMCZ) : 9618 voyageurs","HIVA OA-ATUONA (NTMN) : 2386 voyageurs","NUKU HIVA (NTMD) : 2575 voyageurs","MARIPASOULA (SOOA) : 2333 voyageurs","CAYENNE-FELIX EBOUE (SOCA) : 12828 voyageurs","MARTINIQUE-AIME CESAIRE (TFFF) : 36952 voyageurs","POINTE-A-PITRE-LE RAIZET (TFFR) : 48447 voyageurs","ST-BARTHELEMY (TFFJ) : 10133 voyageurs","ST-MARTIN-GRAND-CASE (TFFG) : 7938 voyageurs","FIGARI-SUD-CORSE (LFKF) : 59538 voyageurs","AJACCIO-NAPOLEON-BONAPARTE (LFKJ) : 106167 voyageurs","CALVI-STE-CATHERINE (LFKC) : 16073 voyageurs","BASTIA-PORETTA (LFKB) : 82308 voyageurs","PERPIGNAN-RIVESALTES (LFMP) : 14174 voyageurs","TOULON-HYERES (LFTH) : 23233 voyageurs","TARBES-LOURDES-PYRENEES (LFBT) : 3233 voyageurs","BEZIERS-VIAS (LFMU) : 2632 voyageurs","PAU-PYRENEES (LFBP) : 15378 voyageurs","MARSEILLE-PROVENCE (LFML) : 223497 voyageurs","BIARRITZ-PAYS-BASQUE (LFBZ) : 29732 voyageurs","CASTRES-MAZAMET (LFCK) : 2209 voyageurs","MONTPELLIER-MEDITERRANEE (LFMT) : 52974 voyageurs","TOULOUSE-BLAGNAC (LFBO) : 168654 voyageurs","NICE-COTE D'AZUR (LFMN) : 323878 voyageurs","BORDEAUX-MERIGNAC (LFBD) : 123750 voyageurs","AURILLAC (LFLW) : 1725 voyageurs","BRIVE-SOUILLAC (LFSL) : 1553 voyageurs","LYON-ST-EXUPERY (LFLL) : 189096 voyageurs","CLERMONT-FERRAND-AUVERGNE (LFLC) : 4757 voyageurs","ST-PIERRE-POINTE BLANCHE (LFVP) : 1214 voyageurs","DOLE-TAVAUX (LFGJ) : 1991 voyageurs","NANTES-ATLANTIQUE (LFRS) : 158624 voyageurs","ST-NAZAIRE-MONTOIR (LFRZ) : 123 voyageurs","TOURS-VAL DE LOIRE (LFOT) : 4033 voyageurs","BALE-MULHOUSE (LFSB) : 143359 voyageurs","RENNES-ST-JACQUES (LFRN) : 18428 voyageurs","BREST-BRETAGNE (LFRB) : 42894 voyageurs","STRASBOURG-ENTZHEIM (LFST) : 29547 voyageurs","PARIS-ORLY (LFPO) : 764711 voyageurs","CHALONS-VATRY (LFOK) : 2347 voyageurs","PARIS-LE BOURGET (LFPB) : 6959 voyageurs","PARIS-CHARLES DE GAULLE (LFPG) : 1121244 voyageurs","CAEN-CARPIQUET (LFRK) : 20166 voyageurs","BEAUVAIS-TILLE (LFOB) : 74030 voyageurs","LILLE-LESQUIN (LFQQ) : 67077 voyageurs"],{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[-23.37,50.56],"lng":[-152.24,168.04]}},"evals":[],"jsHooks":[]}</script>
+<div class="leaflet html-widget html-fill-item" id="htmlwidget-6cbf08c03c0155eaa8e5" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-6cbf08c03c0155eaa8e5">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org/copyright/\">OpenStreetMap<\/a>,  <a href=\"https://opendatacommons.org/licenses/odbl/\">ODbL<\/a>"}]},{"method":"addAwesomeMarkers","args":[[-23.37,-22.59,-22.43,-22.26,-22.01,-21.48,-20.89,-20.77,-20.64,-17.55,-17.49,-16.72,-16.69,-16.44,-16.43,-16.05,-15.12,-14.95,-12.81,-9.77,-8.800000000000001,3.66,4.82,14.59,16.27,17.9,18.1,41.5,41.92,42.52,42.55,42.74,43.1,43.19,43.32,43.38,43.44,43.47,43.56,43.58,43.64,43.67,44.83,44.9,45.04,45.73,45.79,46.76,47.04,47.16,47.31,47.43,47.59,48.07,48.45,48.54,48.72,48.77,48.97,49.01,49.17,49.45,50.56],[-149.52,167.46,-151.36,166.47,166.21,168.04,55.51,167.24,166.57,-149.61,-149.76,-151.47,-151.02,-151.75,-152.24,-145.66,-148.23,-147.66,45.28,-139.01,-140.23,-54.04,-52.36,-61,-61.53,-62.84,-63.05,9.1,8.800000000000001,8.789999999999999,9.48,2.87,6.15,0.01,3.35,-0.42,5.22,-1.53,2.29,3.96,1.37,7.22,-0.72,2.42,1.49,5.08,3.16,-56.17,5.44,-1.61,-2.16,0.72,7.53,-1.73,-4.42,7.63,2.38,4.21,2.44,2.55,-0.45,2.11,3.09],{"icon":"plane","markerColor":["green","blue","green","red","green","blue","blue","blue","blue","red","green","blue","blue","blue","green","green","green","green","blue","green","green","green","blue","red","red","blue","blue","red","red","blue","red","blue","blue","green","green","blue","red","red","green","red","red","red","red","green","green","red","blue","green","green","red","green","green","red","blue","red","blue","red","green","blue","red","blue","red","red"],"iconColor":"black","spin":false,"squareMarker":false,"iconRotate":0,"font":"monospace","prefix":"fa"},null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},null,null,null,null,["TUBUAI MATAURA (NTAT) : 1667 voyageurs","ILE DES PINS (NWWE) : 6986 voyageurs","RURUTU (NTAR) : 1565 voyageurs","NOUMEA MAGENTA (NWWM) : 33611 voyageurs","NOUMEA LA TONTOUTA (NWWW) : 2523 voyageurs","MARE (NWWR) : 7199 voyageurs","LA REUNION-ROLAND GARROS (FMEE) : 26638 voyageurs","LIFOU (NWWL) : 14180 voyageurs","OUVEA (NWWV) : 6076 voyageurs","TAHITI FAA'A (NTAA) : 48915 voyageurs","MOOREA (NTTM) : 1324 voyageurs","RAIATEA (NTTR) : 15164 voyageurs","HUAHINE (NTTH) : 8570 voyageurs","BORA BORA (NTTB) : 11853 voyageurs","MAUPITI (NTTP) : 1636 voyageurs","FAKARAVA (NTGF) : 1812 voyageurs","TIKEHAU (NTGC) : 2472 voyageurs","RANGIROA (NTTG) : 4737 voyageurs","MAYOTTE-DZAOUDZI-PAMANDZI (FMCZ) : 9618 voyageurs","HIVA OA-ATUONA (NTMN) : 2386 voyageurs","NUKU HIVA (NTMD) : 2575 voyageurs","MARIPASOULA (SOOA) : 2333 voyageurs","CAYENNE-FELIX EBOUE (SOCA) : 12828 voyageurs","MARTINIQUE-AIME CESAIRE (TFFF) : 36952 voyageurs","POINTE-A-PITRE-LE RAIZET (TFFR) : 48447 voyageurs","ST-BARTHELEMY (TFFJ) : 10133 voyageurs","ST-MARTIN-GRAND-CASE (TFFG) : 7938 voyageurs","FIGARI-SUD-CORSE (LFKF) : 59538 voyageurs","AJACCIO-NAPOLEON-BONAPARTE (LFKJ) : 106167 voyageurs","CALVI-STE-CATHERINE (LFKC) : 16073 voyageurs","BASTIA-PORETTA (LFKB) : 82308 voyageurs","PERPIGNAN-RIVESALTES (LFMP) : 14174 voyageurs","TOULON-HYERES (LFTH) : 23233 voyageurs","TARBES-LOURDES-PYRENEES (LFBT) : 3233 voyageurs","BEZIERS-VIAS (LFMU) : 2632 voyageurs","PAU-PYRENEES (LFBP) : 15378 voyageurs","MARSEILLE-PROVENCE (LFML) : 223497 voyageurs","BIARRITZ-PAYS-BASQUE (LFBZ) : 29732 voyageurs","CASTRES-MAZAMET (LFCK) : 2209 voyageurs","MONTPELLIER-MEDITERRANEE (LFMT) : 52974 voyageurs","TOULOUSE-BLAGNAC (LFBO) : 168654 voyageurs","NICE-COTE D'AZUR (LFMN) : 323878 voyageurs","BORDEAUX-MERIGNAC (LFBD) : 123750 voyageurs","AURILLAC (LFLW) : 1725 voyageurs","BRIVE-SOUILLAC (LFSL) : 1553 voyageurs","LYON-ST-EXUPERY (LFLL) : 189096 voyageurs","CLERMONT-FERRAND-AUVERGNE (LFLC) : 4757 voyageurs","ST-PIERRE-POINTE BLANCHE (LFVP) : 1214 voyageurs","DOLE-TAVAUX (LFGJ) : 1991 voyageurs","NANTES-ATLANTIQUE (LFRS) : 158624 voyageurs","ST-NAZAIRE-MONTOIR (LFRZ) : 123 voyageurs","TOURS-VAL DE LOIRE (LFOT) : 4033 voyageurs","BALE-MULHOUSE (LFSB) : 143359 voyageurs","RENNES-ST-JACQUES (LFRN) : 18428 voyageurs","BREST-BRETAGNE (LFRB) : 42894 voyageurs","STRASBOURG-ENTZHEIM (LFST) : 29547 voyageurs","PARIS-ORLY (LFPO) : 764711 voyageurs","CHALONS-VATRY (LFOK) : 2347 voyageurs","PARIS-LE BOURGET (LFPB) : 6959 voyageurs","PARIS-CHARLES DE GAULLE (LFPG) : 1121244 voyageurs","CAEN-CARPIQUET (LFRK) : 20166 voyageurs","BEAUVAIS-TILLE (LFOB) : 74030 voyageurs","LILLE-LESQUIN (LFQQ) : 67077 voyageurs"],{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[-23.37,50.56],"lng":[-152.24,168.04]}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>Comme précédemment, nous proposons de transformer la production de cette carte en fonction, cela nous permettra d’avoir une application légère. Là encore c’est un exercice optionnel mais intéressant à faire pour découvrir la logique de la programmation fonctionnelle.</p>
@@ -3171,9 +3186,9 @@ Subtilité par rapport à l’exemple de <a href="https://rstudio.github.io/leaf
 </div>
 </div>
 <div class="tabset-margin-container"></div><div class="panel-tabset" data-group="language">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-30-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-30-1" role="tab" aria-controls="tabset-30-1" aria-selected="true"><i class="fa-brands fa-r-project" aria-label="r-project"></i></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-30-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-30-2" role="tab" aria-controls="tabset-30-2" aria-selected="false"><i class="fa-brands fa-python" aria-label="python"></i></a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-31-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-31-1" role="tab" aria-controls="tabset-31-1" aria-selected="true"><i class="fa-brands fa-r-project" aria-label="r-project"></i></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-31-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-31-2" role="tab" aria-controls="tabset-31-2" aria-selected="false"><i class="fa-brands fa-python" aria-label="python"></i></a></li></ul>
 <div class="tab-content" data-group="language">
-<div id="tabset-30-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-30-1-tab">
+<div id="tabset-31-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-31-1-tab">
 <details>
 <summary>
 Code de <code>R/figures.R</code> à reprendre
@@ -3295,7 +3310,7 @@ Code de <code>main.R</code> à reprendre
 </div>
 </details>
 </div>
-<div id="tabset-30-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-30-2-tab">
+<div id="tabset-31-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-31-2-tab">
 <details>
 <summary>
 Code de <code>src/figures.py</code> à reprendre
@@ -3996,11 +4011,12 @@ Le <em>workflow</em> <code>Github</code> en question
 <div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
 
 <ol>
-<li id="fn1"><p>Ces fichiers ne sont pas générés manuellement. Ce sont des outils adaptés (<code>renv</code> pour <code>R</code>, <code>pip</code> pour <code>Python</code>) qui font ce travail de versionnage de l’environnement.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>Si vous utilisez <code>renv</code> dans vos futurs projets, ce que nous vous recommandons, cette commande n’est pas à inscrire dans vos scripts. Vous pouvez indiquer que cette commande est nécessaire dans le <code>README</code> de votre projet.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn3"><p>Si vous êtes peu familier avec ce type de fichiers, vous pouvez consulter la <a href="https://book.utilitr.org/03_Fiches_thematiques/Fiche_import_fichiers_plats.html">fiche <code>utilitR</code></a> sur le sujet (<i class="fa-brands fa-r-project" aria-label="r-project"></i>)<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn4"><p>Si vous êtes peu familier avec les données géographiques, vous pouvez retenir l’idée qu’il s’agit de données traditionnelles auxquelles s’ajoute une dimension spatiale. Cette dernière vise à localiser les données sur la terre. La localisation se fait dans un espace à deux dimensions (espace cartésien) alors que notre planète est une sphère en trois dimensions. Le principe d’un système de projection est de faire ce passage en deux dimensions des positions. Le plus connu est le système GPS, qui est un héritier lointain de la représentation du monde par <a href="https://fr.wikipedia.org/wiki/G%C3%A9rard_Mercator">Mercator</a>. Ce système est connu sous le nom de WGS 84 et porte le code EPSG 4326. L’autre système à retenir est le Lambert 93 (code EPSG 2154) qui est la projection légale en France (celle-ci, <em>a contrario</em> du Mercator, ne déforme pas la France sur une carte). Pour en savoir plus sur les systèmes de représentation, les avantages et inconvénients de chacun, il existe de nombreuses ressources en ligne. Des éléments introductifs, et des démonstrations interactives, en lien avec la librairie <code>Geopandas</code> de <code>Python</code> sont disponibles <a href="https://pythonds.linogaliana.fr/content/manipulation/03_geopandas_intro.html#principe">ici</a>.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn5"><p>Vous perdrez la mise en forme du <em>header</em> du tableau qui n’est pas conciliable avec l’interactivité.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p>Pour le créer, vous pouvez taper <kbd>F1</kbd> et dans la barre qui s’ouvre, taper <em>notebook</em> et cliquer sur <code>Create: New Jupyter Notebook</code>. Enregistrer le fichier<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Ces fichiers ne sont pas générés manuellement. Ce sont des outils adaptés (<code>renv</code> pour <code>R</code>, <code>pip</code> pour <code>Python</code>) qui font ce travail de versionnage de l’environnement.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>Si vous utilisez <code>renv</code> dans vos futurs projets, ce que nous vous recommandons, cette commande n’est pas à inscrire dans vos scripts. Vous pouvez indiquer que cette commande est nécessaire dans le <code>README</code> de votre projet.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>Si vous êtes peu familier avec ce type de fichiers, vous pouvez consulter la <a href="https://book.utilitr.org/03_Fiches_thematiques/Fiche_import_fichiers_plats.html">fiche <code>utilitR</code></a> sur le sujet (<i class="fa-brands fa-r-project" aria-label="r-project"></i>)<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>Si vous êtes peu familier avec les données géographiques, vous pouvez retenir l’idée qu’il s’agit de données traditionnelles auxquelles s’ajoute une dimension spatiale. Cette dernière vise à localiser les données sur la terre. La localisation se fait dans un espace à deux dimensions (espace cartésien) alors que notre planète est une sphère en trois dimensions. Le principe d’un système de projection est de faire ce passage en deux dimensions des positions. Le plus connu est le système GPS, qui est un héritier lointain de la représentation du monde par <a href="https://fr.wikipedia.org/wiki/G%C3%A9rard_Mercator">Mercator</a>. Ce système est connu sous le nom de WGS 84 et porte le code EPSG 4326. L’autre système à retenir est le Lambert 93 (code EPSG 2154) qui est la projection légale en France (celle-ci, <em>a contrario</em> du Mercator, ne déforme pas la France sur une carte). Pour en savoir plus sur les systèmes de représentation, les avantages et inconvénients de chacun, il existe de nombreuses ressources en ligne. Des éléments introductifs, et des démonstrations interactives, en lien avec la librairie <code>Geopandas</code> de <code>Python</code> sont disponibles <a href="https://pythonds.linogaliana.fr/content/manipulation/03_geopandas_intro.html#principe">ici</a>.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>Vous perdrez la mise en forme du <em>header</em> du tableau qui n’est pas conciliable avec l’interactivité.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
