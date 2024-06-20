@@ -19,6 +19,7 @@ jobs:
           repository: ${{github.event.pull_request.head.repo.full_name}}
       - name: Test intermediate scripts
         run: |
+          mkdir -p R
           cp -r correction/R/* R/
           cp correction/sources.yml sources.yml
           Rscript -e "renv::restore()"
@@ -41,6 +42,7 @@ jobs:
           python-version: '3.11'
       - name: Test intermediate scripts
         run: |
+          mkdir -p src
           cp -r correction/src/* src/
           cp correction/sources.yml sources.yml
           pip install -r requirements.txt
@@ -64,6 +66,7 @@ jobs:
         run: git config --global --add safe.directory /__w/funathon2024_sujet2/funathon2024_sujet2
       - name: Render website
         run: |
+          mkdir -p R
           cp -r correction/R/* R/
           cp correction/sources.yml sources.yml
           Rscript -e "renv::restore()"
