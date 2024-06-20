@@ -343,10 +343,10 @@ Aide
 La fonction à utiliser est `sf_crs` {{< fa brands r-project >}} ou l'attribut `crs` pour {{< fa brands python >}} 
 </details>
 
-3. Il est toujours utile de vérifier que nos données sont bien localisées où on les attend. Pour cela, il est pertinent de faire une carte avec un fond de carte contextuel, même si celle-ci n'est pas très soignée. Pour faire ceci, le plus simple est d'utiliser:
+3. Il est toujours utile de vérifier que nos données sont bien localisées où on les attend. Pour cela, il est pertinent de faire une carte avec un fond de carte contextuel, même si celle-ci n'est pas très soignée. Pour faire ceci, le plus simple est d'utiliser la librairie Javascript Leaflet. L'usage n'est pas exactement le même en `R` et en Python:
 
 - la [fonction `addMarkers`](https://rstudio.github.io/leaflet/articles/markers.html) du package `leaflet` ({{< fa brands r-project >}});
-- la [fonction `Map`](https://python-visualization.github.io/folium/latest/reference.html#module-folium.folium) du package `folium` ({{< fa brands python >}}).
+- les fonctions [`Map` et `add_to`](https://python-visualization.github.io/folium/latest/getting_started.html#GeoJSON/TopoJSON-overlays) du package `folium` ({{< fa brands python >}}).
 
 Essayez de faire cette carte vous-mêmes ou consultez l'aide ci-dessous
 
@@ -367,6 +367,7 @@ import folium
 m = folium.Map()
 
 folium.GeoJson(airports_location).add_to(m)
+m
 ```
 
 </details>
