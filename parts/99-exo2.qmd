@@ -40,7 +40,7 @@ dtype = {
 
 :::::
 
-* A partir de la variable `ANMOIS`, créer les variables `an` et `mois`.
+* A partir de la variable `ANMOIS`, créer les variables `an` et `mois`. Penser à enlever les 0 des mois de janvier à septembre.
 
 <details>
 <summary>
