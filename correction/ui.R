@@ -26,6 +26,9 @@ ui <- page_navbar(
   header = em("Projet issu du funathon 2024, organisé par l'Insee et la DGAC"),
   layout_columns(
     card(
+      HTML(
+        '<a href="https://inseefrlab.github.io/funathon2024_sujet2/">👉️ Retourner au tutoriel pour construire cette application</a>'
+      ),
       input_date,
       gt_output(outputId = "table")
     ),
