@@ -102,7 +102,8 @@ Solution
 
 * Créer une fonction `import_airport_data` qui prend en _input_ `list_files`
 et intègre les deux étapes précédentes: la lecture des données, le nettoyage
-avec `clean_dataframe`. Cette fonction doit renvoyer une liste de dataframes.
+avec `clean_dataframe`. Dans le cas de Python, ne pas oublier de concaténer 
+les différentes tables avec `pd.concat`.
 
 <details>
 <summary>
