@@ -42,12 +42,12 @@ jobs:
           python-version: '3.11'
       - name: Test intermediate scripts
         run: |
-          mkdir -p src
-          cp -r correction/src/* src/
-          cp correction/sources.yml sources.yml
+          mkdir -p intermediates/src
+          cp -r correction/src/* intermediates/src/
+          cp correction/sources.yml intermediates/sources.yml
           pip install -r requirements.txt
           SCRIPT_DIR="intermediates"
-          for script in "$SCRIPT_DIR"/*.py; do
+          for script in "$SCRIPT_DIR"/*.py; do            
             echo "---------- Running $script"
             python "$script"
           done
