@@ -19,6 +19,8 @@ jobs:
           repository: ${{github.event.pull_request.head.repo.full_name}}
       - name: Test intermediate scripts
         run: |
+          cp -r correction/R/* R/
+          cp correction/sources.yml sources.yml
           Rscript -e "renv::restore()"
           SCRIPT_DIR="intermediates"
           for script in "$SCRIPT_DIR"/*.R; do
@@ -39,8 +41,8 @@ jobs:
           python-version: '3.11'
       - name: Test intermediate scripts
         run: |
-          cp -r corrections/src/* src/
-          cp corrections/sources.yml sources.yml
+          cp -r correction/src/* src/
+          cp correction/sources.yml sources.yml
           pip install -r requirements.txt
           SCRIPT_DIR="intermediates"
           for script in "$SCRIPT_DIR"/*.py; do
@@ -62,6 +64,8 @@ jobs:
         run: git config --global --add safe.directory /__w/funathon2024_sujet2/funathon2024_sujet2
       - name: Render website
         run: |
+          cp -r correction/R/* R/
+          cp correction/sources.yml sources.yml
           Rscript -e "renv::restore()"
           quarto render --to html
       - name: Publish to Pages
