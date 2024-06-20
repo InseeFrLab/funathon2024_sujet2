@@ -32,7 +32,7 @@ Enchaînement des opérations attendues à cette étape
 
 
 
-4. Faire une figure toute simple pour observer la dynamique des données:
+4. Faire une __figure statique__ pour observer la dynamique des données:
 
 * Pour les utilisateurs de {{< fa brands r-project >}}, ce sera bien sûr avec `ggplot` ;
 * Pour les utilisateurs de {{< fa brands python >}}, vous pouvez utiliser le module graphique de votre choix: `matplotlib`, `seaborn` ou `plotnine`. Nous recommandons néanmoins [`plotnine`](https://plotnine.org/), la transposition en {{< fa brands python >}} de la grammaire des graphiques `ggplot`
@@ -44,12 +44,14 @@ Vous devriez obtenir une figure similaire à celle-ci:
 figure_ggplot
 ```
 
-Il est inutile d'aller plus loin sur la lisibilité de la figure car nous n'allons pas l'utiliser _in fine_ puisque nous allons faire une application interactive par la suite.
+Il est inutile d'aller plus loin sur la mise en forme de cette figure, car l'application interactive comportera _in fine_ des figures dynamiques (qui se modifient en fonction des demandes de l'utilisateur) plutôt que des figures statiques comme celle que vous venez de produire.
+
+nous n'allons pas l'utiliser _in fine_ puisque nous allons faire une application interactive par la suite.
 Il est donc
 plus intéressant d'avoir une figure un minimum réactive pour impliquer
 l'utilisateur de l'application.
 
-5. Il est donc plus pertinent de faire une figure avec la librairie
+5. Nous allons maintenant faire une __figure dynamique__ avec la librairie
 `Plotly`. Pour cela, vous pouvez vous inspirer de [cette page](https://plotly.com/r/line-charts/) ({{< fa brands r-project >}}) ou [celle-ci](https://plotly.com/python/line-charts/) ({{< fa brands python >}}).
 La figure que vous devriez avoir est la suivante:
 
