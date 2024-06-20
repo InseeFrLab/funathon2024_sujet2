@@ -5,6 +5,8 @@ project:
 
 website:
   title: "✈️"
+  repo-url: https://github.com/inseefrlab/funathon2024_sujet2
+  repo-actions: [edit, issue]
   navbar:
     left:
       - href: index.qmd
@@ -16,9 +18,6 @@ website:
       - icon: github
         href: https://github.com/inseefrlab/funathon2024_sujet2
 
-website:
-  repo-url: https://github.com/inseefrlab/funathon2024_sujet2
-  repo-actions: [edit, issue]
 
 format:
   html:
