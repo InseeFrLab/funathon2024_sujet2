@@ -114,7 +114,7 @@ Le fichier `app.py` constitue le coeur de notre application
 `Streamlit`. Ils représentent, respectivement, le moteur de calcul (le serveur)
 et l'interface utilisateur de notre application. Nous reviendrons sur ce concept. Le fichier `global.R` stocke
 un certain nombre d'objets utiles à l'application mais qui n'ont pas besoin
-d'être recalculés à chaque action sur l'interface graphique. Nous allons progressivement construire ces fichiers pendant les différents exercices. De nombreuses fonctions sont reportées dans les fichiers au sein du dossier `R/`.
+d'être recalculés à chaque action sur l'interface graphique. Nous allons progressivement construire ces fichiers pendant les différents exercices. De nombreuses fonctions sont reportées dans les fichiers au sein du dossier `src/`.
 
 <details>
 <summary>
