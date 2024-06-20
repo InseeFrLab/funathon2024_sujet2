@@ -128,7 +128,7 @@ source("R/clean_dataframe.R")
 
 ## {{< fa brands python >}}
 
-```{.python include="src/import_data.py" start-line=1 end-line=23}
+```{.python include="src/import_data.py" start-line=1 end-line=22}
 ```
 
 * Reporter cette fonction dans un fichier `src/clean_dataframe.py` et faire
@@ -261,7 +261,7 @@ col_types = {
 Solution
 </summary>
 
-```{.python include="src/import_data.py" start-line=49 end-line=70}
+```{.python include="src/import_data.py" start-line=49 end-line=69}
 ```
 
 </details>

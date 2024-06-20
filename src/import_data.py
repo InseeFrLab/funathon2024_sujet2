@@ -22,6 +22,7 @@ def import_airport_data(list_files):
     return pax_apt_all
 
 
+
 def import_compagnies_data(list_files):
     # Define the data types for each column
     col_types = {
@@ -33,14 +34,14 @@ def import_compagnies_data(list_files):
     }
 
     # Read the CSV file(s) with the specified column types
-    pax_cie_all = pd.read_csv(
-        list_files,
-        sep=";",
-        dtype=col_types
-    )
+    pax_cie_all = [
+        pd.read_csv(file, delimiter = ';', dtype = col_types)
+        for file in list_files
+        ]
 
     # Clean the DataFrame (assuming clean_dataframe is a predefined function)
-    pax_cie_all = clean_dataframe(pax_cie_all)
+    pax_cie_all = [clean_dataframe(df) for df in pax_cie_all]
+
 
     return pax_cie_all
 
@@ -57,13 +58,12 @@ def import_liaisons_data(list_files):
     }
 
     # Read the CSV file(s) with the specified column types
-    pax_lsn_all = pd.read_csv(
-        list_files,
-        sep=";",
-        dtype=col_types
-    )
+    pax_lsn_all = [
+        pd.read_csv(file, delimiter = ';', dtype = col_types)
+        for file in list_files
+        ]
 
     # Clean the DataFrame
-    pax_lsn_all = clean_dataframe(pax_lsn_all)
+    pax_lsn_all = [clean_dataframe(df) for df in pax_lsn_all]
 
     return pax_lsn_all
