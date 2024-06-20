@@ -13,7 +13,12 @@ website:
         text: Tableau de bord (version {{< fa brands r-project >}})
       - href: https://pylot-dashboard.kub.sspcloud.fr/
         text: Tableau de bord (version {{< fa brands python >}})
+      - icon: github
+        href: https://github.com/inseefrlab/funathon2024_sujet2
 
+website:
+  repo-url: https://github.com/inseefrlab/funathon2024_sujet2
+  repo-actions: [edit, issue]
 
 format:
   html:
