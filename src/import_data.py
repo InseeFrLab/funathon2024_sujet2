@@ -11,14 +11,13 @@ def import_airport_data(list_files):
     }
 
     # Read the CSV file(s) with the specified column types
-    pax_apt_all = pd.read_csv(
-        list_files,
-        sep=";",
-        dtype=col_types
-    )
+    pax_apt_all = [
+        pd.read_csv(file, delimiter = ';', dtype = col_types)
+        for file in list_files
+        ]
 
     # Clean the DataFrame (assuming clean_dataframe is a predefined function)
-    pax_apt_all = clean_dataframe(pax_apt_all)
+    pax_apt_all = [clean_dataframe(df) for df in pax_apt_all]
 
     return pax_apt_all
 
