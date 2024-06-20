@@ -128,7 +128,7 @@ source("R/clean_dataframe.R")
 
 ## {{< fa brands python >}}
 
-```{.python include="src/import_data.py" start-line=1 end-line=12}
+```{.python include="src/import_data.py" start-line=1 end-line=23}
 ```
 
 * Reporter cette fonction dans un fichier `src/clean_dataframe.py` et faire
