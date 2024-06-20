@@ -14,6 +14,9 @@ website:
       - href: https://pylot-dashboard.kub.sspcloud.fr/
         text: Tableau de bord (version {{< fa brands python >}})
 
+website:
+  repo-url: https://github.com/inseefrlab/funathon2024_sujet2
+  repo-actions: [edit, issue]
 
 format:
   html:

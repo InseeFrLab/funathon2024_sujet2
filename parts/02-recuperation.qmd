@@ -16,7 +16,7 @@ La démarche de récupération a été expliquée au cours de la présentation d
 
 ```{=html}
 <center>
-<a href="https://datalab.sspcloud.fr/launcher/ide/rstudio?name=Funathon%202024%20-%20Sujet%202&version=1.15.26&autoLaunch=true&networking.user.enabled=true&git.repository=«https%3A%2F%2Fgithub.com%2FInseeFrLab%2Ffunathon2024_sujet2.git»&onyxia.friendlyName=«config-funathon2024»&kubernetes.role=«admin»&git.cache=«36000»" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/SSP%20Cloud-Ouvrir_dans_RStudio-blue?logo=rstudio&amp;logoColor=blue" alt="Onyxia"></a>
+<a href="https://datalab.sspcloud.fr/launcher/ide/rstudio?name=Funathon%202024%20-%20Sujet%202&version=1.15.26&autoLaunch=false&networking.user.enabled=true&git.repository=«https%3A%2F%2Fgithub.com%2FInseeFrLab%2Ffunathon2024_sujet2.git»&onyxia.friendlyName=«config-funathon2024»&kubernetes.role=«admin»&git.cache=«36000»" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/SSP%20Cloud-Ouvrir_dans_RStudio-blue?logo=rstudio&amp;logoColor=blue" alt="Onyxia"></a>
 </center>
 <br>
 ```
@@ -35,7 +35,7 @@ La démarche de récupération est assez similaire à celle expliquée pour {{< 
 
 ```{=html}
 <center>
-<a href="https://datalab.sspcloud.fr/launcher/ide/vscode-python?version=1.11.35&autoLaunch=true&networking.user.enabled=true&git.repository=«https%3A%2F%2Fgithub.com%2Finseefrlab%2Ffunathon2024_sujet2.git»&git.cache=«36000»&kubernetes.role=«admin»" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/SSP%20Cloud-Ouvrir_dans_VSCode-blue?logo=vscode&amp;logoColor=blue" alt="Onyxia"></a>
+<a href="https://datalab.sspcloud.fr/launcher/ide/vscode-python?version=1.11.35&autoLaunch=false&networking.user.enabled=true&git.repository=«https%3A%2F%2Fgithub.com%2Finseefrlab%2Ffunathon2024_sujet2.git»&git.cache=«36000»&kubernetes.role=«admin»" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/SSP%20Cloud-Ouvrir_dans_VSCode-blue?logo=vscode&amp;logoColor=blue" alt="Onyxia"></a>
 </center>
 <br>
 ```
