@@ -64,18 +64,27 @@ on peut se concentrer sur les fichiers suivants:
 
 ## {{< fa brands r-project >}}
 
-```
+```{.r}
 funathon_sujet2/
 ├── renv.lock
+├── correction/R/
 ├── correction/global.R
 ├── correction/server.R
 └── correction/ui.R
 ```
 
+
 Le premier fichier (`renv.lock`) correspond à la liste des _packages_ nécessaires
 pour reproduire l'environnement. Il a été généré automatiquement grâce à 
 un écosystème `renv` particulièrement adapté pour assurer la reproductibilité
 de projets {{< fa brands r-project >}} (voir la suite). 
+
+Les fichiers `server.R` et `ui.R` constituent le coeur de notre application 
+`Shiny`. Ils représentent, respectivement, le moteur de calcul (le serveur)
+et l'interface utilisateur de notre application. Nous reviendrons sur ce concept. Le fichier `global.R` stocke
+un certain nombre d'objets utiles à l'application mais qui n'ont pas besoin
+d'être recalculés à chaque action sur l'interface graphique. Nous allons progressivement construire ces fichiers pendant les différents exercices. De nombreuses fonctions sont reportées dans les fichiers au sein du dossier `R/`.
+
 
 <details>
 <summary>
@@ -88,7 +97,24 @@ Observer la composition de ce fichier (100 premières lignes)
 
 ## {{< fa brands python >}}
 
-TO BE COMPLETED
+```{.r}
+funathon_sujet2/
+├── requirements.txt
+├── correction/src/
+└── correction/app.py
+```
+
+
+Le premier fichier (`requirements.txt`) correspond à la liste des _packages_ nécessaires
+pour reproduire l'environnement. Il s'agit d'un 
+outil particulièrement adapté pour assurer la reproductibilité
+de projets {{< fa brands python >}} (voir la suite). 
+
+Le fichier `app.py` constitue le coeur de notre application 
+`Streamlit`. Ils représentent, respectivement, le moteur de calcul (le serveur)
+et l'interface utilisateur de notre application. Nous reviendrons sur ce concept. Le fichier `global.R` stocke
+un certain nombre d'objets utiles à l'application mais qui n'ont pas besoin
+d'être recalculés à chaque action sur l'interface graphique. Nous allons progressivement construire ces fichiers pendant les différents exercices. De nombreuses fonctions sont reportées dans les fichiers au sein du dossier `R/`.
 
 <details>
 <summary>
@@ -102,13 +128,7 @@ Observer la composition de ce fichier (100 premières lignes)
 :::
 
 
-_Morceau R, faire équivalent pour Python_: 
 
-Les fichiers `server.R` et `ui.R` constituent le coeur de notre application 
-`Shiny`. Ils représentent, respectivement, le moteur de calcul (le serveur)
-et l'interface utilisateur de notre application. Nous reviendrons sur ce concept. Le fichier `global.R` stocke
-un certain nombre d'objets utiles à l'application mais qui n'ont pas besoin
-d'être recalculés à chaque action sur l'interface graphique. Nous allons progressivement construire ces fichiers pendant les différents exercices.
 
 
 ## Installer les _packages_ nécessaires pour ce tutoriel
