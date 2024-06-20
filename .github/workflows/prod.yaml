@@ -39,6 +39,8 @@ jobs:
           python-version: '3.11'
       - name: Test intermediate scripts
         run: |
+          cp -r corrections/src/* src/
+          cp corrections/sources.yml sources.yml
           pip install -r requirements.txt
           SCRIPT_DIR="intermediates"
           for script in "$SCRIPT_DIR"/*.py; do
