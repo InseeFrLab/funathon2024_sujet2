@@ -343,7 +343,11 @@ Aide
 La fonction à utiliser est `sf_crs` {{< fa brands r-project >}} ou l'attribut `crs` pour {{< fa brands python >}} 
 </details>
 
-3. Il est toujours utile de vérifier que nos données sont bien localisées où on les attend. Pour cela, il est pertinent de faire une carte avec un fond de carte contextuel, même si celle-ci n'est pas très soignée. Pour faire ceci, le plus simple est d'utiliser la [fonction `addMarkers`](https://rstudio.github.io/leaflet/articles/markers.html) du package `leaflet`.
+3. Il est toujours utile de vérifier que nos données sont bien localisées où on les attend. Pour cela, il est pertinent de faire une carte avec un fond de carte contextuel, même si celle-ci n'est pas très soignée. Pour faire ceci, le plus simple est d'utiliser:
+
+- la [fonction `addMarkers`](https://rstudio.github.io/leaflet/articles/markers.html) du package `leaflet` ({{< fa brands r-project >}});
+- la [fonction `Map`](https://python-visualization.github.io/folium/latest/reference.html#module-folium.folium) du package `folium` ({{< fa brands python >}}).
+
 Essayez de faire cette carte vous-mêmes ou consultez l'aide ci-dessous
 
 <details>
