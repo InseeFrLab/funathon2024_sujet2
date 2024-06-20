@@ -275,7 +275,7 @@ il est recommandé de consulter :
 
 - Pour les utilisateurs de {{< fa brands r-project >}}: la [fiche `utilitR`](https://book.utilitr.org/03_Fiches_thematiques/Fiche_donnees_spatiales.html) sur
 le sujet ou [ce cours introductif](https://rgeo.linogaliana.fr/exercises/geospatial-wrangling.html).
-- Pour les utilisateurs de {{< fa brands python >}}: ce chapitre du [cours de `Python` de l'ENSAE](https://pythonds.linogaliana.fr/content/manipulation/04a_webscraping_TP.html).
+- Pour les utilisateurs de {{< fa brands python >}}: ce chapitre du [cours de `Python` de l'ENSAE](https://pythonds.linogaliana.fr/content/manipulation/03_geopandas_intro.html).
 
 ::::: {.panel-tabset group="language"}
 
