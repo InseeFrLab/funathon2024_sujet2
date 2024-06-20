@@ -268,6 +268,53 @@ Solution
 
 :::::
 
+#### Construction de fichiers de fonctions {.unnumbered}
+
+1. Reporter la fonction `clean_dataframe` dans un fichier `R/clean_dataframe.R` ({{< fa brands r-project >}}) ou `topinambour/clean_dataframe.py` ({{< fa brands python >}}). Il faudra créer le dossier `R/` ({{< fa brands r-project >}}) ou le dossier `topinambour/` ({{< fa brands python >}}).
+
+
+2. Reporter les fonctions `import_airport_data`, `import_compagnies_data` et `import_liaisons_data` dans un fichier `R/import_data.R` ({{< fa brands r-project >}}) ou `topinambour/import_data.py` ({{< fa brands python >}}). Dans le cas de Python, le fichier devra commencer par ceci:
+
+```
+import pandas as pd
+from .clean_dataframe import clean_dataframe
+```
+
+
+::::: {.panel-tabset group="language"}
+
+## {{< fa brands r-project >}}
+
+A l'issue de cette partie, vous devriez avoir le fichier `R/import_data.R` suivant
+
+<details>
+<summary>
+Le fichier `R/import_data.R` attendu
+</summary>
+
+```{.r include="correction/R/import_data.R" filename="R/import_data.R"}
+```
+
+</details>
+
+## {{< fa brands python >}}
+
+
+A l'issue de cette partie, vous devriez avoir le fichier `src/import_data.py` suivant
+
+<details>
+<summary>
+Le fichier `src/import_data.py` attendu
+</summary>
+
+```{.r include="src/import_data.py" filename="src/import_data.py"}
+```
+
+</details>
+
+
+:::::
+
 #### Localisations des aéroports {.unnumbered}
 
 Il s'agit d'un jeu de données spatial. Pour en savoir plus sur ce type de données,
@@ -323,46 +370,10 @@ folium.GeoJson(airports_location).add_to(m)
 
 </details>
 
-Reporter toutes ces fonctions dans un fichier `R/import_data.R` ({{< fa brands r-project >}}) ou `Python` ({{< fa brands python >}})
 :::
 
 [^utilitr-csv]: Si vous êtes peu familier avec ce type de fichiers, vous pouvez consulter la [fiche `utilitR`](https://book.utilitr.org/03_Fiches_thematiques/Fiche_import_fichiers_plats.html) sur le sujet ({{< fa brands r-project >}}) 
 [^crs]: Si vous êtes peu familier avec les données géographiques, vous pouvez retenir l'idée qu'il s'agit de données traditionnelles auxquelles s'ajoute une dimension spatiale. Cette dernière vise à localiser les données sur la terre. La localisation se fait dans un espace à deux dimensions (espace cartésien) alors que notre planète est une sphère en trois dimensions. Le principe d'un système de projection est de faire ce passage en deux dimensions des positions. Le plus connu est le système GPS, qui est un héritier lointain de la représentation du monde par [Mercator](https://fr.wikipedia.org/wiki/G%C3%A9rard_Mercator). Ce système est connu sous le nom de WGS 84 et porte le code EPSG 4326. L'autre système à retenir est le Lambert 93 (code EPSG 2154) qui est la projection légale en France (celle-ci, _a contrario_ du Mercator, ne déforme pas la France sur une carte). Pour en savoir plus sur les systèmes de représentation, les avantages et inconvénients de chacun, il existe de nombreuses ressources en ligne. Des éléments introductifs, et des démonstrations interactives, en lien avec la librairie `Geopandas` de `Python` sont disponibles [ici](https://pythonds.linogaliana.fr/content/manipulation/03_geopandas_intro.html#principe). 
-
-
-::::: {.panel-tabset group="language"}
-
-## {{< fa brands r-project >}}
-
-A l'issue de cet exercice, vous devriez avoir le fichier `R/import_data.R` suivant
-
-<details>
-<summary>
-Le fichier `R/import_data.R` attendu
-</summary>
-
-```{.r include="correction/R/import_data.R" filename="R/import_data.R"}
-```
-
-</details>
-
-## {{< fa brands python >}}
-
-
-A l'issue de cet exercice, vous devriez avoir le fichier `src/import_data.py` suivant
-
-<details>
-<summary>
-Le fichier `src/import_data.py` attendu
-</summary>
-
-```{.r include="src/import_data.py" filename="src/import_data.py"}
-```
-
-</details>
-
-
-:::::
 
 La carte `leaflet` que vous devriez avoir obtenue à la fin de l'exercice
 est la suivante:
