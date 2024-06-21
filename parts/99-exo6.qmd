@@ -1,5 +1,5 @@
 ::: {.callout-note collapse="false" icon=false}
-## `<i class="bi bi-book"></i>`{=html} Exercice 6: création de la structure de l'application
+## `<i class="bi bi-book"></i>`{=html} Exercice 6: Créer la structure de l'application
 
 ::::: {.panel-tabset group="language"}
 
