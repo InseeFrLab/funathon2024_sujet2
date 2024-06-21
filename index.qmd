@@ -137,13 +137,22 @@ Observer la composition de ce fichier
 
 # Récupérer les données
 
-Les sources sont listées dans le fichier `sources.yaml`. 
-Notre tutoriel utilisera quatres sources différentes :
+## Objectifs
 
-- Le trafic au niveau de chaque aéroport (format _CSV_)
-- Le nombre de passagers pour différentes liaisons (format _CSV_)
-- Le trafic pour différentes compagnies (format _CSV_)
-- Les localisations des aéroports (format _geojson_)
+Dans cette partie, vous allez explorer les données utilisées pour construire le tableau de bord, avec trois objectifs:
+
+- vous familiariser avec les sources statistiques sur le trafic aérien;
+- développer des fonctions permettant d'importer automatiquement ces données;
+- découvrir comment vous pouvez organiser ces fonctions pour qu'elles puissent être facilement utilisées par l’application web (_spoiler alert_: c'est là que le dossier `R/` ou `src/` va servir).
+
+## Sources
+
+Les sources statistiques utilisées dans ce tutoriel sont listées dans le fichier `sources.yaml`. Il y a quatre sources différentes:
+
+- Le trafic au niveau de chaque aéroport (format _CSV_);
+- Le nombre de passagers pour différentes liaisons (format _CSV_);
+- Le trafic pour différentes compagnies (format _CSV_);
+- Les localisations des aéroports (format _geojson_).
 
 Une bonne pratique, lorsqu'on utilise plusieurs sources,
 est de lister celles-ci dans un fichier `YAML` plutôt que de les inscrire
