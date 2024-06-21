@@ -119,7 +119,7 @@ d'être recalculés à chaque action sur l'interface graphique. Nous allons prog
 
 <details>
 <summary>
-Observer la composition de ce fichier (100 premières lignes)
+Observer la composition de ce fichier
 </summary>
 ```{.yaml include="requirements.txt" filename="requirements.txt"}
 ```
