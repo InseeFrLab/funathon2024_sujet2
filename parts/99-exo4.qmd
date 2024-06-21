@@ -29,7 +29,7 @@ Code de l'exercice
 <summary>
 Code de l'exercice
 </summary>
-```{.python include="src/divers_functions.py" end-line=5}
+```{.python include="correction/src/divers_functions.py" end-line=5}
 ```
 </details>
 
@@ -60,7 +60,7 @@ Code de l'exercice
 <summary>
 Code de l'exercice
 </summary>
-```{.python include="src/divers_functions.py" start-line=9}
+```{.python include="correction/src/divers_functions.py" start-line=9}
 ```
 </details>
 
@@ -68,9 +68,8 @@ Code de l'exercice
 :::::
 
 
-Reporter les fonctions créées dans cet exercice dans un script `R/divers_functions.R` ({{< fa brands r-project >}}) ou `src/divers_functions.py`.
-Enrichir le script `main.R` (resp. `main.py`) pour utiliser celles-ci en créant les _dataframes_
-adéquats (correction ci-dessous)
+Reporter les fonctions créées dans cet exercice dans un script `R/divers_functions.R` ({{< fa brands r-project >}}) ou `src/divers_functions.py` ({{< fa brands python >}}).
+Enrichir le script `main.R` (resp. `main.py`) pour utiliser celles-ci en créant les _dataframes_ adéquats (correction ci-dessous).
 
 :::
 
@@ -94,7 +93,7 @@ Code de l'exercice
 <summary>
 Code de l'exercice
 </summary>
-```{.r include="intermediates/exo4a.py"}
+```{.python include="intermediates/exo4a.py"}
 ```
 </details>
 
@@ -321,7 +320,7 @@ Code de `main.R`
 <summary>
 Code de `src/tables.py`
 </summary>
-```{.python include="src/tables.py" filename="stc/tables.py"}
+```{.python include="correction/src/tables.py" filename="stc/tables.py"}
 ```
 </details>
 
@@ -330,7 +329,7 @@ Code de `src/tables.py`
 <summary>
 Code de `main.py`
 </summary>
-```{.python include="intermediates/exo4c.R" filename="main.R"}
+```{.python include="intermediates/exo4c.py" filename="main.py"}
 ```
 </details>
 
