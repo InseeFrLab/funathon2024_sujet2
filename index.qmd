@@ -239,18 +239,16 @@ Pour commencer, vous allez créer un fichier fichier `main.R` ({{< fa brands r-p
 ## Valorisation 1: Le trafic par aéroport
 
 
-La première valorisation qui sera intégrée dans l'application web est un graphique décrivant le trafic aérien au niveau d'un aéroport.
-
-
 ```{r}
 #| output: false
 #| echo: false
 source("intermediates/exo3.R")
 ```
 
-Dans le prochain exercice, nous proposons d'abord de créer une figure minimale (avec `ggplot` {{< fa brands r-project >}} ou son équivalent {{< fa brands python >}} `plotnine`) pour vérifier que
-nos données ont bien la dimension temporelle attendue. Cependant, comme `Shiny` est un système
-interactif, on privilégiera la librairie [`Plotly`](https://plotly.com/r/) pour faire des figures: il s'agit d'une librairie `Javascript` qui peut être appelée grâce à des librairies clientes en {{< fa brands r-project >}} ou {{< fa brands python >}}. 
+
+
+La première valorisation qui sera intégrée dans l'application web est un graphique décrivant le trafic aérien au niveau d'un aéroport. Nous allon d'abord créer une figure minimale (avec `ggplot` {{< fa brands r-project >}} ou son équivalent {{< fa brands python >}} `plotnine`) pour vérifier que
+nos données ont bien la dimension temporelle attendue. Cependant, comme `Shiny` est un système interactif, nous allons ensuite utiliser la librairie [`Plotly`](https://plotly.com/r/) pour faire des figures dynamiques: il s'agit d'une librairie `Javascript` qui peut être appelée grâce à des librairies clientes en {{< fa brands r-project >}} ou {{< fa brands python >}}. 
 
 {{< include "parts/99-exo3.qmd" >}}
 
