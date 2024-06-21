@@ -74,8 +74,6 @@ Vous pouvez utiliser les méthodes de données textuelles `str.sub` et `str.repl
 
 * Créer une fonction `clean_dataframe` qui prend en entrée un dataframe, crée les variables `an` et `mois`, ajoute une étape de passage des noms de colonne en minuscule et renvoie le dataframe en sortie.
 
-* Dans le dossier `R/` ou `src/`, créez un script nommé `clean_dataframe.R` ({{< fa brands r-project >}}) ou `clean_dataframe.py` ({{< fa brands python >}}) et reportez-y la fonction que vous avez créée.
-
 <details>
 <summary>
 Solution
@@ -270,16 +268,15 @@ Solution
 
 #### Construction de fichiers de fonctions {.unnumbered}
 
-1. Reporter la fonction `clean_dataframe` dans un fichier `R/clean_dataframe.R` ({{< fa brands r-project >}}) ou `topinambour/clean_dataframe.py` ({{< fa brands python >}}). Il faudra créer le dossier `R/` ({{< fa brands r-project >}}) ou le dossier `topinambour/` ({{< fa brands python >}}).
+1. Reporter la fonction `clean_dataframe` dans un fichier `R/clean_dataframe.R` ({{< fa brands r-project >}}) ou `topinambour/clean_dataframe.py` ({{< fa brands python >}}).
 
 
-2. Reporter les fonctions `import_airport_data`, `import_compagnies_data` et `import_liaisons_data` dans un fichier `R/import_data.R` ({{< fa brands r-project >}}) ou `topinambour/import_data.py` ({{< fa brands python >}}). Dans le cas de Python, le fichier devra commencer par ceci:
+2. Reporter les fonctions `import_airport_data`, `import_compagnies_data` et `import_liaisons_data` dans un fichier `R/import_data.R` ({{< fa brands r-project >}}) ou `scr/import_data.py` ({{< fa brands python >}}). Dans le cas de Python, le fichier devra commencer par ceci:
 
 ```
 import pandas as pd
 from .clean_dataframe import clean_dataframe
 ```
-
 
 ::::: {.panel-tabset group="language"}
 
