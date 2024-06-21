@@ -1,7 +1,7 @@
 ::: {.callout-note collapse="false" icon=false}
 ## `<i class="bi bi-book"></i>`{=html} Exercice 2: découvrir les différentes sources
 
-Cet exercice est, en apparence, un peu long et éloigné du développement d'une application web. Il est toutefois important pour deux raisons: 1/ il permet la construction d'une fonction générique d'import des données qui évite la redondance de code dans les étapes ultérieures; 2/ il vous montre comment organiser des fonctions de manipulation de données qui seront ensuite utilisées par l'application web.
+Dans cet exercice, vous allez découvrir les sources utilisées dans le tutoriel et développer des fonctions génériques de traitement de données qui seront ensuite utilisées par l'application web.
 
 #### Données aéroports {.unnumbered}
 
