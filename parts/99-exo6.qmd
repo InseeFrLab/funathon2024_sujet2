@@ -1,6 +1,10 @@
 ::: {.callout-note collapse="false" icon=false}
 ## `<i class="bi bi-book"></i>`{=html} Exercice 6: création de la structure de l'application
 
+::::: {.panel-tabset group="language"}
+
+## {{< fa brands r-project >}}
+
 1. Créer le fichier `global.R` à partir de `main.R` en ne conservant que les lignes jusqu'à la création (incluse)
 de l'objet `trafic_aeroports`
 
@@ -33,6 +37,7 @@ Code de `server.R` à reprendre
 ```
 </details>
 
+
 Lancer l'application en lançant `shiny::runApp()` depuis la console `R`. Si `firefox` affiche un message de blocage de l'ouverture d'une fenêtre, autoriser celle-ci. 
 
 1. Observer votre console, notamment les messages lors du lancement de l'application
@@ -41,5 +46,66 @@ Lancer l'application en lançant `shiny::runApp()` depuis la console `R`. Si `fi
 Maintenant, se pencher sur le code source et observer l'aller-retour entre les objets du script `ui.R` et `server.R`. 
 
 Tuer l'application avec le bouton stop de la console. 
+
+
+## {{< fa brands python >}}
+
+1. Renommer le fichier `main.py` en `app.py`
+2. Vous devriez avoir besoin des éléments suivants dans l'application, à ajouter en début de script:
+
+```{.python}
+import streamlit as st
+import streamlit.components.v1 as components
+from streamlit_folium import st_folium
+```
+
+Globalement, le fichier `app.py` va avoir la structure suivante:
+
+- Import des _packages_ ;
+- Import et restructuration des données ;
+- Création de la mise en page (_layout_) de l'application ;
+- Création des _inputs_ (les sélecteurs) et utilisation pour produire nos valorisations graphiques
+
+3. Après la dernière ligne de création de base de données, créer le _layout_ de l'application
+
+```{.python}
+# Streamlit Layout --------------------------------------
+
+st.set_page_config(
+  page_title="Tableau de bord des aéroports français", layout="wide",
+  page_icon="✈️"
+  )
+col1, col2 = st.columns(2)
+```
+
+Pour le moment, nous proposons de ne pas se préoccuper des deux colonnes, nous remettrons en forme ultérieurement notre application
+
+4. Créer un objet `selected_date` à partir de [`st.date_input`](https://docs.streamlit.io/develop/api-reference/widgets/st.date_input) prenant par défaut la valeur `pd.to_datetime("2019-01-01")`. L'utiliser pour créer des objets `year` et `month`.
+
+5. Utiliser ces objets `year` et `month`, qui sont donc maintenant réactifs et non plus figés, pour créer `stats_aeroports`, puis `table_airports`. Pour que la table rende bien sur l'application, vous pouvez ajouter, par rapport à précédemment, la méthode `as_raw_html` après l'application de la fonction `create_table_airports`. On va supposer que cet table HTML s'appelle `table_airports`
+
+6. Utiliser `components.html(table_airports, height=600)` pour intégrer cette table dans l'application
+
+7. Faire tourner l'application avec la commande suivante dans un terminal: 
+
+```{.python}
+streamlit run --server.port=5000 --server.address=0.0.0.0
+```
+
+```{.python}
+Collecting usage statistics. To deactivate, set browser.gatherUsageStats to false.
+
+
+  You can now view your Streamlit app in your browser.
+
+  URL: http://0.0.0.0:5000
+```
+
+8. 
+
+![](img/readme_app6.png)
+
+:::::
+
 
 :::
