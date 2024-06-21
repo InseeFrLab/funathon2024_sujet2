@@ -94,7 +94,7 @@ Maintenant que nous disposons d'un environnement fonctionnel,
 nous pouvons avancer sur la conception du projet. La première étape est d'explorer
 les jeux de données que nous utiliserons dans l'application.
 
-## {{< fa brands r-project >}}
+## {{< fa brands python >}}
 
 Pour faire les choses bien, il faudrait repartir d'un environnement vierge et installer toutes les dépendances du projet (comme le fait la solution {{< fa brands r-project >}}).
 
