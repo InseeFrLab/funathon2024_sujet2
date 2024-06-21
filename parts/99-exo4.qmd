@@ -7,9 +7,9 @@ statistiques descriptives.
 1. Choisir un mois et une année
 à partir des objets `YEARS_LIST` et `MONTHS_LIST` pour faire
 un filtre sur le _dataframe_ `pax_apt_all`. Une fois
-que vous êtes satisfaits, transformer cela en
+que vous êtes satisfaits, transformer cela en une
 fonction `create_data_from_input` prenant en argument un _dataframe_, 
-une année et un mois
+une année et un mois, et renvoyant un _dataframe_.
 
 ::::: {.panel-tabset group="language"}
 
@@ -37,10 +37,10 @@ Code de l'exercice
 :::::
 
 
-2. Pour chaque aéroport, calculer le nombre total
-de passager. Puis classer les aérports du plus fréquenté
+2. Pour chaque aéroport (défini par son nom et par son code), calculer le nombre total
+de passager, puis classer les aérports du plus fréquenté
 au moins fréquenté. Une fois que vous êtes satisfaits de
-votre chaine d'opération, créer une fonction `summary_stat_airport`.
+votre chaine d'opération, créer une fonction `summary_stat_airport` qui prend en entrée un _dataframe_ et renvoie un _dataframe_.
 
 ::::: {.panel-tabset group="language"}
 
@@ -68,8 +68,9 @@ Code de l'exercice
 :::::
 
 
-Reporter les fonctions créées dans cet exercice dans un script `R/divers_functions.R` ({{< fa brands r-project >}}) ou `src/divers_functions.py` ({{< fa brands python >}}).
-Enrichir le script `main.R` (resp. `main.py`) pour utiliser celles-ci en créant les _dataframes_ adéquats (correction ci-dessous).
+3. Reporter les fonctions créées dans cet exercice dans un script `R/divers_functions.R` ({{< fa brands r-project >}}) ou `src/divers_functions.py` ({{< fa brands python >}}). Dans le cas de Python, ce fichier doit commencer par `import pandas as pd`, car ce package est utilisé dans la fonction.
+
+4. Enrichir le script `main.R` (resp. `main.py`) pour utiliser celles-ci en créant les _dataframes_ adéquats (correction ci-dessous).
 
 :::
 
