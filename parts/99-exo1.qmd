@@ -45,7 +45,7 @@ source("correction/R/create_data_list.R")
 Voir la solution à cet exercice
 </summary>
 
-```{.python include="src/create_data_list.py"}
+```{.python include="correction/src/create_data_list.py"}
 ```
 
 </details>
