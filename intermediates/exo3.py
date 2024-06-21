@@ -39,9 +39,6 @@ trafic_aeroports['date'] = pd.to_datetime(
 
 # VALORISATIONS ----------------------------------------------
 
-from src.figures import plot_airport_line
-
-
 figure_ggplot = (
     ggplot(trafic_aeroports) +
     geom_line(aes(x = "date", y = "trafic"))

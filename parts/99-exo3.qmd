@@ -72,7 +72,7 @@ Aide: le code pour générer la figure
 
 ## {{< fa brands python >}}
 
-```{.python include="intermediates/exo3.py" start-line=51}
+```{.python include="intermediates/exo3.py" start-line=48}
 ```
 
 :::::
