@@ -211,25 +211,19 @@ source("intermediates/exo2.R")
 Pour commencer, nous allons prototyper la production d'une figure
 sur le trafic aérien au niveau d'un aéroport. Une fois qu'elle sera prête, nous pourrons nous pencher sur l'intégration de cette figure dans une application interactive. 
 
-Pour commencer, nous allons créer un fichier fichier `main.R` ({{< fa brands r-project >}}) ou `main.py` ({{< fa brands python >}}) à la racine du dépôt. Ensuite, nous allons ajouter à la fin de ce fichier les deux objets temporaires suivants.
+Pour commencer, vous allez créer un fichier fichier `main.R` ({{< fa brands r-project >}}) ou `main.py` ({{< fa brands python >}}) à la racine du dépôt. Ensuite, vous pouvez y copier le code suivant.
 
 ::::: {.panel-tabset group="language"}
 
 ## {{< fa brands r-project >}}
 
-```{r}
-liste_aeroports <- unique(pax_apt_all$apt)
-default_airport <- liste_aeroports[1]
-default_airport
+```{.r include="intermediates/exo3.R" end-line=24}
 ```
 
 ## {{< fa brands python >}}
 
 
-```{.python}
-liste_aeroports = pax_apt_all['apt'].unique()
-default_airport = liste_aeroports[0]
-default_airport
+```{.python include="intermediates/exo3.py" end-line=24}
 ```
 
 :::::
