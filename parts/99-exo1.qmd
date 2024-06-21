@@ -1,4 +1,4 @@
-Les consignes de cet exercice sont identiques selon le langage car les librairies `R` et `Python` pour lire des fichiers YAML portent le même nom.
+Les consignes de cet exercice sont quasiment identiques selon le langage car les librairies `R` et `Python` pour lire des fichiers YAML portent le même nom.
 
 :::: {.callout-note collapse="false" icon=false}
 ## `<i class="bi bi-book"></i>`{=html} Exercice 1: lire les sources dans {{< fa brands r-project >}} et {{< fa brands python >}}
@@ -8,6 +8,10 @@ un fichier `YAML` en liste imbriquée; le package Python `yaml` comporte une fon
 
 2. Transformer ce bout de code en une fonction `create_data_list`
 prenant un argument `source_file` et renvoyant cette liste.
+
+3. Créer __à la racine du projet__ un dossier `R/` ({{< fa brands r-project >}}) ou `src/` ({{< fa brands python >}}). Attention, ne confondez pas avec le dossier `correction/R/` ou `correction/src/` qui contient la correction...
+
+4. Dans ce nouveau dossier, créez un script nommé `create_data_list.R` ({{< fa brands r-project >}}) ou `create_data_list.py` ({{< fa brands python >}}) et reportez-y la fonction que vous avez créée. Dans le cas de Python, ce fichier doit commencer par `import yaml`, car ce package est utilisé dans la fonction.
 
 ::::
 
@@ -41,16 +45,19 @@ source("correction/R/create_data_list.R")
 Voir la solution à cet exercice
 </summary>
 
-```{.python include="src/create_data_list.py"}
+```{.python include="correction/src/create_data_list.py"}
 ```
 
 </details>
 
-La fonction-solution de cet exercice est dans le fichier `src/create_data_list.py`. Elle peut être importée
-dans l'environnement global grâce à la commande:
+La fonction-solution de cet exercice est dans le fichier `correction/src/create_data_list.py`. 
+
+Une fois que vous avez créé et rempli le fichier `src/create_data_list.py`, vous pouvez importer la fonction `create_data_list` dans l'environnement global grâce à la commande:
 
 ```python
 from src.create_data_list import create_data_list
 ```
 
 :::
+
+Cet exemple simple vous montre ce que sera l'organisation finale de l'application: l'application web qui sera construite plus tard dans les fichiers `server.R` et `ui.R` ({{< fa brands r-project >}}) ou `app.py` ({{< fa brands python >}}) pourra facilement appeler des fonctions utilitaires stockées dans `R/` ou dans `src/`. Cette organisation est très pratique car elle sépare l'application web _stricto sensu_ des fonctions génériques de manipulation de données et contribue à rendre les codes faciles à comprendre et à maintenir.

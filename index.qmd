@@ -113,13 +113,11 @@ de projets {{< fa brands python >}} (voir la suite).
 
 Le fichier `app.py` constitue le coeur de notre application 
 `Streamlit`. Ils représentent, respectivement, le moteur de calcul (le serveur)
-et l'interface utilisateur de notre application. Nous reviendrons sur ce concept. Le fichier `global.R` stocke
-un certain nombre d'objets utiles à l'application mais qui n'ont pas besoin
-d'être recalculés à chaque action sur l'interface graphique. Nous allons progressivement construire ces fichiers pendant les différents exercices. De nombreuses fonctions sont reportées dans les fichiers au sein du dossier `src/`.
+et l'interface utilisateur de notre application. Nous reviendrons sur ce concept. Par ailleurs, de nombreuses fonctions utiles pour l'application sont reportées dans les fichiers au sein du dossier `src/` (abréviation de "source").
 
 <details>
 <summary>
-Observer la composition de ce fichier (100 premières lignes)
+Observer la composition de ce fichier
 </summary>
 ```{.yaml include="requirements.txt" filename="requirements.txt"}
 ```
@@ -139,13 +137,22 @@ Observer la composition de ce fichier (100 premières lignes)
 
 # Récupérer les données
 
-Les sources sont listées dans le fichier `sources.yaml`. 
-Notre tutoriel utilisera quatres sources différentes :
+## Objectifs
 
-- Le trafic au niveau de chaque aéroport (format _CSV_)
-- Le nombre de passagers pour différentes liaisons (format _CSV_)
-- Le trafic pour différentes compagnies (format _CSV_)
-- Les localisations des aéroports (format _geojson_)
+Dans cette partie, vous allez explorer les données utilisées pour construire le tableau de bord, avec trois objectifs:
+
+- vous familiariser avec les sources statistiques sur le trafic aérien;
+- développer des fonctions permettant d'importer automatiquement ces données;
+- découvrir comment vous pouvez organiser ces fonctions pour qu'elles puissent être facilement utilisées par l’application web (_spoiler alert_: c'est là que le dossier `R/` ou `src/` va servir).
+
+## Sources
+
+Les sources statistiques utilisées dans ce tutoriel sont listées dans le fichier `sources.yaml`. Il y a quatre sources différentes:
+
+- Le trafic au niveau de chaque aéroport (format _CSV_);
+- Le nombre de passagers pour différentes liaisons (format _CSV_);
+- Le trafic pour différentes compagnies (format _CSV_);
+- Les localisations des aéroports (format _geojson_).
 
 Une bonne pratique, lorsqu'on utilise plusieurs sources,
 est de lister celles-ci dans un fichier `YAML` plutôt que de les inscrire
@@ -198,34 +205,41 @@ urls = create_data_list("sources.yml")
 source("intermediates/exo2.R")
 ```
 
+## Objectifs
 
-## Le trafic par aéroport
+Dans cette partie, vous allez exploiter les données pour produire trois valorisations qui seront ensuite intégrées dans l'application web:
 
-Pour commencer, nous allons prototyper la production d'une figure
-sur le trafic aérien au niveau d'un aéroport. Une fois qu'elle sera prête, nous pourrons nous pencher sur l'intégration de cette figure dans une application interactive. 
+1. un graphique dynamique présentant le trafic pour un aéroport donné;
+2. un tableau HTML affichant des données sur le trafic;
+3. une carte des aéroports.
 
-Pour commencer, nous allons créer un fichier fichier `main.R` ({{< fa brands r-project >}}) ou `main.py` ({{< fa brands python >}}) à la racine du dépôt. Ensuite, nous allons ajouter à la fin de ce fichier les deux objets temporaires suivants.
+Une fois que ces valorisations seront prêtes, nous pourrons nous pencher sur leur intégration dans une application interactive. 
+
+## Prérequis: créer le script `main`
+
+Pour commencer, vous allez créer un fichier fichier `main.R` ({{< fa brands r-project >}}) ou `main.py` ({{< fa brands python >}}) à la racine du dépôt. Ensuite, vous pouvez y copier le code suivant.
+
 
 ::::: {.panel-tabset group="language"}
 
 ## {{< fa brands r-project >}}
 
-```{r}
-liste_aeroports <- unique(pax_apt_all$apt)
-default_airport <- liste_aeroports[1]
-default_airport
+```{.r include="intermediates/exo3.R" end-line=24}
 ```
 
 ## {{< fa brands python >}}
 
 
-```{.python}
-liste_aeroports = pax_apt_all['apt'].unique()
-default_airport = liste_aeroports[0]
-default_airport
+```{.python include="intermediates/exo3.py" end-line=24}
 ```
 
 :::::
+
+
+## Valorisation 1: Le trafic par aéroport
+
+
+La première valorisation qui sera intégrée dans l'application web est un graphique décrivant le trafic aérien au niveau d'un aéroport.
 
 
 ```{r}
@@ -241,10 +255,9 @@ interactif, on privilégiera la librairie [`Plotly`](https://plotly.com/r/) pour
 {{< include "parts/99-exo3.qmd" >}}
 
 
-## Tableau HTML pour afficher des données
+## Valorisation 2: Tableau HTML pour afficher des données
 
-La première valorisation que nous intégrerons dans notre application est
-le modèle de figure ci-dessus. La deuxième sera un tableau
+La deuxième valorisation qui sera intégrée dans l'application web est un tableau
 permettant de visualiser certaines données directement dans le _dashboard_. 
 Il existe plusieurs _packages_ pour faire cela, que ce soit en {{< fa brands r-project >}} ou {{< fa brands python >}}. 
 
@@ -283,9 +296,9 @@ MONTHS_LIST = list(range(1, 13))
 {{< include "parts/99-exo4.qmd" >}}
 
 
-## Carte des aéroports
+## Valorisation 3: Carte des aéroports
 
-La dernière valorisation que nous allons intégrer est une carte interactive
+La troisième valorisation qui sera intégrée dans l'application web est une carte interactive
 du trafic de nos aéroports. Cette carte va être assez basique. Si vous
 désirez mettre en oeuvre des visualisations plus complexes, vous pouvez
 tout à fait le faire. 

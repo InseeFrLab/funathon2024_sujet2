@@ -151,7 +151,7 @@ Les utilisateurs de {{< fa brands python >}} connaissent deux environnements de 
 Les seconds sont pratiques pour prototyper et expérimenter. Mais ils ne sont pas faits pour construire des applications. Nous proposons donc la méthode de travail suivante:
 
 - Créer un `Jupyter Notebook` à la racine du projet (au même niveau que le `README.md`)[^creation-nb]. Celui-ci sera votre espace pour écrire du code expérimental. Lorsqu'il sera fonctionnel, vous pourrez le reporter dans des scripts comme indiqués dans les consignes.
-- Dans un terminal, faire `cd funathon2024_sujet2` (ou remplacer par le nom de dossier différent si vous l'avez changé). C'est dans ce terminal que vous testerez vos scripts. 
+- Dans un terminal, faire `cd funathon2024_sujet2` (ou remplacer par le nom de dossier différent si vous l'avez changé). C'est dans ce terminal que vous testerez vos scripts. Pour ouvrir un terminal, il suffit de cliquer sur le menu VScode en haut à gauche (les trois petites barres horizontales), puis `Terminal > New Terminal`.
 
 
 [^creation-nb]: Pour le créer, vous pouvez taper <kbd>F1</kbd> et dans la barre qui s'ouvre, taper _notebook_ et cliquer sur `Create: New Jupyter Notebook`. Enregistrer le fichier 

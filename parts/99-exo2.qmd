@@ -1,12 +1,12 @@
 ::: {.callout-note collapse="false" icon=false}
 ## `<i class="bi bi-book"></i>`{=html} Exercice 2: découvrir les différentes sources
 
-Cet exercice est, en apparence, un peu long et éloigné du développement d'une application web. Il est toutefois important pour deux raisons: 1/ il permet la construction d'une fonction générique d'import des données qui évite la redondance de code dans les étapes ultérieures; 2/ il vous montre comment organiser des fonctions de manipulation de données qui seront ensuite utilisées par l'application web.
+Dans cet exercice, vous allez découvrir les sources utilisées dans le tutoriel et développer des fonctions génériques de traitement de données qui seront ensuite utilisées par l'application web.
 
 #### Données aéroports {.unnumbered}
 
 * Les données sont des CSV européens (avec le séparateur `;`). Il est donc conseillé d'utiliser la fonction `read_csv2` du package `readr` pour lire les données à partir 
-de la liste de fichiers `unlist(urls$airports)`[^utilitr-csv] si vous utilisez {{< fa brands r-project >}}, et d'utiliser la fonction `read_csv` du package `pandas` pour lire les données à partir de la liste de fichiers `urls['airports']` si vous utilisez {{< fa brands python >}}.
+de la liste de fichiers `unlist(urls$airports)`[^utilitr-csv] si vous utilisez {{< fa brands r-project >}}, et d'utiliser la fonction `read_csv` du package `pandas` pour lire les données à partir de la liste de fichiers `list(urls['airports'].values())` si vous utilisez {{< fa brands python >}}.
 * Il est recommandé de ne pas laisser les types par défaut des colonnes mais de figer ceux-ci avec l'argument suivant:
 
 ::::: {.panel-tabset group="language"}
@@ -56,7 +56,7 @@ Pour extraire des éléments d'une chaine de caractère à partir de la position
 ## Conseil pour se faciliter la vie ultérieurement
 
 Il est recommandé d'utiliser `str_remove` pour retirer les zéros en début de mois
-qui pourront nous créer des difficultés ultérieurement
+qui pourront nous créer des difficultés ultérieurement.
 :::
 
 Si vous êtes toujours bloqué, la solution est donnée plus bas 👇
@@ -64,7 +64,7 @@ Si vous êtes toujours bloqué, la solution est donnée plus bas 👇
 
 ## {{< fa brands python >}}
 
-Vous pouvez utiliser les méthodes de données textuelles `str.sub` et `str.replace` de `Pandas`
+Vous pouvez utiliser les méthodes de données textuelles `str.sub` et `str.replace` de `Pandas`.
 
 :::::
 
@@ -72,7 +72,7 @@ Vous pouvez utiliser les méthodes de données textuelles `str.sub` et `str.repl
 
 
 
-* Créer une fonction `clean_dataframe` qui reprend le code de création des variables `an` et `mois`, ajoute une étape de passage des noms de colonne en minuscule et renvoie le dataframe en sortie
+* Créer une fonction `clean_dataframe` qui prend en entrée un dataframe, crée les variables `an` et `mois`, ajoute une étape de passage des noms de colonne en minuscule et renvoie le dataframe en sortie.
 
 <details>
 <summary>
@@ -91,7 +91,7 @@ Solution
 
 ## {{< fa brands python >}}
 
-```{.python include="src/clean_dataframe.py"}
+```{.python include="correction/src/clean_dataframe.py"}
 ```
 
 
@@ -126,7 +126,7 @@ source("R/clean_dataframe.R")
 
 ## {{< fa brands python >}}
 
-```{.python include="src/import_data.py" start-line=1 end-line=22}
+```{.python include="correction/src/import_data.py" start-line=1 end-line=22}
 ```
 
 * Reporter cette fonction dans un fichier `src/clean_dataframe.py` et faire
@@ -197,7 +197,7 @@ col_types = {
 Solution
 </summary>
 
-```{.r include="src/import_data.py" start-line=26 end-line=46}
+```{.python include="correction/src/import_data.py" start-line=26 end-line=46}
 ```
 
 </details>
@@ -259,7 +259,7 @@ col_types = {
 Solution
 </summary>
 
-```{.python include="src/import_data.py" start-line=49 end-line=69}
+```{.python include="correction/src/import_data.py" start-line=49 end-line=69}
 ```
 
 </details>
@@ -268,16 +268,15 @@ Solution
 
 #### Construction de fichiers de fonctions {.unnumbered}
 
-1. Reporter la fonction `clean_dataframe` dans un fichier `R/clean_dataframe.R` ({{< fa brands r-project >}}) ou `topinambour/clean_dataframe.py` ({{< fa brands python >}}). Il faudra créer le dossier `R/` ({{< fa brands r-project >}}) ou le dossier `topinambour/` ({{< fa brands python >}}).
+1. Reporter la fonction `clean_dataframe` dans un fichier `R/clean_dataframe.R` ({{< fa brands r-project >}}) ou `topinambour/clean_dataframe.py` ({{< fa brands python >}}).
 
 
-2. Reporter les fonctions `import_airport_data`, `import_compagnies_data` et `import_liaisons_data` dans un fichier `R/import_data.R` ({{< fa brands r-project >}}) ou `topinambour/import_data.py` ({{< fa brands python >}}). Dans le cas de Python, le fichier devra commencer par ceci:
+2. Reporter les fonctions `import_airport_data`, `import_compagnies_data` et `import_liaisons_data` dans un fichier `R/import_data.R` ({{< fa brands r-project >}}) ou `scr/import_data.py` ({{< fa brands python >}}). Dans le cas de Python, le fichier devra commencer par ceci:
 
 ```
 import pandas as pd
 from .clean_dataframe import clean_dataframe
 ```
-
 
 ::::: {.panel-tabset group="language"}
 
@@ -305,7 +304,7 @@ A l'issue de cette partie, vous devriez avoir le fichier `src/import_data.py` su
 Le fichier `src/import_data.py` attendu
 </summary>
 
-```{.r include="src/import_data.py" filename="src/import_data.py"}
+```{.python include="correction/src/import_data.py" filename="src/import_data.py"}
 ```
 
 </details>
