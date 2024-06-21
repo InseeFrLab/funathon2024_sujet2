@@ -205,13 +205,18 @@ urls = create_data_list("sources.yml")
 source("intermediates/exo2.R")
 ```
 
+## Objectifs
 
-## Le trafic par aéroport
+Dans cette partie, vous allez exploiter les données pour produire trois outputs qui seront ensuite intégrées dans l'application web:
 
-Pour commencer, nous allons prototyper la production d'une figure
-sur le trafic aérien au niveau d'un aéroport. Une fois qu'elle sera prête, nous pourrons nous pencher sur l'intégration de cette figure dans une application interactive. 
+1. un graphique dynamique présentant le trafic pour un aéroport donné;
+2. un tableau HTML affichant des données sur le trafic;
+3. une carte des aéroports.
+
+## Prérequis: créer le script `main`
 
 Pour commencer, vous allez créer un fichier fichier `main.R` ({{< fa brands r-project >}}) ou `main.py` ({{< fa brands python >}}) à la racine du dépôt. Ensuite, vous pouvez y copier le code suivant.
+
 
 ::::: {.panel-tabset group="language"}
 
@@ -229,6 +234,12 @@ Pour commencer, vous allez créer un fichier fichier `main.R` ({{< fa brands r-p
 :::::
 
 
+## Output 1: Le trafic par aéroport
+
+Pour commencer, nous allons prototyper la production d'une figure
+sur le trafic aérien au niveau d'un aéroport. Une fois qu'elle sera prête, nous pourrons nous pencher sur l'intégration de cette figure dans une application interactive. 
+
+
 ```{r}
 #| output: false
 #| echo: false
@@ -242,7 +253,7 @@ interactif, on privilégiera la librairie [`Plotly`](https://plotly.com/r/) pour
 {{< include "parts/99-exo3.qmd" >}}
 
 
-## Tableau HTML pour afficher des données
+## Output 2: Tableau HTML pour afficher des données
 
 La première valorisation que nous intégrerons dans notre application est
 le modèle de figure ci-dessus. La deuxième sera un tableau
@@ -284,7 +295,7 @@ MONTHS_LIST = list(range(1, 13))
 {{< include "parts/99-exo4.qmd" >}}
 
 
-## Carte des aéroports
+## Output 3: Carte des aéroports
 
 La dernière valorisation que nous allons intégrer est une carte interactive
 du trafic de nos aéroports. Cette carte va être assez basique. Si vous
