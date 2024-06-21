@@ -83,25 +83,5 @@ table_airports = (
   .as_raw_html()
 )
 
-with col1:
-    components.html(table_airports, height=600)
 
-
-# SECOND COLUMN ===========================
-
-with col2:
-  # Map
-  st.subheader("Carte des aéroports")
-  carte_interactive = map_leaflet_airport(
-    pax_apt_all, airports_location, month, year
-  )
-  st_folium(carte_interactive, height=300)
-
-  # Line Plot Output
-  st.subheader("Fréquentation d'un aéroport")
-  selected_airport = st.selectbox(
-    "Aéroport choisi", options=liste_aeroports, index=0
-  )
-  figure_plotly = plot_airport_line(pax_apt_all, selected_airport)
-  st.plotly_chart(figure_plotly)
-
+components.html(table_airports, height=600)
