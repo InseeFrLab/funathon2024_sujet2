@@ -38,7 +38,7 @@ Code de l'exercice
 
 
 2. Pour chaque aéroport (défini par son nom et par son code), calculer le nombre total
-de passagers au départ, à l'arrivée, en transit, et total, puis classer les aérports du plus fréquenté au moins fréquenté (en nombre total de passagers). Une fois que vous êtes satisfaits de
+de passagers au départ, à l'arrivée, en transit, et total, puis classer les aéroports du plus fréquenté au moins fréquenté (en nombre total de passagers). Stocker le résultat dans l'objet `stats_aeroports`. Une fois que vous êtes satisfaits de
 votre chaine d'opération, créer une fonction `summary_stat_airport` qui prend en entrée un _dataframe_ et renvoie un _dataframe_.
 
 ::::: {.panel-tabset group="language"}
