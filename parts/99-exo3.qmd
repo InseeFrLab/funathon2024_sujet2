@@ -23,7 +23,7 @@ Enchaînement des opérations attendues à cette étape
 
 ## {{< fa brands python >}}
 
-```{.python include="intermediates/exo3.py" end-line=42}
+```{.python include="intermediates/exo3.py" end-line=37}
 ```
 
 
