@@ -1,3 +1,5 @@
+import pandas as pd
+
 def create_data_from_input(data, year, month):
   data = (
     data
