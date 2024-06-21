@@ -1,8 +1,10 @@
 ::: {.callout-note collapse="false" icon=false}
-## `<i class="bi bi-book"></i>`{=html} Exercice 3: graphiques de fréquentation des aéroports
+## `<i class="bi bi-book"></i>`{=html} Exercice 3: Produire un graphique de fréquentation des aéroports
 
-1. Créer une variable `trafic` égale `apt_pax_dep + apt_pax_tr + apt_pax_arr`
-2. Ne conserver que les données relatives à l'aéroport `default_airport`
+Dans le script `main.R` ou `main.py`:
+
+1. Créer une variable `trafic` égale `apt_pax_dep + apt_pax_tr + apt_pax_arr`;
+2. Ne conserver que les données relatives à l'aéroport `default_airport`;
 3. Créer une variable `date` qui utilise les colonnes `an` et `mois`. Cette variable de date doit être au format `date`, pas au format `chr`.
 
 
@@ -35,7 +37,7 @@ Enchaînement des opérations attendues à cette étape
 4. Faire une __figure statique__ pour observer la dynamique des données:
 
 * Pour les utilisateurs de {{< fa brands r-project >}}, ce sera bien sûr avec `ggplot` ;
-* Pour les utilisateurs de {{< fa brands python >}}, vous pouvez utiliser le module graphique de votre choix: `matplotlib`, `seaborn` ou `plotnine`. Nous recommandons néanmoins [`plotnine`](https://plotnine.org/), la transposition en {{< fa brands python >}} de la grammaire des graphiques `ggplot`
+* Pour les utilisateurs de {{< fa brands python >}}, vous pouvez utiliser le module graphique de votre choix: `matplotlib`, `seaborn` ou `plotnine`. Nous recommandons néanmoins [`plotnine`](https://plotnine.org/), la transposition en {{< fa brands python >}} de la grammaire des graphiques `ggplot`.
 
 Vous devriez obtenir une figure similaire à celle-ci:
 
