@@ -117,7 +117,12 @@ Transformer le code ci-dessus en une fonction nommée `plot_airport_line` afin q
 * la sortie soit notre figure `plotly`.
 
 Tester la fonction sur d'autres aéroports de la liste. Quand vous êtes satisfaits de celle-ci, 
-déplacer la définition de cette fonction dans `R/figures.R` ({{< fa brands r-project >}}) ou `src/figures.py` ({{< fa brands python >}}). 
+déplacer la définition de cette fonction dans `R/figures.R` ({{< fa brands r-project >}}) ou `src/figures.py` ({{< fa brands python >}}). Dans le cas de Python, le fichier devra commencer par ceci:
+
+```
+import pandas as pd
+import plotly.express as px
+```
 :::
 
 ::::: {.panel-tabset group="language"}
