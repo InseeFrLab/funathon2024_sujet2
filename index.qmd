@@ -334,14 +334,18 @@ palette = c("green", "blue", "red")
 Maintenant tous les ingrédients sont là pour transformer cette chaîne en application
 interactive. L'architecture de notre application sera la suivante :
 
-![](img/ui-r.png)
+![Architecture de notre application (ici illustrée par l'exemple {{< fa brands r-project >}})](img/ui-r.png)
 
-Comme toute application _web_, `Shiny` repose sur deux piliers : 
+Comme toute application _web_, `Shiny` ou `Streamlit` reposent sur deux piliers : 
 
 - l'interface utilisateur (UI) qui présente au navigateur des actions possibles et affiche des _output_ adaptés
 - le serveur qui répond à ces actions de l'utilisateur, produit les _output_ et les envoie à l'interface
 
-Nous allons recréer `ui.R` et `server.R` progressivement afin de comprendre, pas à pas, la logique d'une application.
+`Shiny` ou `Streamlit` fonctionnent un peu différement dans la manière de faire interagir ces deux éléments:
+
+- `Shiny` nécessite deux fichiers: un pour l'interface graphique (`ui.R`) et l'autre pour le serveur (`server.R`). L'aller retour entre ces deux fichiers se fait par des objets communs, les _inputs_ du serveur (qui sont les éléments de l'interface graphique) et les _outputs_ du serveur (le résultat des calculs, à afficher sur la page web) ;
+- `Streamlit` propose de tout mettre dans un fichier. Les éléments de l'interface graphique sont à la fois des _widgets_ qui seront représentés sur la page et des objets `Python` ayant une valeur correspondant à celle sélectionnée sur la page. 
+
 
 {{< include "parts/99-exo6.qmd" >}}
 
