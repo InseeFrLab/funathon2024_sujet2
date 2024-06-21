@@ -1,10 +1,10 @@
 Les consignes de cet exercice sont identiques selon le langage car les librairies `R` et `Python` pour lire des fichiers YAML portent le même nom.
 
 :::: {.callout-note collapse="false" icon=false}
-## `<i class="bi bi-book"></i>`{=html} Exercice 1: lire les sources dans {{< fa brands r-project >}}
+## `<i class="bi bi-book"></i>`{=html} Exercice 1: lire les sources dans {{< fa brands r-project >}} et {{< fa brands python >}}
 
-1. Le package `yaml` comporte une fonction `read_yaml` pour transformer
-un fichier `YAML` en liste imbriquée. Tester cette fonction sur le fichier `sources.yml`. 
+1. Le package `R` `yaml` comporte une fonction `read_yaml` pour transformer
+un fichier `YAML` en liste imbriquée; le package Python `yaml` comporte une fonction `safe_load` qui fait la même chose. Tester cette fonction sur le fichier `sources.yml`. 
 
 2. Transformer ce bout de code en une fonction `create_data_list`
 prenant un argument `source_file` et renvoyant cette liste.

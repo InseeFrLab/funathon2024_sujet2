@@ -202,11 +202,9 @@ source("intermediates/exo2.R")
 ## Le trafic par aéroport
 
 Pour commencer, nous allons prototyper la production d'une figure
-sur le trafic aérien au niveau d'un aéroport. Cela nous facilitera ensuite
-l'intégration dans une application interactive. 
+sur le trafic aérien au niveau d'un aéroport. Une fois qu'elle sera prête, nous pourrons nous pencher sur l'intégration de cette figure dans une application interactive. 
 
-Pour cela, nous allons créer les deux objets temporaires suivants,
-que vous pouvez mettre à la fin du fichier `main.R` (ou `main.py`) pour le moment
+Pour commencer, nous allons créer un fichier fichier `main.R` ({{< fa brands r-project >}}) ou `main.py` ({{< fa brands python >}}) à la racine du dépôt. Ensuite, nous allons ajouter à la fin de ce fichier les deux objets temporaires suivants.
 
 ::::: {.panel-tabset group="language"}
 
