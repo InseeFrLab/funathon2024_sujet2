@@ -6,7 +6,7 @@ Dans cet exercice, vous allez découvrir les sources utilisées dans le tutoriel
 #### Données aéroports {.unnumbered}
 
 * Les données sont des CSV européens (avec le séparateur `;`). Il est donc conseillé d'utiliser la fonction `read_csv2` du package `readr` pour lire les données à partir 
-de la liste de fichiers `unlist(urls$airports)`[^utilitr-csv] si vous utilisez {{< fa brands r-project >}}, et d'utiliser la fonction `read_csv` du package `pandas` pour lire les données à partir de la liste de fichiers `urls['airports']` si vous utilisez {{< fa brands python >}}.
+de la liste de fichiers `unlist(urls$airports)`[^utilitr-csv] si vous utilisez {{< fa brands r-project >}}, et d'utiliser la fonction `read_csv` du package `pandas` pour lire les données à partir de la liste de fichiers `list(urls['airports'].values())` si vous utilisez {{< fa brands python >}}.
 * Il est recommandé de ne pas laisser les types par défaut des colonnes mais de figer ceux-ci avec l'argument suivant:
 
 ::::: {.panel-tabset group="language"}
@@ -56,7 +56,7 @@ Pour extraire des éléments d'une chaine de caractère à partir de la position
 ## Conseil pour se faciliter la vie ultérieurement
 
 Il est recommandé d'utiliser `str_remove` pour retirer les zéros en début de mois
-qui pourront nous créer des difficultés ultérieurement
+qui pourront nous créer des difficultés ultérieurement.
 :::
 
 Si vous êtes toujours bloqué, la solution est donnée plus bas 👇
@@ -64,7 +64,7 @@ Si vous êtes toujours bloqué, la solution est donnée plus bas 👇
 
 ## {{< fa brands python >}}
 
-Vous pouvez utiliser les méthodes de données textuelles `str.sub` et `str.replace` de `Pandas`
+Vous pouvez utiliser les méthodes de données textuelles `str.sub` et `str.replace` de `Pandas`.
 
 :::::
 
@@ -72,7 +72,9 @@ Vous pouvez utiliser les méthodes de données textuelles `str.sub` et `str.repl
 
 
 
-* Créer une fonction `clean_dataframe` qui reprend le code de création des variables `an` et `mois`, ajoute une étape de passage des noms de colonne en minuscule et renvoie le dataframe en sortie
+* Créer une fonction `clean_dataframe` qui prend en entrée un dataframe, crée les variables `an` et `mois`, ajoute une étape de passage des noms de colonne en minuscule et renvoie le dataframe en sortie.
+
+* Dans le dossier `R/` ou `src/`, créez un script nommé `clean_dataframe.R` ({{< fa brands r-project >}}) ou `clean_dataframe.py` ({{< fa brands python >}}) et reportez-y la fonction que vous avez créée.
 
 <details>
 <summary>
