@@ -50,11 +50,14 @@ Voir la solution à cet exercice
 
 </details>
 
-La fonction-solution de cet exercice est dans le fichier `src/create_data_list.py`. Elle peut être importée
-dans l'environnement global grâce à la commande:
+La fonction-solution de cet exercice est dans le fichier `correction/src/create_data_list.py`. 
+
+Une fois que vous avez créé et rempli le fichier `src/create_data_list.py`, vous pouvez importer la fonction `create_data_list` dans l'environnement global grâce à la commande:
 
 ```python
 from src.create_data_list import create_data_list
 ```
 
 :::
+
+Cet exemple simple vous montre ce que sera l'organisation finale de l'application: l'application web qui sera construite plus tard dans les fichiers `server.R` et `ui.R` ({{< fa brands r-project >}}) ou `app.py` ({{< fa brands python >}}) pourra facilement appeler des fonctions utilitaires stockées dans `R/` ou dans `src/`. Cette organisation est très pratique car elle sépare l'application web _stricto sensu_ des fonctions génériques de manipulation de données et contribue à rendre les codes faciles à comprendre et à maintenir.
