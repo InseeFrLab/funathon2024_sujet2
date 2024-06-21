@@ -310,8 +310,8 @@ code. Cela nous facilitera la transformation ultérieure en fonction.
 ## {{< fa brands r-project >}}
 
 ```{r}
-months <- 1
-years <- 2019
+month <- 1
+year <- 2019
 ```
 
 Voici également une palette de couleurs qui sera utile à la fin de l'exercice. 
@@ -323,8 +323,8 @@ palette <- c("green", "blue", "red")
 ## {{< fa brands python >}}
 
 ```{r}
-months = 1
-years = 2019
+month = 1
+year = 2019
 ```
 
 Voici également une palette de couleurs qui sera utile à la fin de l'exercice. 
