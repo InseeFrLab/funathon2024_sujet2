@@ -10,10 +10,10 @@ Le principal général est qu'il existe des outils qui permettent à un utilisat
 
 En effet, il est important de voir l'application comme le résultat de la combinaison de plusieurs ingrédients. Dans notre cas, nous en avons trois:
 
-* Du code {{< fa brands r-project >}} ou {{< fa brands python >}} : celui-ci a été récupéré par le biais de `Git` lors du lancement du projet
+* Du code {{< fa brands r-project >}} ou {{< fa brands python >}} : celui-ci a été récupéré grâce à `Git` lors du lancement du projet;
 * Des éléments de configuration:
-    + le fichier `renv.lock` ({{< fa brands r-project >}}) ou `requirements.txt` ({{< fa brands python >}}) qui permettra de reconstruire notre environnement à l'identique grâce à des outils adaptés[^generation]
-    + le fichier `sources.yaml` qui liste l'emplacement des sources sur le site [data.gouv](https://www.data.gouv.fr/fr/)
+    + le fichier `renv.lock` ({{< fa brands r-project >}}) ou `requirements.txt` ({{< fa brands python >}}) qui permettra de reconstruire notre environnement à l'identique grâce à des outils adaptés[^generation];
+    + le fichier `sources.yaml` qui liste l'emplacement des sources sur le site [data.gouv](https://www.data.gouv.fr/fr/).
 * Des données : nous évoquerons celles-ci lors de la prochaine partie.
 
 
@@ -94,7 +94,7 @@ Maintenant que nous disposons d'un environnement fonctionnel,
 nous pouvons avancer sur la conception du projet. La première étape est d'explorer
 les jeux de données que nous utiliserons dans l'application.
 
-## {{< fa brands r-project >}}
+## {{< fa brands python >}}
 
 Pour faire les choses bien, il faudrait repartir d'un environnement vierge et installer toutes les dépendances du projet (comme le fait la solution {{< fa brands r-project >}}).
 

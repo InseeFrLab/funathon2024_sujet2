@@ -135,7 +135,7 @@ où `repo_url` est l'URL de votre _fork_
 
 A la racine du projet, on trouve notamment le fichier `RTraffic.Rproj`. Il s'agit d'un fichier de projet `RStudio`. Lorsqu'on travaille sur du code {{< fa brands r-project >}} avec `RStudio`, il est généralement préférable de travailler dans le cadre d'un projet. 
 
-Entre autres raisons, évoquées dans la documentation [`utilitr`](https://book.utilitr.org/03_Fiches_thematiques/Fiche_rprojects.html), cela favorise la reproductibilité: lorsqu'on se situe dans un projet `RStudio`, tous les chemins peuvent être définis de manière *relative* (à la racine du projet) plutôt que de manière absolue (à la racine de la machine). Ainsi, le projet s'exécutera de la même manière qu'il soit exécuté depuis une machine _Windows_ ou _Linux_ par exemple, avec des noms d'utilisateurs différents ou s'ils se situent dans des dossiers différents au sein de _"Mes Documents"_.
+Entre autres raisons, évoquées dans la documentation [`utilitR`](https://book.utilitr.org/03_Fiches_thematiques/Fiche_rprojects.html), cela favorise la reproductibilité: lorsqu'on se situe dans un projet `RStudio`, tous les chemins peuvent être définis de manière *relative* (à la racine du projet) plutôt que de manière absolue (à la racine de la machine). Ainsi, le projet s'exécutera de la même manière qu'il soit exécuté depuis une machine _Windows_ ou _Linux_ par exemple, avec des noms d'utilisateurs différents ou s'ils se situent dans des dossiers différents au sein de _"Mes Documents"_.
 
 ::: {.callout-note collapse="true"}
 ## Plus de détails dans [`utilitR`](https://book.utilitr.org/03_Fiches_thematiques/Fiche_rprojects.html) 
