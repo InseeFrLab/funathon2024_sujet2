@@ -20,6 +20,7 @@ en couleur à partir de `palette`.
           markerColor = trafic_aeroports$color
         )
         ```
+        
     * En {{< fa brands python >}}, il vous suffit de modifier les paramètres de l'argument `icon`
 
         
