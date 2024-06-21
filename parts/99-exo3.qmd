@@ -1,8 +1,10 @@
 ::: {.callout-note collapse="false" icon=false}
-## `<i class="bi bi-book"></i>`{=html} Exercice 3: graphiques de fréquentation des aéroports
+## `<i class="bi bi-book"></i>`{=html} Exercice 3: Produire un graphique de fréquentation des aéroports
 
-1. Créer une variable `trafic` égale `apt_pax_dep + apt_pax_tr + apt_pax_arr`
-2. Ne conserver que les données relatives à l'aéroport `default_airport`
+Dans le script `main.R` ou `main.py`:
+
+1. Créer une variable `trafic` égale `apt_pax_dep + apt_pax_tr + apt_pax_arr`;
+2. Ne conserver que les données relatives à l'aéroport `default_airport`;
 3. Créer une variable `date` qui utilise les colonnes `an` et `mois`. Cette variable de date doit être au format `date`, pas au format `chr`.
 
 
@@ -21,7 +23,7 @@ Enchaînement des opérations attendues à cette étape
 
 ## {{< fa brands python >}}
 
-```{.python include="intermediates/exo3.py" end-line=42}
+```{.python include="intermediates/exo3.py" end-line=37}
 ```
 
 
@@ -35,7 +37,7 @@ Enchaînement des opérations attendues à cette étape
 4. Faire une __figure statique__ pour observer la dynamique des données:
 
 * Pour les utilisateurs de {{< fa brands r-project >}}, ce sera bien sûr avec `ggplot` ;
-* Pour les utilisateurs de {{< fa brands python >}}, vous pouvez utiliser le module graphique de votre choix: `matplotlib`, `seaborn` ou `plotnine`. Nous recommandons néanmoins [`plotnine`](https://plotnine.org/), la transposition en {{< fa brands python >}} de la grammaire des graphiques `ggplot`
+* Pour les utilisateurs de {{< fa brands python >}}, vous pouvez utiliser le module graphique de votre choix: `matplotlib`, `seaborn` ou `plotnine`. Nous recommandons néanmoins [`plotnine`](https://plotnine.org/), la transposition en {{< fa brands python >}} de la grammaire des graphiques `ggplot`.
 
 Vous devriez obtenir une figure similaire à celle-ci:
 
@@ -45,11 +47,6 @@ figure_ggplot
 ```
 
 Il est inutile d'aller plus loin sur la mise en forme de cette figure, car l'application interactive comportera _in fine_ des figures dynamiques (qui se modifient en fonction des demandes de l'utilisateur) plutôt que des figures statiques comme celle que vous venez de produire.
-
-nous n'allons pas l'utiliser _in fine_ puisque nous allons faire une application interactive par la suite.
-Il est donc
-plus intéressant d'avoir une figure un minimum réactive pour impliquer
-l'utilisateur de l'application.
 
 5. Nous allons maintenant faire une __figure dynamique__ avec la librairie
 `Plotly`. Pour cela, vous pouvez vous inspirer de [cette page](https://plotly.com/r/line-charts/) ({{< fa brands r-project >}}) ou [celle-ci](https://plotly.com/python/line-charts/) ({{< fa brands python >}}).
@@ -75,7 +72,7 @@ Aide: le code pour générer la figure
 
 ## {{< fa brands python >}}
 
-```{.python include="intermediates/exo3.R" start-line=48}
+```{.python include="intermediates/exo3.py" start-line=48}
 ```
 
 :::::
@@ -138,7 +135,7 @@ Fichier `R/figures.R` à l'issue de cet exercice
 
 </details>
 
-Par la suite, nous pouvons ajouter la ligne suivante à notre fichier `main.R`
+Par la suite, nous pouvons ajouter la ligne suivante au début de notre fichier `main.R`:
 
 ```{r}
 #| output: false
@@ -157,7 +154,7 @@ et utiliser cette fonction à la fin du fichier.
 
 ## {{< fa brands python >}}
 
-Par la suite, nous pouvons ajouter la ligne suivante à notre fichier `main.py`
+Par la suite, nous pouvons ajouter la ligne suivante au début de notre fichier `main.py`:
 
 ```{.python}
 from src.figures import plot_airport_line
@@ -169,7 +166,7 @@ et utiliser cette fonction à la fin du fichier.
 <summary>
 Fichier `main.py` à l'issue de cet exercice
 </summary>
-```{.python include="intermediates/exo3.py" filename="main.py"}
+```{.python include="intermediates/exo3_final.py" filename="main.py"}
 ```
 </details>
 
