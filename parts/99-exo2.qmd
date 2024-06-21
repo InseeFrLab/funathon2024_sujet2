@@ -91,7 +91,7 @@ Solution
 
 ## {{< fa brands python >}}
 
-```{.python include="src/clean_dataframe.py"}
+```{.python include="correction/src/clean_dataframe.py"}
 ```
 
 
@@ -126,7 +126,7 @@ source("R/clean_dataframe.R")
 
 ## {{< fa brands python >}}
 
-```{.python include="src/import_data.py" start-line=1 end-line=22}
+```{.python include="correction/src/import_data.py" start-line=1 end-line=22}
 ```
 
 * Reporter cette fonction dans un fichier `src/clean_dataframe.py` et faire
@@ -197,7 +197,7 @@ col_types = {
 Solution
 </summary>
 
-```{.r include="src/import_data.py" start-line=26 end-line=46}
+```{.python include="correction/src/import_data.py" start-line=26 end-line=46}
 ```
 
 </details>
@@ -259,7 +259,7 @@ col_types = {
 Solution
 </summary>
 
-```{.python include="src/import_data.py" start-line=49 end-line=69}
+```{.python include="correction/src/import_data.py" start-line=49 end-line=69}
 ```
 
 </details>
@@ -305,7 +305,7 @@ A l'issue de cette partie, vous devriez avoir le fichier `src/import_data.py` su
 Le fichier `src/import_data.py` attendu
 </summary>
 
-```{.r include="src/import_data.py" filename="src/import_data.py"}
+```{.python include="correction/src/import_data.py" filename="src/import_data.py"}
 ```
 
 </details>
