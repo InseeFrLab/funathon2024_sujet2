@@ -34,10 +34,9 @@ L'environnement vers lequel on désire converger
 
 
 Les exercices de conception pas à pas de l'application s'adressent aussi bien à des
-débutants qu'à des utilisateurs plus experts. La mise à disposition, c'est-à-dire
-la mise en production de cette application, fait appel à des concepts
-et outils plus
-avancés et est donc moins accessible à des débutants.
+débutants qu'à des utilisateurs plus avancés. La mise à disposition, c'est-à-dire
+la mise en production de cette application, fait toutefois appel à des concepts
+et outils plus avancés et est donc moins accessible à des débutants.
 
 
 ::: {.callout-note}
@@ -48,9 +47,9 @@ Si vous disposez de temps supplémentaire, n'hésitez pas à ajouter des fonctio
 :::
 
 
-## Pourquoi faire une application interactive ?
+## Pourquoi développer une application interactive ?
 
-Cette question peut apparaître naive. Pourtant, elle mérite d'être posée 
+Cette question peut apparaître naïve. Pourtant, elle mérite d'être posée 
 car elle permet de réfléchir:
 
 * __à l'objectif de l'application__ ;
@@ -61,7 +60,7 @@ elle guide les choix techniques ultérieurs et la répartition des tâches entre
 les différents profils pouvant intervenir dans la vie du projet s'il est mis en
 production (statisticien ou _data scientist_, équipes informatiques...). 
 
-### Une valorisation de données attractive
+### Une valorisation de données rapide et attractive
 
 En général, on fait de la visualisation de données car les sources de données
 exploitées présentent tellement de dimensions pouvant intéresser un utilisateur
@@ -85,27 +84,27 @@ développement web.
 Néanmoins, passée cette phase d'expérimentation,
 le partage
 de ces applications, au-delà d'un partage d'écran pour des démonstrations,
-n'est pas toujours évident (d'où le fait, nous y reviendrons, que la dernière partie de ce tutoriel s'adresse plutôt à un niveau expert. C'est parce que la connaissance de ces notions complexes qui permettent le bon fonctionnement d'un site web et dont la maîtrise n'est pas nécessaire lorsqu'on se lance dans la construction du site deviennent utiles passée la phase d'expérimentation. 
+n'est pas toujours évident (d'où le fait, nous y reviendrons, que la dernière partie de ce tutoriel s'adresse plutôt à un niveau expert). Cette difficulté est due au fait qu'assurer le bon fonctionnement d'un site web pérenne requiert la maîtrise de notions complexes, qui ne sont pas nécessaires au cours de la phase d'expérimentation. 
 Celles-ci dépassent néanmoins le champ de compétence
 des statisticiens ou _data scientists_. 
 
 Autrement dit, si le projet a l'ambition d'être partagé
 à une audience large qui n'a pas les compétences techniques pour faire tourner elle-même
 le code, il convient de prendre en compte le fait qu'il faudra dans l'équipe projet
-des compétences de développement web. Si le projet est expérimental, c'est moins un problème : `Shiny`, `Dash` ou `Streamlit` permettront d'avoir rapidement un prototype viable. 
+des compétencess spécifiques de développement web. Si le projet est expérimental, c'est moins un problème : `Shiny`, `Dash` ou `Streamlit` permettront d'avoir rapidement un prototype viable. 
 
 Il existe heureusement des solutions techniques plus simples à mettre en oeuvre que `Shiny`,
 `Streamlit` ou `Dash`. Les __sites web statiques__ font partie de cet
 éventail des possibles et représentent souvent une alternative pertinente aux applications interactives à condition qu'ils soient bien pensés. 
 Ils sont notamment pertinents pour les applications de visualisation
 de données où cette dernière est déjà préparée en amont. Avoir un serveur `R` ou `Python`
-se justifie en effet si des étapes complexes de structuration de données interviennent. Néanmoins, si celles-ci ne sont pas nécessaires, un
+se justifie en effet si des étapes complexes de structuration de données interviennent. Inversement, si aucun traitement de données complexe n'est nécessaire, un
 simple enrobage avec un constructeur de site comme `Quarto` peut suffire, à condition
 que
-les productions graphiques ne soient pas trop complexes à créer. Pour des sites faisant intervenir des interactions complexes entre actions d'un utilisateur (bouton, menu déroulant, etc. ) et
+les productions graphiques ne soient pas trop complexes à créer. Pour des sites faisant intervenir des interactions multiples entre actions d'un utilisateur (bouton, menu déroulant, etc. ) et
 affichage, il faudra recourir à du  `Javascript` (technologie utilisée par les sites spécialisés dans la _dataviz_), ce qui fait, à nouveau, appel à des compétences qui dépassent celles des _data scientists_ ou statisticiens classiques. 
 
-En résumé, les éléments ci-dessus ont vocation à servir de mise en garde. `Shiny`, `Dash` ou `Streamlit` sont d'excellents outils techniques lorsqu'ils sont utilisés à bon escient. Néanmoins, leur simplicité d'usage ne doit pas amener à oublier de se poser des questions cruciales comme celui du cycle de vie du projet, du public cible ou encore de la compétence des équipes amenées à le maintenir s'il perdure au-delà d'une phase d'expérimentation.
+En résumé, les éléments ci-dessus ont vocation à servir de mise en garde. `Shiny`, `Dash` ou `Streamlit` sont d'excellents outils techniques lorsqu'ils sont utilisés à bon escient. Ceci dit, leur simplicité d'usage ne dispense pas de se poser des questions cruciales comme celles du cycle de vie du projet, du public cible ou encore de la compétence des équipes amenées à maintenir le projet s'il perdure au-delà d'une phase d'expérimentation.
 
 ::: {.callout-warning collapse="true"}
 ## Site statique vs application réactive
@@ -121,7 +120,6 @@ réside principalement dans leur fonction et leur utilisation :
 - Un **serveur _backend_** classique est conçu pour effectuer des opérations en réponse à un _front_, en l'occurrence une page web. 
 Dans le contexte d'une application `Streamlit` (resp. `Shiny`), il s'agit d'un serveur avec l'environnement `Python` (resp. `R`) _ad hoc_ pour
 exécuter le code nécessaire à répondre à toute action d'un utilisateur de l'application. 
-
 :::
 
 

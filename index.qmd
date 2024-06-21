@@ -7,10 +7,12 @@ filters:
 ---
 
 ```{=html}
-<a href="https://datalab.sspcloud.fr/launcher/ide/rstudio?version=1.15.25&autoLaunch=false&networking.user.enabled=true&git.repository=«https%3A%2F%2Fgithub.com%2FInseeFrLab%2Ffunathon2024_sujet2.git»&onyxia.friendlyName=«config-funathon2024»&kubernetes.role=«admin»" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/SSP%20Cloud-Ouvrir_dans_RStudio-blue?logo=rstudio&amp;logoColor=blue" alt="Onyxia"></a>
+<a href="https://datalab.sspcloud.fr/launcher/ide/rstudio?name=Funathon%202024%20-%20Sujet%202&version=1.15.26&autoLaunch=false&networking.user.enabled=true&git.repository=«https%3A%2F%2Fgithub.com%2FInseeFrLab%2Ffunathon2024_sujet2.git»&onyxia.friendlyName=«config-funathon2024»&kubernetes.role=«admin»&git.cache=«36000»" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/SSP%20Cloud-Ouvrir_dans_RStudio-blue?logo=rstudio&amp;logoColor=blue" alt="Onyxia"></a>
+<a href="https://datalab.sspcloud.fr/launcher/ide/vscode-python?version=1.11.35&autoLaunch=false&networking.user.enabled=true&git.repository=«https%3A%2F%2Fgithub.com%2Finseefrlab%2Ffunathon2024_sujet2.git»&git.cache=«36000»&kubernetes.role=«admin»" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/SSP%20Cloud-Ouvrir_dans_VSCode-blue?logo=vscode&amp;logoColor=blue" alt="Onyxia"></a>
 ```
 
 <br>
+
 
 ```{=html}
 <table>
@@ -39,6 +41,7 @@ filters:
 
 {{< include "parts/01-intro.qmd" >}}
 
+
 # Exploration des données de trafic aérien
 
 Pour pouvoir proposer un tableau de bord pertinent, le premier geste à avoir
@@ -62,18 +65,27 @@ on peut se concentrer sur les fichiers suivants:
 
 ## {{< fa brands r-project >}}
 
-```
+```{.r}
 funathon_sujet2/
 ├── renv.lock
+├── correction/R/
 ├── correction/global.R
 ├── correction/server.R
 └── correction/ui.R
 ```
 
+
 Le premier fichier (`renv.lock`) correspond à la liste des _packages_ nécessaires
 pour reproduire l'environnement. Il a été généré automatiquement grâce à 
 un écosystème `renv` particulièrement adapté pour assurer la reproductibilité
 de projets {{< fa brands r-project >}} (voir la suite). 
+
+Les fichiers `server.R` et `ui.R` constituent le coeur de notre application 
+`Shiny`. Ils représentent, respectivement, le moteur de calcul (le serveur)
+et l'interface utilisateur de notre application. Nous reviendrons sur ce concept. Le fichier `global.R` stocke
+un certain nombre d'objets utiles à l'application mais qui n'ont pas besoin
+d'être recalculés à chaque action sur l'interface graphique. Nous allons progressivement construire ces fichiers pendant les différents exercices. De nombreuses fonctions sont reportées dans les fichiers au sein du dossier `R/`.
+
 
 <details>
 <summary>
@@ -86,7 +98,24 @@ Observer la composition de ce fichier (100 premières lignes)
 
 ## {{< fa brands python >}}
 
-TO BE COMPLETED
+```{.r}
+funathon_sujet2/
+├── requirements.txt
+├── correction/src/
+└── correction/app.py
+```
+
+
+Le premier fichier (`requirements.txt`) correspond à la liste des _packages_ nécessaires
+pour reproduire l'environnement. Il s'agit d'un 
+outil particulièrement adapté pour assurer la reproductibilité
+de projets {{< fa brands python >}} (voir la suite). 
+
+Le fichier `app.py` constitue le coeur de notre application 
+`Streamlit`. Ils représentent, respectivement, le moteur de calcul (le serveur)
+et l'interface utilisateur de notre application. Nous reviendrons sur ce concept. Le fichier `global.R` stocke
+un certain nombre d'objets utiles à l'application mais qui n'ont pas besoin
+d'être recalculés à chaque action sur l'interface graphique. Nous allons progressivement construire ces fichiers pendant les différents exercices. De nombreuses fonctions sont reportées dans les fichiers au sein du dossier `src/`.
 
 <details>
 <summary>
@@ -100,13 +129,7 @@ Observer la composition de ce fichier (100 premières lignes)
 :::
 
 
-_Morceau R, faire équivalent pour Python_: 
 
-Les fichiers `server.R` et `ui.R` constituent le coeur de notre application 
-`Shiny`. Ils représentent, respectivement, le moteur de calcul (le serveur)
-et l'interface utilisateur de notre application. Nous reviendrons sur ce concept. Le fichier `global.R` stocke
-un certain nombre d'objets utiles à l'application mais qui n'ont pas besoin
-d'être recalculés à chaque action sur l'interface graphique. Nous allons progressivement construire ces fichiers pendant les différents exercices.
 
 
 ## Installer les _packages_ nécessaires pour ce tutoriel
@@ -179,11 +202,9 @@ source("intermediates/exo2.R")
 ## Le trafic par aéroport
 
 Pour commencer, nous allons prototyper la production d'une figure
-sur le trafic aérien au niveau d'un aéroport. Cela nous facilitera ensuite
-l'intégration dans une application interactive. 
+sur le trafic aérien au niveau d'un aéroport. Une fois qu'elle sera prête, nous pourrons nous pencher sur l'intégration de cette figure dans une application interactive. 
 
-Pour cela, nous allons créer les deux objets temporaires suivants,
-que vous pouvez mettre à la fin du fichier `main.R` (ou `main.py`) pour le moment
+Pour commencer, nous allons créer un fichier fichier `main.R` ({{< fa brands r-project >}}) ou `main.py` ({{< fa brands python >}}) à la racine du dépôt. Ensuite, nous allons ajouter à la fin de ce fichier les deux objets temporaires suivants.
 
 ::::: {.panel-tabset group="language"}
 
@@ -311,14 +332,18 @@ palette = c("green", "blue", "red")
 Maintenant tous les ingrédients sont là pour transformer cette chaîne en application
 interactive. L'architecture de notre application sera la suivante :
 
-![](img/ui-r.png)
+![Architecture de notre application (ici illustrée par l'exemple {{< fa brands r-project >}})](img/ui-r.png)
 
-Comme toute application _web_, `Shiny` repose sur deux piliers : 
+Comme toute application _web_, `Shiny` ou `Streamlit` reposent sur deux piliers : 
 
 - l'interface utilisateur (UI) qui présente au navigateur des actions possibles et affiche des _output_ adaptés
 - le serveur qui répond à ces actions de l'utilisateur, produit les _output_ et les envoie à l'interface
 
-Nous allons recréer `ui.R` et `server.R` progressivement afin de comprendre, pas à pas, la logique d'une application.
+`Shiny` ou `Streamlit` fonctionnent un peu différement dans la manière de faire interagir ces deux éléments:
+
+- `Shiny` nécessite deux fichiers: un pour l'interface graphique (`ui.R`) et l'autre pour le serveur (`server.R`). L'aller retour entre ces deux fichiers se fait par des objets communs, les _inputs_ du serveur (qui sont les éléments de l'interface graphique) et les _outputs_ du serveur (le résultat des calculs, à afficher sur la page web) ;
+- `Streamlit` propose de tout mettre dans un fichier. Les éléments de l'interface graphique sont à la fois des _widgets_ qui seront représentés sur la page et des objets `Python` ayant une valeur correspondant à celle sélectionnée sur la page. 
+
 
 {{< include "parts/99-exo6.qmd" >}}
 

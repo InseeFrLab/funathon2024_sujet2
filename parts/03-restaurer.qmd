@@ -10,10 +10,10 @@ Le principal général est qu'il existe des outils qui permettent à un utilisat
 
 En effet, il est important de voir l'application comme le résultat de la combinaison de plusieurs ingrédients. Dans notre cas, nous en avons trois:
 
-* Du code {{< fa brands r-project >}} ou {{< fa brands python >}} : celui-ci a été récupéré par le biais de `Git` lors du lancement du projet
+* Du code {{< fa brands r-project >}} ou {{< fa brands python >}} : celui-ci a été récupéré grâce à `Git` lors du lancement du projet;
 * Des éléments de configuration:
-    + le fichier `renv.lock` ({{< fa brands r-project >}}) ou `requirements.txt` ({{< fa brands python >}}) qui permettra de reconstruire notre environnement à l'identique grâce à des outils adaptés[^generation]
-    + le fichier `sources.yaml` qui liste l'emplacement des sources sur le site [data.gouv](https://www.data.gouv.fr/fr/)
+    + le fichier `renv.lock` ({{< fa brands r-project >}}) ou `requirements.txt` ({{< fa brands python >}}) qui permettra de reconstruire notre environnement à l'identique grâce à des outils adaptés[^generation];
+    + le fichier `sources.yaml` qui liste l'emplacement des sources sur le site [data.gouv](https://www.data.gouv.fr/fr/).
 * Des données : nous évoquerons celles-ci lors de la prochaine partie.
 
 
@@ -42,6 +42,12 @@ Une solution plus simple est de fournir les spécifications qui ont permis à vo
 code de fonctionner. Dans un monde idéal, il s'agit de fournir la liste
 des _packages_ et leur version. Si la personne à qui vous partagez votre code et vos données a cette même liste de versions de _packages_, et pas de _packages_ supplémentaires venant polluer l'environnement, les chances d'avoir la même application que vous sont très élevées. 
 
+Les solutions techniques pour restaurer un environnement {{< fa brands r-project >}} et {{< fa brands python >}} sont légèrement différentes et sont décrites ci-dessous. 
+
+::: {.panel-tabset group="language"}
+
+## {{< fa brands r-project >}}
+
 `renv` est un gestionnaire de _packages_ qui permet de faire ces deux opérations :
 
 1. Enregistrer la liste de _packages_ après avoir fait tourner un code
@@ -65,7 +71,7 @@ de faire `renv::snapshot()` pour mettre à jour le fichier `renv.lock` (c'est le
 
 [^renv-script]: Si vous utilisez `renv` dans vos futurs projets, ce que nous vous recommandons, cette commande n'est pas à inscrire dans vos scripts. Vous pouvez indiquer que cette commande est nécessaire dans le `README` de votre projet. 
 
-::: {.callout-warning collapse="true"}
+:::: {.callout-warning collapse="true"}
 ## Ce que `renv` évite
 
 On retrouve parfois sur internet un code similaire à celui-ci :
@@ -82,8 +88,48 @@ plus fiable. De manière générale, ce n'est pas une bonne pratique de gérer l
 dans le script. En effet, c'est un élément de configuration et, comme nous l'avons dit, celle-ci doit se faire
 en dehors du script.  
 
-:::
+::::
 
 Maintenant que nous disposons d'un environnement fonctionnel, 
 nous pouvons avancer sur la conception du projet. La première étape est d'explorer
 les jeux de données que nous utiliserons dans l'application.
+
+## {{< fa brands python >}}
+
+Pour faire les choses bien, il faudrait repartir d'un environnement vierge et installer toutes les dépendances du projet (comme le fait la solution {{< fa brands r-project >}}).
+
+Néanmoins, si vous êtes sur le SSPCloud, c'est presque de l'excès de zèle de faire cela car l'application a été développé à partir de l'environnement du SSPCloud duquel elle ne diverge que très peu. Il suffit donc d'ajouter à l'environnement existant un nombre restreint de _packages_ qui sont listés dans `requirements.txt`.
+
+Dans le terminal, il suffit donc de faire un  `pip install` adéquat:
+
+```{.python}
+pip install -r requirements.txt
+```
+
+:::: {.callout-warning collapse="true"}
+## Ce que ce fichier `requirements.txt` évite
+
+On retrouve parfois dans des _notebooks_ partagés sur internet un code similaire à celui-ci :
+
+```r
+# A ne pas reproduire chez vous 😨
+!pip install geopandas
+```
+
+voire parfois dans des scripts, ce type de code:
+
+```r
+# A ne pas reproduire chez vous 😨
+import subprocess
+subprocess.run(["pip install geopandas"]) 
+```
+
+C'est une gestion artisanale de l'environnement qui n'est pas conseillée. De manière générale, ce n'est pas une bonne pratique de gérer l'installation des _packages_
+dans le script. En effet, c'est un élément de configuration et, comme nous l'avons dit, celle-ci doit se faire
+en dehors du script.  
+
+::::
+
+
+:::
+
