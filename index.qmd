@@ -262,14 +262,14 @@ permettant de visualiser certaines données directement dans le _dashboard_.
 Il existe plusieurs _packages_ pour faire cela, que ce soit en {{< fa brands r-project >}} ou {{< fa brands python >}}. 
 
 L'écosystème le plus
-complet pour faire cela est développé par `Posit` et
+complet pour construire ce tableau est développé par `Posit` et
 est quasi équivalent qu'on fasse du {{< fa brands r-project >}} ou du {{< fa brands python >}} (il est plus complet en {{< fa brands r-project >}} car plus ancien dans ce langage). 
 Il s'agit du _package_ [`GT`](https://gt.rstudio.com/) ({{< fa brands r-project >}}) ou [`Great Tables`](https://posit-dev.github.io/great-tables/articles/intro.html) ({{< fa brands python >}}). En peu de temps,
 ces _packages_ sont devenus incontournables et proposent des fonctionnalités bien
 plus complètes que les solutions qui existaient par le passé, notamment [`DT`](https://rstudio.github.io/DT/).
 
 
-Pour le prochain exercice, vous pourrez utiliser ces objets
+Pour le prochain exercice, vous pourrez utiliser les objets suivants. Copiez-les à la fin de votre script `main`.
 
 ::::: {.panel-tabset group="language"}
 
