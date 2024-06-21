@@ -146,28 +146,28 @@ N'utiliser
 aucune option, celles-ci vont être progressivement ajoutées. 
 2. Retirer les colonnes `apt` et	`apt_nom` de notre table. 
 
-<details>
-<summary>Il y a plusieurs
-manières de faire, voici un indice sur la "meilleure"
-</summary>
-
-* En {{< fa brands r-project >}}, il est possible d'utiliser des fonctions de sélection de colonnes
-issues du _tidyverse_ dans `GT`, notamment la fonction `starts_with` (à ne pas
-confondre avec celle de `stringr`)
-* En {{< fa brands python >}}, quand on fournit un _DataFrame_ `Polars`, on peut utiliser les fonctions de sélection qui ressemblent à celles du `tidyverse`. Néanmoins, là nous avons un _DataFrame_ `Pandas`. Il faudra donc utiliser des méthodes `Pandas`, un peu plus verbeuses, du type
-
-```python
-stats_aeroports.filter(like = "<debut_de_string>").columns.tolist()
-```
-
-</details>
+    <details>
+    <summary>Il y a plusieurs
+    manières de faire, voici un indice sur la "meilleure"
+    </summary>
+    
+    * En {{< fa brands r-project >}}, il est possible d'utiliser des fonctions de sélection de colonnes
+    issues du _tidyverse_ dans `GT`, notamment la fonction `starts_with` (à ne pas
+    confondre avec celle de `stringr`)
+    * En {{< fa brands python >}}, quand on fournit un _DataFrame_ `Polars`, on peut utiliser les fonctions de sélection qui ressemblent à celles du `tidyverse`. Néanmoins, là nous avons un _DataFrame_ `Pandas`. Il faudra donc utiliser des méthodes `Pandas`, un peu plus verbeuses, du type
+    
+    ```python
+    stats_aeroports.filter(like = "<debut_de_string>").columns.tolist()
+    ```
+    
+    </details>
 
 3. Formatter les colonnes numériques (pour la sélection des colonnes numériques, voir l'indice ci-dessus). 
 En consultant la documentation de `gt`, appliquer l'option qui permet de rendre plus concise la notation
 des milliers (K) et millions (M). 
 
 4. Utiliser `fmt_markdown` pour appliquer une mise en forme adaptée à la colonne `name_clean`
-5. Mettre en forme les noms de colonne (`cols_labels`), le titre (`tab_header`), les notes (`tab_source_note`) pour avoir un tableau esthéthique et informatif. Pour les utilisateurs de {{< fa brands r-project >}}, vous pouvez aussi modifier la couleur de la partie supérieure du tableau (`tab_style`).
+5. Mettre en forme les noms de colonne (`cols_label`), le titre (`tab_header`), les notes (`tab_source_note`) pour avoir un tableau esthéthique et informatif. Pour les utilisateurs de {{< fa brands r-project >}}, vous pouvez aussi modifier la couleur de la partie supérieure du tableau (`tab_style`).
 6. Pour les utilisateurs de {{< fa brands r-project >}}, transformer la table en tableau interactif avec `opt_interactive`[^note-interactive].
 :::
 
