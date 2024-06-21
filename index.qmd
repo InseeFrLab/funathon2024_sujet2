@@ -347,12 +347,12 @@ interactive. L'architecture de notre application sera la suivante :
 
 Comme toute application _web_, `Shiny` ou `Streamlit` reposent sur deux piliers : 
 
-- l'interface utilisateur (UI) qui présente au navigateur des actions possibles et affiche des _output_ adaptés
-- le serveur qui répond à ces actions de l'utilisateur, produit les _output_ et les envoie à l'interface
+- l'interface utilisateur (UI) qui présente au navigateur des actions possibles et affiche des _output_ adaptés;
+- le serveur qui répond à ces actions de l'utilisateur, produit les _outputs_ et les envoie à l'interface.
 
-`Shiny` ou `Streamlit` fonctionnent un peu différement dans la manière de faire interagir ces deux éléments:
+`Shiny` ou `Streamlit` fonctionnent un peu différemment dans la manière de faire interagir ces deux éléments:
 
-- `Shiny` nécessite deux fichiers: un pour l'interface graphique (`ui.R`) et l'autre pour le serveur (`server.R`). L'aller retour entre ces deux fichiers se fait par des objets communs, les _inputs_ du serveur (qui sont les éléments de l'interface graphique) et les _outputs_ du serveur (le résultat des calculs, à afficher sur la page web) ;
+- `Shiny` nécessite deux fichiers: un pour l'interface graphique (`ui.R`) et l'autre pour le serveur (`server.R`). L'aller-retour entre ces deux fichiers se fait par des objets communs, les _inputs_ du serveur (qui sont les éléments de l'interface graphique) et les _outputs_ du serveur (le résultat des calculs, à afficher sur la page web) ;
 - `Streamlit` propose de tout mettre dans un fichier. Les éléments de l'interface graphique sont à la fois des _widgets_ qui seront représentés sur la page et des objets `Python` ayant une valeur correspondant à celle sélectionnée sur la page. 
 
 
