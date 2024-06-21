@@ -48,11 +48,6 @@ figure_ggplot
 
 Il est inutile d'aller plus loin sur la mise en forme de cette figure, car l'application interactive comportera _in fine_ des figures dynamiques (qui se modifient en fonction des demandes de l'utilisateur) plutôt que des figures statiques comme celle que vous venez de produire.
 
-nous n'allons pas l'utiliser _in fine_ puisque nous allons faire une application interactive par la suite.
-Il est donc
-plus intéressant d'avoir une figure un minimum réactive pour impliquer
-l'utilisateur de l'application.
-
 5. Nous allons maintenant faire une __figure dynamique__ avec la librairie
 `Plotly`. Pour cela, vous pouvez vous inspirer de [cette page](https://plotly.com/r/line-charts/) ({{< fa brands r-project >}}) ou [celle-ci](https://plotly.com/python/line-charts/) ({{< fa brands python >}}).
 La figure que vous devriez avoir est la suivante:
