@@ -11,7 +11,7 @@ prenant un argument `source_file` et renvoyant cette liste.
 
 3. Créer __à la racine du projet__ un dossier `R/` ({{< fa brands r-project >}}) ou `src/` ({{< fa brands python >}}). Attention, ne confondez pas avec le dossier `correction/R/` ou `correction/src/` qui contient la correction...
 
-4. Dans ce nouveau dossier, créez un script nommé `create_data_list.R` ({{< fa brands r-project >}}) ou `create_data_list.py` ({{< fa brands python >}}) et reportez-y la fonction que vous avez créée.
+4. Dans ce nouveau dossier, créez un script nommé `create_data_list.R` ({{< fa brands r-project >}}) ou `create_data_list.py` ({{< fa brands python >}}) et reportez-y la fonction que vous avez créée. Dans le cas de Python, ce fichier doit commencer par `import yaml`, car ce package est utilisé dans la fonction.
 
 ::::
 
