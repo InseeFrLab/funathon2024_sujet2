@@ -1,4 +1,4 @@
-Les consignes de cet exercice sont identiques selon le langage car les librairies `R` et `Python` pour lire des fichiers YAML portent le même nom.
+Les consignes de cet exercice sont quasiment identiques selon le langage car les librairies `R` et `Python` pour lire des fichiers YAML portent le même nom.
 
 :::: {.callout-note collapse="false" icon=false}
 ## `<i class="bi bi-book"></i>`{=html} Exercice 1: lire les sources dans {{< fa brands r-project >}} et {{< fa brands python >}}
@@ -8,6 +8,10 @@ un fichier `YAML` en liste imbriquée; le package Python `yaml` comporte une fon
 
 2. Transformer ce bout de code en une fonction `create_data_list`
 prenant un argument `source_file` et renvoyant cette liste.
+
+3. Créer __à la racine du projet__ un dossier `R/` ({{< fa brands r-project >}}) ou `src/` ({{< fa brands python >}}). Attention, ne confondez pas avec le dossier `correction/R/` ou `correction/src/` qui contient la correction...
+
+4. Dans ce nouveau dossier, créez un script nommé `create_data_list.R` ({{< fa brands r-project >}}) ou `create_data_list.py` ({{< fa brands python >}}) et reportez-y la fonction que vous avez créée.
 
 ::::
 
