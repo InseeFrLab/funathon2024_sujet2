@@ -114,10 +114,10 @@ ultérieurement dans notre application
 ::: {.callout-note collapse="false" icon=false}
 ## `<i class="bi bi-book"></i>`{=html} Exercice 3b: une fonction de production graphique
 
-Transformer le code ci-dessus en une fonction afin que
+Transformer le code ci-dessus en une fonction nommée `plot_airport_line` afin que:
 
-* les _inputs_ soient les suivants: un _dataframe_, un aéroport à sélectionner
-* la sortie soit notre figure `plotly`
+* les _inputs_ soient les suivants: un _dataframe_ et un aéroport à sélectionner;
+* la sortie soit notre figure `plotly`.
 
 Tester la fonction sur d'autres aéroports de la liste. Quand vous êtes satisfaits de celle-ci, 
 déplacer la définition de cette fonction dans `R/figures.R` ({{< fa brands r-project >}}) ou `src/figures.py` ({{< fa brands python >}}). 
