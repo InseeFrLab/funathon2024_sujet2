@@ -120,7 +120,6 @@ réside principalement dans leur fonction et leur utilisation :
 - Un **serveur _backend_** classique est conçu pour effectuer des opérations en réponse à un _front_, en l'occurrence une page web. 
 Dans le contexte d'une application `Streamlit` (resp. `Shiny`), il s'agit d'un serveur avec l'environnement `Python` (resp. `R`) _ad hoc_ pour
 exécuter le code nécessaire à répondre à toute action d'un utilisateur de l'application. 
-
 :::
 
 

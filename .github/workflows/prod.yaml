@@ -19,6 +19,9 @@ jobs:
           repository: ${{github.event.pull_request.head.repo.full_name}}
       - name: Test intermediate scripts
         run: |
+          mkdir -p R
+          cp -r correction/R/* R/
+          cp correction/sources.yml sources.yml
           Rscript -e "renv::restore()"
           SCRIPT_DIR="intermediates"
           for script in "$SCRIPT_DIR"/*.R; do
@@ -27,18 +30,24 @@ jobs:
           done
   test-intermediates-python:
     runs-on: ubuntu-latest
-    container: inseefrlab/onyxia-jupyter-python:py3.10.9
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
           ref: ${{ github.event.pull_request.head.ref }}
           repository: ${{github.event.pull_request.head.repo.full_name}}
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
       - name: Test intermediate scripts
         run: |
+          mkdir -p intermediates/src
+          cp -r correction/src/* intermediates/src/
+          cp correction/sources.yml sources.yml
           pip install -r requirements.txt
           SCRIPT_DIR="intermediates"
-          for script in "$SCRIPT_DIR"/*.py; do
+          for script in "$SCRIPT_DIR"/*.py; do            
             echo "---------- Running $script"
             python "$script"
           done
@@ -57,6 +66,9 @@ jobs:
         run: git config --global --add safe.directory /__w/funathon2024_sujet2/funathon2024_sujet2
       - name: Render website
         run: |
+          mkdir -p R
+          cp -r correction/R/* R/
+          cp correction/sources.yml sources.yml
           Rscript -e "renv::restore()"
           quarto render --to html
       - name: Publish to Pages
