@@ -87,8 +87,7 @@ Globalement, le fichier `app.py` va avoir la structure suivante:
 6. Pour intégrer cette table dans l'application, insérer le code suivant dans `app.py`:
 
     ```{.python}
-    with col1:
-        components.html(table_airports, height=600)
+    components.html(table_airports, height=600)
     ```
 
 7. Faire tourner l'application avec la commande suivante dans un terminal: 
@@ -119,20 +118,19 @@ Observer la page web et l'évolution de votre console.
 9. Stopper votre application avec <kbd>CTRL</kbd>+<kbd>C</kbd>. Ajouter le code suivant à votre application:
 
     ```{.python}
-    with col2:
-        st.subheader("Carte des aéroports")
-        carte_interactive = map_leaflet_airport(
-            pax_apt_all, airports_location, month, year
-        )
-        st_folium(carte_interactive, height=300)
-        
-        # Line Plot Output
-        st.subheader("Fréquentation d'un aéroport")
-        selected_airport = st.selectbox(
-            "Aéroport choisi", options=liste_aeroports, index=0
-        )
-        figure_plotly = plot_airport_line(pax_apt_all, selected_airport)
-        st.plotly_chart(figure_plotly)
+    st.subheader("Carte des aéroports")
+    carte_interactive = map_leaflet_airport(
+        pax_apt_all, airports_location, month, year
+    )
+    st_folium(carte_interactive, height=300)
+    
+    # Line Plot Output
+    st.subheader("Fréquentation d'un aéroport")
+    selected_airport = st.selectbox(
+        "Aéroport choisi", options=liste_aeroports, index=0
+    )
+    figure_plotly = plot_airport_line(pax_apt_all, selected_airport)
+    st.plotly_chart(figure_plotly)
     ```
 
 10. Exécuter à nouveau la commande `streamlit run` ci-dessus. Observer l'évolution de votre application et jouez avec les paramètres de celle-ci. Ajouter, à la fin de celle-ci, un `print(year)`. Jouer avec le _widget_ de date dans votre application web et observer la valeur affichée dans l'application et dans votre terminal. Comprenez-vous pourquoi l'année ne s'affiche pas dans la page web mais dans la console ? 

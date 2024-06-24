@@ -449,7 +449,7 @@ Partie du `Dockerfile` en question
 Partie du `Dockerfile` en question
 </summary>
 
-```{.python include="docker/Dockerfile" filename="Dockerfile" start-line=3 end-line=10}
+```{.r include="docker/Dockerfile" filename="Dockerfile" start-line=3 end-line=10}
 ```
 
 </details>
@@ -462,7 +462,7 @@ Partie du `Dockerfile` en question
 Partie du `Dockerfile` en question
 </summary>
 
-```{.python include="docker/Dockerfile_python" filename="Dockerfile" start-line=3 end-line=8}
+```{.python include="docker/Dockerfile_python" filename="Dockerfile" start-line=3 end-line=10}
 ```
 
 </details>
@@ -481,7 +481,7 @@ Partie du `Dockerfile` en question
 Partie du `Dockerfile` en question
 </summary>
 
-```{.python include="docker/Dockerfile" filename="Dockerfile" start-line=13 end-line=16}
+```{.r include="docker/Dockerfile" filename="Dockerfile" start-line=13 end-line=16}
 ```
 
 </details>
@@ -503,7 +503,7 @@ Cette étape n'est pas nécessaire.
 Partie du `Dockerfile` en question
 </summary>
 
-```{.python include="docker/Dockerfile" filename="Dockerfile" start-line=18 end-line=18}
+```{.r include="docker/Dockerfile" filename="Dockerfile" start-line=18 end-line=18}
 ```
 
 </details>
@@ -515,7 +515,7 @@ Partie du `Dockerfile` en question
 Partie du `Dockerfile` en question
 </summary>
 
-```{.python include="docker/Dockerfile_python" filename="Dockerfile" start-line=11 end-line=11}
+```{.python include="docker/Dockerfile_python" filename="Dockerfile" start-line=13 end-line=14}
 ```
 
 </details>
@@ -534,7 +534,7 @@ Partie du `Dockerfile` en question
 Partie du `Dockerfile` en question
 </summary>
 
-```{.python include="docker/Dockerfile" filename="Dockerfile" start-line=19 end-line=20}
+```{.r include="docker/Dockerfile" filename="Dockerfile" start-line=19 end-line=20}
 ```
 
 </details>
@@ -546,7 +546,7 @@ Partie du `Dockerfile` en question
 Partie du `Dockerfile` en question
 </summary>
 
-```{.python include="docker/Dockerfile_python" filename="Dockerfile" start-line=13 end-line=14}
+```{.python include="docker/Dockerfile_python" filename="Dockerfile" start-line=16 end-line=17}
 ```
 
 </details>
@@ -583,18 +583,17 @@ L'image peut à présent être récupérée et déployée. Dans notre cas, on va
 
 Afin de déployer l'application, suivre les instructions suivantes :
 
+- Ouvrir un `Terminal`;
+- Clôner le dépôt (`git clone https://github.com/InseeFrLab/funathon2024_sujet2_cd`)
+- Se placer à la racine du projet (`cd funathon2024_sujet2_cd`);
 - Inspecter les fichiers `shiny/deployment.yml`, `shiny/service.yml` et `shiny/ingress.yml` (parcours {{< fa brands r-project >}}) ou `streamlit/deployment.yml`, `streamlit/service.yml` et `streamlit/ingress.yml` (parcours {{< fa brands python >}}) et repérer les éléments suivants :
     - L'emplacement où est spécifié l'image à déployer;
     - L'emplacement où sont spécifiées les ressources computationnelles allouées;
     - L'emplacement où est spécifiée l'URL à laquelle sera exposée l'application sur Internet. La modifier (à 2 reprises) pour y indiquer une adresse personalisée pour le déploiement. Seule contrainte, elle doit être de la forme `*.lab.sspcloud.fr`;
-- Ouvrir un `Terminal`;
-- Clôner le dépôt (`git clone https://github.com/InseeFrLab/funathon2024_sujet2_cd`)
-- Se placer à la racine du projet (`cd funathon2024_sujet2_cd`);
 - Appliquer les contrats Kubernetes avec la commande `kubectl apply -f shiny/` ou `kubectl apply -f streamlit/` selon le langage utilisé ;
 - Vérifier le lancement du conteneur avec la commande `kubectl get pods`. Le nom associé devrait être de la forme `funathon2024-sujet2-deployment-*`;
 - Attendre que le conteneur obtienne le statut `Running`.
-- Copier le nom associé à votre service et faire `kubectl logs <nom_copié>`
+- Copier le nom associé à votre service et faire `kubectl logs <nom_copié>`.
 
-3. Entrer dans un navigateur l'URL spécifiée dans le fichier `streamlit/ingress.yaml` ou `shiny/ingress.yaml`, et vérifier que l'application fonctionne correctement ! Jouer avec et observer, dans le terminal que vous aviez ouvert, l'évolution de vos _logs_ quand vous faites une action
-
+3. Entrer dans un navigateur l'URL spécifiée dans le fichier `streamlit/ingress.yaml` ou `shiny/ingress.yaml`, et vérifier que l'application fonctionne correctement ! Jouer avec et observer, dans le terminal que vous aviez ouvert, l'évolution de vos _logs_ quand vous faites une action.
 :::
