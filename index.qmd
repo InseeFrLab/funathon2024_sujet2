@@ -449,7 +449,7 @@ Partie du `Dockerfile` en question
 Partie du `Dockerfile` en question
 </summary>
 
-```{.python include="docker/Dockerfile" filename="Dockerfile" start-line=3 end-line=10}
+```{.r include="docker/Dockerfile" filename="Dockerfile" start-line=3 end-line=10}
 ```
 
 </details>
@@ -462,7 +462,7 @@ Partie du `Dockerfile` en question
 Partie du `Dockerfile` en question
 </summary>
 
-```{.python include="docker/Dockerfile_python" filename="Dockerfile" start-line=3 end-line=8}
+```{.python include="docker/Dockerfile_python" filename="Dockerfile" start-line=3 end-line=10}
 ```
 
 </details>
@@ -481,7 +481,7 @@ Partie du `Dockerfile` en question
 Partie du `Dockerfile` en question
 </summary>
 
-```{.python include="docker/Dockerfile" filename="Dockerfile" start-line=13 end-line=16}
+```{.r include="docker/Dockerfile" filename="Dockerfile" start-line=13 end-line=16}
 ```
 
 </details>
@@ -503,7 +503,7 @@ Cette étape n'est pas nécessaire.
 Partie du `Dockerfile` en question
 </summary>
 
-```{.python include="docker/Dockerfile" filename="Dockerfile" start-line=18 end-line=18}
+```{.r include="docker/Dockerfile" filename="Dockerfile" start-line=18 end-line=18}
 ```
 
 </details>
@@ -515,7 +515,7 @@ Partie du `Dockerfile` en question
 Partie du `Dockerfile` en question
 </summary>
 
-```{.python include="docker/Dockerfile_python" filename="Dockerfile" start-line=11 end-line=11}
+```{.python include="docker/Dockerfile_python" filename="Dockerfile" start-line=13 end-line=14}
 ```
 
 </details>
@@ -534,7 +534,7 @@ Partie du `Dockerfile` en question
 Partie du `Dockerfile` en question
 </summary>
 
-```{.python include="docker/Dockerfile" filename="Dockerfile" start-line=19 end-line=20}
+```{.r include="docker/Dockerfile" filename="Dockerfile" start-line=19 end-line=20}
 ```
 
 </details>
@@ -546,7 +546,7 @@ Partie du `Dockerfile` en question
 Partie du `Dockerfile` en question
 </summary>
 
-```{.python include="docker/Dockerfile_python" filename="Dockerfile" start-line=13 end-line=14}
+```{.python include="docker/Dockerfile_python" filename="Dockerfile" start-line=16 end-line=17}
 ```
 
 </details>
