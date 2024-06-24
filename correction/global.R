@@ -11,6 +11,7 @@ library(gt)
 library(leaflet)
 library(bslib)
 
+setwd("correction/")#indicates the right WD, otherwise it doesn't run correctly
 source("R/import_data.R")
 source("R/create_data_list.R")
 source("R/clean_dataframe.R")
