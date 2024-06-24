@@ -18,7 +18,7 @@ plot_airport_line <- function(df, selected_airport){
 }
 
 
-map_leaflet_airport <- function(df, airports_location, months, years){
+map_leaflet_airport <- function(df, airports_location, month, year){
   
   palette <- c("green", "blue", "red")
 
@@ -26,7 +26,7 @@ map_leaflet_airport <- function(df, airports_location, months, years){
     mutate(
       date = as.Date(paste(anmois, "01", sep=""), format = "%Y%m%d")
     ) %>%
-    filter(mois %in% months, an %in% years)
+    filter(mois == month, an == year)
   trafic_aeroports <- airports_location %>%
     inner_join(trafic_date, by = c("Code.OACI" = "apt"))
   

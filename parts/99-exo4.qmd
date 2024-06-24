@@ -105,6 +105,7 @@ statistiques descriptives lisibles et esthétiques. Avant
 de créer cette table, nous allons créer une colonne supplémentaire:
 
 ```{r}
+#| label: source-exo4a
 #| echo: false
 #| output: false
 source("intermediates/exo4a.R")

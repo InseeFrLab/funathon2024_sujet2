@@ -1,6 +1,6 @@
-create_data_from_input <- function(data, years, months){
+create_data_from_input <- function(data, year, month){
   data <- data %>%
-    filter(mois %in% months, an %in% years)
+    filter(mois %in% month, an %in% year)
   return(data)
 }
 

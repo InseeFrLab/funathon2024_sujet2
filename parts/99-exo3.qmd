@@ -42,6 +42,7 @@ Enchaînement des opérations attendues à cette étape
 Vous devriez obtenir une figure similaire à celle-ci:
 
 ```{r}
+#| label: figure-ggplot
 #| echo: false
 figure_ggplot
 ```
@@ -53,6 +54,7 @@ Il est inutile d'aller plus loin sur la mise en forme de cette figure, car l'app
 La figure que vous devriez avoir est la suivante:
 
 ```{r}
+#| label: figure-plotly
 #| echo: false
 figure_plotly
 ```

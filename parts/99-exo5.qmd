@@ -11,15 +11,16 @@ marqueurs, le nom de l'aéroport et sa fréquentation.
 en couleur à partir de `palette`.  
 5. Reproduire une carte similaire à celle présentée plus bas:
     * En {{< fa brands r-project >}}, vous aurez besoin de la [fonction `addAwesomeMarkers`](https://rstudio.github.io/leaflet/articles/markers.html#awesome-icons) et de l'exemple de code ci-dessous:
-    ```{.r}
-        # Aide pour l'exemple R
-        icons <- awesomeIcons(
-          icon = 'plane',
-          iconColor = 'black',
-          library = 'fa',
-          markerColor = trafic_aeroports$color
-        )
-        ```
+
+```{.r}
+# Aide pour l'exemple R
+icons <- awesomeIcons(
+  icon = 'plane',
+  iconColor = 'black',
+  library = 'fa',
+  markerColor = trafic_aeroports$color
+)
+```
         
     * En {{< fa brands python >}}, il vous suffit de modifier les paramètres de l'argument `icon`
 
@@ -39,13 +40,14 @@ et non `icon = icons`.
 
 
 ```{r}
+#| label: debut-correction-exo5
 #| code-fold: true
 #| code-summary: "Question 1"
 trafic_date <- pax_apt_all %>%
   mutate(
     date = as.Date(paste(anmois, "01", sep=""), format = "%Y%m%d")
   ) %>%
-  filter(mois %in% months, an %in% years)
+  filter(mois == month, an == year)
 trafic_aeroports <- airports_location %>%
   inner_join(trafic_date, by = c("Code.OACI" = "apt"))
 ```
