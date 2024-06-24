@@ -4,10 +4,13 @@ FROM inseefrlab/onyxia-jupyter-python:py3.10.9
 ADD correction/app.py .
 ADD correction/sources.yml .
 ADD requirements.txt .
+
+# Move directories to the project root
 COPY correction/src src/
 COPY correction/.streamlit .streamlit/
 
 
+# Install dependencies
 RUN pip install -r requirements.txt
 
 EXPOSE 8000
