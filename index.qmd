@@ -239,18 +239,16 @@ Pour commencer, vous allez créer un fichier fichier `main.R` ({{< fa brands r-p
 ## Valorisation 1: Le trafic par aéroport
 
 
-La première valorisation qui sera intégrée dans l'application web est un graphique décrivant le trafic aérien au niveau d'un aéroport.
-
-
 ```{r}
 #| output: false
 #| echo: false
 source("intermediates/exo3.R")
 ```
 
-Dans le prochain exercice, nous proposons d'abord de créer une figure minimale (avec `ggplot` {{< fa brands r-project >}} ou son équivalent {{< fa brands python >}} `plotnine`) pour vérifier que
-nos données ont bien la dimension temporelle attendue. Cependant, comme `Shiny` est un système
-interactif, on privilégiera la librairie [`Plotly`](https://plotly.com/r/) pour faire des figures: il s'agit d'une librairie `Javascript` qui peut être appelée grâce à des librairies clientes en {{< fa brands r-project >}} ou {{< fa brands python >}}. 
+
+
+La première valorisation qui sera intégrée dans l'application web est un graphique décrivant le trafic aérien au niveau d'un aéroport. Nous allon d'abord créer une figure minimale (avec `ggplot` {{< fa brands r-project >}} ou son équivalent {{< fa brands python >}} `plotnine`) pour vérifier que
+nos données ont bien la dimension temporelle attendue. Cependant, comme `Shiny` est un système interactif, nous allons ensuite utiliser la librairie [`Plotly`](https://plotly.com/r/) pour faire des figures dynamiques: il s'agit d'une librairie `Javascript` qui peut être appelée grâce à des librairies clientes en {{< fa brands r-project >}} ou {{< fa brands python >}}. 
 
 {{< include "parts/99-exo3.qmd" >}}
 
@@ -262,14 +260,14 @@ permettant de visualiser certaines données directement dans le _dashboard_.
 Il existe plusieurs _packages_ pour faire cela, que ce soit en {{< fa brands r-project >}} ou {{< fa brands python >}}. 
 
 L'écosystème le plus
-complet pour faire cela est développé par `Posit` et
+complet pour construire ce tableau est développé par `Posit` et
 est quasi équivalent qu'on fasse du {{< fa brands r-project >}} ou du {{< fa brands python >}} (il est plus complet en {{< fa brands r-project >}} car plus ancien dans ce langage). 
 Il s'agit du _package_ [`GT`](https://gt.rstudio.com/) ({{< fa brands r-project >}}) ou [`Great Tables`](https://posit-dev.github.io/great-tables/articles/intro.html) ({{< fa brands python >}}). En peu de temps,
 ces _packages_ sont devenus incontournables et proposent des fonctionnalités bien
 plus complètes que les solutions qui existaient par le passé, notamment [`DT`](https://rstudio.github.io/DT/).
 
 
-Pour le prochain exercice, vous pourrez utiliser ces objets
+Pour le prochain exercice, vous pourrez utiliser les objets suivants. Copiez-les à la fin de votre script `main`.
 
 ::::: {.panel-tabset group="language"}
 
@@ -312,8 +310,8 @@ code. Cela nous facilitera la transformation ultérieure en fonction.
 ## {{< fa brands r-project >}}
 
 ```{r}
-months <- 1
-years <- 2019
+month <- 1
+year <- 2019
 ```
 
 Voici également une palette de couleurs qui sera utile à la fin de l'exercice. 
@@ -325,8 +323,8 @@ palette <- c("green", "blue", "red")
 ## {{< fa brands python >}}
 
 ```{r}
-months = 1
-years = 2019
+month = 1
+year = 2019
 ```
 
 Voici également une palette de couleurs qui sera utile à la fin de l'exercice. 
@@ -349,12 +347,12 @@ interactive. L'architecture de notre application sera la suivante :
 
 Comme toute application _web_, `Shiny` ou `Streamlit` reposent sur deux piliers : 
 
-- l'interface utilisateur (UI) qui présente au navigateur des actions possibles et affiche des _output_ adaptés
-- le serveur qui répond à ces actions de l'utilisateur, produit les _output_ et les envoie à l'interface
+- l'interface utilisateur (UI) qui présente au navigateur des actions possibles et affiche des _output_ adaptés;
+- le serveur qui répond à ces actions de l'utilisateur, produit les _outputs_ et les envoie à l'interface.
 
-`Shiny` ou `Streamlit` fonctionnent un peu différement dans la manière de faire interagir ces deux éléments:
+`Shiny` ou `Streamlit` fonctionnent un peu différemment dans la manière de faire interagir ces deux éléments:
 
-- `Shiny` nécessite deux fichiers: un pour l'interface graphique (`ui.R`) et l'autre pour le serveur (`server.R`). L'aller retour entre ces deux fichiers se fait par des objets communs, les _inputs_ du serveur (qui sont les éléments de l'interface graphique) et les _outputs_ du serveur (le résultat des calculs, à afficher sur la page web) ;
+- `Shiny` nécessite deux fichiers: un pour l'interface graphique (`ui.R`) et l'autre pour le serveur (`server.R`). L'aller-retour entre ces deux fichiers se fait par des objets communs, les _inputs_ du serveur (qui sont les éléments de l'interface graphique) et les _outputs_ du serveur (le résultat des calculs, à afficher sur la page web) ;
 - `Streamlit` propose de tout mettre dans un fichier. Les éléments de l'interface graphique sont à la fois des _widgets_ qui seront représentés sur la page et des objets `Python` ayant une valeur correspondant à celle sélectionnée sur la page. 
 
 

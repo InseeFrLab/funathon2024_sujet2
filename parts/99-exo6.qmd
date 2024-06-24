@@ -1,12 +1,12 @@
 ::: {.callout-note collapse="false" icon=false}
-## `<i class="bi bi-book"></i>`{=html} Exercice 6: création de la structure de l'application
+## `<i class="bi bi-book"></i>`{=html} Exercice 6: Créer la structure de l'application
 
 ::::: {.panel-tabset group="language"}
 
 ## {{< fa brands r-project >}}
 
-1. Créer le fichier `global.R` à partir de `main.R` en ne conservant que les lignes jusqu'à la création (incluse)
-de l'objet `trafic_aeroports`
+1. Créer le fichier `global.R` à partir de `main.R` en ne conservant que les lignes jusqu'à la création (incluse);
+de l'objet `trafic_aeroports`.
 
 <details>
 <summary>
@@ -64,46 +64,51 @@ Globalement, le fichier `app.py` va avoir la structure suivante:
 - Import des _packages_ ;
 - Import et restructuration des données ;
 - Création de la mise en page (_layout_) de l'application ;
-- Création des _inputs_ (les sélecteurs) et utilisation pour produire nos valorisations graphiques
+- Création des _inputs_ (les sélecteurs) et utilisation pour produire nos valorisations graphiques.
 
 3. Après la dernière ligne de création de base de données, créer le _layout_ de l'application
 
-```{.python}
-# Streamlit Layout --------------------------------------
+    ```{.python}
+    # Streamlit Layout --------------------------------------
+    
+    st.set_page_config(
+      page_title="Tableau de bord des aéroports français", layout="wide",
+      page_icon="✈️"
+      )
+    col1, col2 = st.columns(2)
+    ```
 
-st.set_page_config(
-  page_title="Tableau de bord des aéroports français", layout="wide",
-  page_icon="✈️"
-  )
-col1, col2 = st.columns(2)
-```
+    Pour le moment, nous proposons de ne pas se préoccuper des deux colonnes, nous remettrons en forme ultérieurement notre application.
 
-Pour le moment, nous proposons de ne pas se préoccuper des deux colonnes, nous remettrons en forme ultérieurement notre application
+4. Créer un objet `selected_date` à partir de [`st.date_input`](https://docs.streamlit.io/develop/api-reference/widgets/st.date_input) ayant pour étiquette "Mois choisi" et prenant par défaut la valeur `pd.to_datetime("2019-01-01")`. L'utiliser pour créer des objets `year` et `month`.
 
-4. Créer un objet `selected_date` à partir de [`st.date_input`](https://docs.streamlit.io/develop/api-reference/widgets/st.date_input) prenant par défaut la valeur `pd.to_datetime("2019-01-01")`. L'utiliser pour créer des objets `year` et `month`.
+5. Utiliser ces objets `year` et `month`, qui sont donc maintenant réactifs et non plus figés, pour créer `stats_aeroports`, puis `table_airports`. Pour que la table rende bien sur l'application, vous pouvez ajouter, par rapport à précédemment, la méthode `as_raw_html` après l'application de la fonction `create_table_airports`. On va supposer que cette table HTML s'appelle `table_airports`.
 
-5. Utiliser ces objets `year` et `month`, qui sont donc maintenant réactifs et non plus figés, pour créer `stats_aeroports`, puis `table_airports`. Pour que la table rende bien sur l'application, vous pouvez ajouter, par rapport à précédemment, la méthode `as_raw_html` après l'application de la fonction `create_table_airports`. On va supposer que cet table HTML s'appelle `table_airports`
+6. Pour intégrer cette table dans l'application, insérer le code suivant dans `app.py`:
 
-6. Utiliser `components.html(table_airports, height=600)` pour intégrer cette table dans l'application
+    ```{.python}
+    with col1:
+        components.html(table_airports, height=600)
+    ```
 
 7. Faire tourner l'application avec la commande suivante dans un terminal: 
 
-```{.python}
-streamlit run app.py --server.port=5000 --server.address=0.0.0.0
-```
+    ```{.python}
+    streamlit run app.py --server.port=5000 --server.address=0.0.0.0
+    ```
 
-La commande suivante devrait s'afficher sur votre terminal:
+    La commande suivante devrait s'afficher sur votre terminal:
 
-```{.python}
-Collecting usage statistics. To deactivate, set browser.gatherUsageStats to false.
+    ```{.python}
+    Collecting usage statistics. To deactivate, set browser.gatherUsageStats to false.
+    
+    
+      You can now view your Streamlit app in your browser.
+    
+      URL: http://0.0.0.0:5000
+    ```
 
-
-  You can now view your Streamlit app in your browser.
-
-  URL: http://0.0.0.0:5000
-```
-
-Et `VSCode` devrait vous proposer d'ouvrir cette fenêtre. Ne le faites pas car une redirection plus persistante vers le _localhost_ de votre service (http://0.0.0.0:5000) va être nécessaire. 
+    Et `VSCode` devrait vous proposer d'ouvrir cette fenêtre. Ne le faites pas car une redirection plus persistante vers le _localhost_ de votre service (http://0.0.0.0:5000) va être nécessaire. 
 
 8. Retourner sur la page _"Mes services"_ du [SSPCloud](https://datalab.sspcloud.fr/my-services) et cliquer sur le lien du port personnalisé
 
@@ -111,23 +116,24 @@ Et `VSCode` devrait vous proposer d'ouvrir cette fenêtre. Ne le faites pas car 
 
 Observer la page web et l'évolution de votre console. 
 
-9. Stopper votre application avec <kbd>CTRL<kbd>+<kbd>C<kbd>. Ajouter le code suivant à votre application
+9. Stopper votre application avec <kbd>CTRL</kbd>+<kbd>C</kbd>. Ajouter le code suivant à votre application:
 
-```{.python}
-st.subheader("Carte des aéroports")
-carte_interactive = map_leaflet_airport(
-    pax_apt_all, airports_location, month, year
-)
-st_folium(carte_interactive, height=300)
-
-# Line Plot Output
-st.subheader("Fréquentation d'un aéroport")
-selected_airport = st.selectbox(
-    "Aéroport choisi", options=liste_aeroports, index=0
-)
-figure_plotly = plot_airport_line(pax_apt_all, selected_airport)
-st.plotly_chart(figure_plotly)
-```
+    ```{.python}
+    with col2:
+        st.subheader("Carte des aéroports")
+        carte_interactive = map_leaflet_airport(
+            pax_apt_all, airports_location, month, year
+        )
+        st_folium(carte_interactive, height=300)
+        
+        # Line Plot Output
+        st.subheader("Fréquentation d'un aéroport")
+        selected_airport = st.selectbox(
+            "Aéroport choisi", options=liste_aeroports, index=0
+        )
+        figure_plotly = plot_airport_line(pax_apt_all, selected_airport)
+        st.plotly_chart(figure_plotly)
+    ```
 
 10. Exécuter à nouveau la commande `streamlit run` ci-dessus. Observer l'évolution de votre application et jouez avec les paramètres de celle-ci. Ajouter, à la fin de celle-ci, un `print(year)`. Jouer avec le _widget_ de date dans votre application web et observer la valeur affichée dans l'application et dans votre terminal. Comprenez-vous pourquoi l'année ne s'affiche pas dans la page web mais dans la console ? 
 

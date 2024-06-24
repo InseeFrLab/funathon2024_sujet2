@@ -1,3 +1,4 @@
+import pandas as pd
 import plotly.express as px
 
 def plot_airport_line(df, selected_airport):
@@ -27,13 +28,13 @@ def plot_airport_line(df, selected_airport):
 import pandas as pd
 import folium
 
-def map_leaflet_airport(df, airports_location, months, years):
+def map_leaflet_airport(df, airports_location, month, year):
 
     df['date'] = pd.to_datetime(df['anmois'] + '01', format='%Y%m%d')
         
-    # Filter by months and years
+    # Filter by month and year
     trafic_date = df.loc[
-        (df['mois'].astype(int) == months) & (df['an'].astype(int) == int(years))
+        (df['mois'].astype(int) == month) & (df['an'].astype(int) == int(year))
     ]
         
     # Perform an inner join with airport locations
