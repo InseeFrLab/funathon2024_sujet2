@@ -1,4 +1,4 @@
-# Funathon 2024 - Sujet 2 - Dashbord
+# Funathon 2024 - Sujet 2 - Dashboard
 
 <img src="img/cockpit.png" style="width: 50%; height: 50%"/>
 
