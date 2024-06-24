@@ -52,14 +52,4 @@ trafic_aeroports['date'] = pd.to_datetime(
 
 from src.figures import plot_airport_line
 
-
-
-figure_plotly = px.line(
-  trafic_aeroports, x="date", y="trafic",
-  text="apt_nom"
-)
-
-figure_plotly.update_traces(
-  mode="markers+lines", type = "scatter",
-  hovertemplate="<i>Aéroport:</i> %{text}<br>Trafic: %{y}"
-)
+figure_plotly = plot_airport_line(trafic_aeroports, default_airport)

@@ -1,0 +1,24 @@
+# Jeux de données 
+# https://www.data.gouv.fr/fr/datasets/trafic-aerien-commercial-mensuel-francais-par-paire-daeroports-par-sens-depuis-1990/
+
+airports:
+  2018: "https://www.data.gouv.fr/fr/datasets/r/3b7646ea-276c-4c9b-8151-1e96af2adbf9"
+  2019: "https://www.data.gouv.fr/fr/datasets/r/e8efa154-045e-4f8f-a1d7-76a39fa03b7b"
+  2020: "https://www.data.gouv.fr/fr/datasets/r/6717f107-be00-4b4b-9706-fa0e5190fb69"
+  2021: "https://www.data.gouv.fr/fr/datasets/r/2f9f6e54-e2d7-4e85-b811-2e5e68fa5bca"
+  2022: "https://www.data.gouv.fr/fr/datasets/r/f1bd931e-c99e-41ce-865e-9e9785c903ec"
+liaisons:
+  2018: "https://www.data.gouv.fr/fr/datasets/r/9c5354ad-31cb-4217-bc88-fb7c9be22655"
+  2019: "https://www.data.gouv.fr/fr/datasets/r/0c0a451e-983b-4f06-9627-b5ff1bccd2fc"
+  2020: "https://www.data.gouv.fr/fr/datasets/r/dad30bed-7276-4a67-a1ab-a856e6e01788"
+  2021: "https://www.data.gouv.fr/fr/datasets/r/bbf6492d-86ac-43a0-9260-7df2ffdb5a77"
+  2022: "https://www.data.gouv.fr/fr/datasets/r/af8950bc-e90a-4b7e-bb81-70c79d4c3846"
+compagnies:
+  2018: "https://www.data.gouv.fr/fr/datasets/r/ddfea6a0-df7e-4402-99fc-165f573f2e10"
+  2019: "https://www.data.gouv.fr/fr/datasets/r/8421e029-c8c7-410d-b38c-54455ac3265d"
+  2020: "https://www.data.gouv.fr/fr/datasets/r/818eec10-6122-4788-8233-482e779ab837"
+  2021: "https://www.data.gouv.fr/fr/datasets/r/0b954774-ccd1-43ec-9b5a-f958fba03e87"
+  2022: "https://www.data.gouv.fr/fr/datasets/r/bcec3e1e-940a-4772-bc28-0d7b2b53c718"
+geojson:
+  airport: "https://minio.lab.sspcloud.fr/projet-funathon/2024/sujet2/aeroports.geojson"
+

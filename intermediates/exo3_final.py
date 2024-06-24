@@ -24,6 +24,8 @@ liste_aeroports = pax_apt_all['apt'].unique()
 default_airport = liste_aeroports[0]
 
 
+# OBJETS NECESSAIRES A L'APPLICATION ------------------------
+
 pax_apt_all['trafic'] = pax_apt_all['apt_pax_dep'] + \
   pax_apt_all['apt_pax_tr'] + \
   pax_apt_all['apt_pax_arr']
