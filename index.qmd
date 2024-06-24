@@ -365,16 +365,18 @@ Comme toute application _web_, `Shiny` ou `Streamlit` reposent sur deux piliers 
 
 # Partager cette application : une ouverture vers la mise en production
 
+<td><span class="level-button level-expert">Expert</span></td>
+
 ::: {.callout-warning}
 ## Difficulté technique de cette partie
 Cette partie est __plus avancée__ car elle fait appel à des notions techniques assez complexes
 dont certaines sortent, à proprement parler, du champ de compétences des _data scientists_. 
 
-Il est néanmoins fort utile d'apprendre afin d'être autonome dans la mise à disposition
+Il est néanmoins fort utile de découvrir celles-ci afin d'être autonome dans la mise à disposition
 de ses applications, un format de valorisation de plus en plus commun. 
 :::
 
-Dans cette partie on propose de déployer l'application sur le SSP Cloud et de la rendre accessible depuis Internet. L'exercice constitue une introduction à la mise en production d'applications dans un environnement Cloud. Pour aller plus loin, n'hésitez pas à consulter [ce cours de 3e année de l'ENSAE](https://ensae-reproductibilite.github.io/website/).
+Dans cette partie, on propose de déployer l'application sur le `SSPCloud` et de la rendre accessible depuis Internet. L'exercice constitue une introduction à la mise en production d'applications dans un environnement _cloud_. Pour aller plus loin, n'hésitez pas à consulter [ce cours de 3e année de l'ENSAE](https://ensae-reproductibilite.github.io/website/).
 
 
 
@@ -386,12 +388,28 @@ Ainsi, conteneuriser une application permet de la rendre plus facile à déploye
 
 Nous ne vous demandons pas de construire l'image vous-même, l'image est déjà publique sur [`Dockerhub`](https://hub.docker.com/r/inseefrlab/funathon2024-sujet2/) et peut-être utilisée pour déployer l'application. Néanmoins, il est intéressant, pour comprendre la logique de fonctionnement de Docker, de regarder la recette de construction de cette image
 
+::::: {.panel-tabset group="language"}
+
+## {{< fa brands r-project >}}
+
 ```{.python include="docker/Dockerfile" filename="Dockerfile"}
 ```
+
+## {{< fa brands python >}}
+
+```{.python include="docker/Dockerfile_python" filename="Dockerfile"}
+```
+
+:::::
+
 
 Les principales étapes de cette construction d'image sont les suivantes :
 
 * 1️⃣ On part d'une image de base qui correspond à celle dans laquelle on a développé notre application et qui fonctionnait. On pourrait partir d'un environnement plus minimaliste (une machine Linux avec seulement `R` installé, comme les images [`rocker`](https://rocker-project.org/)) mais nous aurions peut-être à installer des librairies système en plus par un processus d'essai-erreur coûteux en temps.
+
+::::: {.panel-tabset group="language"}
+
+## {{< fa brands r-project >}}
 
 <details>
 <summary>
@@ -403,7 +421,28 @@ Partie du `Dockerfile` en question
 
 </details>
 
+## {{< fa brands python >}}
+
+<details>
+<summary>
+Partie du `Dockerfile` en question
+</summary>
+
+```{.python include="docker/Dockerfile_python" filename="Dockerfile" end-line=1}
+```
+
+</details>
+
+
+:::::
+
+
+
 * 2️⃣ On ajoute dans le conteneur les fichiers indispensables au fonctionnement de notre application. Le conteneur, par défaut, n'a pas les fichiers de notre projet, on doit donc dire à `Docker` quels fichiers on désire avoir dans notre application.
+
+::::: {.panel-tabset group="language"}
+
+## {{< fa brands r-project >}}
 
 <details>
 <summary>
@@ -415,31 +454,80 @@ Partie du `Dockerfile` en question
 
 </details>
 
-* 3️⃣ On définit des paramètres sur le routage de notre application dans le conteneur. Ces paramètres nous seront utiles ultérieurement, lors du déploiement.
+
+## {{< fa brands python >}}
 
 <details>
 <summary>
 Partie du `Dockerfile` en question
 </summary>
 
-```{.python include="docker/Dockerfile" filename="Dockerfile" start-line=12 end-line=15}
+```{.python include="docker/Dockerfile_python" filename="Dockerfile" start-line=3 end-line=8}
 ```
 
 </details>
 
-* 4️⃣ On restaure l'environnement avec `renv`. De cette manière, on est assuré que l'application aura le même environnement que celui que nous avons prévu lors de la phase de développement. 
+:::::
+
+
+* 3️⃣ On définit des paramètres sur le routage de notre application dans le conteneur (seulement nécessaire pour la solution {{< fa brands r-project >}}). Ces paramètres nous seront utiles ultérieurement, lors du déploiement.
+
+::::: {.panel-tabset group="language"}
+
+## {{< fa brands r-project >}}
 
 <details>
 <summary>
 Partie du `Dockerfile` en question
 </summary>
 
-```{.python include="docker/Dockerfile" filename="Dockerfile" start-line=17 end-line=17}
+```{.python include="docker/Dockerfile" filename="Dockerfile" start-line=13 end-line=16}
 ```
 
 </details>
 
-* 5️⃣ On définit la commande qui sera exécutée au lancement de notre application. En l'occurrence, c'est une ligne de commande Linux pour lancer l'application `Shiny`
+## {{< fa brands python >}}
+
+Cette étape n'est pas nécessaire. 
+
+:::::
+
+* 4️⃣ On restaure l'environnement avec `renv` ({{< fa brands r-project >}}) ou `pip` ({{< fa brands python >}}). De cette manière, on est assuré que l'application aura le même environnement que celui que nous avons prévu lors de la phase de développement. 
+
+::::: {.panel-tabset group="language"}
+
+## {{< fa brands r-project >}}
+
+<details>
+<summary>
+Partie du `Dockerfile` en question
+</summary>
+
+```{.python include="docker/Dockerfile" filename="Dockerfile" start-line=18 end-line=18}
+```
+
+</details>
+
+## {{< fa brands python >}}
+
+<details>
+<summary>
+Partie du `Dockerfile` en question
+</summary>
+
+```{.python include="docker/Dockerfile_python" filename="Dockerfile" start-line=11 end-line=11}
+```
+
+</details>
+
+:::::
+
+
+* 5️⃣ On définit la commande qui sera exécutée au lancement de notre application. En l'occurrence, c'est une ligne de commande Linux pour lancer l'application `Shiny` ou `Streamlit`
+
+::::: {.panel-tabset group="language"}
+
+## {{< fa brands r-project >}}
 
 <details>
 <summary>
@@ -451,6 +539,20 @@ Partie du `Dockerfile` en question
 
 </details>
 
+## {{< fa brands python >}}
+
+<details>
+<summary>
+Partie du `Dockerfile` en question
+</summary>
+
+```{.python include="docker/Dockerfile_python" filename="Dockerfile" start-line=13 end-line=14}
+```
+
+</details>
+
+:::::
+
 Si le `Dockerfile` est la recette pour créer notre application, où se trouve la cuisine pour préparer
 notre plat ? En général, on passe par des systèmes d'intégration continue, des serveurs mis à disposition
 en complément de forges `Git` pour tester le `Dockerfile`. Pour en savoir plus sur l'intégration continue, 
@@ -461,7 +563,7 @@ de `Github` pour exécuter notre chaine de production de l'image `Docker`. Celui
 
 <details>
 <summary>
-Le _workflow_ `Github` en question
+Le _workflow_ `Github` en question ({{< fa brands r-project >}} et {{< fa brands python >}})
 </summary>
 
 ```{.python include=".github/workflows/app.yaml" filename=".github/workflows/app.yaml"}
@@ -469,7 +571,7 @@ Le _workflow_ `Github` en question
 
 </details>
 
-## Utilisation de l'image Docker pour mettre à disposition le `Shiny`
+## Utilisation de l'image Docker pour mettre à disposition le `Shiny` ou `Streamlit`
 
 Nous avons créé une image Docker qui est disponible sur Dockerhub, le réseau social de Docker. 
 Pour rendre celle-ci vivante, nous devons la déployer dans un conteneur. 
@@ -481,18 +583,18 @@ L'image peut à présent être récupérée et déployée. Dans notre cas, on va
 
 Afin de déployer l'application, suivre les instructions suivantes :
 
-- Inspecter les fichiers `deployment/deployment.yml`, `deployment/service.yml` et `deployment/ingress.yml` et repérer les éléments suivants :
+- Inspecter les fichiers `shiny/deployment.yml`, `shiny/service.yml` et `shiny/ingress.yml` (parcours {{< fa brands r-project >}}) ou `streamlit/deployment.yml`, `streamlit/service.yml` et `streamlit/ingress.yml` (parcours {{< fa brands python >}}) et repérer les éléments suivants :
     - L'emplacement où est spécifié l'image à déployer;
-    - L'emplacement où est spécifié les ressources computationnelles allouées;
-    - L'emplacement où est spécifié l'URL à laquelle sera exposée l'application sur Internet. La modifier (à 2 reprises) pour y indiquer une adresse personalisée pour le déploiement. Seule contrainte, elle doit être de la forme `*.lab.sspcloud.fr`;
+    - L'emplacement où sont spécifiées les ressources computationnelles allouées;
+    - L'emplacement où est spécifiée l'URL à laquelle sera exposée l'application sur Internet. La modifier (à 2 reprises) pour y indiquer une adresse personalisée pour le déploiement. Seule contrainte, elle doit être de la forme `*.lab.sspcloud.fr`;
 - Ouvrir un `Terminal`;
 - Clôner le dépôt (`git clone https://github.com/InseeFrLab/funathon2024_sujet2_cd`)
 - Se placer à la racine du projet (`cd funathon2024_sujet2_cd`);
-- Appliquer les contrats Kubernetes avec la commande `kubectl apply -f kubernetes/`;
+- Appliquer les contrats Kubernetes avec la commande `kubectl apply -f shiny/` ou `kubectl apply -f streamlit/` selon le langage utilisé ;
 - Vérifier le lancement du conteneur avec la commande `kubectl get pods`. Le nom associé devrait être de la forme `funathon2024-sujet2-deployment-*`;
 - Attendre que le conteneur obtienne le statut `Running`.
 - Copier le nom associé à votre service et faire `kubectl logs <nom_copié>`
 
-3. Entrer dans un navigateur l'URL spécifiée dans le fichier `kubernetes/ingress.yaml`, et vérifier que l'application fonctionne correctement ! Jouer avec et observer, dans le terminal que vous aviez ouvert, l'évolution de vos _logs_ quand vous faites une action
+3. Entrer dans un navigateur l'URL spécifiée dans le fichier `streamlit/ingress.yaml` ou `shiny/ingress.yaml`, et vérifier que l'application fonctionne correctement ! Jouer avec et observer, dans le terminal que vous aviez ouvert, l'évolution de vos _logs_ quand vous faites une action
 
 :::

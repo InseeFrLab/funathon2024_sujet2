@@ -135,7 +135,7 @@ Observer la page web et l'évolution de votre console.
 
 10. Exécuter à nouveau la commande `streamlit run` ci-dessus. Observer l'évolution de votre application et jouez avec les paramètres de celle-ci. Ajouter, à la fin de celle-ci, un `print(year)`. Jouer avec le _widget_ de date dans votre application web et observer la valeur affichée dans l'application et dans votre terminal. Comprenez-vous pourquoi l'année ne s'affiche pas dans la page web mais dans la console ? 
 
-:::::: {.callout-tip}
+:::::: {.callout-tip collapse="true"}
 ## Explication
 
 Comme nous l'avons évoqué précédemment, il convient de distinguer l'interface utilisateur du serveur. Les commandes `Python` sont exécutées au niveau du serveur, en l'occurrence votre terminal `Python` dans `VSCode`.  Pour afficher des éléments dans l'interface utilisateur, il faut indiquer à `Streamlit` de les remonter, par exemple par le biais de `st.plotly_chart`. Sinon, elles restent au niveau du serveur. 
@@ -145,6 +145,8 @@ En l'occurrence, le `print` est une commande qui permet d'afficher la valeur au 
 A noter que cette distinction n'est pas propre à `Streamlit`. Dans le monde du développement `JavaScript`, on distingue aussi l'affichage du _widget_ (sa vue) de sa valeur réelle. Pour s'y retrouver lorsqu'ils développent, les développeurs web affichent souvent dans la console `Javascript` la valeur de l'objet par le biais de `console.log`. Vous pouvez d'ailleurs retrouver cette console `JavaScript` dans vos outils de développement de votre navigateur (par exemple sur _Firefox_ par le biais de <kbd>CTRL</kbd>+<kbd>MAJ</kbd>+<kbd>K</kbd>). Si vous voyez des valeurs s'afficher, c'est que les développeurs du site ont utilisé des `console.log` de temps en temps. 
 
 ::::::
+
+
 
 :::::
 
