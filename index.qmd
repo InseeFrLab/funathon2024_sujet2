@@ -593,8 +593,7 @@ Afin de déployer l'application, suivre les instructions suivantes :
 - Appliquer les contrats Kubernetes avec la commande `kubectl apply -f shiny/` ou `kubectl apply -f streamlit/` selon le langage utilisé ;
 - Vérifier le lancement du conteneur avec la commande `kubectl get pods`. Le nom associé devrait être de la forme `funathon2024-sujet2-deployment-*`;
 - Attendre que le conteneur obtienne le statut `Running`.
-- Copier le nom associé à votre service et faire `kubectl logs <nom_copié>`
+- Copier le nom associé à votre service et faire `kubectl logs <nom_copié>`.
 
-3. Entrer dans un navigateur l'URL spécifiée dans le fichier `streamlit/ingress.yaml` ou `shiny/ingress.yaml`, et vérifier que l'application fonctionne correctement ! Jouer avec et observer, dans le terminal que vous aviez ouvert, l'évolution de vos _logs_ quand vous faites une action
-
+3. Entrer dans un navigateur l'URL spécifiée dans le fichier `streamlit/ingress.yaml` ou `shiny/ingress.yaml`, et vérifier que l'application fonctionne correctement ! Jouer avec et observer, dans le terminal que vous aviez ouvert, l'évolution de vos _logs_ quand vous faites une action.
 :::
