@@ -1,7 +1,13 @@
+# Import des packages nécessaires ----------------------------------------------
+
 library(yaml)
 library(readr)
 library(dplyr)
 library(stringr)
+library(sf)
+library(leaflet)
+
+# Import des fichiers de fonctions ---------------------------------------------
 
 source("lucie/create_data_list.R")
 source("lucie/clean_data_frame.R")
@@ -31,3 +37,13 @@ compagnies %>% glimpse()
 liaisons <- import_liaisons_data(urls)
 
 liaisons %>% glimpse()
+
+
+# Localisation des données des aéroports ---------------------------------------
+
+localisations_aeroports <- st_read(urls$geojson$airport)
+
+# Carte minimaliste pour vérifier la bonne localisation des données
+leaflet(localisations_aeroports) %>% 
+  addTiles() %>% 
+  addMarkers(label = ~Nom)
