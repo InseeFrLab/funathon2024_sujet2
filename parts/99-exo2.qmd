@@ -340,7 +340,7 @@ le sujet ou [ce cours introductif](https://rgeo.linogaliana.fr/exercises/geospat
 <summary>
 Aide
 </summary>
-La fonction à utiliser est `sf_crs` {{< fa brands r-project >}} ou l'attribut `crs` pour {{< fa brands python >}} 
+La fonction à utiliser est `st_crs` {{< fa brands r-project >}} ou l'attribut `crs` pour {{< fa brands python >}} 
 </details>
 
 3. Il est toujours utile de vérifier que nos données sont bien localisées où on les attend. Pour cela, il est pertinent de faire une carte avec un fond de carte contextuel, même si celle-ci n'est pas très soignée. Pour faire ceci, le plus simple est d'utiliser la librairie Javascript Leaflet. L'usage n'est pas exactement le même en `R` et en Python:
