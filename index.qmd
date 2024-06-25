@@ -534,7 +534,7 @@ Partie du `Dockerfile` en question
 Partie du `Dockerfile` en question
 </summary>
 
-```{.r include="docker/Dockerfile" filename="Dockerfile" start-line=19 end-line=20}
+```{.r include="docker/Dockerfile" filename="Dockerfile" start-line=20 end-line=21}
 ```
 
 </details>
