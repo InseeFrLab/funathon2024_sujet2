@@ -1,8 +1,3 @@
-# A executer one shot
-# renv::restore()
-
-#' Exo1
-#' 
 #' @param source_file yaml file containing data urls 
 #' @return list (level 1 = concepts, level 2 = year).
 #'
