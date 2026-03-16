@@ -100,13 +100,13 @@ Observer la composition de ce fichier (100 premières lignes)
 
 ```{.r}
 funathon_sujet2/
-├── requirements.txt
+├── pyproject.toml
 ├── correction/src/
 └── correction/app.py
 ```
 
 
-Le premier fichier (`requirements.txt`) correspond à la liste des _packages_ nécessaires
+Le premier fichier (`pyproject.toml`) correspond à la liste des _packages_ nécessaires
 pour reproduire l'environnement. Il s'agit d'un 
 outil particulièrement adapté pour assurer la reproductibilité
 de projets {{< fa brands python >}} (voir la suite). 
@@ -119,7 +119,7 @@ et l'interface utilisateur de notre application. Nous reviendrons sur ce concept
 <summary>
 Observer la composition de ce fichier
 </summary>
-```{.yaml include="requirements.txt" filename="requirements.txt"}
+```{.yaml include="pyproject.toml" filename="pyproject.toml"}
 ```
 </details>
 
@@ -492,7 +492,7 @@ Cette étape n'est pas nécessaire.
 
 :::::
 
-* 4️⃣ On restaure l'environnement avec `renv` ({{< fa brands r-project >}}) ou `pip` ({{< fa brands python >}}). De cette manière, on est assuré que l'application aura le même environnement que celui que nous avons prévu lors de la phase de développement. 
+* 4️⃣ On restaure l'environnement avec `renv` ({{< fa brands r-project >}}) ou `uv` ({{< fa brands python >}}). De cette manière, on est assuré que l'application aura le même environnement que celui que nous avons prévu lors de la phase de développement. 
 
 ::::: {.panel-tabset group="language"}
 
