@@ -45,11 +45,10 @@ jobs:
           mkdir -p intermediates/src
           cp -r correction/src/* intermediates/src/
           cp correction/sources.yml sources.yml
-          pip install -r requirements.txt
           SCRIPT_DIR="intermediates"
           for script in "$SCRIPT_DIR"/*.py; do            
             echo "---------- Running $script"
-            python "$script"
+            uv run "$script"
           done
   build-deploy:
     runs-on: ubuntu-latest
