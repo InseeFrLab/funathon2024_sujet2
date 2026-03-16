@@ -3,7 +3,7 @@ FROM inseefrlab/onyxia-jupyter-python:py3.10.9
 # Add files necessary for the running app
 ADD correction/app.py .
 ADD correction/sources.yml .
-ADD requirements.txt .
+ADD pyproject.toml .
 
 # Move directories to the project root
 COPY correction/src src/
@@ -11,7 +11,7 @@ COPY correction/.streamlit .streamlit/
 
 
 # Install dependencies
-RUN pip install -r requirements.txt
+RUN uv sync
 
 EXPOSE 8000
 CMD ["streamlit", "run", "app.py", "--server.port=8000", "--server.address=0.0.0.0"]
