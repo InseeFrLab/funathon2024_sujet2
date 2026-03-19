@@ -146,7 +146,7 @@ Code de `main.R` à reprendre
 <summary>
 Code de `src/figures.py` à reprendre
 </summary>
-```{.r include="src/figures.py" start-line="27" filename="src/figures.py (fin du fichier)"}
+```{.r include="correction/src/figures.py" start-line="27" filename="src/figures.py (fin du fichier)"}
 ```
 </details>
 
