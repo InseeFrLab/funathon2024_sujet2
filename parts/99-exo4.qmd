@@ -29,7 +29,7 @@ Code de l'exercice
 <summary>
 Code de l'exercice
 </summary>
-```{.python include="correction/src/divers_functions.py" end-line=5}
+```{.python include="correction/src/divers_functions.py" end-line=11}
 ```
 </details>
 
