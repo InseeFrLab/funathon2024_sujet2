@@ -12,9 +12,8 @@ source("correction/R/clean_dataframe.R")
 urls <- create_data_list("./sources.yml")
 
 
-pax_apt_all <- import_airport_data(unlist(urls$airports))
-pax_cie_all <- import_compagnies_data(unlist(urls$compagnies))
-pax_lsn_all <- import_liaisons_data(unlist(urls$liaisons))
+pax_apt_all <- import_airport_data(download_and_unzip(urls$airports))
+pax_cie_all <- import_compagnies_data(download_and_unzip(urls$compagnies))
+pax_lsn_all <- import_liaisons_data(download_and_unzip(urls$liaisons))
 
 airports_location <- st_read(urls$geojson$airport)
-

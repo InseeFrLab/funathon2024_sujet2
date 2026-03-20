@@ -14,9 +14,9 @@ source("correction/R/figures.R")
 urls <- create_data_list("./sources.yml")
 
 
-pax_apt_all <- import_airport_data(unlist(urls$airports))
-pax_cie_all <- import_compagnies_data(unlist(urls$compagnies))
-pax_lsn_all <- import_liaisons_data(unlist(urls$liaisons))
+pax_apt_all <- import_airport_data(download_and_unzip(urls$airports))
+pax_cie_all <- import_compagnies_data(download_and_unzip(urls$compagnies))
+pax_lsn_all <- import_liaisons_data(download_and_unzip(urls$liaisons))
 
 airports_location <- st_read(urls$geojson$airport)
 
@@ -28,13 +28,14 @@ trafic_aeroports <- pax_apt_all %>%
   mutate(trafic = apt_pax_dep + apt_pax_tr + apt_pax_arr) %>%
   filter(apt %in% default_airport) %>%
   mutate(
-    date = as.Date(paste(anmois, "01", sep=""), format = "%Y%m%d")
+    date = as.Date(paste(anmois, "01", sep = ""), format = "%Y%m%d")
   )
 
 
 # VALORISATIONS ----------------------------------------------
 
 figure_ggplot <- trafic_aeroports %>%
-  ggplot(.) + geom_line(aes(x = date, y = trafic))
+  ggplot(.) +
+  geom_line(aes(x = date, y = trafic))
 
 figure_plotly <- plot_airport_line(trafic_aeroports, default_airport)
