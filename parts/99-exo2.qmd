@@ -21,7 +21,7 @@ Vous pouver copier ce code dans un fichier :
 
 ## {{< fa brands python >}}
 
-```{.python include="correction/src/import_data.py" start-line=9 end-line=47}
+```{.python include="correction/src/import_data.py" start-line=10 end-line=49}
 ```
 
 :::::
@@ -137,7 +137,7 @@ Solution
 
 ## {{< fa brands r-project >}}
 
-```{.r include="correction/R/import_data.R" start-line=1 end-line=17}
+```{.r include="correction/R/import_data.R" start-line=22 end-line=36}
 ```
 
 
@@ -149,7 +149,7 @@ source("R/clean_dataframe.R")
 
 ## {{< fa brands python >}}
 
-```{.python include="correction/src/import_data.py" start-line=1 end-line=22}
+```{.python include="correction/src/import_data.py" start-line=51 end-line=68}
 ```
 
 * Reporter cette fonction dans un fichier `src/clean_dataframe.py` et faire
@@ -194,7 +194,7 @@ col_types = cols(
 Solution
 </summary>
 
-```{.r include="correction/R/import_data.R" start-line=20 end-line=38}
+```{.r include="correction/R/import_data.R" start-line=38 end-line=53}
 ```
 
 </details>
@@ -220,7 +220,7 @@ col_types = {
 Solution
 </summary>
 
-```{.python include="correction/src/import_data.py" start-line=26 end-line=46}
+```{.python include="correction/src/import_data.py" start-line=71 end-line=89}
 ```
 
 </details>
@@ -257,7 +257,7 @@ col_types = cols(
 Solution
 </summary>
 
-```{.r include="correction/R/import_data.R" start-line=41 end-line=60}
+```{.r include="correction/R/import_data.R" start-line=56 end-line=72}
 ```
 
 </details>
@@ -282,7 +282,7 @@ col_types = {
 Solution
 </summary>
 
-```{.python include="correction/src/import_data.py" start-line=49 end-line=69}
+```{.python include="correction/src/import_data.py" start-line=92 end-line=111}
 ```
 
 </details>
