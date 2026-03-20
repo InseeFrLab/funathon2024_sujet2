@@ -96,11 +96,11 @@ def import_liaisons_data(list_files):
     # Define the data types for each column
     col_types = {
         "ANMOIS": "str",
-        "LSN": "str",
-        "LSN_DEP_NOM": "str",
-        "LSN_ARR_NOM": "str",
-        "LSN_SCT": "str",
+        "LSN_SEG": "str",
         "LSN_FSC": "str"
+        "LSN_1": "str",
+        "LSN_2": "str",
+        "LSN_2_CONT": "str"
     }
 
     # Read the CSV file(s) with the specified column types

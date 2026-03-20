@@ -243,11 +243,12 @@ la même suite d'opérations. Faire néanmoins attention aux types des colonnes.
 #| code-summary: "Recommandation de paramètre pour read_csv pour l'import de ces fichiers"
 col_types = cols(
   ANMOIS = col_character(),
-  LSN = col_character(),
-  LSN_DEP_NOM = col_character(),
-  LSN_ARR_NOM = col_character(),
-  LSN_SCT = col_character(),
+  LSN_SEG = col_character(),
   LSN_FSC = col_character(),
+  LSN_1 = col_character(),
+  LSN_2 = col_character(),
+  LSN_2_CONT = col_character(),
+  LSN_SCT = col_character(),
   .default = col_double()
 )
 ```
@@ -269,11 +270,11 @@ Conseil pour les colonnes:
 ```{.python}
 col_types = {
   "ANMOIS": "str",
-  "LSN": "str",
-  "LSN_DEP_NOM": "str",
-  "LSN_ARR_NOM": "str",
-  "LSN_SCT": "str",
+  "LSN_SEG": "str",
   "LSN_FSC": "str"
+  "LSN_1": "str",
+  "LSN_2": "str",
+  "LSN_2_CONT": "str"
 }
 ```
 

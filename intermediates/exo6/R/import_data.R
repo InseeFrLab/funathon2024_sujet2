@@ -1,7 +1,6 @@
-import_airport_data <- function(list_files){
-  
+import_airport_data <- function(list_files) {
   pax_apt_all <- readr::read_csv2(
-    list_files, 
+    list_files,
     col_types = cols(
       ANMOIS = col_character(),
       APT = col_character(),
@@ -9,16 +8,14 @@ import_airport_data <- function(list_files){
       APT_ZON = col_character(),
       .default = col_double()
     )
-  ) %>% 
+  ) %>%
     clean_dataframe()
-  
+
   return(pax_apt_all)
-  
 }
 
 
-import_compagnies_data <- function(list_files){
-  
+import_compagnies_data <- function(list_files) {
   pax_cie_all <- readr::read_csv2(
     file = list_files,
     col_types = cols(
@@ -29,32 +26,28 @@ import_compagnies_data <- function(list_files){
       CIE_PAYS = col_character(),
       .default = col_double()
     )
-  ) %>% 
+  ) %>%
     clean_dataframe()
-  
+
   return(pax_cie_all)
-  
-  
 }
 
 
-import_liaisons_data <- function(list_files){
-  
+import_liaisons_data <- function(list_files) {
   pax_lsn_all <- readr::read_csv2(
     file = list_files,
     col_types = cols(
       ANMOIS = col_character(),
-      LSN = col_character(),
-      LSN_DEP_NOM = col_character(),
-      LSN_ARR_NOM = col_character(),
-      LSN_SCT = col_character(),
+      LSN_SEG = col_character(),
       LSN_FSC = col_character(),
+      LSN_1 = col_character(),
+      LSN_2 = col_character(),
+      LSN_2_CONT = col_character(),
+      LSN_SCT = col_character(),
       .default = col_double()
-    ) 
-  ) %>% 
+    )
+  ) %>%
     clean_dataframe()
-  
+
   return(pax_lsn_all)
-  
-  
 }

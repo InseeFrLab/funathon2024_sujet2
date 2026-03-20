@@ -58,11 +58,12 @@ import_liaisons_data <- function(list_files) {
     file = list_files,
     col_types = cols(
       ANMOIS = col_character(),
-      LSN = col_character(),
-      LSN_DEP_NOM = col_character(),
-      LSN_ARR_NOM = col_character(),
-      LSN_SCT = col_character(),
+      LSN_SEG = col_character(),
       LSN_FSC = col_character(),
+      LSN_1 = col_character(),
+      LSN_2 = col_character(),
+      LSN_2_CONT = col_character(),
+      LSN_SCT = col_character(),
       .default = col_double()
     )
   ) %>%
