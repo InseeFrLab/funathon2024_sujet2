@@ -2,15 +2,16 @@
 ## `<i class="bi bi-book"></i>`{=html} Exercice 5: carte aérienne du trafic aéroportuaire
 
 1. Créer un _dataframe_ `trafic_date` en ne conservant que les observations
-de `pax_apt_all` égales à un certain mois et une certaine année (vous pouvez vous inspirer d'un filtre fait précédemment). 
+de `pax_apt_all` égales à un certain mois et une certaine année (vous pouvez vous inspirer d'un filtre fait précédemment).
 2. Ajouter ces informations à la table `airports_location` en faisant une jointure sur les variables `Code.OACI` et `apt`, respectivement. Nommer ce _dataframe_ `trafic_aeroports`.
 3. A partir de l'[exemple de démarrage de `leaflet`](https://rstudio.github.io/leaflet/articles/markers.html) {{< fa brands r-project >}} ou de l'[exemple canonique `folium`](https://python-visualization.github.io/folium/latest/getting_started.html#Adding-markers) ({{< fa brands python >}}),
 créer une carte interactive qui affiche, lorsqu'on clique sur l'un des
-marqueurs, le nom de l'aéroport et sa fréquentation. 
+marqueurs, le nom de l'aéroport et sa fréquentation.
 4. Créer une variable nommée `volume` qui classe chaque observation dans son [tercile](https://fr.wiktionary.org/wiki/tercile) et transforme la valeur
-en couleur à partir de `palette`.  
+en couleur à partir de `palette`.
 5. Reproduire une carte similaire à celle présentée plus bas:
     * En {{< fa brands r-project >}}, vous aurez besoin de la [fonction `addAwesomeMarkers`](https://rstudio.github.io/leaflet/articles/markers.html#awesome-icons) et de l'exemple de code ci-dessous:
+    * En {{< fa brands python >}}, il vous suffit de modifier les paramètres de l'argument `icon`.
 
 ```{.r}
 # Aide pour l'exemple R
@@ -21,10 +22,7 @@ icons <- awesomeIcons(
   markerColor = trafic_aeroports$color
 )
 ```
-        
-    * En {{< fa brands python >}}, il vous suffit de modifier les paramètres de l'argument `icon`
 
-        
 
 :::: {.callout-warning collapse="true"}
 ## Subtilité par rapport à l'exemple de [la documentation](https://rstudio.github.io/leaflet/articles/markers.html#awesome-icons) pour {{< fa brands r-project >}}
@@ -58,9 +56,9 @@ trafic_aeroports <- airports_location %>%
 #| code-fold: true
 #| code-summary: "Question 2"
 library(leaflet)
-  
+
 leaflet(trafic_aeroports) %>% addTiles() %>%
-  addMarkers(popup = ~paste0(Nom, ": ", trafic)) 
+  addMarkers(popup = ~paste0(Nom, ": ", trafic))
 ```
 
 ```{r}
@@ -73,7 +71,7 @@ trafic_aeroports <- trafic_aeroports %>%
   mutate(
     color = palette[volume]
   )
-```  
+```
 
 
 ```{r}
@@ -109,14 +107,14 @@ carte_interactive
 Comme précédemment, nous proposons
 de transformer la production de cette carte en fonction, cela nous permettra
 d'avoir une application légère. Là encore c'est un exercice optionnel mais
-intéressant à faire pour découvrir la logique de la programmation fonctionnelle. 
+intéressant à faire pour découvrir la logique de la programmation fonctionnelle.
 
 ::: {.callout-note collapse="false" icon=false}
 ## `<i class="bi bi-book"></i>`{=html} Exercice 5b (optionnel): une fonction pour notre carte
 
 - Créer une fonction `map_leaflet_airport` avec les arguments `df`, `airports_location`, `month` et `year` produisant la carte. Insérer celle-ci dans le script `R/figures.R` (dans `src/figures.py` pour `Python`).
 - Mettre à jour `main.R` ou  `main.py` pour utiliser cette fonction dans votre chaine. N'oubliez pas de
-définir `month` et `year` dans votre script. 
+définir `month` et `year` dans votre script.
 :::
 
 ::::: {.panel-tabset group="language"}
