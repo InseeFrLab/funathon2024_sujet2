@@ -3,6 +3,8 @@ library(dplyr)
 library(stringr)
 library(sf)
 library(plotly)
+library(httr2)
+library(utils)
 
 source("correction/R/import_data.R")
 source("correction/R/create_data_list.R")

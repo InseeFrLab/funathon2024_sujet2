@@ -2,6 +2,8 @@ library(readr)
 library(dplyr)
 library(stringr)
 library(sf)
+library(httr2)
+library(utils)
 
 source("correction/R/import_data.R")
 source("correction/R/create_data_list.R")

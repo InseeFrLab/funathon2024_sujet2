@@ -6,6 +6,8 @@ library(ggplot2)
 library(plotly)
 library(gt)
 library(leaflet)
+library(httr2)
+library(utils)
 
 source("correction/R/import_data.R")
 source("correction/R/create_data_list.R")

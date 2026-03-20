@@ -46,8 +46,8 @@ filters:
 
 Pour pouvoir proposer un tableau de bord pertinent, le premier geste à avoir
 est d'explorer soi-même les données. L'objectif de cette partie est de guider
-le travail exploratoire. Le travail ultérieur sur l'application visera à 
-consolider et généraliser ces explorations de données. 
+le travail exploratoire. Le travail ultérieur sur l'application visera à
+consolider et généraliser ces explorations de données.
 
 
 ## Préliminaire : récupérer le projet squelette avec `Git` {{< fa brands git-alt >}}
@@ -57,7 +57,7 @@ consolider et généraliser ces explorations de données.
 
 ## Architecture du projet
 
-Le projet récupéré comporte de nombreux fichiers. Nous allons 
+Le projet récupéré comporte de nombreux fichiers. Nous allons
 progressivement les découvrir dans ce tutoriel. A l'heure actuelle,
 on peut se concentrer sur les fichiers suivants:
 
@@ -76,11 +76,11 @@ funathon_sujet2/
 
 
 Le premier fichier (`renv.lock`) correspond à la liste des _packages_ nécessaires
-pour reproduire l'environnement. Il a été généré automatiquement grâce à 
+pour reproduire l'environnement. Il a été généré automatiquement grâce à
 un écosystème `renv` particulièrement adapté pour assurer la reproductibilité
-de projets {{< fa brands r-project >}} (voir la suite). 
+de projets {{< fa brands r-project >}} (voir la suite).
 
-Les fichiers `server.R` et `ui.R` constituent le coeur de notre application 
+Les fichiers `server.R` et `ui.R` constituent le coeur de notre application
 `Shiny`. Ils représentent, respectivement, le moteur de calcul (le serveur)
 et l'interface utilisateur de notre application. Nous reviendrons sur ce concept. Le fichier `global.R` stocke
 un certain nombre d'objets utiles à l'application mais qui n'ont pas besoin
@@ -107,11 +107,11 @@ funathon_sujet2/
 
 
 Le premier fichier (`pyproject.toml`) correspond à la liste des _packages_ nécessaires
-pour reproduire l'environnement. Il s'agit d'un 
+pour reproduire l'environnement. Il s'agit d'un
 outil particulièrement adapté pour assurer la reproductibilité
-de projets {{< fa brands python >}} (voir la suite). 
+de projets {{< fa brands python >}} (voir la suite).
 
-Le fichier `app.py` constitue le coeur de notre application 
+Le fichier `app.py` constitue le coeur de notre application
 `Streamlit`. Ils représentent, respectivement, le moteur de calcul (le serveur)
 et l'interface utilisateur de notre application. Nous reviendrons sur ce concept. Par ailleurs, de nombreuses fonctions utiles pour l'application sont reportées dans les fichiers au sein du dossier `src/` (abréviation de "source").
 
@@ -213,7 +213,7 @@ Dans cette partie, vous allez exploiter les données pour produire trois valoris
 2. un tableau HTML affichant des données sur le trafic;
 3. une carte des aéroports.
 
-Une fois que ces valorisations seront prêtes, nous pourrons nous pencher sur leur intégration dans une application interactive. 
+Une fois que ces valorisations seront prêtes, nous pourrons nous pencher sur leur intégration dans une application interactive.
 
 ## Prérequis: créer le script `main`
 
@@ -224,7 +224,7 @@ Pour commencer, vous allez créer un fichier fichier `main.R` ({{< fa brands r-p
 
 ## {{< fa brands r-project >}}
 
-```{.r include="intermediates/exo3.R" end-line=24}
+```{.r include="intermediates/exo3.R" end-line=26}
 ```
 
 ## {{< fa brands python >}}
@@ -248,7 +248,7 @@ source("intermediates/exo3.R")
 
 
 La première valorisation qui sera intégrée dans l'application web est un graphique décrivant le trafic aérien au niveau d'un aéroport. Nous allon d'abord créer une figure minimale (avec `ggplot` {{< fa brands r-project >}} ou son équivalent {{< fa brands python >}} `plotnine`) pour vérifier que
-nos données ont bien la dimension temporelle attendue. Cependant, comme `Shiny` est un système interactif, nous allons ensuite utiliser la librairie [`Plotly`](https://plotly.com/r/) pour faire des figures dynamiques: il s'agit d'une librairie `Javascript` qui peut être appelée grâce à des librairies clientes en {{< fa brands r-project >}} ou {{< fa brands python >}}. 
+nos données ont bien la dimension temporelle attendue. Cependant, comme `Shiny` est un système interactif, nous allons ensuite utiliser la librairie [`Plotly`](https://plotly.com/r/) pour faire des figures dynamiques: il s'agit d'une librairie `Javascript` qui peut être appelée grâce à des librairies clientes en {{< fa brands r-project >}} ou {{< fa brands python >}}.
 
 {{< include "parts/99-exo3.qmd" >}}
 
@@ -256,12 +256,12 @@ nos données ont bien la dimension temporelle attendue. Cependant, comme `Shiny`
 ## Valorisation 2: Tableau HTML pour afficher des données
 
 La deuxième valorisation qui sera intégrée dans l'application web est un tableau
-permettant de visualiser certaines données directement dans le _dashboard_. 
-Il existe plusieurs _packages_ pour faire cela, que ce soit en {{< fa brands r-project >}} ou {{< fa brands python >}}. 
+permettant de visualiser certaines données directement dans le _dashboard_.
+Il existe plusieurs _packages_ pour faire cela, que ce soit en {{< fa brands r-project >}} ou {{< fa brands python >}}.
 
 L'écosystème le plus
 complet pour construire ce tableau est développé par `Posit` et
-est quasi équivalent qu'on fasse du {{< fa brands r-project >}} ou du {{< fa brands python >}} (il est plus complet en {{< fa brands r-project >}} car plus ancien dans ce langage). 
+est quasi équivalent qu'on fasse du {{< fa brands r-project >}} ou du {{< fa brands python >}} (il est plus complet en {{< fa brands r-project >}} car plus ancien dans ce langage).
 Il s'agit du _package_ [`GT`](https://gt.rstudio.com/) ({{< fa brands r-project >}}) ou [`Great Tables`](https://posit-dev.github.io/great-tables/articles/intro.html) ({{< fa brands python >}}). En peu de temps,
 ces _packages_ sont devenus incontournables et proposent des fonctionnalités bien
 plus complètes que les solutions qui existaient par le passé, notamment [`DT`](https://rstudio.github.io/DT/).
@@ -274,7 +274,7 @@ Pour le prochain exercice, vous pourrez utiliser les objets suivants. Copiez-les
 ## {{< fa brands r-project >}}
 
 ```{r}
-#| echo: true 
+#| echo: true
 YEARS_LIST  <- as.character(2018:2022)
 MONTHS_LIST <- 1:12
 ```
@@ -299,10 +299,10 @@ MONTHS_LIST = list(range(1, 13))
 La troisième valorisation qui sera intégrée dans l'application web est une carte interactive
 du trafic de nos aéroports. Cette carte va être assez basique. Si vous
 désirez mettre en oeuvre des visualisations plus complexes, vous pouvez
-tout à fait le faire. 
+tout à fait le faire.
 
-Pour cet exercice, nous allons fixer une date pour prototyper notre 
-code. Cela nous facilitera la transformation ultérieure en fonction. 
+Pour cet exercice, nous allons fixer une date pour prototyper notre
+code. Cela nous facilitera la transformation ultérieure en fonction.
 
 
 ::::: {.panel-tabset group="language"}
@@ -314,7 +314,7 @@ month <- 1
 year <- 2019
 ```
 
-Voici également une palette de couleurs qui sera utile à la fin de l'exercice. 
+Voici également une palette de couleurs qui sera utile à la fin de l'exercice.
 
 ```{r}
 palette <- c("green", "blue", "red")
@@ -327,7 +327,7 @@ month = 1
 year = 2019
 ```
 
-Voici également une palette de couleurs qui sera utile à la fin de l'exercice. 
+Voici également une palette de couleurs qui sera utile à la fin de l'exercice.
 
 ```{r}
 palette = c("green", "blue", "red")
@@ -338,14 +338,14 @@ palette = c("green", "blue", "red")
 
 {{< include "parts/99-exo5.qmd" >}}
 
-# Création de l'application 
+# Création de l'application
 
 Maintenant tous les ingrédients sont là pour transformer cette chaîne en application
 interactive. L'architecture de notre application sera la suivante :
 
 ![Architecture de notre application (ici illustrée par l'exemple {{< fa brands r-project >}})](img/ui-r.png)
 
-Comme toute application _web_, `Shiny` ou `Streamlit` reposent sur deux piliers : 
+Comme toute application _web_, `Shiny` ou `Streamlit` reposent sur deux piliers :
 
 - l'interface utilisateur (UI) qui présente au navigateur des actions possibles et affiche des _output_ adaptés;
 - le serveur qui répond à ces actions de l'utilisateur, produit les _outputs_ et les envoie à l'interface.
@@ -353,7 +353,7 @@ Comme toute application _web_, `Shiny` ou `Streamlit` reposent sur deux piliers 
 `Shiny` ou `Streamlit` fonctionnent un peu différemment dans la manière de faire interagir ces deux éléments:
 
 - `Shiny` nécessite deux fichiers: un pour l'interface graphique (`ui.R`) et l'autre pour le serveur (`server.R`). L'aller-retour entre ces deux fichiers se fait par des objets communs, les _inputs_ du serveur (qui sont les éléments de l'interface graphique) et les _outputs_ du serveur (le résultat des calculs, à afficher sur la page web) ;
-- `Streamlit` propose de tout mettre dans un fichier. Les éléments de l'interface graphique sont à la fois des _widgets_ qui seront représentés sur la page et des objets `Python` ayant une valeur correspondant à celle sélectionnée sur la page. 
+- `Streamlit` propose de tout mettre dans un fichier. Les éléments de l'interface graphique sont à la fois des _widgets_ qui seront représentés sur la page et des objets `Python` ayant une valeur correspondant à celle sélectionnée sur la page.
 
 
 {{< include "parts/99-exo6.qmd" >}}
@@ -370,10 +370,10 @@ Comme toute application _web_, `Shiny` ou `Streamlit` reposent sur deux piliers 
 ::: {.callout-warning}
 ## Difficulté technique de cette partie
 Cette partie est __plus avancée__ car elle fait appel à des notions techniques assez complexes
-dont certaines sortent, à proprement parler, du champ de compétences des _data scientists_. 
+dont certaines sortent, à proprement parler, du champ de compétences des _data scientists_.
 
 Il est néanmoins fort utile de découvrir celles-ci afin d'être autonome dans la mise à disposition
-de ses applications, un format de valorisation de plus en plus commun. 
+de ses applications, un format de valorisation de plus en plus commun.
 :::
 
 Dans cette partie, on propose de déployer l'application sur le `SSPCloud` et de la rendre accessible depuis Internet. L'exercice constitue une introduction à la mise en production d'applications dans un environnement _cloud_. Pour aller plus loin, n'hésitez pas à consulter [ce cours de 3e année de l'ENSAE](https://ensae-reproductibilite.github.io/website/).
@@ -384,7 +384,7 @@ Dans cette partie, on propose de déployer l'application sur le `SSPCloud` et de
 
 Pour déployer son application, la première étape consiste à la [conteneuriser](https://ensae-reproductibilite.github.io/website/chapters/portability.html#les-conteneurs), ce qui signifie la mettre dans une sorte de boîte virtuelle contenant tout ce dont l'application a besoin pour fonctionner. Le conteneur sépare l'application de son environnement extérieur, ce qui permet d'éviter les conflits avec d'autres applications ou dépendances sur le même système. Puisque le conteneur contient tout ce dont l'application a besoin (comme les bibliothèques et les dépendances), l'application peut être déplacée et exécutée sur n'importe quel système qui supporte les conteneurs, sans se soucier des différences entre ces systèmes.
 
-Ainsi, conteneuriser une application permet de la rendre plus facile à déployer, plus fiable et plus portable (en utilisant efficacement les ressources du système). `Docker` est un outil populaire pour créer et gérer des conteneurs. Le fichier `Dockerfile` contient le code nécessaire pour construire l'image `Docker` de l'application finale située dans le répertoire `correction`. Vous pouvez consulter la [documentation `Docker`](https://docs.docker.com/build/building/packaging/) pour tenter de comprendre comment l'image est construite. 
+Ainsi, conteneuriser une application permet de la rendre plus facile à déployer, plus fiable et plus portable (en utilisant efficacement les ressources du système). `Docker` est un outil populaire pour créer et gérer des conteneurs. Le fichier `Dockerfile` contient le code nécessaire pour construire l'image `Docker` de l'application finale située dans le répertoire `correction`. Vous pouvez consulter la [documentation `Docker`](https://docs.docker.com/build/building/packaging/) pour tenter de comprendre comment l'image est construite.
 
 Nous ne vous demandons pas de construire l'image vous-même, l'image est déjà publique sur [`Dockerhub`](https://hub.docker.com/r/inseefrlab/funathon2024-sujet2/) et peut-être utilisée pour déployer l'application. Néanmoins, il est intéressant, pour comprendre la logique de fonctionnement de Docker, de regarder la recette de construction de cette image
 
@@ -488,11 +488,11 @@ Partie du `Dockerfile` en question
 
 ## {{< fa brands python >}}
 
-Cette étape n'est pas nécessaire. 
+Cette étape n'est pas nécessaire.
 
 :::::
 
-* 4️⃣ On restaure l'environnement avec `renv` ({{< fa brands r-project >}}) ou `uv` ({{< fa brands python >}}). De cette manière, on est assuré que l'application aura le même environnement que celui que nous avons prévu lors de la phase de développement. 
+* 4️⃣ On restaure l'environnement avec `renv` ({{< fa brands r-project >}}) ou `uv` ({{< fa brands python >}}). De cette manière, on est assuré que l'application aura le même environnement que celui que nous avons prévu lors de la phase de développement.
 
 ::::: {.panel-tabset group="language"}
 
@@ -555,8 +555,8 @@ Partie du `Dockerfile` en question
 
 Si le `Dockerfile` est la recette pour créer notre application, où se trouve la cuisine pour préparer
 notre plat ? En général, on passe par des systèmes d'intégration continue, des serveurs mis à disposition
-en complément de forges `Git` pour tester le `Dockerfile`. Pour en savoir plus sur l'intégration continue, 
-vous pouvez consulter le [cours de 3e année de l'ENSAE](https://ensae-reproductibilite.github.io/website/chapters/portability.html#les-conteneurs). 
+en complément de forges `Git` pour tester le `Dockerfile`. Pour en savoir plus sur l'intégration continue,
+vous pouvez consulter le [cours de 3e année de l'ENSAE](https://ensae-reproductibilite.github.io/website/chapters/portability.html#les-conteneurs).
 
 Voici le fichier `.github/workflows/app.yaml` qui contient la suite d'instruction donnée aux serveurs
 de `Github` pour exécuter notre chaine de production de l'image `Docker`. Celui-ci est quasiment une reprise mot pour mot de l'exemple de la [documentation Github](https://docs.github.com/en/actions/creating-actions/creating-a-docker-container-action).
@@ -573,8 +573,8 @@ Le _workflow_ `Github` en question ({{< fa brands r-project >}} et {{< fa brands
 
 ## Utilisation de l'image Docker pour mettre à disposition le `Shiny` ou `Streamlit`
 
-Nous avons créé une image Docker qui est disponible sur Dockerhub, le réseau social de Docker. 
-Pour rendre celle-ci vivante, nous devons la déployer dans un conteneur. 
+Nous avons créé une image Docker qui est disponible sur Dockerhub, le réseau social de Docker.
+Pour rendre celle-ci vivante, nous devons la déployer dans un conteneur.
 
 ::: {.callout-tip collapse="false" icon=false}
 ## `<i class="bi bi-book"></i>`{=html} Exercice 7 : Déploiement de l'application Shiny

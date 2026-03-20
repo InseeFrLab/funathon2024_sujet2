@@ -11,6 +11,7 @@ library(gt)
 library(leaflet)
 library(bslib)
 library(httr2)
+library(utils)
 
 source("R/import_data.R")
 source("R/create_data_list.R")
