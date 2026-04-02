@@ -107,15 +107,18 @@ Globalement, le fichier `app.py` va avoir la structure suivante:
       URL: http://0.0.0.0:5000
     ```
 
-    Et `VSCode` devrait vous proposer d'ouvrir cette fenêtre. Ne le faites pas car une redirection plus persistante vers le _localhost_ de votre service (http://0.0.0.0:5000) va être nécessaire.
+    Et `VSCode` devrait vous proposer d'ouvrir cette fenêtre, cliquez dessus vous redirigera vers l'application. 
 
-8. Retourner sur la page _"Mes services"_ du [SSPCloud](https://datalab.sspcloud.fr/my-services) et cliquer sur le lien du port personnalisé
+::: {.callout-note}
+Si vous voulez retrouver le lien persistant de l'application, retourner sur la page _"Mes services"_ du [SSPCloud](https://datalab.sspcloud.fr/my-services) et cliquer sur le lien du port personnalisé
 
 ![](img/lien_perso.png)
 
 Observer la page web et l'évolution de votre console.
 
-9. Stopper votre application avec <kbd>CTRL</kbd>+<kbd>C</kbd>. Ajouter le code suivant à votre application:
+:::
+
+8. Stopper votre application avec <kbd>CTRL</kbd>+<kbd>C</kbd>. Ajouter le code suivant à votre application:
 
     ```{.python}
     st.subheader("Carte des aéroports")
@@ -133,7 +136,7 @@ Observer la page web et l'évolution de votre console.
     st.plotly_chart(figure_plotly)
     ```
 
-10. Exécuter à nouveau la commande `uv run streamlit run` ci-dessus. Observer l'évolution de votre application et jouez avec les paramètres de celle-ci. Ajouter, à la fin de celle-ci, un `print(year)`. Jouer avec le _widget_ de date dans votre application web et observer la valeur affichée dans l'application et dans votre terminal. Comprenez-vous pourquoi l'année ne s'affiche pas dans la page web mais dans la console ?
+9. Exécuter à nouveau la commande `uv run streamlit run` ci-dessus. Observer l'évolution de votre application et jouez avec les paramètres de celle-ci. Ajouter, à la fin de celle-ci, un `print(year)`. Jouer avec le _widget_ de date dans votre application web et observer la valeur affichée dans l'application et dans votre terminal. Comprenez-vous pourquoi l'année ne s'affiche pas dans la page web mais dans la console ?
 
 :::::: {.callout-tip collapse="true"}
 ## Explication
