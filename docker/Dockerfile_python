@@ -1,4 +1,4 @@
-FROM inseefrlab/onyxia-jupyter-python:py3.10.9
+FROM inseefrlab/onyxia-jupyter-python:py3.13.12
 
 # Add files necessary for the running app
 ADD correction/app.py .
@@ -14,4 +14,4 @@ COPY correction/.streamlit .streamlit/
 RUN uv sync
 
 EXPOSE 8000
-CMD ["streamlit", "run", "app.py", "--server.port=8000", "--server.address=0.0.0.0"]
+CMD ["uv", "run", "streamlit", "run", "app.py", "--server.port=8000", "--server.address=0.0.0.0"]
