@@ -22,7 +22,7 @@ source("correction/R/figures.R")
 
 # Global variables ---------------------------
 
-YEARS_LIST <- 2018:2022
+YEARS_LIST <- 2018:2025
 MONTHS_LIST = 1:12
 
 # Load data ----------------------------------

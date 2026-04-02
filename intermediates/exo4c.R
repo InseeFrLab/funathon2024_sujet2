@@ -16,7 +16,7 @@ source("correction/R/divers_functions.R")
 source("correction/R/tables.R")
 source("correction/R/figures.R")
 
-YEARS_LIST <- as.character(2018:2022)
+YEARS_LIST <- as.character(2018:2025)
 MONTHS_LIST <- 1:12
 year <- YEARS_LIST[1]
 month <- MONTHS_LIST[1]
