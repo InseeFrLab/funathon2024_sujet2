@@ -17,7 +17,7 @@ Le fichier `global.R` attendu
 </details>
 
 L'objectif de la suite de l'exercice est de comprendre comment fonctionne une
-application. Celle-ci sera enrichie ensuite de nos productions graphiques. 
+application. Celle-ci sera enrichie ensuite de nos productions graphiques.
 
 Créer les fichiers `ui.R` et `server.R` à partir des modèles ci-dessous
 
@@ -38,14 +38,14 @@ Code de `server.R` à reprendre
 </details>
 
 
-Lancer l'application en lançant `shiny::runApp()` depuis la console `R`. Si `firefox` affiche un message de blocage de l'ouverture d'une fenêtre, autoriser celle-ci. 
+Lancer l'application en lançant `shiny::runApp()` depuis la console `R`. Si `firefox` affiche un message de blocage de l'ouverture d'une fenêtre, autoriser celle-ci.
 
 1. Observer votre console, notamment les messages lors du lancement de l'application
 2. Jouer avec les _inputs_ et observer la manière dont l'affichage s'ajuste
 
-Maintenant, se pencher sur le code source et observer l'aller-retour entre les objets du script `ui.R` et `server.R`. 
+Maintenant, se pencher sur le code source et observer l'aller-retour entre les objets du script `ui.R` et `server.R`.
 
-Tuer l'application avec le bouton stop de la console. 
+Tuer l'application avec le bouton stop de la console.
 
 
 ## {{< fa brands python >}}
@@ -70,7 +70,7 @@ Globalement, le fichier `app.py` va avoir la structure suivante:
 
     ```{.python}
     # Streamlit Layout --------------------------------------
-    
+
     st.set_page_config(
       page_title="Tableau de bord des aéroports français", layout="wide",
       page_icon="✈️"
@@ -90,32 +90,35 @@ Globalement, le fichier `app.py` va avoir la structure suivante:
     components.html(table_airports, height=600)
     ```
 
-7. Faire tourner l'application avec la commande suivante dans un terminal: 
+7. Faire tourner l'application avec la commande suivante dans un terminal:
 
     ```{.python}
-    streamlit run app.py --server.port=5000 --server.address=0.0.0.0
+    uv run streamlit run app.py --server.port=5000 --server.address=0.0.0.0
     ```
 
     La commande suivante devrait s'afficher sur votre terminal:
 
     ```{.python}
     Collecting usage statistics. To deactivate, set browser.gatherUsageStats to false.
-    
-    
+
+
       You can now view your Streamlit app in your browser.
-    
+
       URL: http://0.0.0.0:5000
     ```
 
-    Et `VSCode` devrait vous proposer d'ouvrir cette fenêtre. Ne le faites pas car une redirection plus persistante vers le _localhost_ de votre service (http://0.0.0.0:5000) va être nécessaire. 
+    Et `VSCode` devrait vous proposer d'ouvrir cette fenêtre, cliquez dessus vous redirigera vers l'application. 
 
-8. Retourner sur la page _"Mes services"_ du [SSPCloud](https://datalab.sspcloud.fr/my-services) et cliquer sur le lien du port personnalisé
+::: {.callout-note}
+Si vous voulez retrouver le lien persistant de l'application, retourner sur la page _"Mes services"_ du [SSPCloud](https://datalab.sspcloud.fr/my-services) et cliquer sur le lien du port personnalisé
 
 ![](img/lien_perso.png)
 
-Observer la page web et l'évolution de votre console. 
+Observer la page web et l'évolution de votre console.
 
-9. Stopper votre application avec <kbd>CTRL</kbd>+<kbd>C</kbd>. Ajouter le code suivant à votre application:
+:::
+
+8. Stopper votre application avec <kbd>CTRL</kbd>+<kbd>C</kbd>. Ajouter le code suivant à votre application:
 
     ```{.python}
     st.subheader("Carte des aéroports")
@@ -123,7 +126,7 @@ Observer la page web et l'évolution de votre console.
         pax_apt_all, airports_location, month, year
     )
     st_folium(carte_interactive, height=300)
-    
+
     # Line Plot Output
     st.subheader("Fréquentation d'un aéroport")
     selected_airport = st.selectbox(
@@ -133,16 +136,16 @@ Observer la page web et l'évolution de votre console.
     st.plotly_chart(figure_plotly)
     ```
 
-10. Exécuter à nouveau la commande `streamlit run` ci-dessus. Observer l'évolution de votre application et jouez avec les paramètres de celle-ci. Ajouter, à la fin de celle-ci, un `print(year)`. Jouer avec le _widget_ de date dans votre application web et observer la valeur affichée dans l'application et dans votre terminal. Comprenez-vous pourquoi l'année ne s'affiche pas dans la page web mais dans la console ? 
+9. Exécuter à nouveau la commande `uv run streamlit run` ci-dessus. Observer l'évolution de votre application et jouez avec les paramètres de celle-ci. Ajouter, à la fin de celle-ci, un `print(year)`. Jouer avec le _widget_ de date dans votre application web et observer la valeur affichée dans l'application et dans votre terminal. Comprenez-vous pourquoi l'année ne s'affiche pas dans la page web mais dans la console ?
 
 :::::: {.callout-tip collapse="true"}
 ## Explication
 
-Comme nous l'avons évoqué précédemment, il convient de distinguer l'interface utilisateur du serveur. Les commandes `Python` sont exécutées au niveau du serveur, en l'occurrence votre terminal `Python` dans `VSCode`.  Pour afficher des éléments dans l'interface utilisateur, il faut indiquer à `Streamlit` de les remonter, par exemple par le biais de `st.plotly_chart`. Sinon, elles restent au niveau du serveur. 
+Comme nous l'avons évoqué précédemment, il convient de distinguer l'interface utilisateur du serveur. Les commandes `Python` sont exécutées au niveau du serveur, en l'occurrence votre terminal `Python` dans `VSCode`.  Pour afficher des éléments dans l'interface utilisateur, il faut indiquer à `Streamlit` de les remonter, par exemple par le biais de `st.plotly_chart`. Sinon, elles restent au niveau du serveur.
 
-En l'occurrence, le `print` est une commande qui permet d'afficher la valeur au niveau de la console Python. Mais on ne dit pas à `Streamlit` d'afficher cette valeur sur la page web (l'interface utilisateur). 
+En l'occurrence, le `print` est une commande qui permet d'afficher la valeur au niveau de la console Python. Mais on ne dit pas à `Streamlit` d'afficher cette valeur sur la page web (l'interface utilisateur).
 
-A noter que cette distinction n'est pas propre à `Streamlit`. Dans le monde du développement `JavaScript`, on distingue aussi l'affichage du _widget_ (sa vue) de sa valeur réelle. Pour s'y retrouver lorsqu'ils développent, les développeurs web affichent souvent dans la console `Javascript` la valeur de l'objet par le biais de `console.log`. Vous pouvez d'ailleurs retrouver cette console `JavaScript` dans vos outils de développement de votre navigateur (par exemple sur _Firefox_ par le biais de <kbd>CTRL</kbd>+<kbd>MAJ</kbd>+<kbd>K</kbd>). Si vous voyez des valeurs s'afficher, c'est que les développeurs du site ont utilisé des `console.log` de temps en temps. 
+A noter que cette distinction n'est pas propre à `Streamlit`. Dans le monde du développement `JavaScript`, on distingue aussi l'affichage du _widget_ (sa vue) de sa valeur réelle. Pour s'y retrouver lorsqu'ils développent, les développeurs web affichent souvent dans la console `Javascript` la valeur de l'objet par le biais de `console.log`. Vous pouvez d'ailleurs retrouver cette console `JavaScript` dans vos outils de développement de votre navigateur (par exemple sur _Firefox_ par le biais de <kbd>CTRL</kbd>+<kbd>MAJ</kbd>+<kbd>K</kbd>). Si vous voyez des valeurs s'afficher, c'est que les développeurs du site ont utilisé des `console.log` de temps en temps.
 
 ::::::
 

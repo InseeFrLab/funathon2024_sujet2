@@ -3,11 +3,34 @@
 
 Dans cet exercice, vous allez découvrir les sources utilisées dans le tutoriel et développer des fonctions génériques de traitement de données qui seront ensuite utilisées par l'application web.
 
+#### Données zippées {.unnumbered}
+
+Les données d'aéroport, de compagnie et de liaisons sont rassemblées dans un seul fichier zippé contenant toutes les années.
+Il faut donc télécharger et dézipper le fichier pour chaque dataset.
+Pour éviter de vous occuper de cela, voici une fonction `download_and_unzip` qui permet de télécharger les données à partir d'un url,
+dézipper les fichier dans un dossier `temp/` et renvoie les chemins vers les fichiers dézippés.
+
+
+::::: {.panel-tabset group="language"}
+
+
+## {{< fa brands r-project >}}
+Vous pouver copier ce code dans un fichier :
+```{.r include="correction/R/import_data.R" start-line=1 end-line=20}
+```
+
+## {{< fa brands python >}}
+
+```{.python include="correction/src/import_data.py" start-line=10 end-line=49}
+```
+
+:::::
+
 #### Données aéroports {.unnumbered}
 
-* Les données sont des CSV européens (avec le séparateur `;`). Il est donc conseillé d'utiliser la fonction `read_csv2` du package `readr` pour lire les données à partir 
-de la liste de fichiers `unlist(urls$airports)`[^utilitr-csv] si vous utilisez {{< fa brands r-project >}}, et d'utiliser la fonction `read_csv` du package `pandas` pour lire les données à partir de la liste de fichiers `list(urls['airports'].values())` si vous utilisez {{< fa brands python >}}.
-* Il est recommandé de ne pas laisser les types par défaut des colonnes mais de figer ceux-ci avec l'argument suivant:
+* Les données sont des CSV européens (avec le séparateur `;`). Il est donc conseillé d'utiliser la fonction `read_csv2` du package `readr` pour lire les données à partir
+de la liste de fichiers `download_and_unzip(urls$airports)`[^utilitr-csv] si vous utilisez {{< fa brands r-project >}}, et d'utiliser la fonction `read_csv` du package `pandas` pour lire les données à partir de la liste de fichiers `download_and_unzip(urls['airports'])` si vous utilisez {{< fa brands python >}}.
+* Il est recommandé de ne pas laisser les types par défaut des colonnes mais de figer ceux-ci avec l'argument `dtype`.
 
 ::::: {.panel-tabset group="language"}
 
@@ -28,9 +51,9 @@ col_types = cols(
 
 ```{.python}
 dtype = {
-    "ANMOIS": "str",  
-    "APT": "str",     
-    "APT_NOM": "str", 
+    "ANMOIS": "str",
+    "APT": "str",
+    "APT_NOM": "str",
     "APT_ZON": "str",
 }
 ```
@@ -50,7 +73,7 @@ Aide si vous êtes bloqué sur cette question
 ## {{< fa brands r-project >}}
 
 
-Pour extraire des éléments d'une chaine de caractère à partir de la position, il est recommandé d'utiliser la fonction `str_sub` du package `stringr`. Pour créer de nouvelles colonnes, il est recommandé d'utiliser la fonction `mutate` du package dplyr. 
+Pour extraire des éléments d'une chaine de caractère à partir de la position, il est recommandé d'utiliser la fonction `str_sub` du package `stringr`. Pour créer de nouvelles colonnes, il est recommandé d'utiliser la fonction `mutate` du package dplyr.
 
 ::: {.callout-warning}
 ## Conseil pour se faciliter la vie ultérieurement
@@ -70,7 +93,7 @@ Vous pouvez utiliser les méthodes de données textuelles `str.sub` et `str.repl
 
 </details>
 
-
+* Filtrer les données pour ne conserver que les données après 2018.
 
 * Créer une fonction `clean_dataframe` qui prend en entrée un dataframe, crée les variables `an` et `mois`, ajoute une étape de passage des noms de colonne en minuscule et renvoie le dataframe en sortie.
 
@@ -102,7 +125,7 @@ Solution
 
 * Créer une fonction `import_airport_data` qui prend en _input_ `list_files`
 et intègre les deux étapes précédentes: la lecture des données, le nettoyage
-avec `clean_dataframe`. Dans le cas de Python, ne pas oublier de concaténer 
+avec `clean_dataframe`. Dans le cas de Python, ne pas oublier de concaténer
 les différentes tables avec `pd.concat`.
 
 <details>
@@ -114,7 +137,7 @@ Solution
 
 ## {{< fa brands r-project >}}
 
-```{.r include="correction/R/import_data.R" start-line=1 end-line=17}
+```{.r include="correction/R/import_data.R" start-line=22 end-line=36}
 ```
 
 
@@ -126,7 +149,7 @@ source("R/clean_dataframe.R")
 
 ## {{< fa brands python >}}
 
-```{.python include="correction/src/import_data.py" start-line=1 end-line=22}
+```{.python include="correction/src/import_data.py" start-line=51 end-line=68}
 ```
 
 * Reporter cette fonction dans un fichier `src/clean_dataframe.py` et faire
@@ -145,7 +168,7 @@ from src.clean_dataframe import clean_dataframe
 #### Données compagnies {.unnumbered}
 
 Sur le même principe, créer une fonction `import_compagnies_data` qui effectue
-la même suite d'opérations. Faire néanmoins attention aux types des colonnes. 
+la même suite d'opérations. Faire néanmoins attention aux types des colonnes.
 
 ::::: {.panel-tabset group="language"}
 
@@ -171,7 +194,7 @@ col_types = cols(
 Solution
 </summary>
 
-```{.r include="correction/R/import_data.R" start-line=20 end-line=38}
+```{.r include="correction/R/import_data.R" start-line=38 end-line=53}
 ```
 
 </details>
@@ -197,7 +220,7 @@ col_types = {
 Solution
 </summary>
 
-```{.python include="correction/src/import_data.py" start-line=26 end-line=46}
+```{.python include="correction/src/import_data.py" start-line=71 end-line=89}
 ```
 
 </details>
@@ -208,7 +231,7 @@ Solution
 #### Données liaisons  {.unnumbered}
 
 Sur le même principe, créer une fonction `import_liaisons_data` qui effectue
-la même suite d'opérations. Faire néanmoins attention aux types des colonnes. 
+la même suite d'opérations. Faire néanmoins attention aux types des colonnes.
 
 ::::: {.panel-tabset group="language"}
 
@@ -220,11 +243,11 @@ la même suite d'opérations. Faire néanmoins attention aux types des colonnes.
 #| code-summary: "Recommandation de paramètre pour read_csv pour l'import de ces fichiers"
 col_types = cols(
   ANMOIS = col_character(),
-  LSN = col_character(),
-  LSN_DEP_NOM = col_character(),
-  LSN_ARR_NOM = col_character(),
-  LSN_SCT = col_character(),
+  LSN_SEG = col_character(),
   LSN_FSC = col_character(),
+  LSN_1 = col_character(),
+  LSN_2 = col_character(),
+  LSN_2_CONT = col_character(),
   .default = col_double()
 )
 ```
@@ -234,7 +257,7 @@ col_types = cols(
 Solution
 </summary>
 
-```{.r include="correction/R/import_data.R" start-line=41 end-line=60}
+```{.r include="correction/R/import_data.R" start-line=56 end-line=72}
 ```
 
 </details>
@@ -246,11 +269,11 @@ Conseil pour les colonnes:
 ```{.python}
 col_types = {
   "ANMOIS": "str",
-  "LSN": "str",
-  "LSN_DEP_NOM": "str",
-  "LSN_ARR_NOM": "str",
-  "LSN_SCT": "str",
+  "LSN_SEG": "str",
   "LSN_FSC": "str"
+  "LSN_1": "str",
+  "LSN_2": "str",
+  "LSN_2_CONT": "str"
 }
 ```
 
@@ -259,7 +282,7 @@ col_types = {
 Solution
 </summary>
 
-```{.python include="correction/src/import_data.py" start-line=49 end-line=69}
+```{.python include="correction/src/import_data.py" start-line=92 end-line=111}
 ```
 
 </details>
@@ -271,11 +294,15 @@ Solution
 1. Reporter la fonction `clean_dataframe` dans un fichier `R/clean_dataframe.R` ({{< fa brands r-project >}}) ou `topinambour/clean_dataframe.py` ({{< fa brands python >}}).
 
 
-2. Reporter les fonctions `import_airport_data`, `import_compagnies_data` et `import_liaisons_data` dans un fichier `R/import_data.R` ({{< fa brands r-project >}}) ou `scr/import_data.py` ({{< fa brands python >}}). Dans le cas de Python, le fichier devra commencer par ceci:
+2. Reporter les fonctions `download_and_unzip`, `import_airport_data`, `import_compagnies_data` et `import_liaisons_data` dans un fichier `R/import_data.R` ({{< fa brands r-project >}}) ou `scr/import_data.py` ({{< fa brands python >}}). Dans le cas de Python, le fichier devra commencer par ceci:
 
 ```
 import pandas as pd
 from .clean_dataframe import clean_dataframe
+
+import requests
+import zipfile
+import os
 ```
 
 ::::: {.panel-tabset group="language"}
@@ -340,7 +367,7 @@ le sujet ou [ce cours introductif](https://rgeo.linogaliana.fr/exercises/geospat
 <summary>
 Aide
 </summary>
-La fonction à utiliser est `st_crs` {{< fa brands r-project >}} ou l'attribut `crs` pour {{< fa brands python >}} 
+La fonction à utiliser est `st_crs` {{< fa brands r-project >}} ou l'attribut `crs` pour {{< fa brands python >}}
 </details>
 
 3. Il est toujours utile de vérifier que nos données sont bien localisées où on les attend. Pour cela, il est pertinent de faire une carte avec un fond de carte contextuel, même si celle-ci n'est pas très soignée. Pour faire ceci, le plus simple est d'utiliser la librairie Javascript Leaflet. L'usage n'est pas exactement le même en `R` et en Python:
@@ -363,7 +390,7 @@ leaflet(airports_location) %>%
 
 ```{.python}
 # En Python
-import folium 
+import folium
 m = folium.Map()
 
 folium.GeoJson(airports_location).add_to(m)
@@ -374,8 +401,8 @@ m
 
 :::
 
-[^utilitr-csv]: Si vous êtes peu familier avec ce type de fichiers, vous pouvez consulter la [fiche `utilitR`](https://book.utilitr.org/03_Fiches_thematiques/Fiche_import_fichiers_plats.html) sur le sujet ({{< fa brands r-project >}}) 
-[^crs]: Si vous êtes peu familier avec les données géographiques, vous pouvez retenir l'idée qu'il s'agit de données traditionnelles auxquelles s'ajoute une dimension spatiale. Cette dernière vise à localiser les données sur la terre. La localisation se fait dans un espace à deux dimensions (espace cartésien) alors que notre planète est une sphère en trois dimensions. Le principe d'un système de projection est de faire ce passage en deux dimensions des positions. Le plus connu est le système GPS, qui est un héritier lointain de la représentation du monde par [Mercator](https://fr.wikipedia.org/wiki/G%C3%A9rard_Mercator). Ce système est connu sous le nom de WGS 84 et porte le code EPSG 4326. L'autre système à retenir est le Lambert 93 (code EPSG 2154) qui est la projection légale en France (celle-ci, _a contrario_ du Mercator, ne déforme pas la France sur une carte). Pour en savoir plus sur les systèmes de représentation, les avantages et inconvénients de chacun, il existe de nombreuses ressources en ligne. Des éléments introductifs, et des démonstrations interactives, en lien avec la librairie `Geopandas` de `Python` sont disponibles [ici](https://pythonds.linogaliana.fr/content/manipulation/03_geopandas_intro.html#principe). 
+[^utilitr-csv]: Si vous êtes peu familier avec ce type de fichiers, vous pouvez consulter la [fiche `utilitR`](https://book.utilitr.org/03_Fiches_thematiques/Fiche_import_fichiers_plats.html) sur le sujet ({{< fa brands r-project >}})
+[^crs]: Si vous êtes peu familier avec les données géographiques, vous pouvez retenir l'idée qu'il s'agit de données traditionnelles auxquelles s'ajoute une dimension spatiale. Cette dernière vise à localiser les données sur la terre. La localisation se fait dans un espace à deux dimensions (espace cartésien) alors que notre planète est une sphère en trois dimensions. Le principe d'un système de projection est de faire ce passage en deux dimensions des positions. Le plus connu est le système GPS, qui est un héritier lointain de la représentation du monde par [Mercator](https://fr.wikipedia.org/wiki/G%C3%A9rard_Mercator). Ce système est connu sous le nom de WGS 84 et porte le code EPSG 4326. L'autre système à retenir est le Lambert 93 (code EPSG 2154) qui est la projection légale en France (celle-ci, _a contrario_ du Mercator, ne déforme pas la France sur une carte). Pour en savoir plus sur les systèmes de représentation, les avantages et inconvénients de chacun, il existe de nombreuses ressources en ligne. Des éléments introductifs, et des démonstrations interactives, en lien avec la librairie `Geopandas` de `Python` sont disponibles [ici](https://pythonds.linogaliana.fr/content/manipulation/03_geopandas_intro.html#principe).
 
 La carte `leaflet` que vous devriez avoir obtenue à la fin de l'exercice
 est la suivante:
@@ -399,13 +426,13 @@ leaflet(airports_location) %>%
 ## {{< fa brands r-project >}}
 
 
-A l'issue de l'exercice, 
+A l'issue de l'exercice,
 le code centralisé dans le script `R/import_data.R`
 peut être importé via le code suivant
 
 ```{r}
 #| include: false
-source("correction/R/import_data.R")  
+source("correction/R/import_data.R")
 ```
 
 ```{r}
@@ -423,12 +450,12 @@ scripts que nous avons déjà créés dans le dossier `R`:
 
 ```r
 source("R/create_data_list.R")
-source("R/import_data.R")  
+source("R/import_data.R")
 source("R/clean_dataframe.R")
 ```
 
 Une bonne pratique est de tester son script dans une session vierge. Cela amène
-à construire pas à pas une chaine plus reproductible. Pour cela, 
+à construire pas à pas une chaine plus reproductible. Pour cela,
 
 - Aller dans les options de {{< fa brands r-project >}} via `Tools > Global Options` et décocher la case `Restore .RData into workspace at setup`
 - Redémarrer votre
@@ -437,10 +464,10 @@ raccourci <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>F10</kbd>
 - Exécuter votre fichier `main.R`. Vous devriez rencontrer des erreurs car nous n'avons pas géré les import de librairies dans ce script puisque notre session actuelle ne bénéficie plus des import antérieurs.
 
 Une bonne pratique pour comprendre cette exigence de reproductibilité
-est d'itérativement ajouter les librairies utiles à mesure qu'on rencontre des erreurs (notre code étant très rapide à tourner, cette logique d'essai-erreur n'est pas très coûteuse). 
+est d'itérativement ajouter les librairies utiles à mesure qu'on rencontre des erreurs (notre code étant très rapide à tourner, cette logique d'essai-erreur n'est pas très coûteuse).
 Si vous ne désirez pas faire ceci (dommage, c'est un bon exercice), vous
 pouvez trouver les imports de packages à faire pour que notre script soit
-reproductible. 
+reproductible.
 
 <details>
 <summary>
@@ -452,15 +479,15 @@ library(readr)
 library(dplyr)
 library(stringr)
 library(sf)
-``` 
+```
 
 </details>
 
-Ces librairies sont à écrire au début de `main.R`. 
+Ces librairies sont à écrire au début de `main.R`.
 
 ## {{< fa brands python >}}
 
-A l'issue de l'exercice, 
+A l'issue de l'exercice,
 le code centralisé dans le script `src/import_data.py`
 peut être importé via le code suivant
 

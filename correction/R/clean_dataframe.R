@@ -1,18 +1,19 @@
-clean_dataframe <- function(df){
-  
+clean_dataframe <- function(df) {
   # Create an et mois columns
-  df <- df %>% 
+  df <- df %>%
     mutate(
-      an = str_sub(ANMOIS,1,4),
-      mois = str_sub(ANMOIS,5,6)
+      an = str_sub(ANMOIS, 1, 4),
+      mois = str_sub(ANMOIS, 5, 6)
     ) %>%
     mutate(
       mois = str_remove(mois, "^0+")
+    ) %>%
+    filter(
+      an >= "2018"
     )
-  
+
   # lower case for variable names
   colnames(df) <- tolower(colnames(df))
-  
-  return(df)
 
+  return(df)
 }

@@ -19,9 +19,9 @@ month = MONTHS_LIST[0]
 urls = create_data_list("./sources.yml")
 
 
-pax_apt_all = sid.import_airport_data(urls['airports'].values())
-pax_cie_all = sid.import_airport_data(urls['compagnies'].values())
-pax_lsn_all = sid.import_airport_data(urls['liaisons'].values())
+pax_apt_all = sid.import_airport_data(sid.download_and_unzip(urls['airports']))
+pax_cie_all = sid.import_compagnies_data(sid.download_and_unzip(urls['compagnies']))
+pax_lsn_all = sid.import_liaisons_data(sid.download_and_unzip(urls['liaisons']))
 
 
 airports_location = gpd.read_file(

@@ -18,7 +18,7 @@ Enchaînement des opérations attendues à cette étape
 
 ## {{< fa brands r-project >}}
 
-```{.r include="intermediates/exo3.R" end-line=32}
+```{.r include="intermediates/exo3.R" end-line=34}
 ```
 
 ## {{< fa brands python >}}
@@ -69,7 +69,7 @@ Aide: le code pour générer la figure
 
 ## {{< fa brands r-project >}}
 
-```{.r include="intermediates/exo3.R" start-line=37}
+```{.r include="intermediates/exo3.R" start-line=39}
 ```
 
 ## {{< fa brands python >}}
@@ -83,7 +83,7 @@ Aide: le code pour générer la figure
 
 :::
 
-Le code complet pour répliquer cet exercice est donné ci-dessous. 
+Le code complet pour répliquer cet exercice est donné ci-dessous.
 
 <details>
 <summary>
@@ -118,7 +118,7 @@ Transformer le code ci-dessus en une fonction nommée `plot_airport_line` afin q
 * les _inputs_ soient les suivants: un _dataframe_ et un aéroport à sélectionner;
 * la sortie soit notre figure `plotly`.
 
-Tester la fonction sur d'autres aéroports de la liste. Quand vous êtes satisfaits de celle-ci, 
+Tester la fonction sur d'autres aéroports de la liste. Quand vous êtes satisfaits de celle-ci,
 déplacer la définition de cette fonction dans `R/figures.R` ({{< fa brands r-project >}}) ou `src/figures.py` ({{< fa brands python >}}). Dans le cas de Python, le fichier devra commencer par ceci:
 
 ```
@@ -156,7 +156,7 @@ source("correction/R/figures.R")
 source("R/figures.R")
 ```
 
-et utiliser cette fonction à la fin du fichier. 
+et utiliser cette fonction à la fin du fichier.
 
 
 ## {{< fa brands python >}}
@@ -167,7 +167,7 @@ Par la suite, nous pouvons ajouter la ligne suivante au début de notre fichier 
 from src.figures import plot_airport_line
 ```
 
-et utiliser cette fonction à la fin du fichier. 
+et utiliser cette fonction à la fin du fichier.
 
 <details>
 <summary>

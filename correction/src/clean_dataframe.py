@@ -9,4 +9,7 @@ def clean_dataframe(df):
     # Convert all column names to lowercase
     df.columns = df.columns.str.lower()
 
+    # Keeping only years after 2018
+    df = df[df["an"] >= "2018"]
+
     return df

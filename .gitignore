@@ -2,6 +2,7 @@ _site/
 */__pycache__/
 __pycache__/
 site_libs/
+temp/
 
 # History files
 .Rhistory
