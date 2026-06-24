@@ -7,8 +7,8 @@ filters:
 ---
 
 ```{=html}
-<a href="https://datalab.sspcloud.fr/launcher/ide/rstudio?name=Funathon%202024%20-%20sujet%202&version=2.4.5&s3=default&kubernetes.role=«admin»&git.cache=«36000»&git.repository=«https%3A%2F%2Fgithub.com%2FInseeFrLab%2Ffunathon2024_sujet2»&networking.user.enabled=true&autoLaunch=true" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/SSP%20Cloud-Ouvrir_dans_RStudio-blue?logo=rstudio&amp;logoColor=blue" alt="Onyxia"></a>
-<a href="https://datalab.sspcloud.fr/launcher/ide/vscode-python?name=Funathon%202024%20-%20sujet%202&version=2.5.7&s3=default&kubernetes.role=«admin»&git.cache=«36000»&git.repository=«https%3A%2F%2Fgithub.com%2Finseefrlab%2Ffunathon2024_sujet2.git»&networking.user.enabled=true&autoLaunch=true" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/SSP%20Cloud-Ouvrir_dans_VSCode-blue?logo=vscode&amp;logoColor=blue" alt="Onyxia"></a>
+<a href="https://datalab.sspcloud.fr/launcher/ide/rstudio?name=Funathon%202024%20-%20sujet%202&version=2.4.5&s3=default&kubernetes.role=«admin»&git.cache=«36000»&git.repository=«https%3A%2F%2Fgithub.com%2FInseeFrLab%2Ffunathon2024_sujet2»&networking.user.enabled=true&autoLaunch=false" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/SSP%20Cloud-Ouvrir_dans_RStudio-blue?logo=rstudio&amp;logoColor=blue" alt="Onyxia"></a>
+<a href="https://datalab.sspcloud.fr/launcher/ide/vscode-python?name=Funathon%202024%20-%20sujet%202&version=2.5.7&s3=default&kubernetes.role=«admin»&git.cache=«36000»&git.repository=«https%3A%2F%2Fgithub.com%2Finseefrlab%2Ffunathon2024_sujet2.git»&networking.user.enabled=true&autoLaunch=false" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/SSP%20Cloud-Ouvrir_dans_VSCode-blue?logo=vscode&amp;logoColor=blue" alt="Onyxia"></a>
 ```
 
 <br>
