@@ -9,7 +9,7 @@ jobs:
   test-intermediates-r:
     runs-on: ubuntu-latest
     container: 
-      image: inseefrlab/onyxia-vscode-r-python-julia:r4.5.3-py3.13.12
+      image: inseefrlab/onyxia-rstudio:r4.5.3
       options: --user root  # Force root user
     permissions:
       contents: write
@@ -60,7 +60,7 @@ jobs:
   build-deploy:
     runs-on: ubuntu-latest
     container: 
-      image: inseefrlab/onyxia-vscode-r-python-julia:r4.5.3-py3.13.12
+      image: inseefrlab/onyxia-rstudio:r4.5.3
       options: --user root  # Force root user
     permissions:
       contents: write
