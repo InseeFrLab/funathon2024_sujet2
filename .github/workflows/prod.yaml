@@ -8,7 +8,29 @@ name: Quarto Publish
 jobs:
   test-intermediates-r:
     runs-on: ubuntu-latest
-    container: inseefrlab/onyxia-rstudio
+    container: inseefrlab/onyxia-vscode-r-python-julia:r4.5.3-py3.13.12
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.ref }}
+          repository: ${{github.event.pull_request.head.repo.full_name}}
+      - name: Test intermediate scripts
+        run: |
+          mkdir -p R
+          cp -r correction/R/* R/
+          cp correction/sources.yml sources.yml
+          Rscript -e "renv::restore()"
+          SCRIPT_DIR="intermediates"
+          for script in "$SCRIPT_DIR"/*.R; do
+            echo "---------- Running $script"
+            Rscript "$script"
+          done
+  test-intermediates-python:
+    runs-on: ubuntu-latest
+    container: inseefrlab/onyxia-vscode-r-python-julia:r4.5.3-py3.13.12
     permissions:
       contents: write
     steps:
@@ -23,29 +45,6 @@ jobs:
           enable-cache: true
       - name: Test intermediate scripts
         run: |
-          mkdir -p R
-          cp -r correction/R/* R/
-          cp correction/sources.yml sources.yml
-          Rscript -e "renv::restore()"
-          SCRIPT_DIR="intermediates"
-          for script in "$SCRIPT_DIR"/*.R; do
-            echo "---------- Running $script"
-            Rscript "$script"
-          done
-  test-intermediates-python:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v7
-        with:
-          fetch-depth: 0
-          ref: ${{ github.event.pull_request.head.ref }}
-          repository: ${{github.event.pull_request.head.repo.full_name}}
-      - name: Set up Python
-        uses: actions/setup-python@v6
-        with:
-          python-version: '3.13'
-      - name: Test intermediate scripts
-        run: |
           mkdir -p intermediates/src
           cp -r correction/src/* intermediates/src/
           cp correction/sources.yml sources.yml
@@ -56,7 +55,7 @@ jobs:
           done
   build-deploy:
     runs-on: ubuntu-latest
-    container: inseefrlab/onyxia-rstudio
+    container: inseefrlab/onyxia-vscode-r-python-julia:r4.5.3-py3.13.12
     permissions:
       contents: write
     steps:
@@ -73,12 +72,12 @@ jobs:
           cp -r correction/R/* R/
           cp correction/sources.yml sources.yml
           Rscript -e "renv::restore()"
-          uv run quarto render --to html
+          quarto render --to html
       - name: Publish to Pages
         if: github.ref == 'refs/heads/main'
         run: |
           git config --global user.email quarto-github-actions-publish@example.com
           git config --global user.name "Quarto GHA Workflow Runner"
-          uv run quarto publish gh-pages . --no-render --no-browser
+          quarto publish gh-pages . --no-render --no-browser
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
