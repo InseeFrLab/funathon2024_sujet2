@@ -8,7 +8,9 @@ name: Quarto Publish
 jobs:
   test-intermediates-r:
     runs-on: ubuntu-latest
-    container: inseefrlab/onyxia-vscode-r-python-julia:r4.5.3-py3.13.12
+    container: 
+      image: inseefrlab/onyxia-vscode-r-python-julia:r4.5.3-py3.13.12
+      options: --user root  # Force root user
     permissions:
       contents: write
     steps:
@@ -30,7 +32,9 @@ jobs:
           done
   test-intermediates-python:
     runs-on: ubuntu-latest
-    container: inseefrlab/onyxia-vscode-r-python-julia:r4.5.3-py3.13.12
+    container: 
+      image: inseefrlab/onyxia-vscode-r-python-julia:r4.5.3-py3.13.12
+      options: --user root  # Force root user
     permissions:
       contents: write
     steps:
@@ -55,7 +59,9 @@ jobs:
           done
   build-deploy:
     runs-on: ubuntu-latest
-    container: inseefrlab/onyxia-vscode-r-python-julia:r4.5.3-py3.13.12
+    container: 
+      image: inseefrlab/onyxia-vscode-r-python-julia:r4.5.3-py3.13.12
+      options: --user root  # Force root user
     permissions:
       contents: write
     steps:
