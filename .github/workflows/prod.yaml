@@ -17,6 +17,10 @@ jobs:
           fetch-depth: 0
           ref: ${{ github.event.pull_request.head.ref }}
           repository: ${{github.event.pull_request.head.repo.full_name}}
+      - name: Install uv
+        uses: astral-sh/setup-uv@v8.2.0
+        with:
+          enable-cache: true
       - name: Test intermediate scripts
         run: |
           mkdir -p R
@@ -39,7 +43,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v6
         with:
-          python-version: '3.11'
+          python-version: '3.13'
       - name: Test intermediate scripts
         run: |
           mkdir -p intermediates/src
@@ -69,12 +73,12 @@ jobs:
           cp -r correction/R/* R/
           cp correction/sources.yml sources.yml
           Rscript -e "renv::restore()"
-          quarto render --to html
+          uv run quarto render --to html
       - name: Publish to Pages
         if: github.ref == 'refs/heads/main'
         run: |
           git config --global user.email quarto-github-actions-publish@example.com
           git config --global user.name "Quarto GHA Workflow Runner"
-          quarto publish gh-pages . --no-render --no-browser
+          uv run quarto publish gh-pages . --no-render --no-browser
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
