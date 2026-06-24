@@ -16,7 +16,7 @@ from src.figures import plot_airport_line, map_leaflet_airport
 
 # Constants --------------------------------------------------
 
-YEARS_LIST = [str(year) for year in range(2018, 2025)]
+YEARS_LIST = [str(year) for year in range(2018, 2026)]
 MONTHS_LIST = list(range(1, 13))
 default_year = YEARS_LIST[0]
 default_month = MONTHS_LIST[0]
