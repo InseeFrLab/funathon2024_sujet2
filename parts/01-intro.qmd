@@ -27,7 +27,7 @@ ces deux langages est assez minime. L'un des objectifs de ce tutoriel est de vou
 
 ![_Environnement mal structuré_](https://inseefrlab.github.io/formation-bonnes-pratiques-git-R/slides/img/environment_messy.png){#fig-messy}
 
-![Environnement bien structuré](https://inseefrlab.github.io/formation-bonnes-pratiques-git-R/slides/img/environment.png){#fig-clean}
+![Environnement bien structuré](https://inseefrlab.github.io/formation-bonnes-pratiques-git-R/slides/img/environment_clean.png){#fig-clean}
 
 L'environnement vers lequel on désire converger
 :::
