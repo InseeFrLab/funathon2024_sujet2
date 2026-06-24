@@ -12,6 +12,7 @@ dependencies = [
     "plotly>=6.6.0",
     "plotnine>=0.15.3",
     "pyyaml>=6.0.3",
+    "requests>=2.32.5",
     "streamlit>=1.55.0",
     "streamlit-folium>=0.26.2",
 ]

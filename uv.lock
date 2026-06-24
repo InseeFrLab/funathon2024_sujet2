@@ -307,6 +307,7 @@ dependencies = [
     { name = "plotly" },
     { name = "plotnine" },
     { name = "pyyaml" },
+    { name = "requests" },
     { name = "streamlit" },
     { name = "streamlit-folium" },
 ]
@@ -320,6 +321,7 @@ requires-dist = [
     { name = "plotly", specifier = ">=6.6.0" },
     { name = "plotnine", specifier = ">=0.15.3" },
     { name = "pyyaml", specifier = ">=6.0.3" },
+    { name = "requests", specifier = ">=2.32.5" },
     { name = "streamlit", specifier = ">=1.55.0" },
     { name = "streamlit-folium", specifier = ">=0.26.2" },
 ]
